@@ -1,30 +1,30 @@
-import React, { Fragment } from 'react';
-import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import React, { Fragment } from "react"
+import { graphql } from "gatsby"
+import styled from "styled-components"
 
-import GlobalStyles, { OGP }  from '../components/GlobalStyle';
-import AboutSection from '../components/AboutSection';
-import ProjectsSection from '../components/ProjectsSection';
+import GlobalStyles, { OGP } from "../components/GlobalStyle"
+import AboutSection from "../components/AboutSection"
+import ProjectsSection from "../components/ProjectsSection"
 
 const IntroSection = styled.section`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const PageWrapper = styled.main`
   padding: 1.25rem;
-`;
+`
 
 export default ({ data }) => {
-  const { siteMetadata } = data.site;
-  const { nodes } = data.allMarkdownRemark;
-  const aboutNode = nodes[0];
+  const { siteMetadata } = data.site
+  const { nodes } = data.allMarkdownRemark
+  const aboutNode = nodes[0]
   return (
     <Fragment>
       <GlobalStyles />
-      <OGP 
+      <OGP
         title={siteMetadata.title}
         description={siteMetadata.description}
         image={siteMetadata.image}
@@ -39,7 +39,7 @@ export default ({ data }) => {
       </PageWrapper>
     </Fragment>
   )
-};
+}
 
 export const query = graphql`
   query {
@@ -50,18 +50,9 @@ export const query = graphql`
         image
       }
     }
-    allMarkdownRemark (
-      filter: {
-        fields: {
-          slug: {
-            ne: "/cv/"
-          }
-        }
-      },
-      sort: {
-        fields: fields___slug,
-        order: ASC
-      }
+    allMarkdownRemark(
+      filter: { fields: { slug: { ne: "/cv/" } } }
+      sort: { fields: fields___slug, order: ASC }
     ) {
       nodes {
         html
@@ -72,6 +63,14 @@ export const query = graphql`
           title
           description
           marker
+          images {
+            name
+            childImageSharp {
+              fluid(maxWidth: 1080, quality: 90) {
+                src
+              }
+            }
+          }
           thumbnail {
             name
             childImageSharp {
