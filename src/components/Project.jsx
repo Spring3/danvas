@@ -15,14 +15,11 @@ const ParallaxImage = styled.div`
 
 const ProjectInfo = styled.div`
   position: sticky;
-  top: 20vh;
-  background: white;
+  top: 16%;
   z-index: ${(props) => props.index + 1};
 `
 
-const ProjectShowcase = styled.div`
-  position: relative;
-`
+const ProjectShowcase = styled.div``
 
 const ProjectTitle = styled.div`
   font-size: 2rem;
@@ -30,21 +27,26 @@ const ProjectTitle = styled.div`
     font-weight: bold;
   }
 `
+const ProjectContent = styled.div`
+  font-size: 1.2rem;
+`
 
 const Project = ({ node, index }) => {
   return (
     <>
-      <ProjectInfo index={index}>
-        <ProjectTitle>
-          <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-        </ProjectTitle>
-        <div dangerouslySetInnerHTML={{ __html: node.html }} />
-        <Tags>
-          {node.frontmatter.technologies.map((tag, i) => (
-            <Tag key={i}>{tag}</Tag>
-          ))}
-        </Tags>
-      </ProjectInfo>
+      <div>
+        <ProjectInfo index={index}>
+          <ProjectTitle>
+            <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+          </ProjectTitle>
+          <ProjectContent dangerouslySetInnerHTML={{ __html: node.html }} />
+          <Tags>
+            {node.frontmatter.technologies.map((tag, i) => (
+              <Tag key={i}>{tag}</Tag>
+            ))}
+          </Tags>
+        </ProjectInfo>
+      </div>
       <ProjectShowcase>
         {node.frontmatter.images.map((image) => (
           <ParallaxImage

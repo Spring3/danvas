@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 export default createGlobalStyle`
   :root {
-    --text-color-primary: black;
+    --text-color-primary: #282C36;
     --text-color-secondary: #767B91;
     --background-color: white;
     --background-color-dark: #f5f5f5;
@@ -18,11 +18,16 @@ export default createGlobalStyle`
     --marker-link: #BCE5FF;
     --border-radius: 3px;
     --page-size: 45em;
+    --color-red: #EF3934;
+    --color-green: #44C95C;
+    --color-yellow: #FFB402;
+    --color-blue: #2F86EB;
+
   }
 
   body {
     font-size: 16px;
-    background-color: white;
+    background-color: var(--background0-color);
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4;
     color: var(--text-color-primary);

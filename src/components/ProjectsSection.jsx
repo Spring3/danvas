@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Project } from "./Project"
 
 const ProjectGrid = styled.div`
-  flex-grow: 1;
   display: grid;
   grid-template-columns: auto 60%;
   grid-gap: 10rem 3rem;
