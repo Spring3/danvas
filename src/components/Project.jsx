@@ -13,6 +13,14 @@ const ParallaxImage = styled.div`
   background-size: 50% auto;
 `
 
+const NormalImage = styled.div`
+  background-image: url("${(props) => props.src}");
+  height: 60vh;
+  background-position: 85% center;
+  background-repeat: no-repeat;
+  background-size: contain;
+`
+
 const ProjectInfo = styled.div`
   position: sticky;
   top: 16%;
@@ -48,13 +56,18 @@ const Project = ({ node, index }) => {
         </ProjectInfo>
       </div>
       <ProjectShowcase>
-        {node.frontmatter.images.map((image) => (
-          <ParallaxImage
-            key={image.name}
-            alt={image.name}
-            src={image.childImageSharp.fluid.src}
+        {node.frontmatter.images.length > 1 ? (
+          node.frontmatter.images.map((image) => (
+            <ParallaxImage
+              key={image.name}
+              src={image.childImageSharp.fluid.src}
+            />
+          ))
+        ) : (
+          <NormalImage
+            src={node.frontmatter.images[0].childImageSharp.fluid.src}
           />
-        ))}
+        )}
       </ProjectShowcase>
     </>
   )
