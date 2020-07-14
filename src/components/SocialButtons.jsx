@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import GithubIcon from 'mdi-react/GithubIcon';
-import LinkedInIcon from 'mdi-react/LinkedinIcon';
-import TwitterIcon from 'mdi-react/TwitterIcon';
-import EmailOutlineIcon from 'mdi-react/EmailOutlineIcon';
-import SpotifyIcon from 'mdi-react/SpotifyIcon';
+import React from "react"
+import styled from "styled-components"
+import GithubIcon from "mdi-react/GithubIcon"
+import LinkedInIcon from "mdi-react/LinkedinIcon"
+import TwitterIcon from "mdi-react/TwitterIcon"
+import EmailOutlineIcon from "mdi-react/EmailOutlineIcon"
+import SpotifyIcon from "mdi-react/SpotifyIcon"
 
 const SocialButtons = styled.ul`
   margin-top: 1rem;
@@ -25,7 +25,7 @@ const SocialButtons = styled.ul`
         height: 2rem;
 
         @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
-        (max-width: 750px) {
+          (max-width: 750px) {
           width: 1.5rem;
           height: 1.5rem;
         }
@@ -38,11 +38,7 @@ const SocialButtons = styled.ul`
       }
     }
   }
-
-  
-  
-  
-`;
+`
 
 export default ({ className, style }) => (
   <SocialButtons className={className} style={style}>
@@ -70,7 +66,7 @@ export default ({ className, style }) => (
         target="_blank"
         rel="noreferrer noopener"
       >
-      <TwitterIcon color="#1da1f2" />
+        <TwitterIcon color="#1da1f2" />
       </a>
     </li>
     <li>
@@ -92,4 +88,4 @@ export default ({ className, style }) => (
       </a>
     </li>
   </SocialButtons>
-);
+)

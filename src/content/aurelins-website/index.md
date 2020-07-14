@@ -5,7 +5,8 @@ thumbnail: ./aurelins5.png
 description: A website for my sister's portfolio
 marker: secondary
 repository: https://github.com/Spring3/aurelins-website
-tags: 
+demo: https://deploy-preview-1--inspiring-hugle-4673c9.netlify.com/
+technologies:
   - Javascript
   - Gatsby
   - React
@@ -30,15 +31,3 @@ A website that I am making for my sister. It is going to be a place where she wi
 Frankly my sister never used this website, so all the content that you see there was taken from open source websites and was not created by my sister.
 
 [Source Code](https://github.com/Spring3/aurelins-website)
-
-[See it live](https://deploy-preview-1--inspiring-hugle-4673c9.netlify.com/)
-
-## Technologies
-- Gatsby
-- React
-- Styled Components
-- GraphQL
-- three.js
-- Netlify
-- Contentful
-- React-Spring

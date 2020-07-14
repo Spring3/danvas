@@ -1,9 +1,9 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { createGlobalStyle } from 'styled-components';
-import 'normalize.css';
-import 'animate.css';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import React from "react"
+import { Helmet } from "react-helmet"
+import { createGlobalStyle } from "styled-components"
+import "normalize.css"
+import "animate.css"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 export default createGlobalStyle`
   :root {
@@ -49,14 +49,18 @@ export default createGlobalStyle`
   .thumbs-wrapper {
     margin: 20px 0px !important;
   }
-`;
+
+  main {
+    padding: 0;
+  }
+`
 
 export const OGP = ({ title, description, image }) => (
   <Helmet>
     <meta property="og:site_name" content="www.dvasylenko.com" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} /> 
+    <meta property="og:image" content={image} />
     <title>Daniyil Vasylenko</title>
   </Helmet>
-);
+)

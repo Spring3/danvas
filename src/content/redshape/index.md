@@ -5,12 +5,13 @@ thumbnail: ./redshape1.png
 description: A time tracker for Redmine with client app features.
 marker: primary
 repository: https://github.com/Spring3/redshape
-tags: 
+technologies:
   - Javascript
   - Electron
   - React
   - Redux
   - Node.js
+  - Formik
   - Styled Components
   - Webpack
 images:
@@ -26,14 +27,3 @@ Re-designs the way tasks, task information, tracked time and communication in th
 [Download the latest release](https://github.com/Spring3/redshape/releases/)
 
 [Source Code](https://github.com/Spring3/redshape)
-
-## Technologies
-- Electron
-- React
-- Redux
-- Node.js
-- Styled Components
-- Formik
-- Webpack
-
-

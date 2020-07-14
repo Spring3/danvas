@@ -1,28 +1,24 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { Animated } from "react-animated-css"
 
 import Tags, { Tag } from "./Tags"
-
-const ProjectGrid = styled.div`
-  display: flex;
-`
 
 const ParallaxImage = styled.div`
   background-image: url("${(props) => props.src}");
   height: 60vh;
   background-attachment: fixed;
-  background-position: 90% center;
+  background-position: 85% center;
   background-repeat: no-repeat;
-  background-size: 900px auto;
-  padding: 0rem 5rem;
+  background-size: 50% auto;
 `
 
 const ProjectInfo = styled.div`
   position: sticky;
-  top: 20vh;
+  top: 0;
+  padding-top: 20vh;
   background: white;
+  z-index: ${(props) => props.index + 1};
 `
 
 const ProjectShowcase = styled.div`
@@ -37,30 +33,20 @@ const ProjectTitle = styled.div`
 `
 
 const Project = ({ node, index }) => {
-  console.log(node)
   return (
     <>
-      {/* <ProjectGrid> */}
-      {/* <Animated
-        animationIn="fadeIn"
-        animationOut="fadeOut"
-        animationInDelay={500 * index}
-        animationInDuration={500}
-        animationOutDuration={500}
-      > */}
-      <div>
-        <ProjectInfo>
-          <ProjectTitle>
-            <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-          </ProjectTitle>
-          <p>{node.frontmatter.description}</p>
-          <Tags>
-            {node.frontmatter.tags.map((tag, i) => (
-              <Tag key={i}>{tag}</Tag>
-            ))}
-          </Tags>
-        </ProjectInfo>
-      </div>
+      <ProjectInfo index={index}>
+        <ProjectTitle>
+          <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+        </ProjectTitle>
+        <div dangerouslySetInnerHTML={{ __html: node.html }} />
+        <p>{node.frontmatter.description}</p>
+        <Tags>
+          {node.frontmatter.technologies.map((tag, i) => (
+            <Tag key={i}>{tag}</Tag>
+          ))}
+        </Tags>
+      </ProjectInfo>
       <ProjectShowcase>
         {node.frontmatter.images.map((image) => (
           <ParallaxImage
@@ -70,8 +56,6 @@ const Project = ({ node, index }) => {
           />
         ))}
       </ProjectShowcase>
-      {/* </Animated> */}
-      {/* </ProjectGrid> */}
     </>
   )
 }

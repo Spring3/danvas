@@ -2,56 +2,50 @@ import React from "react"
 import styled from "styled-components"
 import { Project } from "./Project"
 
-// const ProjectsGrid = styled.div`
-//   margin-top: 3rem;
-//   display: grid;
-//   grid-template-columns: repeat(12, minmax(20px, 1fr));
-//   grid-template-rows: repeat(auto-fill, minmax(50px,1fr));
-//   grid-gap: 4rem 2rem;
-
-//   @media (max-width: 750px) {
-//     grid-gap: 4rem 0rem;
-//   }
-// `;
-
-const ProjectFlexColumn = styled.div`
+const ProjectGrid = styled.div`
+  flex-grow: 1;
   display: grid;
-  grid-template-columns: auto 900px;
-  grid-gap: 10rem 0rem;
+  grid-template-columns: auto 60%;
+  grid-gap: 10rem 3rem;
   position: relative;
+
+  @media (min-width: 750px) {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
 `
 
 const SectionTitle = styled.h1`
   z-index: 999999;
   position: sticky;
-  top: 5vh;
+  top: 0;
+  padding-top: 5vh;
+
+  @media (min-width: 750px) {
+    font-size: 3rem;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
+    (max-width: 750px) {
+    font-size: 2rem;
+  }
+  margin-top: 3rem;
 `
 
 const ProjectsContainer = styled.div`
-  @media (min-width: 750px) {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  h1 {
-    @media (min-width: 750px) {
-      font-size: 3rem;
-    }
-    @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
-      (max-width: 750px) {
-      font-size: 2rem;
-    }
-    margin-top: 3rem;
-  }
+  display: flex;
+  flex-direction: column;
 `
 
 export default ({ nodes }) => (
   <ProjectsContainer>
     <SectionTitle>Projects</SectionTitle>
-    <ProjectFlexColumn>
+    <ProjectGrid>
       {nodes.map((node, i) => (
         <Project node={node} key={i} index={i} />
       ))}
-    </ProjectFlexColumn>
+    </ProjectGrid>
   </ProjectsContainer>
 )

@@ -5,7 +5,7 @@ thumbnail: ./website1.png
 description: My personal portfolio website.
 marker: danger
 repository: https://github.com/Spring3/website
-tags: 
+technologies:
   - Javascript
   - Gatsby
   - React
@@ -21,12 +21,3 @@ images:
 My personal portfolio website. You are browsing it right now.
 
 [Source Code](https://github.com/Spring3/website)
-
-## Technologies
-- Gatsby
-- React
-- Styled Components
-- GraphQL
-- Netlify
-
-

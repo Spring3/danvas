@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react';
-import { graphql } from 'gatsby';
-import { Carousel } from 'react-responsive-carousel';
-import { Animated } from 'react-animated-css';
+import React, { Fragment } from "react"
+import { graphql } from "gatsby"
+import { Carousel } from "react-responsive-carousel"
+import { Animated } from "react-animated-css"
 
-import GlobalStyles, { OGP } from '../components/GlobalStyle';
-import BackButton from '../components/BackButton';
-import PageWrapper from '../components/PageWrapper';
-import PageContent from '../components/PageContent';
-import PageHeader from '../components/PageHeader';
+import GlobalStyles, { OGP } from "../components/GlobalStyle"
+import BackButton from "../components/BackButton"
+import PageWrapper from "../components/PageWrapper"
+import PageContent from "../components/PageContent"
+import PageHeader from "../components/PageHeader"
 
 export default (props) => {
-  const post = props.data.markdownRemark;
+  const post = props.data.markdownRemark
   return (
     <Fragment>
       <GlobalStyles />
@@ -27,10 +27,7 @@ export default (props) => {
         >
           <BackButton href={post.frontmatter.previous} />
         </Animated>
-        <Animated
-          animationIn="fadeIn"
-          animationOut="fadeOut"
-        >
+        <Animated animationIn="fadeIn" animationOut="fadeOut">
           <div>
             <PageHeader>{post.frontmatter.title}</PageHeader>
             <PageContent>
@@ -42,28 +39,29 @@ export default (props) => {
                 infiniteLoop={true}
                 autoPlay={true}
                 dynamicHeight={true}
-                >
-                {
-                  post.frontmatter.images.map((image, i) => (
-                    <div style={{ marginLeft: '0px', marginRight: '0px' }} key={i}>
-                      <img
-                        key={i}
-                        alt={image.name}
-                        src={image.childImageSharp.fluid.src}
-                        srcSet={image.childImageSharp.fluid.srcSet}
-                        sizes={image.childImageSharp.fluid.sizes}
-                        />
-                    </div>
-                  )) 
-                }
+              >
+                {post.frontmatter.images.map((image, i) => (
+                  <div
+                    style={{ marginLeft: "0px", marginRight: "0px" }}
+                    key={i}
+                  >
+                    <img
+                      key={i}
+                      alt={image.name}
+                      src={image.childImageSharp.fluid.src}
+                      srcSet={image.childImageSharp.fluid.srcSet}
+                      sizes={image.childImageSharp.fluid.sizes}
+                    />
+                  </div>
+                ))}
               </Carousel>
             </PageContent>
           </div>
         </Animated>
       </PageWrapper>
     </Fragment>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query($slug: String!) {
@@ -73,7 +71,7 @@ export const query = graphql`
         title
         description
         previous
-        tags
+        technologies
         images {
           name
           childImageSharp {

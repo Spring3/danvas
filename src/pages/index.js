@@ -13,10 +13,6 @@ const IntroSection = styled.section`
   align-items: center;
 `
 
-const PageWrapper = styled.main`
-  padding: 1.25rem;
-`
-
 export default ({ data }) => {
   const { siteMetadata } = data.site
   const { nodes } = data.allMarkdownRemark
@@ -29,14 +25,14 @@ export default ({ data }) => {
         description={siteMetadata.description}
         image={siteMetadata.image}
       />
-      <PageWrapper>
+      <main>
         <IntroSection>
           <AboutSection>
             <div dangerouslySetInnerHTML={{ __html: aboutNode.html }} />
           </AboutSection>
         </IntroSection>
         <ProjectsSection nodes={nodes.slice(1)} />
-      </PageWrapper>
+      </main>
     </Fragment>
   )
 }
@@ -81,7 +77,7 @@ export const query = graphql`
               }
             }
           }
-          tags
+          technologies
         }
       }
     }
