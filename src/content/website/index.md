@@ -2,7 +2,7 @@
 title: Website
 previous: /
 thumbnail: ./website1.png
-marker: danger
+marker: FCF6B1
 repository: https://github.com/Spring3/website
 technologies:
   - Javascript

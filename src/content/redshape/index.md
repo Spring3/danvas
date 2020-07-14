@@ -2,7 +2,7 @@
 title: Redshape
 previous: /
 thumbnail: ./redshape1.png
-marker: primary
+marker: F78888
 repository: https://github.com/Spring3/redshape
 technologies:
   - Javascript

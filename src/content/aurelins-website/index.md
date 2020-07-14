@@ -2,7 +2,7 @@
 title: Aurelins Website
 previous: /
 thumbnail: ./aurelins5.png
-marker: secondary
+marker: C3A9FF
 repository: https://github.com/Spring3/aurelins-website
 demo: https://deploy-preview-1--inspiring-hugle-4673c9.netlify.com/
 technologies:

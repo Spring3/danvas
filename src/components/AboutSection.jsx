@@ -1,9 +1,9 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { Animated } from 'react-animated-css';
-import ArrowDownIcon from 'mdi-react/ArrowDownIcon';
+import React from "react"
+import styled, { keyframes } from "styled-components"
+import { Animated } from "react-animated-css"
+import ArrowDownIcon from "mdi-react/ArrowDownIcon"
 
-import SocialButtons from './SocialButtons';
+import SocialButtons from "./SocialButtons"
 
 const ContentPanel = styled.div`
   @media (min-width: 750px) {
@@ -13,7 +13,7 @@ const ContentPanel = styled.div`
   }
 
   @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
-  (max-width: 750px) {
+    (max-width: 750px) {
     max-width: 100%;
     font-size: 1rem;
 
@@ -31,24 +31,25 @@ const ContentPanel = styled.div`
     em {
       font-style: normal;
       font-weight: bold;
-      background: var(--marker-primary);
+      background: var(--marker-green);
     }
 
     strong {
-      background: var(--marker-secondary);
+      background: var(--marker-yellow);
     }
   }
 
-  span, p:last-child {
+  span,
+  p:last-child {
     color: var(--text-color-secondary);
     font-size: smaller;
   }
-`;
+`
 
-const InlinedSocialButtons = styled(SocialButtons) `
+const InlinedSocialButtons = styled(SocialButtons)`
   display: inline-block;
   margin: 0px;
-`;
+`
 
 const verticalSlideAnimation = keyframes`
   0% {
@@ -62,7 +63,7 @@ const verticalSlideAnimation = keyframes`
   20% {
     transform: translateY(0rem);
   }
-`;
+`
 
 const ScrollDownSign = styled.div`
   text-align: center;
@@ -78,13 +79,13 @@ const ScrollDownSign = styled.div`
       height: 3rem;
 
       @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
-      (max-width: 750px) {
+        (max-width: 750px) {
         width: 2rem;
         height: 2rem;
       }
     }
   }
-`;
+`
 
 export default ({ children }) => (
   <Animated animationIn="fadeIn" animationOut="fadeOut">
@@ -93,7 +94,7 @@ export default ({ children }) => (
       {children}
       <InlinedSocialButtons />
     </ContentPanel>
-    
+
     <ScrollDownSign>
       <Animated
         animationIn="fadeInDown"

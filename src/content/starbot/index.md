@@ -2,7 +2,7 @@
 title: Starbot
 previous: /
 thumbnail: ./starbot1.png
-marker: link
+marker: BCE5FF
 repository: https://github.com/Spring3/starbot
 technologies:
   - Javascript

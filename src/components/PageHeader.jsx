@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 const Header = styled.h1`
   @media (min-width: 750px) {
@@ -6,7 +6,13 @@ const Header = styled.h1`
   }
 
   display: inline-block;
-  background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-primary) 60%, var(--marker-primary) 100%);
-`;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    var(--marker-green) 60%,
+    var(--marker-green) 100%
+  );
+`
 
-export default Header;
+export default Header

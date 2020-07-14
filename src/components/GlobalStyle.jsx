@@ -12,10 +12,10 @@ export default createGlobalStyle`
     --background-color: white;
     --background-color-dark: #f5f5f5;
     --shadow-color: #E0E0E0;
-    --marker-primary: #A9E5BB;
-    --marker-secondary: #FCF6B1;
-    --marker-danger: #F97350;
-    --marker-link: #BCE5FF;
+    --marker-green: #A9E5BB;
+    --marker-yellow: #FCF6B1;
+    --marker-red: #F78888;
+    --marker-blue: #BCE5FF;
     --border-radius: 3px;
     --page-size: 45em;
     --color-red: #EF3934;
@@ -37,13 +37,13 @@ export default createGlobalStyle`
     color: black;
     font-weight: 500;
     padding: 2px;
-    background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-link) 60%, var(--marker-link) 100%);
+    background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-blue) 60%, var(--marker-blue) 100%);
     transition: background ease .2s;
     text-decoration: none;
 
     &:hover,
     &:focus {
-      background: var(--marker-link);
+      background: var(--marker-blue);
     }
   }
 

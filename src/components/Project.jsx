@@ -25,6 +25,16 @@ const ProjectInfo = styled.div`
   position: sticky;
   top: 16%;
   z-index: ${(props) => props.index + 1};
+
+  a {
+    background: ${(props) =>
+      `linear-gradient(to bottom,transparent 0%,transparent 60%,#${props.marker} 60%,#${props.marker} 100%);`}
+
+    &:hover,
+    &:focus {
+      background: #${(props) => props.marker} !important;
+    }
+  }
 `
 
 const ProjectShowcase = styled.div``
@@ -43,7 +53,7 @@ const Project = ({ node, index }) => {
   return (
     <>
       <div>
-        <ProjectInfo index={index}>
+        <ProjectInfo index={index} marker={node.frontmatter.marker}>
           <ProjectTitle>
             <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
           </ProjectTitle>

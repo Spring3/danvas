@@ -3,7 +3,7 @@ title: Twitch Auto Points
 previous: /
 thumbnail: ./extension1.png
 description: A cross browser extension for automatic collection of channel points
-marker: primary
+marker: A9E5BB
 repository: https://github.com/Spring3/twitch-auto-points
 technologies:
   - Javascript
