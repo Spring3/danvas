@@ -2,7 +2,6 @@
 title: Starbot
 previous: /
 thumbnail: ./starbot1.png
-description: Link aggregator for slack with a centralized access to them through slack messages or the dashboard
 marker: link
 repository: https://github.com/Spring3/starbot
 technologies:
@@ -20,10 +19,14 @@ images:
   - ./starbot1.png
 ---
 
-A link aggregator for Slack workspace. Ever had a feeling like someone posted a really interesting link but you didn't have time to read it at that same moment? This project provides you a slack bot and a dashboard at the same place.
+A link aggregator for Slack workspace. Once my coworkers were posting many useful links on slack and the idea was born to make a slack bot, that would gather them together and then give an easy access to them at any time to any person.
 
-Save the links and get the cli command set to get the results. Or use the dashboard that is provided out of the box.
+If you, as me, are the person who keeps open dozens of browser windows with hundreds of open tabs, you probably understand why that idea didn't work and was abandoned.
 
-**This project is not finished due to many similar projects already available. It is now archived**
+The screenshot, that you see, was the quick concept of how I imagined the landing for the dashboard. The stars were animated and rotated around the moon.
+
+Looked awesome, believe me.
+
+This project was not finished due to many similar projects already available. It is now archived
 
 [Source Code](https://github.com/Spring3/starbot)

@@ -2,7 +2,6 @@
 title: Website
 previous: /
 thumbnail: ./website1.png
-description: My personal portfolio website.
 marker: danger
 repository: https://github.com/Spring3/website
 technologies:
@@ -18,6 +17,6 @@ images:
   - ./website2.png
 ---
 
-My personal portfolio website. You are browsing it right now.
+The website you are browsing right at this moment.
 
 [Source Code](https://github.com/Spring3/website)

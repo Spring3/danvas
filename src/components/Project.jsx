@@ -15,8 +15,7 @@ const ParallaxImage = styled.div`
 
 const ProjectInfo = styled.div`
   position: sticky;
-  top: 0;
-  padding-top: 20vh;
+  top: 20vh;
   background: white;
   z-index: ${(props) => props.index + 1};
 `
@@ -40,7 +39,6 @@ const Project = ({ node, index }) => {
           <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
         </ProjectTitle>
         <div dangerouslySetInnerHTML={{ __html: node.html }} />
-        <p>{node.frontmatter.description}</p>
         <Tags>
           {node.frontmatter.technologies.map((tag, i) => (
             <Tag key={i}>{tag}</Tag>

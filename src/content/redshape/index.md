@@ -2,7 +2,6 @@
 title: Redshape
 previous: /
 thumbnail: ./redshape1.png
-description: A time tracker for Redmine with client app features.
 marker: primary
 repository: https://github.com/Spring3/redshape
 technologies:
@@ -20,9 +19,11 @@ images:
   - ./redshape3.png
 ---
 
-A time tracker for [Redmine](https://www.redmine.org) with client app features. Built on [Electron](https://github.com/electron/electron).
+A time tracker for [Redmine](https://www.redmine.org) with extra client app features. Built on [Electron](https://github.com/electron/electron).
 
-Re-designs the way tasks, task information, tracked time and communication in the team is done on Redmine.
+Re-designs the way tasks, task information, tracked time and communication on the ticket is done on Redmine.
+
+Was used by me and some of my former coworkers as a silent protest against the uncomfortable overcomplicated Redmine UI.
 
 [Download the latest release](https://github.com/Spring3/redshape/releases/)
 
