@@ -41,6 +41,7 @@ const ProjectShowcase = styled.div``
 
 const ProjectTitle = styled.div`
   font-size: 2rem;
+  margin-bottom: 3rem;
   a {
     font-weight: bold;
   }
@@ -60,7 +61,9 @@ const Project = ({ node, index }) => {
           <ProjectContent dangerouslySetInnerHTML={{ __html: node.html }} />
           <Tags>
             {node.frontmatter.technologies.map((tag, i) => (
-              <Tag key={i}>{tag}</Tag>
+              <Tag key={i} marker={node.frontmatter.marker}>
+                {tag}
+              </Tag>
             ))}
           </Tags>
         </ProjectInfo>

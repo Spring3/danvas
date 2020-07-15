@@ -1,7 +1,5 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
-import { Animated } from "react-animated-css"
-import ArrowDownIcon from "mdi-react/ArrowDownIcon"
 
 import SocialButtons from "./SocialButtons"
 
@@ -65,53 +63,10 @@ const verticalSlideAnimation = keyframes`
   }
 `
 
-const ScrollDownSign = styled.div`
-  text-align: center;
-  position: absolute;
-  bottom: 1rem;
-  left: 48%;
-  div {
-    svg {
-      vertical-align: middle;
-      animation: ${verticalSlideAnimation} ease-in 3s infinite;
-      animation-delay: 4s;
-      width: 3rem;
-      height: 3rem;
-
-      @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
-        (max-width: 750px) {
-        width: 2rem;
-        height: 2rem;
-      }
-    }
-  }
-`
-
 export default ({ children }) => (
-  <Animated animationIn="fadeIn" animationOut="fadeOut">
-    <ContentPanel>
-      <h1>Hello and Welcome!</h1>
-      {children}
-      <InlinedSocialButtons />
-    </ContentPanel>
-
-    <ScrollDownSign>
-      <Animated
-        animationIn="fadeInDown"
-        animationOut="fadeOutUp"
-        animationInDelay={1500}
-        animationInDuration={500}
-      >
-        <small>Scroll</small>
-      </Animated>
-      <Animated
-        animationIn="fadeInUp"
-        animationOut="fadeOutDown"
-        animationInDelay={1000}
-        animationInDuration={500}
-      >
-        <ArrowDownIcon />
-      </Animated>
-    </ScrollDownSign>
-  </Animated>
+  <ContentPanel>
+    <h1>Hello and Welcome!</h1>
+    {children}
+    <InlinedSocialButtons />
+  </ContentPanel>
 )
