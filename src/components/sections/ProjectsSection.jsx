@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Project } from "./Project"
+import { Project } from "../Project"
 
 const ProjectGrid = styled.div`
   display: grid;
@@ -38,7 +38,7 @@ const ProjectsContainer = styled.div`
   flex-direction: column;
 `
 
-export default ({ nodes }) => (
+const ProjectsSection = ({ nodes }) => (
   <ProjectsContainer>
     <SectionTitle>Projects</SectionTitle>
     <ProjectGrid>
@@ -48,3 +48,5 @@ export default ({ nodes }) => (
     </ProjectGrid>
   </ProjectsContainer>
 )
+
+export { ProjectsSection }

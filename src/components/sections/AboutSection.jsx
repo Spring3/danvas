@@ -1,7 +1,7 @@
 import React from "react"
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
-import SocialButtons from "./SocialButtons"
+import SocialButtons from "../SocialButtons"
 
 const ContentPanel = styled.div`
   @media (min-width: 750px) {
@@ -49,24 +49,12 @@ const InlinedSocialButtons = styled(SocialButtons)`
   margin: 0px;
 `
 
-const verticalSlideAnimation = keyframes`
-  0% {
-    transform: translateY(0rem);
-  }
-
-  10% {
-    transform: translateY(1rem);
-  }
-
-  20% {
-    transform: translateY(0rem);
-  }
-`
-
-export default ({ children }) => (
+const AboutSection = ({ children }) => (
   <ContentPanel>
     <h1>Hello and Welcome!</h1>
     {children}
     <InlinedSocialButtons />
   </ContentPanel>
 )
+
+export { AboutSection }

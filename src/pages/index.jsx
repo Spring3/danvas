@@ -3,8 +3,9 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import GlobalStyles, { OGP } from "../components/GlobalStyle"
-import AboutSection from "../components/AboutSection"
-import ProjectsSection from "../components/ProjectsSection"
+import { AboutSection, ProjectsSection } from "../components/sections"
+import { Menu } from "../components/Menu"
+import { slugToAnchor } from "../utils"
 
 const IntroSection = styled.section`
   height: 100vh;
@@ -17,6 +18,14 @@ export default ({ data }) => {
   const { siteMetadata } = data.site
   const { nodes } = data.allMarkdownRemark
   const aboutNode = nodes[0]
+
+  const projectNodes = nodes.slice(1)
+  console.log(projectNodes[0].frontmatter)
+  const menuNodes = projectNodes.map((node) => ({
+    name: node.frontmatter.title,
+    anchor: slugToAnchor(node.fields.slug),
+  }))
+  console.log("menuNodes", menuNodes)
   return (
     <Fragment>
       <GlobalStyles />
@@ -31,7 +40,8 @@ export default ({ data }) => {
             <div dangerouslySetInnerHTML={{ __html: aboutNode.html }} />
           </AboutSection>
         </IntroSection>
-        <ProjectsSection nodes={nodes.slice(1)} />
+        <Menu nodes={menuNodes} />
+        <ProjectsSection nodes={projectNodes} />
       </main>
     </Fragment>
   )

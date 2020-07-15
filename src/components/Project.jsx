@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 import Tags, { Tag } from "./Tags"
+import { slugToAnchor } from "../utils"
 
 const ParallaxImage = styled.div`
   background-image: url("${(props) => props.src}");
@@ -51,6 +52,8 @@ const ProjectContent = styled.div`
 `
 
 const Project = ({ node, index }) => {
+  const anchor = slugToAnchor(node.fields.slug)
+  const id = anchor.substring(1)
   return (
     <>
       <div>
@@ -68,7 +71,7 @@ const Project = ({ node, index }) => {
           </Tags>
         </ProjectInfo>
       </div>
-      <ProjectShowcase>
+      <ProjectShowcase id={id}>
         {node.frontmatter.images.length > 1 ? (
           node.frontmatter.images.map((image) => (
             <ParallaxImage
