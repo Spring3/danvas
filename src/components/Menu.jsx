@@ -1,5 +1,7 @@
-import React from "react"
-import styled from "styled-components"
+import React, { useMemo } from "react"
+import styled, { css } from "styled-components"
+
+import { useAnchorTracker } from "../hooks/useAnchorTracker"
 
 const MenuContainer = styled.div`
   position: fixed;
@@ -18,16 +20,34 @@ const MenuContainer = styled.div`
 const MenuItem = styled.a`
   background: transparent;
   color: var(--text-color-secondary);
-  border-bottom: 2px solid var(--marker-blue);
+  border-bottom: 2px solid transparent;
   padding: 0px 0.5rem;
   font-size: 0.8rem;
+
+  ${(props) =>
+    props.active &&
+    css`
+      font-weight: bold;
+      color: var(--text-color-primary) !important;
+      background: var(--marker-blue);
+    `}
 
   &:visited {
     color: var(--text-color-secondary);
   }
+
+  &:hover,
+  &:focus {
+    border-bottom: 2px solid var(--marker-blue);
+    background: ${(props) =>
+      props.active ? "var(--marker-blue)" : "transparent"};
+  }
 `
 
 const Menu = ({ nodes }) => {
+  const anchors = useMemo(() => nodes.map((node) => node.anchor), [nodes])
+  const activeAnchor = useAnchorTracker(anchors)
+
   const onClick = (e) => {
     e.preventDefault()
     const anchor = e.target.getAttribute("data-anchor")
@@ -43,12 +63,15 @@ const Menu = ({ nodes }) => {
     })
   }
 
+  console.log("activeAnchor", activeAnchor)
+
   return (
     <MenuContainer>
       <small>Projects:&nbsp;</small>
       {nodes.map((node) => (
         <MenuItem
           onClick={onClick}
+          active={activeAnchor === node.anchor}
           href={node.anchor}
           data-anchor={node.anchor}
           key={node.anchor}
