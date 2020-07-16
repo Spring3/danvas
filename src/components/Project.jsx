@@ -3,24 +3,8 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 import Tags, { Tag } from "./Tags"
+import { FixedImageSet } from "./FixedImageSet"
 import { slugToAnchor } from "../utils"
-
-const ParallaxImage = styled.div`
-  background-image: url("${(props) => props.src}");
-  height: 60vh;
-  background-attachment: fixed;
-  background-position: 85% center;
-  background-repeat: no-repeat;
-  background-size: 50% auto;
-`
-
-const NormalImage = styled.div`
-  background-image: url("${(props) => props.src}");
-  height: 60vh;
-  background-position: 85% center;
-  background-repeat: no-repeat;
-  background-size: contain;
-`
 
 const ProjectInfo = styled.div`
   position: sticky;
@@ -72,18 +56,7 @@ const Project = ({ node, index }) => {
         </ProjectInfo>
       </div>
       <ProjectShowcase id={id}>
-        {node.frontmatter.images.length > 1 ? (
-          node.frontmatter.images.map((image) => (
-            <ParallaxImage
-              key={image.name}
-              src={image.childImageSharp.fluid.src}
-            />
-          ))
-        ) : (
-          <NormalImage
-            src={node.frontmatter.images[0].childImageSharp.fluid.src}
-          />
-        )}
+        <FixedImageSet images={node.frontmatter.images} />
       </ProjectShowcase>
     </>
   )

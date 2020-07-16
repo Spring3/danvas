@@ -36,6 +36,7 @@ const SectionTitle = styled.h1`
 const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 25vh;
 `
 
 const ProjectsSection = ({ nodes }) => (

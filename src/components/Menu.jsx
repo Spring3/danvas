@@ -63,8 +63,6 @@ const Menu = ({ nodes }) => {
     })
   }
 
-  console.log("activeAnchor", activeAnchor)
-
   return (
     <MenuContainer>
       <small>Projects:&nbsp;</small>

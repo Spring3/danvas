@@ -29,6 +29,7 @@
     "gatsby-source-filesystem": "^2.3.19",
     "gatsby-transformer-remark": "^2.8.25",
     "gatsby-transformer-sharp": "^2.5.11",
+    "lodash.throttle": "^4.1.1",
     "mdi-react": "^7.3.0",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",

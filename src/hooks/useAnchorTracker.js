@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
+import throttle from "lodash.throttle"
 
 const useAnchorTracker = (anchors) => {
-  console.log("anchors", anchors)
   const [activeAnchor, setActiveAnchor] = useState()
 
   useEffect(() => {
@@ -14,10 +14,12 @@ const useAnchorTracker = (anchors) => {
       setActiveAnchor(anchors[scrolledPast.length - 1])
     }
 
-    window.addEventListener("scroll", onScroll)
+    const throttledFunction = throttle(onScroll, 300)
+
+    window.addEventListener("scroll", throttledFunction)
 
     return () => {
-      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("scroll", throttledFunction)
     }
   }, [anchors])
 
