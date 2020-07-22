@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Project } from "../Project"
+import { Project } from "../project/Project"
 
 const ProjectGrid = styled.div`
   display: grid;

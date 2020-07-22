@@ -1,12 +1,10 @@
 import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Animated } from "react-animated-css"
 import DownloadOutlineIcon from "mdi-react/DownloadOutlineIcon"
 
 import GlobalStyles, { OGP } from "../components/GlobalStyle"
-import PageWrapper from "../components/PageWrapper"
-import BackButton from "../components/BackButton"
+import { ButtonBack } from "../components/Buttons"
 import PageContent from "../components/PageContent"
 import PageHeader from "../components/PageHeader"
 import Navbar from "../components/Navbar"
@@ -27,6 +25,10 @@ const DownloadButton = styled.a`
   }
 `
 
+const PageWrapper = styled.main`
+  padding: 3.5rem 2.25rem;
+`
+
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
@@ -38,17 +40,15 @@ export default ({ data }) => {
       />
       <PageWrapper>
         <Navbar>
-          <BackButton href={post.frontmatter.previous} />
+          <ButtonBack href={post.frontmatter.previous} />
           <DownloadButton href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX">
             <DownloadOutlineIcon /> Download .pdf
           </DownloadButton>
         </Navbar>
-        <Animated animationIn="fadeIn" animationOut="fadeOut">
-          <div>
-            <PageHeader>{post.frontmatter.title}</PageHeader>
-            <PageContent dangerouslySetInnerHTML={{ __html: post.html }} />
-          </div>
-        </Animated>
+        <div>
+          <PageHeader>{post.frontmatter.title}</PageHeader>
+          <PageContent dangerouslySetInnerHTML={{ __html: post.html }} />
+        </div>
       </PageWrapper>
     </Fragment>
   )

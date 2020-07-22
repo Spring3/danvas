@@ -1,7 +1,7 @@
 import React, { useMemo } from "react"
 import styled, { css } from "styled-components"
 
-import { useImageScrollTracker } from "../hooks/useImageScrollTracker"
+import { useImageScrollTracker } from "../../hooks/useImageScrollTracker"
 
 const FixedImage = styled.div`
   background-image: url("${(props) => props.src}");

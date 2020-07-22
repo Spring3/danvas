@@ -20,12 +20,10 @@ export default ({ data }) => {
   const aboutNode = nodes[0]
 
   const projectNodes = nodes.slice(1)
-  console.log(projectNodes[0].frontmatter)
   const menuNodes = projectNodes.map((node) => ({
     name: node.frontmatter.title,
     anchor: slugToAnchor(node.fields.slug),
   }))
-  console.log("menuNodes", menuNodes)
   return (
     <Fragment>
       <GlobalStyles />

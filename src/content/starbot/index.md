@@ -1,6 +1,7 @@
 ---
 title: Starbot
-previous: /
+previous: /redshape
+next: /twitch-auto-points
 thumbnail: ./starbot1.png
 marker: BCE5FF
 repository: https://github.com/Spring3/starbot

@@ -2,9 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-import Tags, { Tag } from "./Tags"
+import Tags, { Tag } from "../Tags"
 import { FixedImageSet } from "./FixedImageSet"
-import { slugToAnchor } from "../utils"
+import { slugToAnchor } from "../../utils"
 
 const ProjectInfo = styled.div`
   position: sticky;
@@ -21,8 +21,6 @@ const ProjectInfo = styled.div`
     }
   }
 `
-
-const ProjectShowcase = styled.div``
 
 const ProjectTitle = styled.div`
   font-size: 2rem;
@@ -55,9 +53,9 @@ const Project = ({ node, index }) => {
           </Tags>
         </ProjectInfo>
       </div>
-      <ProjectShowcase id={id}>
+      <div id={id}>
         <FixedImageSet images={node.frontmatter.images} />
-      </ProjectShowcase>
+      </div>
     </>
   )
 }
