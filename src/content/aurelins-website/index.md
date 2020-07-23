@@ -1,6 +1,6 @@
 ---
 title: Aurelins Website
-previous: /website
+previous: /
 next: /redshape
 thumbnail: ./aurelins5.png
 marker: C3A9FF
@@ -31,5 +31,3 @@ A website that I designed for my sister, hoping she would use it to showcase her
 Frankly, by the time this website was done, my sister gave up making 3d models and never used this website. Is there a hidden correlation? That I don't know. But in order to have some pictures, I had to get the content from open source.
 
 Good job, sis -\_-"
-
-[Source Code](https://github.com/Spring3/aurelins-website)

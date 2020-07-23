@@ -3,7 +3,7 @@ title: Starbot
 previous: /redshape
 next: /twitch-auto-points
 thumbnail: ./starbot1.png
-marker: BCE5FF
+marker: FFEC8B
 repository: https://github.com/Spring3/starbot
 technologies:
   - Javascript
@@ -29,5 +29,3 @@ The screenshot, that you see, was the quick concept of how I imagined the landin
 Looked awesome, believe me.
 
 This project was not finished due to many similar projects already available. It is now archived
-
-[Source Code](https://github.com/Spring3/starbot)

@@ -2,7 +2,6 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { createGlobalStyle } from "styled-components"
 import "normalize.css"
-import "animate.css"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 export default createGlobalStyle`

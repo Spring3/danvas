@@ -10,8 +10,12 @@ const Header = styled.h1`
     to bottom,
     transparent 0%,
     transparent 60%,
-    var(--marker-green) 60%,
-    var(--marker-green) 100%
+    ${(props) =>
+        props.colorHex ? `#${props.colorHex}` : "var(--marker-green)"}
+      60%,
+    ${(props) =>
+        props.colorHex ? `#${props.colorHex}` : "var(--marker-green)"}
+      100%
   );
 `
 

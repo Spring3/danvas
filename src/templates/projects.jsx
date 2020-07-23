@@ -9,6 +9,7 @@ import PageContent from "../components/PageContent"
 import PageHeader from "../components/PageHeader"
 import Tags, { Tag } from "../components/Tags"
 import { slugToTitle } from "../utils"
+import { ProjectReferences } from "../components/project/ProjectReferences"
 
 const FlexNav = styled.nav`
   display: flex;
@@ -28,20 +29,27 @@ const PageWrapper = styled.main`
   padding: 3.5rem 2.25rem;
 `
 
-const FullWidthContainer = styled.div`
-  grid-column: 1 / -1;
-`
-
 const PageLayout = styled.div`
   display: grid;
   grid-template-columns: auto 50%;
-  grid-gap: 3rem;
+  grid-gap: 1.5rem 3rem;
   width: 80%;
   margin: 0 auto;
 `
 
 const StyledCarousel = styled(Carousel)`
-  box-shadow: 0px 0px 10px #f3f3f3;
+  box-shadow: 0px 0px 10px 0px #f3f3f3;
+  div:first-of-type {
+    border-radius: 5px;
+  }
+`
+
+const ProjectReferenceContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-end;
 `
 
 export default (props) => {
@@ -60,9 +68,14 @@ export default (props) => {
           prev={post.frontmatter.previous}
         />
         <PageLayout>
-          <FullWidthContainer>
-            <PageHeader>{post.frontmatter.title}</PageHeader>
-          </FullWidthContainer>
+          <div>
+            <PageHeader colorHex={post.frontmatter.marker}>
+              {post.frontmatter.title}
+            </PageHeader>
+          </div>
+          <ProjectReferenceContainer>
+            <ProjectReferences frontmatter={post.frontmatter} />
+          </ProjectReferenceContainer>
           <PageContent>
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </PageContent>
@@ -109,6 +122,10 @@ export const query = graphql`
         title
         description
         previous
+        demo
+        repository
+        chrome
+        firefox
         next
         marker
         technologies

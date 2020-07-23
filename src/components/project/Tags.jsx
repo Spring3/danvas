@@ -9,12 +9,11 @@ const Tags = styled.ul`
 
 const TagItem = styled.li`
   display: inline-block;
-  margin-right: 0.5rem;
   font-weight: bold;
   border-radius: var(--border-radius);
   border: 2px solid #${(props) => props.marker};
   padding: 3px 5px;
-  margin: 0.25rem 0.5rem 0.25rem 0px;
+  margin: 0.25rem;
   font-size: 0.8rem;
 `
 

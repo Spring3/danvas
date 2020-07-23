@@ -27,5 +27,3 @@ Re-designs the way tasks, task information, tracked time and communication on th
 Was used by me and some of my former coworkers as a silent protest against the uncomfortable overcomplicated Redmine UI.
 
 [Download the latest release](https://github.com/Spring3/redshape/releases/)
-
-[Source Code](https://github.com/Spring3/redshape)
