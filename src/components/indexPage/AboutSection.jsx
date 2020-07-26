@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import SocialButtons from "../SocialButtons"
+import SocialButtons from "./SocialButtons"
 
 const ContentPanel = styled.div`
   @media (min-width: 750px) {

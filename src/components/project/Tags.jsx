@@ -11,14 +11,12 @@ const TagItem = styled.li`
   display: inline-block;
   font-weight: bold;
   border-radius: var(--border-radius);
-  border: 2px solid #${(props) => props.marker};
+  border: 2px solid ${(props) => props.theme.marker};
   padding: 3px 5px;
   margin: 0.25rem;
   font-size: 0.8rem;
 `
 
-export const Tag = ({ children, marker }) => (
-  <TagItem marker={marker}>{children}&nbsp;</TagItem>
-)
+export const Tag = ({ children }) => <TagItem>{children}&nbsp;</TagItem>
 
 export default Tags

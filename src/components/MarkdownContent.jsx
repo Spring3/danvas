@@ -1,6 +1,10 @@
 import styled from "styled-components"
+import { styles } from "./Reference"
+const MarkdownContent = styled.div`
+  a {
+    ${styles}
+  }
 
-const Content = styled.div`
   @media (min-width: 750px) {
     h2 {
       font-size: 2rem;
@@ -21,20 +25,14 @@ const Content = styled.div`
       to bottom,
       transparent 0%,
       transparent 60%,
-      var(--marker-yellow) 60%,
-      var(--marker-yellow) 100%
+      ${(props) => (props.marker ? `#${props.marker}` : "var(--marker-yellow)")}
+        60%,
+      ${(props) => (props.marker ? `#${props.marker}` : "var(--marker-yellow)")}
+        100%
     );
   }
 
   text-align: justify;
-
-  p > img {
-    max-width: 100%;
-  }
-
-  li {
-    margin-top: 5px;
-  }
 `
 
-export default Content
+export { MarkdownContent }

@@ -4,8 +4,9 @@ import GithubIcon from "mdi-react/GithubIcon"
 import CardSearchOutlineIcon from "mdi-react/CardSearchOutlineIcon"
 import ChromeIcon from "mdi-react/GoogleChromeIcon"
 import FirefoxIcon from "mdi-react/FirefoxIcon"
+import { Reference } from "../Reference"
 
-const StyledReference = styled.a`
+const StyledReference = styled(Reference)`
   background: none;
   font-size: 1.2rem;
   svg {
@@ -13,9 +14,9 @@ const StyledReference = styled.a`
   }
 `
 
-const Reference = ({ href, children }) => {
+const ProjectReference = ({ marker, href, children }) => {
   return (
-    <StyledReference href={href} target="_blank" rel="noopener noreferrer">
+    <StyledReference marker={marker} href={href} newTab={true}>
       {children}
     </StyledReference>
   )
@@ -26,37 +27,40 @@ const ProjectReferences = ({ frontmatter }) => {
 
   if (frontmatter.chrome) {
     components.push(
-      <Reference href={frontmatter.chrome}>
+      <ProjectReference marker={frontmatter.marker} href={frontmatter.chrome}>
         <ChromeIcon size={30} /> &nbsp;Chrome Store
-      </Reference>
+      </ProjectReference>
     )
   }
 
   if (frontmatter.firefox) {
     components.push(
-      <Reference href={frontmatter.firefox}>
+      <ProjectReference marker={frontmatter.marker} href={frontmatter.firefox}>
         <FirefoxIcon size={30} /> &nbsp;Firefox Store
-      </Reference>
+      </ProjectReference>
     )
   }
 
   if (frontmatter.demo) {
     components.push(
-      <Reference href={frontmatter.demo}>
+      <ProjectReference marker={frontmatter.marker} href={frontmatter.demo}>
         <CardSearchOutlineIcon size={30} /> &nbsp;Demo
-      </Reference>
+      </ProjectReference>
     )
   }
 
   if (frontmatter.repository) {
     components.push(
-      <Reference href={frontmatter.repository}>
+      <ProjectReference
+        marker={frontmatter.marker}
+        href={frontmatter.repository}
+      >
         <GithubIcon size={30} /> &nbsp;Source
-      </Reference>
+      </ProjectReference>
     )
   }
 
-  return <>{components}</>
+  return components
 }
 
 export { ProjectReferences }

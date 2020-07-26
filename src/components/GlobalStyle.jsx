@@ -26,32 +26,10 @@ export default createGlobalStyle`
 
   body {
     font-size: 16px;
-    background-color: var(--background0-color);
+    background-color: var(--background-color);
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4;
     color: var(--text-color-primary);
-  }
-
-  a, a:visited {
-    color: black;
-    font-weight: 500;
-    padding: 2px;
-    background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-blue) 60%, var(--marker-blue) 100%);
-    transition: background ease .2s;
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      background: var(--marker-blue);
-    }
-  }
-
-  .thumbs {
-    padding: 0 !important;
-  }
-
-  .thumbs-wrapper {
-    margin: 20px 0px !important;
   }
 
   main {

@@ -1,17 +1,24 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useCallback } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import GlobalStyles, { OGP } from "../components/GlobalStyle"
-import { AboutSection, ProjectsSection } from "../components/sections"
-import { Menu } from "../components/Menu"
+import { AboutSection, ProjectsSection } from "../components/indexPage"
+import { AnchorListMenu } from "../components/PortfolioMenu"
 import { slugToAnchor } from "../utils"
+import { styles } from "../components/Reference"
 
 const IntroSection = styled.section`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+const AboutSectionMarkdown = styled.div`
+  a {
+    ${styles}
+  }
 `
 
 export default ({ data }) => {
@@ -24,6 +31,22 @@ export default ({ data }) => {
     name: node.frontmatter.title,
     anchor: slugToAnchor(node.fields.slug),
   }))
+
+  const onMenuClick = useCallback((e) => {
+    e.preventDefault()
+    const anchor = e.target.getAttribute("data-anchor")
+    const id = anchor.substring(1)
+    const element = document.getElementById(id)
+    const marginsAndPaddings = 155
+    window.scrollTo({
+      behavior: "smooth",
+      top:
+        element.getBoundingClientRect().top +
+        window.pageYOffset -
+        marginsAndPaddings,
+    })
+  }, [])
+
   return (
     <Fragment>
       <GlobalStyles />
@@ -35,10 +58,12 @@ export default ({ data }) => {
       <main>
         <IntroSection>
           <AboutSection>
-            <div dangerouslySetInnerHTML={{ __html: aboutNode.html }} />
+            <AboutSectionMarkdown
+              dangerouslySetInnerHTML={{ __html: aboutNode.html }}
+            />
           </AboutSection>
         </IntroSection>
-        <Menu nodes={menuNodes} />
+        <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
         <ProjectsSection nodes={projectNodes} />
       </main>
     </Fragment>

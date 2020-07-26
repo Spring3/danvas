@@ -5,7 +5,11 @@ const useAnchorTracker = (anchors) => {
   const [activeAnchor, setActiveAnchor] = useState()
 
   useEffect(() => {
-    const elements = Array.from(document.querySelectorAll(anchors))
+    const validAnchors = Array.isArray(anchors) && anchors.length
+    const elements = validAnchors
+      ? Array.from(document.querySelectorAll(anchors))
+      : []
+
     const onScroll = () => {
       const marginsAndPaddings = 156
       const scrolledPast = elements.filter(
@@ -16,10 +20,14 @@ const useAnchorTracker = (anchors) => {
 
     const throttledFunction = throttle(onScroll, 300)
 
-    window.addEventListener("scroll", throttledFunction)
+    if (validAnchors) {
+      window.addEventListener("scroll", throttledFunction)
+    }
 
     return () => {
-      window.removeEventListener("scroll", throttledFunction)
+      if (validAnchors) {
+        window.removeEventListener("scroll", throttledFunction)
+      }
     }
   }, [anchors])
 

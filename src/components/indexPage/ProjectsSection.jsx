@@ -1,6 +1,6 @@
 import React from "react"
-import styled from "styled-components"
-import { Project } from "../project/Project"
+import styled, { ThemeProvider } from "styled-components"
+import { Project } from "./Project"
 
 const ProjectGrid = styled.div`
   display: grid;
@@ -43,9 +43,14 @@ const ProjectsSection = ({ nodes }) => (
   <ProjectsContainer>
     <SectionTitle>Projects</SectionTitle>
     <ProjectGrid>
-      {nodes.map((node, i) => (
-        <Project node={node} key={i} index={i} />
-      ))}
+      {nodes.map((node, i) => {
+        const theme = { marker: `#${node.frontmatter.marker}` }
+        return (
+          <ThemeProvider theme={theme}>
+            <Project node={node} key={i} index={i} />
+          </ThemeProvider>
+        )
+      })}
     </ProjectGrid>
   </ProjectsContainer>
 )

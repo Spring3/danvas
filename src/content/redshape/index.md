@@ -1,7 +1,5 @@
 ---
 title: Redshape
-previous: /aurelins-website
-next: /starbot
 thumbnail: ./redshape1.png
 marker: F78888
 repository: https://github.com/Spring3/redshape

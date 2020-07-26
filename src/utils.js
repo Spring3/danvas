@@ -5,11 +5,13 @@ const slugToTitle = (slug) => {
     return "Main page"
   }
 
-  return slug
+  const title = slug
     .substring(1)
     .split("-")
     .map((str) => `${str[0].toUpperCase()}${str.substring(1)}`)
     .join(" ")
+
+  return title.endsWith("/") ? title.substring(0, title.length - 1) : title
 }
 
 export { slugToAnchor, slugToTitle }

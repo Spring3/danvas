@@ -1,7 +1,5 @@
 ---
 title: Aurelins Website
-previous: /
-next: /redshape
 thumbnail: ./aurelins5.png
 marker: C3A9FF
 repository: https://github.com/Spring3/aurelins-website

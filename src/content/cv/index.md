@@ -1,6 +1,5 @@
 ---
 title: Daniyil Vasylenko
-previous: /
 date: 2020-01-24
 ---
 
@@ -19,7 +18,6 @@ Curious, creative, ambitious software engineer. I always try to come up with som
 - **CI/CD**: CircleCI, Travis, SonarQube, Netlify, Heroku
 - **VCS**: Git
 - **Misc**: Electron, Lerna, Gatsby, Functional programming with Elm, Basics of UX Design
-
 
 ## Experience
 
@@ -52,7 +50,6 @@ Implemented bots for the generic chat bot platform.
 - Created chat bots on multiple chat bot APIs - Slack, Asana, Skype, Messenger
 - Created a routing system of message exchange between different communication platforms
 
-
 ## Education
 
 ### Specialist Degree (2016 - 2018)
@@ -76,7 +73,6 @@ Implemented bots for the generic chat bot platform.
 - Object Oriented Programming in C# language & Patterns of Design
 - Principles of Communication and Data Transfer and Persistence
 
-
 ## Courses
 
 ### The Complete Node.js Developer - Udemy (June - July 2016)
@@ -95,7 +91,6 @@ Implemented bots for the generic chat bot platform.
 - Jersey, Jackson
 - JPA
 
-
 ## Language Skills
 
 - English - C1 (7.5 - IELTS, May 2015, Aug 2019)
@@ -106,4 +101,3 @@ Implemented bots for the generic chat bot platform.
 - [Redshape](https://github.com/Spring3/redshape) - Redmine time tracker with client features
 
 - **Archived** [Starbot](https://github.com/Spring3/starbot) - Links aggregator for slack. Keep all interesting articles and materials in one place and come back to read them when you have time.
-

@@ -1,7 +1,5 @@
 ---
 title: Website
-previous: /twitch-auto-points
-next: /aurelins-website
 thumbnail: ./website1.png
 marker: BCE5FF
 repository: https://github.com/Spring3/website

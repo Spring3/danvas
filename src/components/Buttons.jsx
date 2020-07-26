@@ -1,14 +1,19 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
 import ArrowLeftIcon from "mdi-react/ArrowLeftIcon"
-import ArrowRightIcon from "mdi-react/ArrowRightIcon"
+import { Link } from "gatsby"
+import { styles } from "./Reference"
 
 const Button = styled(Link)`
+  ${styles}
+
   vertical-align: top;
   text-decoration: none;
   padding: 10px;
-  background: transparent;
+  &,
+  &:visited {
+    background: transparent;
+  }
 
   svg {
     vertical-align: top;
@@ -16,13 +21,7 @@ const Button = styled(Link)`
 `
 
 export const ButtonBack = ({ href, value }) => (
-  <Button href={href}>
+  <Button to={href}>
     <ArrowLeftIcon /> {value}
-  </Button>
-)
-
-export const ButtonNext = ({ href, value }) => (
-  <Button href={href}>
-    {value} <ArrowRightIcon />
   </Button>
 )

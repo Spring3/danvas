@@ -5,8 +5,8 @@ import DownloadOutlineIcon from "mdi-react/DownloadOutlineIcon"
 
 import GlobalStyles, { OGP } from "../components/GlobalStyle"
 import { ButtonBack } from "../components/Buttons"
-import PageContent from "../components/PageContent"
-import PageHeader from "../components/PageHeader"
+import { MarkdownContent } from "../components/MarkdownContent"
+import { Header } from "../components/project/Header"
 import Navbar from "../components/Navbar"
 
 const DownloadButton = styled.a`
@@ -46,8 +46,8 @@ export default ({ data }) => {
           </DownloadButton>
         </Navbar>
         <div>
-          <PageHeader>{post.frontmatter.title}</PageHeader>
-          <PageContent dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Header>{post.frontmatter.title}</Header>
+          <MarkdownContent dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
       </PageWrapper>
     </Fragment>

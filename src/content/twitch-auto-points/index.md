@@ -1,7 +1,5 @@
 ---
 title: Twitch Auto Points
-previous: /starbot
-next: /website
 thumbnail: ./extension1.png
 description: A cross browser extension for automatic collection of channel points
 marker: A9E5BB
