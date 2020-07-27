@@ -46,7 +46,7 @@ const ProjectsSection = ({ nodes }) => (
       {nodes.map((node, i) => {
         const theme = { marker: `#${node.frontmatter.marker}` }
         return (
-          <ThemeProvider theme={theme}>
+          <ThemeProvider key={node.fields.slug} theme={theme}>
             <Project node={node} key={i} index={i} />
           </ThemeProvider>
         )

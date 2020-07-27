@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useMemo, Fragment } from "react"
 import styled, { css } from "styled-components"
 
 import { useImageScrollTracker } from "../../hooks/useImageScrollTracker"
@@ -50,7 +50,7 @@ const FixedImageSet = ({ images }) => {
   }
 
   return images.map((image) => (
-    <>
+    <Fragment key={image.name}>
       <FixedImage
         visible={visibleAnchors.includes(`#${image.name}`)}
         // isFirstImageSlideWhenScrollingUp
@@ -64,7 +64,7 @@ const FixedImageSet = ({ images }) => {
         src={image.childImageSharp.fluid.src}
       />
       <Placeholder />
-    </>
+    </Fragment>
   ))
 }
 

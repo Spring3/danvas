@@ -29,7 +29,11 @@ const Project = ({ node, index }) => {
       <div>
         <ProjectInfo index={index}>
           <ProjectTitle>
-            <Link to={node.fields.slug} marker={node.frontmatter.marker} bold>
+            <Link
+              to={node.fields.slug}
+              marker={node.frontmatter.marker}
+              bold={true}
+            >
               {node.frontmatter.title}
             </Link>
           </ProjectTitle>

@@ -33,7 +33,15 @@ const StyledLink = styled(Link)`
   ${styles}
 `
 
-const Reference = ({ className, href, newTab, bold, children }) => {
+const Reference = ({
+  className,
+  href,
+  onClick,
+  newTab,
+  bold,
+  children,
+  ...rest
+}) => {
   const additionalProps = newTab
     ? { target: "_blank", rel: "noopener noreferrer" }
     : {}
@@ -41,7 +49,9 @@ const Reference = ({ className, href, newTab, bold, children }) => {
     <StyledReference
       className={className}
       bold={bold}
+      onClick={onClick}
       href={href}
+      {...rest}
       {...additionalProps}
     >
       {children}

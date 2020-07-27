@@ -33,6 +33,7 @@ export default ({ data }) => {
   }))
 
   const onMenuClick = useCallback((e) => {
+    console.log("click")
     e.preventDefault()
     const anchor = e.target.getAttribute("data-anchor")
     const id = anchor.substring(1)
@@ -45,6 +46,7 @@ export default ({ data }) => {
         window.pageYOffset -
         marginsAndPaddings,
     })
+    return false
   }, [])
 
   return (
