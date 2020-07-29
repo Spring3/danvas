@@ -9,8 +9,9 @@ const Button = styled(Link)`
 
   vertical-align: top;
   text-decoration: none;
-  padding: 10px;
-  &,
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+
   &:visited {
     background: transparent;
   }

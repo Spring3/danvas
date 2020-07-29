@@ -7,6 +7,7 @@ import { AboutSection, ProjectsSection } from "../components/indexPage"
 import { AnchorListMenu } from "../components/PortfolioMenu"
 import { slugToAnchor } from "../utils"
 import { styles } from "../components/Reference"
+import { Footer } from "../components/Footer"
 
 const IntroSection = styled.section`
   height: 100vh;
@@ -33,7 +34,6 @@ export default ({ data }) => {
   }))
 
   const onMenuClick = useCallback((e) => {
-    console.log("click")
     e.preventDefault()
     const anchor = e.target.getAttribute("data-anchor")
     const id = anchor.substring(1)
@@ -65,9 +65,10 @@ export default ({ data }) => {
             />
           </AboutSection>
         </IntroSection>
-        <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
         <ProjectsSection nodes={projectNodes} />
+        <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
       </main>
+      <Footer />
     </Fragment>
   )
 }

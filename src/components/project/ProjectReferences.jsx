@@ -14,9 +14,9 @@ const StyledReference = styled(Reference)`
   }
 `
 
-const ProjectReference = ({ marker, href, children }) => {
+const ProjectReference = ({ href, children }) => {
   return (
-    <StyledReference marker={marker} href={href} newTab={true}>
+    <StyledReference href={href} newTab={true}>
       {children}
     </StyledReference>
   )
@@ -27,7 +27,7 @@ const ProjectReferences = ({ frontmatter }) => {
 
   if (frontmatter.chrome) {
     components.push(
-      <ProjectReference marker={frontmatter.marker} href={frontmatter.chrome}>
+      <ProjectReference href={frontmatter.chrome}>
         <ChromeIcon size={30} /> &nbsp;Chrome Store
       </ProjectReference>
     )
@@ -35,7 +35,7 @@ const ProjectReferences = ({ frontmatter }) => {
 
   if (frontmatter.firefox) {
     components.push(
-      <ProjectReference marker={frontmatter.marker} href={frontmatter.firefox}>
+      <ProjectReference href={frontmatter.firefox}>
         <FirefoxIcon size={30} /> &nbsp;Firefox Store
       </ProjectReference>
     )
@@ -43,7 +43,7 @@ const ProjectReferences = ({ frontmatter }) => {
 
   if (frontmatter.demo) {
     components.push(
-      <ProjectReference marker={frontmatter.marker} href={frontmatter.demo}>
+      <ProjectReference href={frontmatter.demo}>
         <CardSearchOutlineIcon size={30} /> &nbsp;Demo
       </ProjectReference>
     )
@@ -51,10 +51,7 @@ const ProjectReferences = ({ frontmatter }) => {
 
   if (frontmatter.repository) {
     components.push(
-      <ProjectReference
-        marker={frontmatter.marker}
-        href={frontmatter.repository}
-      >
+      <ProjectReference href={frontmatter.repository}>
         <GithubIcon size={30} /> &nbsp;Source
       </ProjectReference>
     )

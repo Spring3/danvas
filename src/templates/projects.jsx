@@ -18,9 +18,10 @@ const PageWrapper = styled.main`
 const PageLayout = styled.div`
   display: grid;
   grid-template-columns: auto 50%;
-  grid-gap: 1.5rem 3rem;
+  grid-gap: 0rem 3rem;
   width: 95%;
   margin: 0 auto;
+  margin-bottom: 3rem;
 `
 
 const StyledCarousel = styled(Carousel)`
@@ -47,7 +48,6 @@ const ProjectReferenceContainer = styled.div`
 `
 
 export default (props) => {
-  console.log("post", post)
   const post = props.data.markdownRemark
   const allPosts = props.data.allMarkdownRemark.nodes
 

@@ -6,7 +6,7 @@ import { Link, Reference } from "./Reference"
 import { slugToTitle } from "../utils"
 
 const MenuContainer = styled.div`
-  position: fixed;
+  position: sticky;
   bottom: 3rem;
   width: 100%;
   display: flex;
@@ -19,8 +19,27 @@ const MenuContainer = styled.div`
   }
 `
 
+const SlugMenuContainer = styled(MenuContainer)`
+  position: fixed;
+`
+
 const styles = css`
-  &,
+  background: transparent;
+  color: var(--text-color-secondary);
+  border-bottom: 2px solid transparent;
+  padding: 0px 0.5rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+
+  ${(props) =>
+    props.active &&
+    css`
+      font-weight: bold;
+      color: var(--text-color-primary) !important;
+      background: ${props.theme.marker
+        ? props.theme.marker
+        : "var(--marker-blue)"};
+    `}
   &:visited {
     background: transparent;
     color: var(--text-color-secondary);
@@ -86,7 +105,7 @@ const AnchorListMenu = ({ nodes, onClick }) => {
 
 const SlugListMenu = ({ slugs, active, onClick }) => {
   return (
-    <MenuContainer>
+    <SlugMenuContainer>
       <small>Projects:&nbsp;</small>
       {slugs.map((slug) => (
         <SlugMenuItem
@@ -98,7 +117,10 @@ const SlugListMenu = ({ slugs, active, onClick }) => {
           {slugToTitle(slug)}
         </SlugMenuItem>
       ))}
-    </MenuContainer>
+      <SlugMenuItem onClick={onClick} active={false} to="/cv" key="cv">
+        CV
+      </SlugMenuItem>
+    </SlugMenuContainer>
   )
 }
 
