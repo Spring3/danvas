@@ -1,11 +1,10 @@
 ---
 title: Daniyil Vasylenko
-date: 2020-01-24
+email: daniyil.vasylenko@gmail.com
+updatedAt: 2020-01-24
 ---
 
-Curious, creative, ambitious software engineer. I always try to come up with something special and original. Primarily I focus on Node.js, React, Graphql and modern Javascript ecosystem.
-
-**[daniyil.vasylenko@gmail.com](mailto:daniyil.vasylenko@gmail.com)**
+Curious and creative. I always try to come up with something special and original. Primarily I focus on Node.js, React, Graphql and modern Javascript ecosystem.
 
 ## Skills
 
@@ -21,7 +20,7 @@ Curious, creative, ambitious software engineer. I always try to come up with som
 
 ## Experience
 
-### Senior Full Stack Javascript Engineer - Contentful, Dec 2019 - now
+### [Dec 2018 - now] Senior Full Stack Javascript Engineer - Contentful
 
 Full stack development and support of the Headless CMS by Contentful
 
@@ -31,7 +30,7 @@ Full stack development and support of the Headless CMS by Contentful
 
 <br />
 
-### Full Stack Developer - Dial-Once, Dec 2016 - Dec 2019
+### [Dec 2016 - Dec 2019] Full Stack Developer - Dial-Once
 
 Full stack development and support of the omnichannel communication platform, consisting of multiple front-end products with a micro-service architecture behind it. Dial-Once is a leader on the market of Visual IVR services with clients from all the continents of the world.
 
@@ -43,7 +42,7 @@ Full stack development and support of the omnichannel communication platform, co
 
 <br />
 
-### Node.js Developer - FASTEE Technologies, Aug - Dec 2016
+### [Aug - Dec 2016] Node.js Developer - FASTEE Technologies
 
 Implemented bots for the generic chat bot platform.
 
@@ -75,15 +74,6 @@ Implemented bots for the generic chat bot platform.
 
 ## Courses
 
-### The Complete Node.js Developer - Udemy (June - July 2016)
-
-- Node.js with ES6 features
-- Express framework
-- Usage of Mongodb
-- Usage of Socket.io
-
-<br />
-
 ### Java Enterprise Edition - Bionic University (Aug - Nov 2014 )
 
 - EJB - Stateful, Stateless beans
@@ -95,9 +85,3 @@ Implemented bots for the generic chat bot platform.
 
 - English - C1 (7.5 - IELTS, May 2015, Aug 2019)
 - German - B1
-
-## Pet Projects
-
-- [Redshape](https://github.com/Spring3/redshape) - Redmine time tracker with client features
-
-- **Archived** [Starbot](https://github.com/Spring3/starbot) - Links aggregator for slack. Keep all interesting articles and materials in one place and come back to read them when you have time.

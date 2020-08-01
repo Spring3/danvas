@@ -17,4 +17,21 @@ const Header = styled.h1`
   );
 `
 
-export { Header }
+const Subheading = styled.h2`
+  @media (min-width: 750px) {
+    font-size: 2rem;
+  }
+
+  display: inline-block;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    ${(props) => css`
+      ${props.theme.marker} 60%,
+      ${props.theme.marker} 100%
+    `}
+  );
+`
+
+export { Header, Subheading }

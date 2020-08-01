@@ -40,7 +40,7 @@ const SocialButtons = styled.ul`
   }
 `
 
-export default ({ className, style }) => (
+export default ({ className, style, size }) => (
   <SocialButtons className={className} style={style}>
     <li>
       <a
@@ -48,7 +48,7 @@ export default ({ className, style }) => (
         target="_blank"
         rel="noreferrer noopener"
       >
-        <GithubIcon color="#333" />
+        <GithubIcon color="#333" size={size} />
       </a>
     </li>
     <li>
@@ -57,7 +57,7 @@ export default ({ className, style }) => (
         target="_blank"
         rel="noreferrer noopener"
       >
-        <LinkedInIcon color="#0077b5" />
+        <LinkedInIcon color="#0077b5" size={size} />
       </a>
     </li>
     <li>
@@ -66,7 +66,7 @@ export default ({ className, style }) => (
         target="_blank"
         rel="noreferrer noopener"
       >
-        <TwitterIcon color="#1da1f2" />
+        <TwitterIcon color="#1da1f2" size={size} />
       </a>
     </li>
     <li>
@@ -75,7 +75,7 @@ export default ({ className, style }) => (
         target="_blank"
         rel="noreferrer noopener"
       >
-        <EmailOutlineIcon color="#ea4335" />
+        <EmailOutlineIcon color="#ea4335" size={size} />
       </a>
     </li>
     <li>
@@ -84,7 +84,7 @@ export default ({ className, style }) => (
         target="_blank"
         rel="noreferrer noopener"
       >
-        <SpotifyIcon color="#1db954" />
+        <SpotifyIcon color="#1db954" size={size} />
       </a>
     </li>
   </SocialButtons>
