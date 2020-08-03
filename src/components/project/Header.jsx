@@ -11,8 +11,8 @@ const Header = styled.h1`
     transparent 0%,
     transparent 60%,
     ${(props) => css`
-      ${props.theme.marker} 60%,
-      ${props.theme.marker} 100%
+      ${props.marker || props.theme.marker} 60%,
+      ${props.marker || props.theme.marker} 100%
     `}
   );
 `
@@ -28,8 +28,8 @@ const Subheading = styled.h2`
     transparent 0%,
     transparent 60%,
     ${(props) => css`
-      ${props.theme.marker} 60%,
-      ${props.theme.marker} 100%
+      ${props.marker || props.theme.marker} 60%,
+      ${props.marker || props.theme.marker} 100%
     `}
   );
 `

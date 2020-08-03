@@ -12,7 +12,36 @@ const PageWrapper = styled.main`
   padding: 3.5rem 2.25rem;
 `
 
-const CVWrapper = styled.div``
+const CVWrapper = styled.div`
+  padding: 0px 6%;
+`
+
+const CVShortSummary = styled.p`
+  font-size: 1.2rem;
+`
+
+const CVList = styled.ul`
+  li {
+    margin-top: 0.8rem;
+    font-size: 1.2rem;
+  }
+
+  li:first-child {
+    margin-top: 0;
+  }
+`
+
+const CVSectionBlock = styled.div`
+  margin-top: 3rem;
+
+  &:first-child {
+    margin-top: 0rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+`
 
 const StickySubheading = styled(Subheading)`
   position: sticky;
@@ -27,6 +56,12 @@ const DroubleColumnGrid = styled.div`
   section {
     margin-top: 4rem;
   }
+`
+
+const FlexRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 export default ({ data }) => {
@@ -47,25 +82,28 @@ export default ({ data }) => {
           />
         </Navbar>
         <CVWrapper>
-          <Subheading>{post.frontmatter.title}</Subheading>
+          <FlexRow>
+            <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
+            <small>&nbsp;(updated: {post.frontmatter.updatedAt})</small>
+          </FlexRow>
           <SocialButtons size={40} />
-          <p>
+          <CVShortSummary>
             Curious and creative. I always try to come up with something special
             and original. Primarily I focus on Node.js, React, Graphql and
             modern Javascript ecosystem.
-          </p>
+          </CVShortSummary>
           <DroubleColumnGrid>
             <div>
-              <StickySubheading>Skills</StickySubheading>
+              <StickySubheading marker="#F78888">Skills</StickySubheading>
             </div>
             <section id="skills">
-              <ul>
+              <CVList>
                 <li>
                   <strong>Back-end</strong>: Node.js, Express, RabbitMQ
                 </li>
                 <li>
                   <strong>Front-end</strong>: Javascript, HTML, CSS, React,
-                  Redux
+                  Redux, Overmind
                 </li>
                 <li>
                   <strong>Databases</strong>: Mongodb, Redis, MySQL
@@ -74,8 +112,8 @@ export default ({ data }) => {
                   <strong>Build tools</strong>: Webpack
                 </li>
                 <li>
-                  <strong>Testing</strong>: Jest, Chai, Sinon, Nyc, Karma.js,
-                  Enzyme
+                  <strong>Testing</strong>: testing-library, Jest, Chai, Sinon,
+                  Nyc, Karma.js, Enzyme
                 </li>
                 <li>
                   <strong>Devops</strong>: Docker
@@ -88,37 +126,40 @@ export default ({ data }) => {
                   <strong>VCS</strong>: Git
                 </li>
                 <li>
-                  <strong>Misc</strong>: Electron, Lerna, Gatsby, Functional
-                  programming with Elm, Basics of UX Design
+                  <strong>Misc</strong>: Electron, Lerna, Gatsby, Basics of Elm,
+                  Basics of UX Design
                 </li>
-              </ul>
+              </CVList>
             </section>
             <div>
-              <StickySubheading>Experience</StickySubheading>
+              <StickySubheading marker="#BCE5FF">Experience</StickySubheading>
             </div>
             <section id="experience">
-              <div>
+              <CVSectionBlock>
                 <h3>Full Stack Software Engineer - Contentful</h3>
-                <p>
-                  <label>Duration: </label>Dec 2018 - now
-                </p>
+                <i>
+                  <label>Duration:</label> Dec 2018 - now
+                </i>
                 <p>
                   Full stack development and support of the Headless CMS by
                   Contentful
                 </p>
-                <ul>
+                <CVList>
                   <li>Maintenance and improvements of the UI kit</li>
-                  <li>Bugfixing, UI, UX improvements of the CMS web app</li>
+                  <li>
+                    Full stack contribution to the web app and related services
+                  </li>
                   <li>
                     Support for the public APIs for CMS content management
                   </li>
-                </ul>
-              </div>
-              <div>
+                  <li>Part of the customer tech support</li>
+                </CVList>
+              </CVSectionBlock>
+              <CVSectionBlock>
                 <h3>Full Stack Developer - Dial-Once</h3>
-                <p>
-                  <label>Duration:</label>Dec 2016 - Dec 2019
-                </p>
+                <i>
+                  <label>Duration:</label> Dec 2016 - Dec 2019
+                </i>
                 <p>
                   Full stack development and support of the omnichannel
                   communication platform, consisting of multiple front-end
@@ -126,7 +167,7 @@ export default ({ data }) => {
                   Dial-Once is a leader on the market of Visual IVR services
                   with clients from all the continents of the world.
                 </p>
-                <ul>
+                <CVList>
                   <li>
                     Designed and developed the company's most on-demand product
                   </li>
@@ -144,15 +185,15 @@ export default ({ data }) => {
                     Held workshops and pair programming sessions to ease
                     integration in cross-functional projects
                   </li>
-                </ul>
-              </div>
-              <div>
+                </CVList>
+              </CVSectionBlock>
+              <CVSectionBlock>
                 <h3>Node.js Developer - FASTEE Technologies</h3>
-                <p>
-                  <label>Duration</label>Aug - Dec 2016
-                </p>
+                <i>
+                  <label>Duration</label> Aug - Dec 2016
+                </i>
                 <p>Implemented bots for the generic chat bot platform.</p>
-                <ul>
+                <CVList>
                   <li>
                     Created chat bots on multiple chat bot APIs - Slack, Asana,
                     Skype, Messenger
@@ -161,34 +202,32 @@ export default ({ data }) => {
                     Created a routing system of message exchange between
                     different communication platforms
                   </li>
-                </ul>
-              </div>
+                </CVList>
+              </CVSectionBlock>
             </section>
             <div>
-              <StickySubheading>Education</StickySubheading>
+              <StickySubheading marker="#FCF6B1">Education</StickySubheading>
             </div>
             <section id="education">
-              <div>
+              <CVSectionBlock>
                 <h3>Specialist Degree (2016 - 2018)</h3>
+                <p>Faculty of Informatics and Computer Systems</p>
                 <p>
-                  <strong>Faculty</strong>: Informatics and Computer Systems
-                  <strong>University</strong>: The National Technical University
-                  of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute" (NTUU
-                  "KPI")
+                  The National Technical University of Ukraine "Igor Sikorsky
+                  Kyiv Polytechnic Institute" (NTUU "KPI")
                 </p>
-                <ul>
+                <CVList>
                   <li>Theory of Automation and Control of Computer Systems</li>
-                </ul>
-              </div>
-              <div>
+                </CVList>
+              </CVSectionBlock>
+              <CVSectionBlock>
                 <h3>Bachelor Degree (2012 - 2016)</h3>
+                <p>Faculty of Informatics and Computer Systems</p>
                 <p>
-                  <strong>Faculty</strong>: Informatics and Computer Systems
-                  <strong>University</strong>: The National Technical University
-                  of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute" (NTUU
-                  "KPI")
+                  The National Technical University of Ukraine "Igor Sikorsky
+                  Kyiv Polytechnic Institute" (NTUU "KPI")
                 </p>
-                <ul>
+                <CVList>
                   <li>Principles of Information Technology</li>
                   <li>Principles of Computer Graphics</li>
                   <li>
@@ -199,31 +238,33 @@ export default ({ data }) => {
                     Principles of Communication and Data Transfer and
                     Persistence
                   </li>
-                </ul>
-              </div>
+                </CVList>
+              </CVSectionBlock>
             </section>
             <div>
-              <StickySubheading>Courses</StickySubheading>
+              <StickySubheading marker="#A9E5BB">Courses</StickySubheading>
             </div>
             <section id="courses">
               <h3>
                 Java Enterprise Edition - Bionic University (Aug - Nov 2014 )
               </h3>
-              <ul>
+              <CVList>
                 <li>EJB - Stateful, Stateless beans</li>
                 <li>Introduction to Spring Framework</li>
                 <li>Jersey, Jackson</li>
                 <li>JPA</li>
-              </ul>
+              </CVList>
             </section>
             <div>
-              <StickySubheading>Language Skills</StickySubheading>
+              <StickySubheading marker="#C3A9FF">
+                Language Skills
+              </StickySubheading>
             </div>
             <section id="language skills">
-              <ul>
+              <CVList>
                 <li>English - C1 (7.5 - IELTS, May 2015, Aug 2019)</li>
                 <li>German - B1</li>
-              </ul>
+              </CVList>
             </section>
           </DroubleColumnGrid>
         </CVWrapper>
