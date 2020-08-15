@@ -20,28 +20,28 @@ const SocialButtons = styled.ul`
       padding: 0px;
       display: inline-block;
 
-      svg {
-        width: 2rem;
-        height: 2rem;
+      // svg {
+      //   width: 2rem;
+      //   height: 2rem;
 
-        @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
-          (max-width: 750px) {
-          width: 1.5rem;
-          height: 1.5rem;
-        }
-      }
+      //   @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
+      //     (max-width: 750px) {
+      //     width: 1.5rem;
+      //     height: 1.5rem;
+      //   }
+      // }
 
-      &:hover {
-        svg {
-          animation: pulse ease 1s infinite;
-        }
-      }
+      // &:hover {
+      //   svg {
+      //     animation: pulse ease 1s infinite;
+      //   }
+      // }
     }
   }
 `
 
-export default ({ className, style, size }) => (
-  <SocialButtons className={className} style={style}>
+export default ({ className, size }) => (
+  <SocialButtons className={className}>
     <li>
       <a
         href="https://github.com/Spring3"

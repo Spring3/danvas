@@ -8,6 +8,7 @@ const Navbar = styled.nav`
   align-items: center;
   background: var(--background-color);
   z-index: 1;
+  gap: 2rem;
 
   @media (min-width: 750px) {
     top: 0;

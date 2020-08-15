@@ -53,7 +53,7 @@ const AboutSection = ({ children }) => (
   <ContentPanel>
     <h1>Hello and Welcome!</h1>
     {children}
-    <InlinedSocialButtons />
+    <InlinedSocialButtons size={30} />
   </ContentPanel>
 )
 

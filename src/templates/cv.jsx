@@ -7,6 +7,7 @@ import { ButtonBack, DownloadButton } from "../components/Buttons"
 import { Subheading } from "../components/project/Header"
 import Navbar from "../components/Navbar"
 import SocialButtons from "../components/indexPage/SocialButtons"
+import { useAnchorTracker } from "../hooks/useAnchorTracker"
 
 const PageWrapper = styled.main`
   padding: 3.5rem 2.25rem;
@@ -62,10 +63,28 @@ const FlexRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-grow: 1;
+`
+
+const InlinedNavbarPart = styled.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  h2 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  ul {
+    margin: 0;
+  }
 `
 
 export default ({ data }) => {
   const post = data.markdownRemark
+  const activeAnchor = useAnchorTracker(["#intro-section"])
+
   return (
     <>
       <GlobalStyles />
@@ -76,6 +95,15 @@ export default ({ data }) => {
       <PageWrapper>
         <Navbar>
           <ButtonBack href="/" value="Main page" />
+          {activeAnchor === "#intro-section" ? (
+            <FlexRow>
+              <InlinedNavbarPart>
+                <Subheading>{post.frontmatter.title}</Subheading>
+                <SocialButtons size={25} />
+              </InlinedNavbarPart>
+              <small>&nbsp;(updated: {post.frontmatter.updatedAt})</small>
+            </FlexRow>
+          ) : null}
           <DownloadButton
             href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
             value="Download .pdf"
@@ -86,13 +114,13 @@ export default ({ data }) => {
             <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
             <small>&nbsp;(updated: {post.frontmatter.updatedAt})</small>
           </FlexRow>
-          <SocialButtons size={40} />
+          <SocialButtons size={30} />
           <CVShortSummary>
             Curious and creative. I always try to come up with something special
             and original. Primarily I focus on Node.js, React, Graphql and
             modern Javascript ecosystem.
           </CVShortSummary>
-          <DroubleColumnGrid>
+          <DroubleColumnGrid id="intro-section">
             <div>
               <StickySubheading marker="#F78888">Skills</StickySubheading>
             </div>
