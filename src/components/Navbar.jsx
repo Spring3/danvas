@@ -24,14 +24,12 @@ const Navbar = styled.nav`
 
   @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
     (max-width: 750px) {
-    height: 3rem;
-    bottom: 0;
+    top: 0px;
+    padding: 1rem 0rem;
     left: 0;
-    box-shadow: 0px -3px 10px var(--shadow-color);
 
     a {
       display: block;
-      width: 100%;
       margin: 0;
       background: none !important;
       svg {
@@ -43,13 +41,14 @@ const Navbar = styled.nav`
         background: var(--shadow-color) !important;
       }
     }
+  }
 
-    a:nth-child(odd) {
-      border-right: 1px solid var(--shadow-color);
-    }
+  @media (max-width: 750px) {
+    box-shadow: 0px 0px 10px var(--shadow-color);
 
-    a:nth-child(even) {
-      border-left: 1px solid var(--shadow-color);
+    #download-button,
+    div {
+      display: none;
     }
   }
 `

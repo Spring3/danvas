@@ -6,12 +6,10 @@ import GlobalStyles, { OGP } from "../components/GlobalStyle"
 import { ButtonBack, DownloadButton } from "../components/Buttons"
 import { Subheading } from "../components/project/Header"
 import Navbar from "../components/Navbar"
+import { PageWrapper } from "../components/PageWrapper"
 import SocialButtons from "../components/indexPage/SocialButtons"
 import { useAnchorTracker } from "../hooks/useAnchorTracker"
-
-const PageWrapper = styled.main`
-  padding: 3.5rem 2.25rem;
-`
+import { DownloadFooter } from "../components/cv/DownloadFooter"
 
 const CVWrapper = styled.div`
   padding: 0px 6%;
@@ -47,15 +45,29 @@ const CVSectionBlock = styled.div`
 const StickySubheading = styled(Subheading)`
   position: sticky;
   top: 100px;
+
+  @media (max-width: 750px) {
+    position: static;
+  }
 `
 
-const DroubleColumnGrid = styled.div`
+const DoubleColumnGrid = styled.div`
   display: grid;
   grid-template-columns: 25% auto;
   grid-gap: 3rem 4rem;
+  padding-bottom: 6rem;
 
   section {
     margin-top: 4rem;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: auto;
+    grid-gap: 1.5rem 0rem;
+
+    section {
+      margin: 0;
+    }
   }
 `
 
@@ -71,6 +83,7 @@ const InlinedNavbarPart = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
+  padding: 1rem 0rem;
   h2 {
     margin: 0;
     font-size: 1rem;
@@ -99,28 +112,28 @@ export default ({ data }) => {
             <FlexRow>
               <InlinedNavbarPart>
                 <Subheading>{post.frontmatter.title}</Subheading>
-                <SocialButtons size={25} />
+                <SocialButtons size={25} onlyImportant={true} />
               </InlinedNavbarPart>
-              <small>&nbsp;(updated: {post.frontmatter.updatedAt})</small>
+              <small>&nbsp;(upd: {post.frontmatter.updatedAt})</small>
             </FlexRow>
           ) : null}
           <DownloadButton
             href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
-            value="Download .pdf"
+            value="Download"
           />
         </Navbar>
         <CVWrapper>
           <FlexRow>
             <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
-            <small>&nbsp;(updated: {post.frontmatter.updatedAt})</small>
+            <small>&nbsp;(upd: {post.frontmatter.updatedAt})</small>
           </FlexRow>
-          <SocialButtons size={30} />
+          <SocialButtons size={30} onlyImportant={true} />
           <CVShortSummary>
             Curious and creative. I always try to come up with something special
             and original. Primarily I focus on Node.js, React, Graphql and
             modern Javascript ecosystem.
           </CVShortSummary>
-          <DroubleColumnGrid id="intro-section">
+          <DoubleColumnGrid id="intro-section">
             <div>
               <StickySubheading marker="#F78888">Skills</StickySubheading>
             </div>
@@ -294,8 +307,20 @@ export default ({ data }) => {
                 <li>German - B1</li>
               </CVList>
             </section>
-          </DroubleColumnGrid>
+          </DoubleColumnGrid>
         </CVWrapper>
+        <DownloadFooter>
+          {activeAnchor === "#intro-section" ? (
+            <InlinedNavbarPart>
+              <Subheading>{post.frontmatter.title}</Subheading>
+              <SocialButtons size={25} onlyImportant={true} />
+            </InlinedNavbarPart>
+          ) : null}
+          <DownloadButton
+            href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
+            value={`Download (upd: ${post.frontmatter.updatedAt})`}
+          />
+        </DownloadFooter>
       </PageWrapper>
     </>
   )

@@ -29,10 +29,9 @@ export const ButtonBack = ({ href, value }) => (
 )
 
 const StyledDownloadButton = styled(Reference)`
-  margin-left: 2rem;
   vertical-align: top;
   text-decoration: none;
-  background: var(--marker-red) !important;
+  background: var(--marker-green) !important;
   padding: 10px;
 
   &:hover {
@@ -42,10 +41,15 @@ const StyledDownloadButton = styled(Reference)`
   &:pressed {
     box-shadow: inset 0px 0px 10px var(--marker-red);
   }
+
+  @media (max-width: 750px) {
+    width: 100%;
+    text-align: center;
+  }
 `
 
 export const DownloadButton = ({ href, value }) => (
-  <StyledDownloadButton href={href}>
+  <StyledDownloadButton id="download-button" href={href}>
     <DownloadOutlineIcon /> {value}
   </StyledDownloadButton>
 )

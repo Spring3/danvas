@@ -10,10 +10,7 @@ import { Header } from "../components/project/Header"
 import Tags, { Tag } from "../components/project/Tags"
 import { ProjectReferences } from "../components/project/ProjectReferences"
 import { SlugListMenu } from "../components/PortfolioMenu"
-
-const PageWrapper = styled.main`
-  padding: 3.5rem 2.25rem;
-`
+import { PageWrapper } from "../components/PageWrapper"
 
 const PageLayout = styled.div`
   display: grid;
