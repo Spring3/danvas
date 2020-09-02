@@ -44,15 +44,17 @@ export default ({ className, size, onlyImportant }) => {
           <LinkedInIcon color="#0077b5" size={size} />
         </a>
       </li>
-      <li>
-        <a
-          href="https://twitter.com/dan_vasylenko"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <TwitterIcon color="#1da1f2" size={size} />
-        </a>
-      </li>
+      {!onlyImportant ? (
+        <li>
+          <a
+            href="https://twitter.com/dan_vasylenko"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <TwitterIcon color="#1da1f2" size={size} />
+          </a>
+        </li>
+      ) : null}
       <li>
         <a
           href="mailto:daniyil.vasylenko@gmail.com"

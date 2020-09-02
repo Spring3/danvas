@@ -33,23 +33,27 @@ const StyledDownloadButton = styled(Reference)`
   text-decoration: none;
   background: var(--marker-green) !important;
   padding: 10px;
+  border-radius: 3px;
 
   &:hover {
-    box-shadow: 0px 0px 10px var(--marker-red);
+    box-shadow: 0px 0px 10px var(--marker-green);
   }
 
   &:pressed {
-    box-shadow: inset 0px 0px 10px var(--marker-red);
+    box-shadow: none;
+    border: 2px solid var(--marker-green);
   }
 
   @media (max-width: 750px) {
-    width: 100%;
+    padding: 5px;
     text-align: center;
   }
 `
 
-export const DownloadButton = ({ href, value }) => (
-  <StyledDownloadButton id="download-button" href={href}>
-    <DownloadOutlineIcon /> {value}
-  </StyledDownloadButton>
-)
+export const DownloadButton = ({ href, value }) => {
+  return (
+    <StyledDownloadButton id="download-button" href={href}>
+      <DownloadOutlineIcon /> {value}
+    </StyledDownloadButton>
+  )
+}

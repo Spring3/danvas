@@ -47,8 +47,13 @@ const Navbar = styled.nav`
     box-shadow: 0px 0px 10px var(--shadow-color);
 
     #download-button,
-    div {
+    #navbar-contents {
       display: none;
+    }
+
+    div small {
+      flex-grow: 0.85;
+      text-align: right;
     }
   }
 `

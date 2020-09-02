@@ -92,6 +92,22 @@ const InlinedNavbarPart = styled.div`
   ul {
     margin: 0;
   }
+
+  @media (max-width: 750px) {
+    justify-content: space-between;
+    width: 100%;
+  }
+`
+
+const StyledHeaders = styled.h3`
+  display: inline-block;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    lightgrey 60%,
+    lightgrey 100%
+  );
 `
 
 export default ({ data }) => {
@@ -110,7 +126,7 @@ export default ({ data }) => {
           <ButtonBack href="/" value="Main page" />
           {activeAnchor === "#intro-section" ? (
             <FlexRow>
-              <InlinedNavbarPart>
+              <InlinedNavbarPart id="navbar-contents">
                 <Subheading>{post.frontmatter.title}</Subheading>
                 <SocialButtons size={25} onlyImportant={true} />
               </InlinedNavbarPart>
@@ -177,7 +193,10 @@ export default ({ data }) => {
             </div>
             <section id="experience">
               <CVSectionBlock>
-                <h3>Full Stack Software Engineer - Contentful</h3>
+                <StyledHeaders>
+                  Full Stack Software Engineer - Contentful
+                </StyledHeaders>
+                <br />
                 <i>
                   <label>Duration:</label> Dec 2018 - now
                 </i>
@@ -197,7 +216,8 @@ export default ({ data }) => {
                 </CVList>
               </CVSectionBlock>
               <CVSectionBlock>
-                <h3>Full Stack Developer - Dial-Once</h3>
+                <StyledHeaders>Full Stack Developer - Dial-Once</StyledHeaders>
+                <br />
                 <i>
                   <label>Duration:</label> Dec 2016 - Dec 2019
                 </i>
@@ -229,7 +249,10 @@ export default ({ data }) => {
                 </CVList>
               </CVSectionBlock>
               <CVSectionBlock>
-                <h3>Node.js Developer - FASTEE Technologies</h3>
+                <StyledHeaders>
+                  Node.js Developer - FASTEE Technologies
+                </StyledHeaders>
+                <br />
                 <i>
                   <label>Duration</label> Aug - Dec 2016
                 </i>
@@ -251,7 +274,7 @@ export default ({ data }) => {
             </div>
             <section id="education">
               <CVSectionBlock>
-                <h3>Specialist Degree (2016 - 2018)</h3>
+                <StyledHeaders>Specialist Degree (2016 - 2018)</StyledHeaders>
                 <p>Faculty of Informatics and Computer Systems</p>
                 <p>
                   The National Technical University of Ukraine "Igor Sikorsky
@@ -262,7 +285,7 @@ export default ({ data }) => {
                 </CVList>
               </CVSectionBlock>
               <CVSectionBlock>
-                <h3>Bachelor Degree (2012 - 2016)</h3>
+                <StyledHeaders>Bachelor Degree (2012 - 2016)</StyledHeaders>
                 <p>Faculty of Informatics and Computer Systems</p>
                 <p>
                   The National Technical University of Ukraine "Igor Sikorsky
@@ -286,9 +309,9 @@ export default ({ data }) => {
               <StickySubheading marker="#A9E5BB">Courses</StickySubheading>
             </div>
             <section id="courses">
-              <h3>
+              <StyledHeaders>
                 Java Enterprise Edition - Bionic University (Aug - Nov 2014 )
-              </h3>
+              </StyledHeaders>
               <CVList>
                 <li>EJB - Stateful, Stateless beans</li>
                 <li>Introduction to Spring Framework</li>
@@ -312,14 +335,13 @@ export default ({ data }) => {
         <DownloadFooter>
           {activeAnchor === "#intro-section" ? (
             <InlinedNavbarPart>
-              <Subheading>{post.frontmatter.title}</Subheading>
-              <SocialButtons size={25} onlyImportant={true} />
+              <DownloadButton
+                href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
+                value="Download CV"
+              />
+              <SocialButtons size={30} onlyImportant={true} />
             </InlinedNavbarPart>
           ) : null}
-          <DownloadButton
-            href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
-            value={`Download (upd: ${post.frontmatter.updatedAt})`}
-          />
         </DownloadFooter>
       </PageWrapper>
     </>
