@@ -22,13 +22,13 @@ const ProjectReference = ({ href, children }) => {
   )
 }
 
-const ProjectReferences = ({ frontmatter }) => {
+const ProjectReferences = ({ frontmatter, size = 30 }) => {
   const components = []
 
   if (frontmatter.chrome) {
     components.push(
       <ProjectReference href={frontmatter.chrome}>
-        <ChromeIcon size={30} /> &nbsp;Chrome Store
+        <ChromeIcon size={size} /> &nbsp;Chrome Store
       </ProjectReference>
     )
   }
@@ -36,7 +36,7 @@ const ProjectReferences = ({ frontmatter }) => {
   if (frontmatter.firefox) {
     components.push(
       <ProjectReference href={frontmatter.firefox}>
-        <FirefoxIcon size={30} /> &nbsp;Firefox Store
+        <FirefoxIcon size={size} /> &nbsp;Firefox Store
       </ProjectReference>
     )
   }
@@ -44,7 +44,7 @@ const ProjectReferences = ({ frontmatter }) => {
   if (frontmatter.demo) {
     components.push(
       <ProjectReference href={frontmatter.demo}>
-        <CardSearchOutlineIcon size={30} /> &nbsp;Demo
+        <CardSearchOutlineIcon size={size} /> &nbsp;Demo
       </ProjectReference>
     )
   }
@@ -52,7 +52,7 @@ const ProjectReferences = ({ frontmatter }) => {
   if (frontmatter.repository) {
     components.push(
       <ProjectReference href={frontmatter.repository}>
-        <GithubIcon size={30} /> &nbsp;Source
+        <GithubIcon size={size} /> &nbsp;Source
       </ProjectReference>
     )
   }

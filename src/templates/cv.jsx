@@ -12,7 +12,7 @@ import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { DownloadFooter } from "../components/cv/DownloadFooter"
 
 const CVWrapper = styled.div`
-  padding: 0px 6%;
+  padding: 0px 1rem;
 `
 
 const CVShortSummary = styled.p`

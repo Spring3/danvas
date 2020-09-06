@@ -8,17 +8,14 @@ import { styles, Reference } from "./Reference"
 const Button = styled(Link)`
   ${styles}
 
-  vertical-align: top;
+  display: flex;
+  gap: 5px;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
   background: transparent;
 
   &:visited {
     background: transparent;
-  }
-
-  svg {
-    vertical-align: top;
   }
 `
 

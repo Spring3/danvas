@@ -5,7 +5,10 @@ import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { Link, Reference } from "./Reference"
 import { slugToTitle } from "../utils"
 
-const MenuContainer = styled.div`
+const MenuContainer = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   position: sticky;
   bottom: 3rem;
   width: 100%;
@@ -21,6 +24,13 @@ const MenuContainer = styled.div`
 
 const SlugMenuContainer = styled(MenuContainer)`
   position: fixed;
+
+  @media (max-width: 750px) {
+    gap: 0.5rem;
+    position: static;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const styles = css`
@@ -108,14 +118,11 @@ const SlugListMenu = ({ slugs, active, onClick }) => {
     <SlugMenuContainer>
       <small>Projects:&nbsp;</small>
       {slugs.map((slug) => (
-        <SlugMenuItem
-          onClick={onClick}
-          active={active === slug}
-          to={slug}
-          key={slug}
-        >
-          {slugToTitle(slug)}
-        </SlugMenuItem>
+        <li key={slug}>
+          <SlugMenuItem onClick={onClick} active={active === slug} to={slug}>
+            {slugToTitle(slug)}
+          </SlugMenuItem>
+        </li>
       ))}
       <SlugMenuItem onClick={onClick} active={false} to="/cv" key="cv">
         CV

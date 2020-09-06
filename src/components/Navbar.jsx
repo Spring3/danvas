@@ -12,10 +12,11 @@ const Navbar = styled.nav`
 
   @media (min-width: 750px) {
     top: 0;
-    padding: 1rem 0px;
+    padding: 1rem;
     border-bottom: solid 1px var(--shadow-color);
 
     a {
+      padding: 0;
       svg {
         vertical-align: bottom;
       }
@@ -25,13 +26,14 @@ const Navbar = styled.nav`
   @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
     (max-width: 750px) {
     top: 0px;
-    padding: 1rem 0rem;
+    padding: 1rem;
     left: 0;
 
     a {
       display: block;
       margin: 0;
       background: none !important;
+      padding: 0;
       svg {
         vertical-align: bottom;
       }
@@ -49,6 +51,10 @@ const Navbar = styled.nav`
     #download-button,
     #navbar-contents {
       display: none;
+    }
+
+    a {
+      padding: 0;
     }
 
     div small {

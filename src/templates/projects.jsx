@@ -11,14 +11,20 @@ import Tags, { Tag } from "../components/project/Tags"
 import { ProjectReferences } from "../components/project/ProjectReferences"
 import { SlugListMenu } from "../components/PortfolioMenu"
 import { PageWrapper } from "../components/PageWrapper"
+import Navbar from "../components/Navbar"
+import { useAnchorTracker } from "../hooks/useAnchorTracker"
 
 const PageLayout = styled.div`
   display: grid;
   grid-template-columns: auto 50%;
   grid-gap: 0rem 3rem;
-  width: 95%;
   margin: 0 auto;
   margin-bottom: 3rem;
+  padding: 0rem 1rem;
+
+  @media (max-width: 750px) {
+    grid-template-columns: 100%;
+  }
 `
 
 const StyledCarousel = styled(Carousel)`
@@ -42,11 +48,29 @@ const ProjectReferenceContainer = styled.div`
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: flex-end;
+
+  @media (max-width: 750px) {
+    justify-content: flex-start;
+  }
+`
+
+const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
+  @media (max-width: 750px) {
+    gap: 10px;
+    a {
+      font-size: 1rem;
+    }
+  }
+`
+
+const PaddedMarkdownContent = styled(MarkdownContent)`
+  padding: 1.5rem 0rem;
 `
 
 export default (props) => {
   const post = props.data.markdownRemark
   const allPosts = props.data.allMarkdownRemark.nodes
+  const activeAnchor = useAnchorTracker(["#markdown"])
 
   const slugs = allPosts.map((node) => node.fields.slug)
 
@@ -64,7 +88,14 @@ export default (props) => {
       />
       <ThemeProvider theme={theme}>
         <PageWrapper>
-          <ButtonBack href="/" value="Main Page" />
+          <Navbar>
+            <ButtonBack href="/" value="Main Page" />
+            {activeAnchor === "#markdown" ? (
+              <TinyProjectReferenceContainer>
+                <ProjectReferences size={25} frontmatter={post.frontmatter} />
+              </TinyProjectReferenceContainer>
+            ) : null}
+          </Navbar>
           <PageLayout>
             <div>
               <Header>{post.frontmatter.title}</Header>
@@ -72,7 +103,10 @@ export default (props) => {
             <ProjectReferenceContainer>
               <ProjectReferences frontmatter={post.frontmatter} />
             </ProjectReferenceContainer>
-            <MarkdownContent dangerouslySetInnerHTML={{ __html: post.html }} />
+            <PaddedMarkdownContent
+              id="markdown"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
             <div>
               <StyledCarousel
                 showStatus={false}
