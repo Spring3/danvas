@@ -83,7 +83,7 @@ const InlinedNavbarPart = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
-  padding: 1rem 0rem;
+  padding: 1rem;
   h2 {
     margin: 0;
     font-size: 1rem;
@@ -95,19 +95,8 @@ const InlinedNavbarPart = styled.div`
 
   @media (max-width: 750px) {
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
   }
-`
-
-const StyledHeaders = styled.h3`
-  display: inline-block;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    transparent 60%,
-    lightgrey 60%,
-    lightgrey 100%
-  );
 `
 
 export default ({ data }) => {
@@ -130,7 +119,7 @@ export default ({ data }) => {
                 <Subheading>{post.frontmatter.title}</Subheading>
                 <SocialButtons size={25} onlyImportant={true} />
               </InlinedNavbarPart>
-              <small>&nbsp;(upd: {post.frontmatter.updatedAt})</small>
+              <small>&nbsp;({post.frontmatter.updatedAt})</small>
             </FlexRow>
           ) : null}
           <DownloadButton
@@ -141,7 +130,7 @@ export default ({ data }) => {
         <CVWrapper>
           <FlexRow>
             <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
-            <small>&nbsp;(upd: {post.frontmatter.updatedAt})</small>
+            <small>&nbsp;({post.frontmatter.updatedAt})</small>
           </FlexRow>
           <SocialButtons size={30} onlyImportant={true} />
           <CVShortSummary>
@@ -193,9 +182,7 @@ export default ({ data }) => {
             </div>
             <section id="experience">
               <CVSectionBlock>
-                <StyledHeaders>
-                  Full Stack Software Engineer - Contentful
-                </StyledHeaders>
+                <h3>Full Stack Software Engineer - Contentful</h3>
                 <br />
                 <i>
                   <label>Duration:</label> Dec 2018 - now
@@ -216,7 +203,7 @@ export default ({ data }) => {
                 </CVList>
               </CVSectionBlock>
               <CVSectionBlock>
-                <StyledHeaders>Full Stack Developer - Dial-Once</StyledHeaders>
+                <h3>Full Stack Developer - Dial-Once</h3>
                 <br />
                 <i>
                   <label>Duration:</label> Dec 2016 - Dec 2019
@@ -249,9 +236,7 @@ export default ({ data }) => {
                 </CVList>
               </CVSectionBlock>
               <CVSectionBlock>
-                <StyledHeaders>
-                  Node.js Developer - FASTEE Technologies
-                </StyledHeaders>
+                <h3>Node.js Developer - FASTEE Technologies</h3>
                 <br />
                 <i>
                   <label>Duration</label> Aug - Dec 2016
@@ -274,7 +259,7 @@ export default ({ data }) => {
             </div>
             <section id="education">
               <CVSectionBlock>
-                <StyledHeaders>Specialist Degree (2016 - 2018)</StyledHeaders>
+                <h3>Specialist Degree (2016 - 2018)</h3>
                 <p>Faculty of Informatics and Computer Systems</p>
                 <p>
                   The National Technical University of Ukraine "Igor Sikorsky
@@ -285,7 +270,7 @@ export default ({ data }) => {
                 </CVList>
               </CVSectionBlock>
               <CVSectionBlock>
-                <StyledHeaders>Bachelor Degree (2012 - 2016)</StyledHeaders>
+                <h3>Bachelor Degree (2012 - 2016)</h3>
                 <p>Faculty of Informatics and Computer Systems</p>
                 <p>
                   The National Technical University of Ukraine "Igor Sikorsky
@@ -309,9 +294,9 @@ export default ({ data }) => {
               <StickySubheading marker="#A9E5BB">Courses</StickySubheading>
             </div>
             <section id="courses">
-              <StyledHeaders>
+              <h3>
                 Java Enterprise Edition - Bionic University (Aug - Nov 2014 )
-              </StyledHeaders>
+              </h3>
               <CVList>
                 <li>EJB - Stateful, Stateless beans</li>
                 <li>Introduction to Spring Framework</li>
