@@ -1,16 +1,31 @@
 import React from "react"
 import styled from "styled-components"
 
-import Tags, { Tag } from "../project/Tags"
-import { FixedImageSet } from "../project/FixedImageSet"
-import { slugToAnchor } from "../../utils"
-import { Link } from "../Reference"
-import { MarkdownContent } from "../MarkdownContent"
+import Tags, { Tag } from "./project/Tags"
+import { FixedImageSet } from "./project/FixedImageSet"
+import { slugToAnchor } from "../utils"
+import { Link } from "./Reference"
+import { MarkdownContent } from "./MarkdownContent"
+import { useWindowResize } from "../hooks/useWindowResize"
+import { ImageCarousel } from "./ImageCarousel"
+import { Flex } from "./Flex"
 
 const ProjectInfo = styled.div`
   position: sticky;
   top: 16%;
   z-index: ${(props) => props.index + 1};
+`
+
+const InfoWrapper = styled.div`
+  width: 40%;
+
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+`
+
+const ImageWrapper = styled.div`
+  width: 60%;
 `
 
 const ProjectTitle = styled.div`
@@ -23,10 +38,11 @@ const ProjectContent = styled(MarkdownContent)`
 
 const Project = ({ node, index }) => {
   const anchor = slugToAnchor(node.fields.slug)
+  const width = useWindowResize()
   const id = anchor.substring(1)
   return (
-    <>
-      <div>
+    <Flex>
+      <InfoWrapper>
         <ProjectInfo index={index}>
           <ProjectTitle>
             <Link
@@ -37,6 +53,9 @@ const Project = ({ node, index }) => {
               {node.frontmatter.title}
             </Link>
           </ProjectTitle>
+          {width <= 750 ? (
+            <ImageCarousel images={node.frontmatter.images} />
+          ) : null}
           <ProjectContent
             marker={node.frontmatter.marker}
             dangerouslySetInnerHTML={{ __html: node.html }}
@@ -49,11 +68,13 @@ const Project = ({ node, index }) => {
             ))}
           </Tags>
         </ProjectInfo>
-      </div>
-      <div id={id}>
-        <FixedImageSet images={node.frontmatter.images} />
-      </div>
-    </>
+      </InfoWrapper>
+      {width > 750 ? (
+        <ImageWrapper id={id}>
+          <FixedImageSet images={node.frontmatter.images} />
+        </ImageWrapper>
+      ) : null}
+    </Flex>
   )
 }
 

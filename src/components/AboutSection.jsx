@@ -24,6 +24,11 @@ const ContentPanel = styled.div`
   text-align: justify;
   color: var(--text-color-primary);
   border-radius: var(--border-radius);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
 
   div {
     em {

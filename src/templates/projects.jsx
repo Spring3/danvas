@@ -1,6 +1,5 @@
 import React, { useMemo } from "react"
 import { graphql } from "gatsby"
-import { Carousel } from "react-responsive-carousel"
 import styled, { ThemeProvider } from "styled-components"
 
 import GlobalStyles, { OGP } from "../components/GlobalStyle"
@@ -12,7 +11,9 @@ import { ProjectReferences } from "../components/project/ProjectReferences"
 import { SlugListMenu } from "../components/PortfolioMenu"
 import { PageWrapper } from "../components/PageWrapper"
 import Navbar from "../components/Navbar"
+import { ImageCarousel } from "../components/ImageCarousel"
 import { useAnchorTracker } from "../hooks/useAnchorTracker"
+import { Flex } from "../components/Flex"
 
 const PageLayout = styled.div`
   display: grid;
@@ -27,28 +28,7 @@ const PageLayout = styled.div`
   }
 `
 
-const StyledCarousel = styled(Carousel)`
-  box-shadow: 0px 0px 10px 0px #f3f3f3;
-  div:first-of-type {
-    border-radius: 5px;
-  }
-
-  .thumbs {
-    padding: 0 !important;
-  }
-
-  .thumbs-wrapper {
-    margin: 20px 0px !important;
-  }
-`
-
-const ProjectReferenceContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: flex-end;
-
+const ProjectReferenceContainer = styled(Flex)`
   @media (max-width: 750px) {
     justify-content: flex-start;
   }
@@ -91,7 +71,12 @@ export default (props) => {
           <Navbar>
             <ButtonBack href="/" value="Main Page" />
             {activeAnchor === "#markdown" ? (
-              <TinyProjectReferenceContainer>
+              <TinyProjectReferenceContainer
+                alignItems="center"
+                flexWrap="wrap"
+                gap="1.5rem"
+                justifyContent="flex-end"
+              >
                 <ProjectReferences size={25} frontmatter={post.frontmatter} />
               </TinyProjectReferenceContainer>
             ) : null}
@@ -100,7 +85,12 @@ export default (props) => {
             <div>
               <Header>{post.frontmatter.title}</Header>
             </div>
-            <ProjectReferenceContainer>
+            <ProjectReferenceContainer
+              alignItems="center"
+              flexWrap="wrap"
+              gap="1.5rem"
+              justifyContent="flex-end"
+            >
               <ProjectReferences frontmatter={post.frontmatter} />
             </ProjectReferenceContainer>
             <PaddedMarkdownContent
@@ -108,29 +98,7 @@ export default (props) => {
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
             <div>
-              <StyledCarousel
-                showStatus={false}
-                showIndicators={false}
-                showThumbs={false}
-                infiniteLoop={true}
-                autoPlay={true}
-                dynamicHeight={true}
-              >
-                {post.frontmatter.images.map((image, i) => (
-                  <div
-                    style={{ marginLeft: "0px", marginRight: "0px" }}
-                    key={i}
-                  >
-                    <img
-                      key={i}
-                      alt={image.name}
-                      src={image.childImageSharp.fluid.src}
-                      srcSet={image.childImageSharp.fluid.srcSet}
-                      sizes={image.childImageSharp.fluid.sizes}
-                    />
-                  </div>
-                ))}
-              </StyledCarousel>
+              <ImageCarousel images={post.frontmatter.images} />
               <Tags>
                 {post.frontmatter.technologies.map((tag, i) => (
                   <Tag key={i}>{tag}</Tag>

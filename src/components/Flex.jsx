@@ -1,0 +1,77 @@
+import React from "react"
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
+
+const FlexContainer = styled.div`
+  display: flex;
+  ${(props) => css`
+    flex-direction: ${props.direction};
+    justify-content: ${props.justifyContent};
+    align-items: ${props.alignItems};
+    gap: ${props.gap};
+    flex-grow: ${props.flexGrow};
+    flex-wrap: ${props.flexWrap};
+  `}
+`
+
+const Flex = ({
+  children,
+  direction,
+  gap,
+  justifyContent,
+  alignItems,
+  flexGrow,
+  flexWrap,
+}) => {
+  return (
+    <FlexContainer
+      direction={direction}
+      gap={gap}
+      justifyContent={justifyContent}
+      alignItems={alignItems}
+      flexGrow={flexGrow}
+      flexWrap={flexWrap}
+    >
+      {children}
+    </FlexContainer>
+  )
+}
+
+Flex.propTypes = {
+  flexGrow: PropTypes.string,
+  direction: PropTypes.oneOf([
+    "row",
+    "column",
+    "row-reverse",
+    "column-reverse",
+  ]),
+  gap: PropTypes.string,
+  justifyContent: PropTypes.oneOf([
+    "center",
+    "flex-start",
+    "flex-end",
+    "space-between",
+    "space-around",
+    "space-evenly",
+  ]),
+  alignItems: PropTypes.oneOf([
+    "center",
+    "flex-start",
+    "flex-end",
+    "space-between",
+    "space-around",
+    "space-evenly",
+  ]),
+  flexWrap: PropTypes.oneOf(["wrap", "nowrap"]),
+}
+
+Flex.defaultProps = {
+  flexGrow: "0",
+  direction: "row",
+  gap: "0px",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  flexWrap: "nowrap",
+}
+
+export { Flex }

@@ -7,9 +7,10 @@ import { ButtonBack, DownloadButton } from "../components/Buttons"
 import { Subheading } from "../components/project/Header"
 import Navbar from "../components/Navbar"
 import { PageWrapper } from "../components/PageWrapper"
-import SocialButtons from "../components/indexPage/SocialButtons"
+import SocialButtons from "../components/SocialButtons"
 import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { DownloadFooter } from "../components/cv/DownloadFooter"
+import { Flex } from "../components/Flex"
 
 const CVWrapper = styled.div`
   padding: 0px 1rem;
@@ -71,13 +72,6 @@ const DoubleColumnGrid = styled.div`
   }
 `
 
-const FlexRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-grow: 1;
-`
-
 const InlinedNavbarPart = styled.div`
   flex-grow: 1;
   display: flex;
@@ -114,13 +108,17 @@ export default ({ data }) => {
         <Navbar>
           <ButtonBack href="/" value="Main page" />
           {activeAnchor === "#intro-section" ? (
-            <FlexRow>
+            <Flex
+              justifyContent="space-between"
+              alignItems="center"
+              flexGrow="1"
+            >
               <InlinedNavbarPart id="navbar-contents">
                 <Subheading>{post.frontmatter.title}</Subheading>
                 <SocialButtons size={25} onlyImportant={true} />
               </InlinedNavbarPart>
               <small>&nbsp;({post.frontmatter.updatedAt})</small>
-            </FlexRow>
+            </Flex>
           ) : null}
           <DownloadButton
             href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
@@ -128,10 +126,10 @@ export default ({ data }) => {
           />
         </Navbar>
         <CVWrapper>
-          <FlexRow>
+          <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
             <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
             <small>&nbsp;({post.frontmatter.updatedAt})</small>
-          </FlexRow>
+          </Flex>
           <SocialButtons size={30} onlyImportant={true} />
           <CVShortSummary>
             Curious and creative. I always try to come up with something special

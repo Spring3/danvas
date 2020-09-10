@@ -2,10 +2,10 @@ import React from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { Project } from "./Project"
 
-const ProjectGrid = styled.div`
-  display: grid;
-  grid-template-columns: auto 60%;
-  grid-gap: 10rem 3rem;
+const ProjectsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10rem 3rem;
   position: relative;
 
   @media (min-width: 750px) {
@@ -42,7 +42,7 @@ const ProjectsContainer = styled.div`
 const ProjectsSection = ({ nodes }) => (
   <ProjectsContainer>
     <SectionTitle>Projects</SectionTitle>
-    <ProjectGrid>
+    <ProjectsWrapper>
       {nodes.map((node, i) => {
         const theme = { marker: `#${node.frontmatter.marker}` }
         return (
@@ -51,7 +51,7 @@ const ProjectsSection = ({ nodes }) => (
           </ThemeProvider>
         )
       })}
-    </ProjectGrid>
+    </ProjectsWrapper>
   </ProjectsContainer>
 )
 

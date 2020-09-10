@@ -3,18 +3,12 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import GlobalStyles, { OGP } from "../components/GlobalStyle"
-import { AboutSection, ProjectsSection } from "../components/indexPage"
+import { AboutSection } from "../components/AboutSection"
+import { ProjectsSection } from "../components/ProjectsSection"
 import { AnchorListMenu } from "../components/PortfolioMenu"
 import { slugToAnchor } from "../utils"
 import { styles } from "../components/Reference"
 import { Footer } from "../components/Footer"
-
-const IntroSection = styled.section`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 
 const AboutSectionMarkdown = styled.div`
   a {
@@ -58,13 +52,11 @@ export default ({ data }) => {
         image={siteMetadata.image}
       />
       <main>
-        <IntroSection>
-          <AboutSection>
-            <AboutSectionMarkdown
-              dangerouslySetInnerHTML={{ __html: aboutNode.html }}
-            />
-          </AboutSection>
-        </IntroSection>
+        <AboutSection>
+          <AboutSectionMarkdown
+            dangerouslySetInnerHTML={{ __html: aboutNode.html }}
+          />
+        </AboutSection>
         <ProjectsSection nodes={projectNodes} />
         <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
       </main>
