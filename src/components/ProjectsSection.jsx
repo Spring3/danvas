@@ -30,6 +30,10 @@ const SectionTitle = styled.h1`
     (max-width: 750px) {
     font-size: 2rem;
   }
+
+  @media (max-width: 750px) {
+    position: static;
+  }
   margin-top: 3rem;
 `
 
@@ -37,6 +41,10 @@ const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 25vh;
+
+  @media (max-width: 750px) {
+    padding: 1rem;
+  }
 `
 
 const ProjectsSection = ({ nodes }) => (

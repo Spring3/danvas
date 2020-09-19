@@ -20,6 +20,14 @@ const MenuContainer = styled.ul`
   small {
     color: var(--text-color-secondary);
   }
+
+  @media (max-width: 750px) {
+    gap: 0.5rem;
+    position: static;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
 `
 
 const SlugMenuContainer = styled(MenuContainer)`
