@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { ThemeProvider } from "styled-components"
+import { Header } from "./common/Headers"
 import { Project } from "./Project"
 
 const ProjectsWrapper = styled.div`
@@ -14,27 +15,16 @@ const ProjectsWrapper = styled.div`
   }
 `
 
-const SectionTitle = styled.h1`
+const StickyTitle = styled(Header)`
   z-index: 999999;
   position: sticky;
   top: 0;
   padding-top: 5vh;
-
-  @media (min-width: 750px) {
-    font-size: 3rem;
-    padding-left: 6%;
-    padding-right: 6%;
-  }
-
-  @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
-    (max-width: 750px) {
-    font-size: 2rem;
-  }
+  margin-top: 3rem;
 
   @media (max-width: 750px) {
     position: static;
   }
-  margin-top: 3rem;
 `
 
 const ProjectsContainer = styled.div`
@@ -49,7 +39,7 @@ const ProjectsContainer = styled.div`
 
 const ProjectsSection = ({ nodes }) => (
   <ProjectsContainer>
-    <SectionTitle>Projects</SectionTitle>
+    <StickyTitle>Projects</StickyTitle>
     <ProjectsWrapper>
       {nodes.map((node, i) => {
         const theme = { marker: `#${node.frontmatter.marker}` }

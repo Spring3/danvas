@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle, css } from "styled-components"
 import "normalize.css"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
@@ -34,6 +34,14 @@ export default createGlobalStyle`
 
   main {
     padding: 0;
+  }
+`
+
+export const fontScaling = css`
+  font-weight: 1rem;
+
+  @media (max-width: 750px) {
+    font-weight: 0.8rem;
   }
 `
 

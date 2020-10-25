@@ -15,6 +15,13 @@ const StyledCarousel = styled(Carousel)`
   .thumbs-wrapper {
     margin: 20px 0px !important;
   }
+
+  @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px),
+    (max-width: 750px) {
+    .slider-wrapper {
+      max-height: 80vh;
+    }
+  }
 `
 
 const ImageCarousel = ({ images }) => {

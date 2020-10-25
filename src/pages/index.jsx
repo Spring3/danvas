@@ -14,6 +14,22 @@ const AboutSectionMarkdown = styled.div`
   a {
     ${styles}
   }
+
+  em {
+    font-style: normal;
+    font-weight: bold;
+    background: var(--marker-green);
+  }
+
+  strong {
+    background: var(--marker-yellow);
+  }
+
+  span,
+  p:last-child {
+    color: var(--text-color-secondary);
+    font-size: smaller;
+  }
 `
 
 export default ({ data }) => {
