@@ -29,11 +29,11 @@ const ImageWrapper = styled.div`
 `
 
 const ProjectTitle = styled.div`
-  font-size: 2rem;
-  margin-bottom: 3rem;
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
 `
 const ProjectContent = styled(MarkdownContent)`
-  font-size: 1.2rem;
+  font-size: 1rem;
 `
 
 const Project = ({ node, index }) => {
@@ -60,7 +60,7 @@ const Project = ({ node, index }) => {
             marker={node.frontmatter.marker}
             dangerouslySetInnerHTML={{ __html: node.html }}
           />
-          <Tags>
+          <Tags flexWrap="wrap">
             {node.frontmatter.technologies.map((tag, i) => (
               <Tag key={i} marker={node.frontmatter.marker}>
                 {tag}

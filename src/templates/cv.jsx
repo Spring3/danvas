@@ -7,7 +7,7 @@ import { ButtonBack, DownloadButton } from "../components/Buttons"
 import { Subheading } from "../components/project/Header"
 import Navbar from "../components/Navbar"
 import { PageWrapper } from "../components/PageWrapper"
-import SocialButtons from "../components/SocialButtons"
+import { SocialButtons } from "../components/SocialButtons"
 import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { DownloadFooter } from "../components/cv/DownloadFooter"
 import { Flex } from "../components/Flex"
@@ -16,30 +16,11 @@ const CVWrapper = styled.div`
   padding: 0px 1rem;
 `
 
-const CVShortSummary = styled.p`
-  font-size: 1.2rem;
-`
-
-const CVList = styled.ul`
-  li {
-    margin-top: 0.8rem;
-    font-size: 1.2rem;
-  }
-
-  li:first-child {
-    margin-top: 0;
-  }
-`
-
 const CVSectionBlock = styled.div`
   margin-top: 3rem;
 
   &:first-child {
     margin-top: 0rem;
-  }
-
-  p {
-    font-size: 1.2rem;
   }
 `
 
@@ -49,6 +30,7 @@ const StickySubheading = styled(Subheading)`
 
   @media (max-width: 750px) {
     position: static;
+    margin-top: 3rem;
   }
 `
 
@@ -57,17 +39,22 @@ const DoubleColumnGrid = styled.div`
   grid-template-columns: 25% auto;
   grid-gap: 3rem 4rem;
   padding-bottom: 6rem;
+  margin-top: 2rem;
 
   section {
     margin-top: 4rem;
   }
 
   @media (max-width: 750px) {
-    grid-template-columns: auto;
-    grid-gap: 1.5rem 0rem;
-
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
     section {
       margin: 0;
+    }
+
+    & > div:first-child > h2 {
+      margin-top: 0;
     }
   }
 `
@@ -115,7 +102,7 @@ export default ({ data }) => {
             >
               <InlinedNavbarPart id="navbar-contents">
                 <Subheading>{post.frontmatter.title}</Subheading>
-                <SocialButtons size={25} onlyImportant={true} />
+                <SocialButtons onlyImportant={true} />
               </InlinedNavbarPart>
               <small>&nbsp;({post.frontmatter.updatedAt})</small>
             </Flex>
@@ -130,66 +117,77 @@ export default ({ data }) => {
             <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
             <small>&nbsp;({post.frontmatter.updatedAt})</small>
           </Flex>
-          <SocialButtons size={30} onlyImportant={true} />
-          <CVShortSummary>
+          <p>
             Curious and creative. I always try to come up with something special
-            and original. Primarily I focus on Node.js, React, Graphql and
-            modern Javascript ecosystem.
-          </CVShortSummary>
+            and original.
+            <br />
+            <br />
+            Primarily I focus on Node.js, React, Graphql and modern Javascript
+            ecosystem.
+          </p>
+          <SocialButtons onlyImportant={true} />
           <DoubleColumnGrid id="intro-section">
             <div>
               <StickySubheading marker="#F78888">Skills</StickySubheading>
             </div>
             <section id="skills">
-              <CVList>
-                <li>
-                  <strong>Back-end</strong>: Node.js, Express, RabbitMQ
-                </li>
-                <li>
-                  <strong>Front-end</strong>: Javascript, HTML, CSS, React,
-                  Redux, Overmind
-                </li>
-                <li>
-                  <strong>Databases</strong>: Mongodb, Redis, MySQL
-                </li>
-                <li>
-                  <strong>Build tools</strong>: Webpack
-                </li>
-                <li>
-                  <strong>Testing</strong>: testing-library, Jest, Chai, Sinon,
-                  Nyc, Karma.js, Enzyme
-                </li>
-                <li>
-                  <strong>Devops</strong>: Docker
-                </li>
-                <li>
-                  <strong>CI/CD</strong>: CircleCI, Travis, SonarQube, Netlify,
-                  Heroku
-                </li>
-                <li>
-                  <strong>VCS</strong>: Git
-                </li>
-                <li>
-                  <strong>Misc</strong>: Electron, Lerna, Gatsby, Basics of Elm,
-                  Basics of UX Design
-                </li>
-              </CVList>
+              <p>
+                <strong>Back-end</strong>
+                <span>: Node.js, Express, RabbitMQ</span>
+              </p>
+              <p>
+                <strong>Front-end</strong>
+                <span>: Javascript, HTML, CSS, React, Redux, Overmind</span>
+              </p>
+              <p>
+                <strong>Databases</strong>
+                <span>: Mongodb, Redis, MySQL</span>
+              </p>
+              <p>
+                <strong>Build tools</strong>
+                <span>: Webpack</span>
+              </p>
+              <p>
+                <strong>Testing</strong>: testing-library, Jest, Chai, Sinon,
+                Nyc, Karma, Enzyme
+              </p>
+              <p>
+                <strong>Devops</strong>
+                <span>: Docker</span>
+              </p>
+              <p>
+                <strong>CI/CD</strong>
+                <span>: CircleCI, Travis, SonarQube, Netlify, Heroku</span>
+              </p>
+              <p>
+                <strong>VCS</strong>
+                <span>: Git</span>
+              </p>
+              <p justifyContent="flex-start">
+                <strong>Misc</strong>
+                <span>
+                  : Electron, Lerna, Gatsby, Basics of Elm, Basics of UX Design
+                </span>
+              </p>
             </section>
             <div>
               <StickySubheading marker="#BCE5FF">Experience</StickySubheading>
             </div>
             <section id="experience">
               <CVSectionBlock>
-                <h3>Full Stack Software Engineer - Contentful</h3>
-                <br />
-                <i>
-                  <label>Duration:</label> Dec 2018 - now
-                </i>
+                <h3>Full Stack Software Engineer</h3>
+                <p>
+                  <strong>Company</strong>: Contentful
+                </p>
+                <p>
+                  <strong>Duration:</strong> Dec 2018 - now
+                </p>
                 <p>
                   Full stack development and support of the Headless CMS by
                   Contentful
                 </p>
-                <CVList>
+                <h4>Summary:</h4>
+                <Flex direction="column" gap="0.5rem">
                   <li>Maintenance and improvements of the UI kit</li>
                   <li>
                     Full stack contribution to the web app and related services
@@ -198,24 +196,26 @@ export default ({ data }) => {
                     Support for the public APIs for CMS content management
                   </li>
                   <li>Part of the customer tech support</li>
-                </CVList>
+                </Flex>
               </CVSectionBlock>
               <CVSectionBlock>
-                <h3>Full Stack Developer - Dial-Once</h3>
-                <br />
-                <i>
-                  <label>Duration:</label> Dec 2016 - Dec 2019
-                </i>
+                <h3>Full Stack Developer</h3>
+                <p>
+                  <strong>Company</strong>: Dial-Once
+                </p>
+                <p>
+                  <strong>Duration:</strong> Dec 2016 - Dec 2019
+                </p>
                 <p>
                   Full stack development and support of the omnichannel
                   communication platform, consisting of multiple front-end
                   products with a micro-service architecture behind it.
-                  Dial-Once is a leader on the market of Visual IVR services
-                  with clients from all the continents of the world.
                 </p>
-                <CVList>
+                <h4>Summary:</h4>
+                <Flex direction="column" gap="0.5rem">
                   <li>
-                    Designed and developed the company's most on-demand product
+                    Designing and developing the company's most on-demand
+                    product
                   </li>
                   <li>
                     Implemented the tools, that allowed designers concentrate on
@@ -231,16 +231,19 @@ export default ({ data }) => {
                     Held workshops and pair programming sessions to ease
                     integration in cross-functional projects
                   </li>
-                </CVList>
+                </Flex>
               </CVSectionBlock>
               <CVSectionBlock>
-                <h3>Node.js Developer - FASTEE Technologies</h3>
-                <br />
-                <i>
-                  <label>Duration</label> Aug - Dec 2016
-                </i>
+                <h3>Node.js Developer</h3>
+                <p>
+                  <strong>Company</strong>: FASTEE Technologies
+                </p>
+                <p>
+                  <strong>Duration:</strong> Aug - Dec 2016
+                </p>
                 <p>Implemented bots for the generic chat bot platform.</p>
-                <CVList>
+                <h4>Summary:</h4>
+                <Flex direction="column" gap="0.5rem">
                   <li>
                     Created chat bots on multiple chat bot APIs - Slack, Asana,
                     Skype, Messenger
@@ -249,7 +252,7 @@ export default ({ data }) => {
                     Created a routing system of message exchange between
                     different communication platforms
                   </li>
-                </CVList>
+                </Flex>
               </CVSectionBlock>
             </section>
             <div>
@@ -257,24 +260,40 @@ export default ({ data }) => {
             </div>
             <section id="education">
               <CVSectionBlock>
-                <h3>Specialist Degree (2016 - 2018)</h3>
-                <p>Faculty of Informatics and Computer Systems</p>
+                <h3>Specialist Degree</h3>
+                <p>
+                  <strong>Duration</strong>
+                  <span>: 2016 - 2018</span>
+                </p>
+                <p>
+                  <strong>Faculty</strong>
+                  <span>: Informatics and Computer Systems</span>
+                </p>
                 <p>
                   The National Technical University of Ukraine "Igor Sikorsky
                   Kyiv Polytechnic Institute" (NTUU "KPI")
                 </p>
-                <CVList>
+                <Flex>
                   <li>Theory of Automation and Control of Computer Systems</li>
-                </CVList>
+                </Flex>
               </CVSectionBlock>
               <CVSectionBlock>
-                <h3>Bachelor Degree (2012 - 2016)</h3>
-                <p>Faculty of Informatics and Computer Systems</p>
+                <h3>Bachelor Degree</h3>
+                <p>
+                  <strong>Duration</strong>
+                  <span>: 2012 - 2016</span>
+                </p>
+                <p>
+                  <p>
+                    <strong>Faculty</strong>
+                    <span>: Informatics and Computer Systems</span>
+                  </p>
+                </p>
                 <p>
                   The National Technical University of Ukraine "Igor Sikorsky
                   Kyiv Polytechnic Institute" (NTUU "KPI")
                 </p>
-                <CVList>
+                <Flex direction="column" gap="0.5rem">
                   <li>Principles of Information Technology</li>
                   <li>Principles of Computer Graphics</li>
                   <li>
@@ -285,22 +304,28 @@ export default ({ data }) => {
                     Principles of Communication and Data Transfer and
                     Persistence
                   </li>
-                </CVList>
+                </Flex>
               </CVSectionBlock>
             </section>
             <div>
               <StickySubheading marker="#A9E5BB">Courses</StickySubheading>
             </div>
             <section id="courses">
-              <h3>
-                Java Enterprise Edition - Bionic University (Aug - Nov 2014 )
-              </h3>
-              <CVList>
+              <h3>Java Enterprise Edition</h3>
+              <p>
+                <strong>Provider</strong>
+                <span>: Bionic University</span>
+              </p>
+              <p>
+                <strong>Duration</strong>
+                <span>: August - November 2014</span>
+              </p>
+              <Flex direction="column" gap="0.5rem">
                 <li>EJB - Stateful, Stateless beans</li>
                 <li>Introduction to Spring Framework</li>
                 <li>Jersey, Jackson</li>
                 <li>JPA</li>
-              </CVList>
+              </Flex>
             </section>
             <div>
               <StickySubheading marker="#C3A9FF">
@@ -308,10 +333,10 @@ export default ({ data }) => {
               </StickySubheading>
             </div>
             <section id="language skills">
-              <CVList>
-                <li>English - C1 (7.5 - IELTS, May 2015, Aug 2019)</li>
+              <Flex direction="column" gap="0.5rem">
+                <li>English - C1 (7.5 - IELTS, Aug 2019)</li>
                 <li>German - B1</li>
-              </CVList>
+              </Flex>
             </section>
           </DoubleColumnGrid>
         </CVWrapper>

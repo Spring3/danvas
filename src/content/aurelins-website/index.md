@@ -24,8 +24,5 @@ images:
   - ./aurelins7.png
 ---
 
-A website that I designed for my sister, hoping she would use it to showcase her 3d modelling portfolio. The aim was to create a really artistic place, rich with animation and UI made with taste, as well as provide an ability to render the models live on the web page.
-
-Frankly, by the time this website was done, my sister gave up making 3d models and never used this website. Is there a hidden correlation? That I don't know. But in order to have some pictures, I had to get the content from open source.
-
-Good job, sis -\_-"
+A website that I designed for my sister, hoping she would use it to showcase her 3d modelling portfolio. The aim was to create a place to showcase it with an ability to render the models live on the web page.
+Frankly, never used by my sister, hence unfinished. The pictures and models displayed on the website are taken from open source.

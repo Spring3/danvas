@@ -1,10 +1,9 @@
 import React from "react"
 import styled from "styled-components"
+import { Flex } from "../Flex"
 
-const Tags = styled.ul`
-  list-style-type: none;
-  margin: 3rem 0px 0px 0px;
-  padding: 0px;
+const Tags = styled(Flex)`
+  margin-top: 1.5rem;
 `
 
 const TagItem = styled.li`

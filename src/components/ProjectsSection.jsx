@@ -2,34 +2,27 @@ import React from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { Header } from "./common/Headers"
 import { Project } from "./Project"
+import { Flex } from "./Flex"
 
-const ProjectsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10rem 3rem;
+const ProjectsWrapper = styled(Flex)`
   position: relative;
 
   @media (min-width: 750px) {
+    gap: 10rem 3rem;
     padding-left: 6%;
     padding-right: 6%;
   }
 `
 
 const StickyTitle = styled(Header)`
-  z-index: 999999;
-  position: sticky;
-  top: 0;
-  padding-top: 5vh;
-  margin-top: 3rem;
-
-  @media (max-width: 750px) {
-    position: static;
+  @media (min-width: 750px) {
+    z-index: 999999;
+    position: sticky;
+    top: 0;
   }
 `
 
-const ProjectsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+const ProjectsContainer = styled(Flex)`
   padding-bottom: 25vh;
 
   @media (max-width: 750px) {
@@ -38,9 +31,9 @@ const ProjectsContainer = styled.div`
 `
 
 const ProjectsSection = ({ nodes }) => (
-  <ProjectsContainer>
+  <ProjectsContainer direction="column">
     <StickyTitle>Projects</StickyTitle>
-    <ProjectsWrapper>
+    <ProjectsWrapper direction="column" gap="5rem 3rem">
       {nodes.map((node, i) => {
         const theme = { marker: `#${node.frontmatter.marker}` }
         return (

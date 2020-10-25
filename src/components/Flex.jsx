@@ -22,6 +22,7 @@ const Flex = ({
   alignItems,
   flexGrow,
   flexWrap,
+  className,
 }) => {
   return (
     <FlexContainer
@@ -31,6 +32,7 @@ const Flex = ({
       alignItems={alignItems}
       flexGrow={flexGrow}
       flexWrap={flexWrap}
+      className={className}
     >
       {children}
     </FlexContainer>
@@ -71,7 +73,7 @@ Flex.defaultProps = {
   gap: "0px",
   justifyContent: "flex-start",
   alignItems: "flex-start",
-  flexWrap: "nowrap",
+  flexWrap: "wrap",
 }
 
 export { Flex }

@@ -14,9 +14,7 @@ images:
   - ./extension2.png
 ---
 
-Not that I cared for the channel points, but that button just kept appearing and was triggering me. So, instead of getting an existing one, I of course created this browser extension to automatically click it and gather the channel points for me!
-
-Spent a couple of weeks to save 2 seconds. Hey, but I learnt how extensions are made :)
+Automates gathering of channel points on twitch.
 
 - Works in multiple tabs and windows at the same time.
 - Optimized for performance
