@@ -42,7 +42,7 @@ const Project = ({ node, index }) => {
   const id = anchor.substring(1)
   return (
     <Flex>
-      <InfoWrapper>
+      <InfoWrapper id={id}>
         <ProjectInfo index={index}>
           <ProjectTitle>
             <Link

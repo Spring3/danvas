@@ -79,15 +79,6 @@ const SocialButtons = ({ size, onlyImportant }) => {
       </li>
       <li>
         <SocialButtonLink
-          href="mailto:daniyil.vasylenko@gmail.com"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <EmailOutlineIcon color="#ea4335" size={size} />
-        </SocialButtonLink>
-      </li>
-      <li>
-        <SocialButtonLink
           href="https://open.spotify.com/user/21vcdhgxp3gqinwau2aynzg7i?si=onT2d2-dTA-RqL7xHLI2Tw"
           target="_blank"
           rel="noreferrer noopener"

@@ -39,12 +39,12 @@ const useImageScrollTracker = (anchors) => {
 
     const throttled = throttle(onScroll, 300)
 
-    if (anchors.length > 1) {
+    if (elements.length && anchors.length > 1) {
       window.addEventListener("scroll", throttled)
     }
 
     return () => {
-      if (anchors.length > 1) {
+      if (elements.length && anchors.length > 1) {
         window.removeEventListener("scroll", throttled)
       }
     }
