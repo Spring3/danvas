@@ -11,21 +11,35 @@ import { ImageCarousel } from "./ImageCarousel"
 import { Flex } from "./Flex"
 
 const ProjectInfo = styled.div`
-  position: sticky;
-  top: 16%;
-  z-index: ${(props) => props.index + 1};
+  @media (min-width: 1000px) {
+    position: sticky;
+    top: 16%;
+    z-index: ${(props) => props.index + 1};
+  }
 `
 
 const InfoWrapper = styled.div`
-  width: 40%;
+  width: 100%;
 
-  @media (max-width: 750px) {
-    width: 100%;
+  @media (min-width: 1000px) {
+    width: 40%;
+    position: sticky;
+    top: 16%;
   }
 `
 
 const ImageWrapper = styled.div`
   width: 60%;
+  gap: 0px;
+
+  @media (max-width: 1200px) {
+    width: 58%;
+    gap: 0px 1rem;
+  }
+`
+
+const ProjectRow = styled(Flex)`
+  width: 100%;
 `
 
 const ProjectTitle = styled.div`
@@ -41,7 +55,7 @@ const Project = ({ node, index }) => {
   const width = useWindowResize()
   const id = anchor.substring(1)
   return (
-    <Flex>
+    <ProjectRow>
       <InfoWrapper id={id}>
         <ProjectInfo index={index}>
           <ProjectTitle>
@@ -53,7 +67,7 @@ const Project = ({ node, index }) => {
               {node.frontmatter.title}
             </Link>
           </ProjectTitle>
-          {width <= 750 ? (
+          {width <= 1000 ? (
             <ImageCarousel images={node.frontmatter.images} />
           ) : null}
           <ProjectContent
@@ -69,12 +83,12 @@ const Project = ({ node, index }) => {
           </Tags>
         </ProjectInfo>
       </InfoWrapper>
-      {width > 750 ? (
+      {width > 1000 ? (
         <ImageWrapper id={id}>
           <FixedImageSet images={node.frontmatter.images} />
         </ImageWrapper>
       ) : null}
-    </Flex>
+    </ProjectRow>
   )
 }
 

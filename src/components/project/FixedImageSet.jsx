@@ -3,6 +3,8 @@ import styled, { css } from "styled-components"
 
 import { useImageScrollTracker } from "../../hooks/useImageScrollTracker"
 
+// ${(props) => `${props.positionX}px ${props.positionY}px`};
+
 const FixedImage = styled.div`
   background-image: url("${(props) => props.src}");
   height: 60vh;
@@ -49,23 +51,27 @@ const FixedImageSet = ({ images }) => {
     return <NormalImage src={images[0].childImageSharp.fluid.src} />
   }
 
-  return images.map((image) => (
-    <Fragment key={image.name}>
-      <FixedImage
-        visible={visibleAnchors.includes(`#${image.name}`)}
-        // isFirstImageSlideWhenScrollingUp
-        forceVisibility={
-          !scrollingDown &&
-          visibleAnchors[0] === `#${image.name}` &&
-          visibleAnchors[1] === undefined
-        }
-        id={image.name}
-        key={image.name}
-        src={image.childImageSharp.fluid.src}
-      />
-      <Placeholder />
-    </Fragment>
-  ))
+  return images.map((image) => {
+    return (
+      <Fragment key={image.name}>
+        <FixedImage
+          visible={visibleAnchors.includes(`#${image.name}`)}
+          // isFirstImageSlideWhenScrollingUp
+          forceVisibility={
+            !scrollingDown &&
+            visibleAnchors[0] === `#${image.name}` &&
+            visibleAnchors[1] === undefined
+          }
+          id={image.name}
+          key={image.name}
+          src={image.childImageSharp.fluid.src}
+          positionX={image.childImageSharp.fluid.presentationWidth}
+          positionY={image.childImageSharp.fluid.presentationHeight}
+        />
+        <Placeholder />
+      </Fragment>
+    )
+  })
 }
 
 export { FixedImageSet }

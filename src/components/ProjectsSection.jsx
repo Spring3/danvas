@@ -7,16 +7,16 @@ import { Flex } from "./Flex"
 const ProjectsWrapper = styled(Flex)`
   position: relative;
 
-  @media (min-width: 750px) {
+  @media (min-width: 1000px) {
     gap: 10rem 3rem;
   }
 `
 
 const StickyTitle = styled(Header)`
-  @media (min-width: 750px) {
+  @media (min-width: 1000px) {
     z-index: 999999;
     position: sticky;
-    top: 0;
+    top: 8%;
   }
 `
 

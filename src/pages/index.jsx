@@ -108,6 +108,8 @@ export const query = graphql`
             childImageSharp {
               fluid(maxWidth: 1080, quality: 90) {
                 src
+                presentationWidth
+                presentationHeight
               }
             }
           }
