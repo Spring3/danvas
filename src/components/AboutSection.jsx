@@ -13,6 +13,10 @@ const ContentPanel = styled(Flex)`
   height: 100vh;
   margin: 0 auto;
   padding: 1rem;
+
+  @media (min-width: 750px) {
+    width: 800px;
+  }
 `
 
 const AboutSection = ({ children }) => (

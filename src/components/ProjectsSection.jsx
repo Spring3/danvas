@@ -9,8 +9,6 @@ const ProjectsWrapper = styled(Flex)`
 
   @media (min-width: 750px) {
     gap: 10rem 3rem;
-    padding-left: 6%;
-    padding-right: 6%;
   }
 `
 
@@ -19,6 +17,13 @@ const StickyTitle = styled(Header)`
     z-index: 999999;
     position: sticky;
     top: 0;
+  }
+`
+
+const Wrapper = styled.div`
+  @media (min-width: 750px) {
+    padding-left: 6%;
+    padding-right: 6%;
   }
 `
 
@@ -32,17 +37,19 @@ const ProjectsContainer = styled(Flex)`
 
 const ProjectsSection = ({ nodes }) => (
   <ProjectsContainer direction="column">
-    <StickyTitle>Projects</StickyTitle>
-    <ProjectsWrapper direction="column" gap="5rem 3rem">
-      {nodes.map((node, i) => {
-        const theme = { marker: `#${node.frontmatter.marker}` }
-        return (
-          <ThemeProvider key={node.fields.slug} theme={theme}>
-            <Project node={node} key={i} index={i} />
-          </ThemeProvider>
-        )
-      })}
-    </ProjectsWrapper>
+    <Wrapper>
+      <StickyTitle>Projects</StickyTitle>
+      <ProjectsWrapper direction="column" gap="5rem 3rem">
+        {nodes.map((node, i) => {
+          const theme = { marker: `#${node.frontmatter.marker}` }
+          return (
+            <ThemeProvider key={node.fields.slug} theme={theme}>
+              <Project node={node} key={i} index={i} />
+            </ThemeProvider>
+          )
+        })}
+      </ProjectsWrapper>
+    </Wrapper>
   </ProjectsContainer>
 )
 
