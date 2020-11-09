@@ -2,6 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { Carousel } from "react-responsive-carousel"
 
+const CarouselContainer = styled.div`
+  padding-top: 1.5rem;
+`
+
 const StyledCarousel = styled(Carousel)`
   box-shadow: 0px 0px 10px 0px #f3f3f3;
   div:first-of-type {
@@ -26,7 +30,7 @@ const StyledCarousel = styled(Carousel)`
 
 const ImageCarousel = ({ images }) => {
   return (
-    <div>
+    <CarouselContainer>
       <StyledCarousel
         showStatus={false}
         showIndicators={false}
@@ -46,7 +50,7 @@ const ImageCarousel = ({ images }) => {
           </div>
         ))}
       </StyledCarousel>
-    </div>
+    </CarouselContainer>
   )
 }
 

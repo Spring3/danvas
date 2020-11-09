@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   }
 `
 
-const ProjectsContainer = styled(Flex)`
+const ProjectsContainer = styled.div`
   padding-bottom: 25vh;
 
   @media (max-width: 750px) {

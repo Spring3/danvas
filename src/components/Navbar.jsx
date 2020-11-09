@@ -12,8 +12,7 @@ const Navbar = styled.nav`
 
   @media (min-width: 750px) {
     top: 0;
-    padding: 1rem;
-    border-bottom: solid 1px var(--shadow-color);
+    padding: 1rem 0rem;
 
     a {
       padding: 0;

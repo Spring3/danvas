@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const PageWrapper = styled.main`
-  padding: 3.5rem 2.25rem;
+  padding: 3.5rem 6%;
 
   @media (orientation: landscape) and (min-width: 750px) and (max-width: 900px) {
     padding: 1.5rem 0rem;

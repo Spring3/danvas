@@ -5,7 +5,7 @@ import styled, { ThemeProvider } from "styled-components"
 import GlobalStyles, { OGP } from "../components/GlobalStyle"
 import { ButtonBack } from "../components/Buttons"
 import { MarkdownContent } from "../components/MarkdownContent"
-import { Header } from "../components/project/Header"
+import { Subheading } from "../components/project/Header"
 import Tags, { Tag } from "../components/project/Tags"
 import { ProjectReferences } from "../components/project/ProjectReferences"
 import { SlugListMenu } from "../components/PortfolioMenu"
@@ -14,6 +14,7 @@ import Navbar from "../components/Navbar"
 import { ImageCarousel } from "../components/ImageCarousel"
 import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { Flex } from "../components/Flex"
+import { slugToAnchor } from "../utils"
 
 const PageLayout = styled.div`
   display: grid;
@@ -21,10 +22,10 @@ const PageLayout = styled.div`
   grid-gap: 0rem 3rem;
   margin: 0 auto;
   margin-bottom: 3rem;
-  padding: 0rem 1rem;
 
   @media (max-width: 750px) {
     grid-template-columns: 100%;
+    padding: 1rem;
   }
 `
 
@@ -44,13 +45,16 @@ const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
 `
 
 const PaddedMarkdownContent = styled(MarkdownContent)`
-  padding: 1.5rem 0rem;
+  @media (max-width: 750px) {
+    padding: 1.5rem 0rem;
+  }
 `
 
 export default (props) => {
   const post = props.data.markdownRemark
   const allPosts = props.data.allMarkdownRemark.nodes
   const activeAnchor = useAnchorTracker(["#markdown"])
+  const anchor = slugToAnchor(post.fields.slug)
 
   const slugs = allPosts.map((node) => node.fields.slug)
 
@@ -69,7 +73,7 @@ export default (props) => {
       <ThemeProvider theme={theme}>
         <PageWrapper>
           <Navbar>
-            <ButtonBack href="/" value="Main Page" />
+            <ButtonBack href={`/${anchor}`} value="Main Page" />
             {activeAnchor === "#markdown" ? (
               <TinyProjectReferenceContainer
                 alignItems="center"
@@ -83,7 +87,7 @@ export default (props) => {
           </Navbar>
           <PageLayout>
             <div>
-              <Header>{post.frontmatter.title}</Header>
+              <Subheading>{post.frontmatter.title}</Subheading>
             </div>
             <ProjectReferenceContainer
               alignItems="center"
