@@ -18,14 +18,23 @@ import { slugToAnchor } from "../utils"
 
 const PageLayout = styled.div`
   display: grid;
-  grid-template-columns: auto 50%;
   grid-gap: 0rem 3rem;
   margin: 0 auto;
   margin-bottom: 3rem;
 
+  grid-template-columns: 25%;
+  grid-template-areas:
+    "nav nav nav nav"
+    "info info content content"
+    "info info content content";
+
   @media (max-width: 750px) {
-    grid-template-columns: 100%;
     padding: 1rem;
+
+    grid-template-areas:
+      "nav nav nav nav"
+      "info info info info"
+      "content content content content";
   }
 `
 
@@ -45,9 +54,18 @@ const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
 `
 
 const PaddedMarkdownContent = styled(MarkdownContent)`
+  grid-area: info;
   @media (max-width: 750px) {
     padding: 1.5rem 0rem;
   }
+`
+
+const ProjectContentNav = styled(Flex)`
+  grid-area: nav;
+`
+
+const ProjectInfo = styled.div`
+  grid-area: content;
 `
 
 export default (props) => {
@@ -86,29 +104,34 @@ export default (props) => {
             ) : null}
           </Navbar>
           <PageLayout>
-            <div>
-              <Subheading>{post.frontmatter.title}</Subheading>
-            </div>
-            <ProjectReferenceContainer
+            <ProjectContentNav
               alignItems="center"
-              flexWrap="wrap"
-              gap="1.5rem"
-              justifyContent="flex-end"
+              justifyContent="space-between"
             >
-              <ProjectReferences frontmatter={post.frontmatter} />
-            </ProjectReferenceContainer>
+              <div>
+                <Subheading>{post.frontmatter.title}</Subheading>
+              </div>
+              <ProjectReferenceContainer
+                alignItems="center"
+                flexWrap="wrap"
+                gap="1.5rem"
+                justifyContent="flex-end"
+              >
+                <ProjectReferences size={25} frontmatter={post.frontmatter} />
+              </ProjectReferenceContainer>
+            </ProjectContentNav>
             <PaddedMarkdownContent
               id="markdown"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
-            <div>
+            <ProjectInfo>
               <ImageCarousel images={post.frontmatter.images} />
               <Tags>
                 {post.frontmatter.technologies.map((tag, i) => (
                   <Tag key={i}>{tag}</Tag>
                 ))}
               </Tags>
-            </div>
+            </ProjectInfo>
           </PageLayout>
           <SlugListMenu active={post.fields.slug} slugs={slugs} />
         </PageWrapper>

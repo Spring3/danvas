@@ -7,6 +7,21 @@ const MarkdownContent = styled.div`
 
   @media (min-width: 750px) {
     h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    p,
+    ul {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    h2 {
       font-size: 2rem;
     }
 
@@ -19,6 +34,7 @@ const MarkdownContent = styled.div`
       font-size: 1.2rem;
     }
   }
+
   h2 {
     display: inline-block;
     background: linear-gradient(

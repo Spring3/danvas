@@ -12,6 +12,10 @@ const StyledReference = styled(Reference)`
   svg {
     vertical-align: top;
   }
+
+  @media (max-width: 750px) {
+    font-size: 1rem;
+  }
 `
 
 const ProjectReference = ({ href, children }) => {
