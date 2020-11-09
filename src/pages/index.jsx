@@ -30,6 +30,10 @@ const AboutSectionMarkdown = styled.div`
     color: var(--text-color-secondary);
     font-size: smaller;
   }
+
+  @media (min-width: 1000px) {
+    font-size: 1.2rem;
+  }
 `
 
 export default ({ data }) => {
