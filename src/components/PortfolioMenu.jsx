@@ -117,6 +117,9 @@ const AnchorListMenu = ({ nodes, onClick }) => {
           {node.name}
         </AnchorMenuItem>
       ))}
+      <AnchorMenuItem active={false} href="/cv" key="cv">
+        CV
+      </AnchorMenuItem>
     </MenuContainer>
   )
 }

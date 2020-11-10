@@ -29,7 +29,7 @@ const InfoWrapper = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  width: 60%;
+  width: 59%;
   gap: 0px;
 
   @media (max-width: 1200px) {
@@ -57,7 +57,7 @@ const Project = ({ node, index }) => {
   const isSmallScreen = width <= 1000
 
   return (
-    <ProjectRow id={id}>
+    <ProjectRow id={id} justifyContent="space-between">
       <InfoWrapper>
         <ProjectInfo index={index}>
           <ProjectTitle>

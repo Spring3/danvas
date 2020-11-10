@@ -91,7 +91,7 @@ export default (props) => {
       <ThemeProvider theme={theme}>
         <PageWrapper>
           <Navbar>
-            <ButtonBack href={`/${anchor}`} value="Main Page" />
+            <ButtonBack href={`/${anchor}`} value="Main page" />
             {activeAnchor === "#markdown" ? (
               <TinyProjectReferenceContainer
                 alignItems="center"

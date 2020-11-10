@@ -3,7 +3,7 @@ import throttle from "lodash.throttle"
 
 const useImageScrollTracker = (anchors) => {
   const [state, setState] = useState({
-    current: undefined,
+    current: anchors[0],
     next: undefined,
     scrollingDown: true,
   })
