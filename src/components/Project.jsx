@@ -54,9 +54,11 @@ const Project = ({ node, index }) => {
   const anchor = slugToAnchor(node.fields.slug)
   const width = useWindowResize()
   const id = anchor.substring(1)
+  const isSmallScreen = width <= 1000
+
   return (
-    <ProjectRow>
-      <InfoWrapper id={id}>
+    <ProjectRow id={id}>
+      <InfoWrapper>
         <ProjectInfo index={index}>
           <ProjectTitle>
             <Link
@@ -67,7 +69,7 @@ const Project = ({ node, index }) => {
               {node.frontmatter.title}
             </Link>
           </ProjectTitle>
-          {width <= 1000 ? (
+          {isSmallScreen ? (
             <ImageCarousel images={node.frontmatter.images} />
           ) : null}
           <ProjectContent
@@ -83,8 +85,8 @@ const Project = ({ node, index }) => {
           </Tags>
         </ProjectInfo>
       </InfoWrapper>
-      {width > 1000 ? (
-        <ImageWrapper id={id}>
+      {!isSmallScreen ? (
+        <ImageWrapper>
           <FixedImageSet images={node.frontmatter.images} />
         </ImageWrapper>
       ) : null}

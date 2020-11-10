@@ -18,6 +18,7 @@ const Flex = ({
   children,
   direction,
   gap,
+  id,
   justifyContent,
   alignItems,
   flexGrow,
@@ -26,6 +27,7 @@ const Flex = ({
 }) => {
   return (
     <FlexContainer
+      id={id}
       direction={direction}
       gap={gap}
       justifyContent={justifyContent}
@@ -40,6 +42,7 @@ const Flex = ({
 }
 
 Flex.propTypes = {
+  id: PropTypes.string,
   flexGrow: PropTypes.string,
   direction: PropTypes.oneOf([
     "row",
