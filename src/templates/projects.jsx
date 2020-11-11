@@ -80,6 +80,11 @@ export default (props) => {
     post.frontmatter.marker,
   ])
 
+  const images = post.frontmatter.images.map((image) => ({
+    name: image.name,
+    ...image.childImageSharp.fluid,
+  }))
+
   return (
     <>
       <GlobalStyles />
@@ -125,7 +130,7 @@ export default (props) => {
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
             <ProjectInfo>
-              <ImageCarousel images={post.frontmatter.images} />
+              <ImageCarousel images={images} />
               <Tags>
                 {post.frontmatter.technologies.map((tag, i) => (
                   <Tag key={i}>{tag}</Tag>

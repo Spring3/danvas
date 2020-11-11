@@ -43,9 +43,9 @@ const ImageCarousel = ({ images }) => {
           <div key={i}>
             <img
               alt={image.name}
-              src={image.childImageSharp.fluid.src}
-              srcSet={image.childImageSharp.fluid.srcSet}
-              sizes={image.childImageSharp.fluid.sizes}
+              src={image.src}
+              srcSet={image.srcSet}
+              sizes={image.sizes}
             />
           </div>
         ))}

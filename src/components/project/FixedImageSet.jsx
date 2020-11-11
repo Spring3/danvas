@@ -9,7 +9,7 @@ const FixedImage = styled.div`
   background-image: url("${(props) => props.src}");
   height: 60vh;
   background-attachment: fixed;
-  background-position: 85% 41%;
+  background-position: 86% 40%;
   background-repeat: no-repeat;
   background-size: 50% auto;
   position: sticky;
@@ -48,7 +48,7 @@ const FixedImageSet = ({ images }) => {
   }
 
   if (images.length === 1) {
-    return <NormalImage src={images[0].childImageSharp.fluid.src} />
+    return <NormalImage src={images[0].src} />
   }
 
   return images.map((image) => {
@@ -64,9 +64,7 @@ const FixedImageSet = ({ images }) => {
           }
           id={image.name}
           key={image.name}
-          src={image.childImageSharp.fluid.src}
-          positionX={image.childImageSharp.fluid.presentationWidth}
-          positionY={image.childImageSharp.fluid.presentationHeight}
+          src={image.src}
         />
         <Placeholder />
       </Fragment>

@@ -56,6 +56,11 @@ const Project = ({ node, index }) => {
   const id = anchor.substring(1)
   const isSmallScreen = width <= 1000
 
+  const images = node.frontmatter.images.map((image) => ({
+    name: image.name,
+    ...image.childImageSharp.fluid,
+  }))
+
   return (
     <ProjectRow id={id} justifyContent="space-between">
       <InfoWrapper>
@@ -69,9 +74,7 @@ const Project = ({ node, index }) => {
               {node.frontmatter.title}
             </Link>
           </ProjectTitle>
-          {isSmallScreen ? (
-            <ImageCarousel images={node.frontmatter.images} />
-          ) : null}
+          {isSmallScreen ? <ImageCarousel images={images} /> : null}
           <ProjectContent
             marker={node.frontmatter.marker}
             dangerouslySetInnerHTML={{ __html: node.html }}
@@ -87,7 +90,7 @@ const Project = ({ node, index }) => {
       </InfoWrapper>
       {!isSmallScreen ? (
         <ImageWrapper>
-          <FixedImageSet images={node.frontmatter.images} />
+          <FixedImageSet images={images} />
         </ImageWrapper>
       ) : null}
     </ProjectRow>
