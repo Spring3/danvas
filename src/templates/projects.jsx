@@ -15,6 +15,7 @@ import { ImageCarousel } from "../components/ImageCarousel"
 import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { Flex } from "../components/Flex"
 import { slugToAnchor } from "../utils"
+import { useWindowResize } from "../hooks/useWindowResize"
 
 const PageLayout = styled.div`
   display: grid;
@@ -73,12 +74,15 @@ export default (props) => {
   const allPosts = props.data.allMarkdownRemark.nodes
   const activeAnchor = useAnchorTracker(["#markdown"])
   const anchor = slugToAnchor(post.fields.slug)
+  const width = useWindowResize()
 
   const slugs = allPosts.map((node) => node.fields.slug)
 
   const theme = useMemo(() => ({ marker: `#${post.frontmatter.marker}` }), [
     post.frontmatter.marker,
   ])
+
+  const isSmallScreen = width <= 750
 
   const images = post.frontmatter.images.map((image) => ({
     name: image.name,
@@ -97,7 +101,7 @@ export default (props) => {
         <PageWrapper>
           <Navbar>
             <ButtonBack href={`/${anchor}`} value="Main page" />
-            {activeAnchor === "#markdown" ? (
+            {isSmallScreen && activeAnchor === "#markdown" ? (
               <TinyProjectReferenceContainer
                 alignItems="center"
                 flexWrap="wrap"

@@ -25,8 +25,14 @@ const FixedImage = styled.div`
     `}
 `
 
-const Placeholder = styled(FixedImage)`
-  background: transparent;
+const Placeholder = styled.div`
+  height: 60vh;
+  background-attachment: fixed;
+  background-position: 86% 40%;
+  background-repeat: no-repeat;
+  background-size: 50% auto;
+  position: sticky;
+  top: 16%;
 `
 
 const NormalImage = styled.div`
