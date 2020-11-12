@@ -21,7 +21,7 @@ const ProjectInfo = styled.div`
 const InfoWrapper = styled.div`
   width: 100%;
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1001px) {
     width: 40%;
     position: sticky;
     top: 16%;
