@@ -15,6 +15,7 @@ const FixedImage = styled.div`
   position: sticky;
   top: 16%;
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
+  background-color: white;
 
   ${(props) =>
     props.forceVisibility &&
@@ -62,7 +63,6 @@ const FixedImageSet = ({ images }) => {
       <Fragment key={image.name}>
         <FixedImage
           visible={visibleAnchors.includes(`#${image.name}`)}
-          // isFirstImageSlideWhenScrollingUp
           forceVisibility={
             !scrollingDown &&
             visibleAnchors[0] === `#${image.name}` &&
