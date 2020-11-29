@@ -52,7 +52,7 @@ const ProjectContent = styled(MarkdownContent)`
 
 const Project = ({ node, index }) => {
   const anchor = slugToAnchor(node.fields.slug)
-  const width = useWindowResize()
+  const { width } = useWindowResize()
   const id = anchor.substring(1)
   const isSmallScreen = width <= 1000
 

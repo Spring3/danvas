@@ -2,10 +2,14 @@ import { useEffect, useState } from "react"
 import throttle from "lodash.throttle"
 
 const useWindowResize = () => {
-  const [width, setWidth] = useState(window.innerWidth)
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+
   useEffect(() => {
     const onResize = () => {
-      setWidth(window.innerWidth)
+      setSize({ width: window.innerWidth, height: window.innerHeight })
     }
 
     const throttledResize = throttle(onResize, 300)
@@ -15,7 +19,7 @@ const useWindowResize = () => {
     return () => window.removeEventListener("resize", throttledResize)
   }, [])
 
-  return width
+  return size
 }
 
 export { useWindowResize }

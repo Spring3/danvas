@@ -16,6 +16,7 @@ import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { Flex } from "../components/Flex"
 import { slugToAnchor } from "../utils"
 import { useWindowResize } from "../hooks/useWindowResize"
+import { ImagePreviewPortal } from "../components/ImagePreview"
 
 const PageLayout = styled.div`
   display: grid;
@@ -74,7 +75,7 @@ export default (props) => {
   const allPosts = props.data.allMarkdownRemark.nodes
   const activeAnchor = useAnchorTracker(["#markdown"])
   const anchor = slugToAnchor(post.fields.slug)
-  const width = useWindowResize()
+  const { width } = useWindowResize()
 
   const slugs = allPosts.map((node) => node.fields.slug)
 
@@ -98,6 +99,7 @@ export default (props) => {
         image={post.frontmatter.thumbnail.childImageSharp.fluid.src}
       />
       <ThemeProvider theme={theme}>
+        <ImagePreviewPortal />
         <PageWrapper>
           <Navbar>
             <ButtonBack href={`/${anchor}`} value="Main page" />
