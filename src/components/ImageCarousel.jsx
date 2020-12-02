@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { Carousel } from "react-responsive-carousel"
-import { ImagePreview, PreviewContainer } from "./ImagePreview"
-import { useWindowResize } from "../hooks/useWindowResize"
+import { ImagePreview, ImagePreviewContainer } from "./ImagePreview"
 
 const CarouselContainer = styled.div`
   padding-top: ${(props) => (props.isPreview ? "0" : "1.5rem")};
@@ -29,74 +28,37 @@ const StyledCarousel = styled(Carousel)`
     }
   }
 `
-
-const PreviewCarousel = styled(Carousel)`
-  max-width: 80%;
-  margin: 0 auto;
-  padding: ${(props) => props.verticalMargin}px 0;
-`
-
 const ImageCarousel = ({ images }) => {
-  const { height } = useWindowResize()
   const [isPreview, setPreview] = useState(false)
 
-  const verticalMargin = Math.floor((height * 0.2) / 2)
-  console.log("verticalMargin", verticalMargin)
-
-  if (isPreview) {
-    return (
-      <ImagePreview>
-        <PreviewContainer>
-          <CarouselContainer isPreview={isPreview}>
-            <PreviewCarousel
-              showStatus={false}
-              showIndicators={false}
-              showThumbs={false}
-              infiniteLoop={false}
-              autoPlay={false}
-              dynamicHeight={false}
-              verticalMargin={verticalMargin}
-            >
-              {images.map((image, i) => (
-                <div key={i}>
-                  <img
-                    alt={image.name}
-                    src={image.src}
-                    srcSet={image.srcSet}
-                    sizes={image.sizes}
-                  />
-                </div>
-              ))}
-            </PreviewCarousel>
-          </CarouselContainer>
-        </PreviewContainer>
-      </ImagePreview>
-    )
-  }
-
   return (
-    <CarouselContainer>
-      <StyledCarousel
-        showStatus={false}
-        showIndicators={false}
-        showThumbs={false}
-        infiniteLoop={true}
-        autoPlay={true}
-        dynamicHeight={true}
-        onClickItem={() => setPreview(true)}
-      >
-        {images.map((image, i) => (
-          <div key={i}>
-            <img
-              alt={image.name}
-              src={image.src}
-              srcSet={image.srcSet}
-              sizes={image.sizes}
-            />
-          </div>
-        ))}
-      </StyledCarousel>
-    </CarouselContainer>
+    <>
+      {isPreview ? (
+        <ImagePreview images={images} onClose={() => setPreview(false)} />
+      ) : null}
+      <CarouselContainer>
+        <StyledCarousel
+          showStatus={false}
+          showIndicators={false}
+          showThumbs={false}
+          infiniteLoop={true}
+          autoPlay={true}
+          dynamicHeight={true}
+          onClickItem={() => setPreview(true)}
+        >
+          {images.map((image, i) => (
+            <div key={i}>
+              <img
+                alt={image.name}
+                src={image.src}
+                srcSet={image.srcSet}
+                sizes={image.sizes}
+              />
+            </div>
+          ))}
+        </StyledCarousel>
+      </CarouselContainer>
+    </>
   )
 }
 

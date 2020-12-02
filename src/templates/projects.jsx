@@ -16,7 +16,7 @@ import { useAnchorTracker } from "../hooks/useAnchorTracker"
 import { Flex } from "../components/Flex"
 import { slugToAnchor } from "../utils"
 import { useWindowResize } from "../hooks/useWindowResize"
-import { ImagePreviewPortal } from "../components/ImagePreview"
+import { ImagePreviewContainer } from "../components/ImagePreview"
 
 const PageLayout = styled.div`
   display: grid;
@@ -99,7 +99,7 @@ export default (props) => {
         image={post.frontmatter.thumbnail.childImageSharp.fluid.src}
       />
       <ThemeProvider theme={theme}>
-        <ImagePreviewPortal />
+        <ImagePreviewContainer />
         <PageWrapper>
           <Navbar>
             <ButtonBack href={`/${anchor}`} value="Main page" />
