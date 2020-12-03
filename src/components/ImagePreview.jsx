@@ -38,7 +38,7 @@ const PreviewContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
 `
 
 const PreviewImages = styled.div`
@@ -47,7 +47,7 @@ const PreviewImages = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: calc(100% - 200px);
+  max-width: calc(100% - 100px);
   margin: 0 auto;
 
   @media (max-width: 700px) {
@@ -57,19 +57,52 @@ const PreviewImages = styled.div`
 
 const PreviewButton = styled.button`
   z-index: 2;
-  width: 100px;
-  height: 100px;
-  background: transparent;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
   border: none;
+
+  svg {
+    fill: rgba(255, 255, 255, 0.5);
+  }
 
   &:focus {
     outline: none;
   }
 
+  &:focus,
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    svg {
+      fill: rgba(255, 255, 255, 1);
+    }
+  }
+
   cursor: pointer;
 
   @media (max-width: 700px) {
-    display: none;
+    position: absolute;
+  }
+`
+
+const ButtonPrevious = styled(PreviewButton)`
+  @media (min-width; 7001px) {
+    margin-left: 1rem;
+  }
+
+  @media (max-width: 700px) {
+    left: 1rem;
+  }
+`
+
+const ButtonNext = styled(PreviewButton)`
+  @media (min-width; 7001px) {
+    margin-right: 1rem;
+  }
+
+  @media (max-width: 700px) {
+    right: 1rem;
   }
 `
 
@@ -99,6 +132,14 @@ const IconClose = styled(CloseIcon)`
   top: 1rem;
   right: 1rem;
   cursor: pointer;
+
+  padding: 1rem;
+  fill: rgba(255, 255, 255, 0.5);
+
+  &:focus,
+  &:hover {
+    fill: rgba(255, 255, 255, 1);
+  }
 `
 
 const ImagePreview = ({ images, startIndex = 0, onClose }) => {
@@ -146,9 +187,9 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
     <ImagePreviewPortal>
       <PreviewContainer onClick={onClose}>
         <IconClose color="white" />
-        <PreviewButton onClick={previousSlide}>
+        <ButtonPrevious onClick={previousSlide}>
           <ArrowLeftIcon color="white" />
-        </PreviewButton>
+        </ButtonPrevious>
         <PreviewImages>
           {images.map((image, i) => (
             <SlidingImage
@@ -159,9 +200,9 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
             />
           ))}
         </PreviewImages>
-        <PreviewButton onClick={nextSlide}>
+        <ButtonNext onClick={nextSlide}>
           <ArrowRightIcon color="white" />
-        </PreviewButton>
+        </ButtonNext>
       </PreviewContainer>
     </ImagePreviewPortal>
   )
