@@ -114,6 +114,9 @@ export const query = graphql`
                 src
                 sizes
                 srcSet
+                aspectRatio
+                presentationWidth
+                presentationHeight
               }
             }
           }
