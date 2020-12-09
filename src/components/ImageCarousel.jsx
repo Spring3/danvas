@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { Carousel } from "react-responsive-carousel"
-import { ImagePreview, ImagePreviewContainer } from "./ImagePreview"
+import { ImagePreview } from "./ImagePreview"
 
 const CarouselContainer = styled.div`
   padding-top: ${(props) => (props.isPreview ? "0" : "1.5rem")};

@@ -2,8 +2,6 @@ import React, { Fragment } from "react"
 import styled from "styled-components"
 import { useWindowResize } from "../../hooks/useWindowResize"
 
-// background-size: ${props => props.size}% auto;
-
 const FixedImage = styled.div`
   background-image: url("${(props) => props.src}");
   height: ${(props) => props.height}px;

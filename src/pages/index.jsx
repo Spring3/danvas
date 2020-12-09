@@ -9,6 +9,7 @@ import { AnchorListMenu } from "../components/PortfolioMenu"
 import { slugToAnchor } from "../utils"
 import { styles } from "../components/Reference"
 import { Footer } from "../components/Footer"
+import { ImagePreviewContainer } from "../components/ImagePreview"
 
 const AboutSectionMarkdown = styled.div`
   a {
@@ -71,6 +72,7 @@ export default ({ data }) => {
         description={siteMetadata.description}
         image={siteMetadata.image}
       />
+      <ImagePreviewContainer />
       <main>
         <AboutSection>
           <AboutSectionMarkdown
