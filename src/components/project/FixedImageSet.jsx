@@ -27,7 +27,7 @@ const Placeholder = styled.div`
 const NormalImage = styled.div`
   background-image: url("${(props) => props.src}");
   height: 66vh;
-  background-position: 85% center;
+  background-position: 86% center;
   background-repeat: no-repeat;
   background-size: contain;
 `

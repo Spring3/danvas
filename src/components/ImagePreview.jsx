@@ -4,6 +4,7 @@ import styled, { css } from "styled-components"
 import ArrowLeftIcon from "mdi-react/ArrowLeftThickIcon"
 import ArrowRightIcon from "mdi-react/ArrowRightThickIcon"
 import CloseIcon from "mdi-react/CloseIcon"
+import { Helmet } from "react-helmet"
 import {
   slideInNormalAnimation,
   slideInReversedAnimation,
@@ -30,11 +31,11 @@ const ImagePreviewContainer = ({ children }) => {
 }
 
 const PreviewContainer = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -172,39 +173,57 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
 
   if (images.length === 1) {
     return (
-      <ImagePreviewPortal>
-        <PreviewContainer onClick={onClose}>
-          <IconClose color="white" />
-          <PreviewImages>
-            <img src={images[0].src} />
-          </PreviewImages>
-        </PreviewContainer>
-      </ImagePreviewPortal>
+      <>
+        <Helmet>
+          <style type="text/css">{`
+            body {
+              overflow: hidden;
+            }
+          `}</style>
+        </Helmet>
+        <ImagePreviewPortal>
+          <PreviewContainer onClick={onClose}>
+            <IconClose color="white" />
+            <PreviewImages>
+              <img src={images[0].src} />
+            </PreviewImages>
+          </PreviewContainer>
+        </ImagePreviewPortal>
+      </>
     )
   }
 
   return (
-    <ImagePreviewPortal>
-      <PreviewContainer onClick={onClose}>
-        <IconClose color="white" />
-        <ButtonPrevious onClick={previousSlide}>
-          <ArrowLeftIcon color="white" />
-        </ButtonPrevious>
-        <PreviewImages>
-          {images.map((image, i) => (
-            <SlidingImage
-              src={image.src}
-              key={i}
-              active={position.index === i}
-              direction={position.order}
-            />
-          ))}
-        </PreviewImages>
-        <ButtonNext onClick={nextSlide}>
-          <ArrowRightIcon color="white" />
-        </ButtonNext>
-      </PreviewContainer>
-    </ImagePreviewPortal>
+    <>
+      <Helmet>
+        <style type="text/css">{`
+          body {
+            overflow: hidden;
+          }
+        `}</style>
+      </Helmet>
+      <ImagePreviewPortal>
+        <PreviewContainer onClick={onClose}>
+          <IconClose color="white" />
+          <ButtonPrevious onClick={previousSlide}>
+            <ArrowLeftIcon color="white" />
+          </ButtonPrevious>
+          <PreviewImages>
+            {images.map((image, i) => (
+              <SlidingImage
+                src={image.src}
+                key={i}
+                active={position.index === i}
+                direction={position.order}
+              />
+            ))}
+          </PreviewImages>
+          <ButtonNext onClick={nextSlide}>
+            <ArrowRightIcon color="white" />
+          </ButtonNext>
+        </PreviewContainer>
+      </ImagePreviewPortal>
+    </>
   )
 }
 
