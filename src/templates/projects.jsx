@@ -30,7 +30,7 @@ const PageLayout = styled.div`
     "info info content content"
     "info info content content";
 
-  @media (max-width: 750px) {
+  @media (max-width: 1000px) {
     padding: 1rem;
 
     grid-template-areas:
@@ -83,7 +83,7 @@ export default (props) => {
     post.frontmatter.marker,
   ])
 
-  const isSmallScreen = width <= 750
+  const isSmallScreen = width <= 1000
 
   const images = post.frontmatter.images.map((image) => ({
     name: image.name,
