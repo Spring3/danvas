@@ -29,20 +29,18 @@ const StyledDownloadButton = styled(Reference)`
   vertical-align: top;
   text-decoration: none;
   background: var(--marker-green) !important;
-  padding: 10px;
+  padding: 5px !important;
   border-radius: 3px;
 
   &:hover {
     box-shadow: 0px 0px 10px var(--marker-green);
   }
 
-  &:pressed {
-    box-shadow: none;
-    border: 2px solid var(--marker-green);
+  &:active {
+    box-shadow: none !important;
   }
 
   @media (max-width: 750px) {
-    padding: 5px;
     text-align: center;
   }
 `
