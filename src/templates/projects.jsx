@@ -83,8 +83,6 @@ export default (props) => {
     post.frontmatter.marker,
   ])
 
-  const isSmallScreen = width <= 1000
-
   const images = post.frontmatter.images.map((image) => ({
     name: image.name,
     ...image.childImageSharp.fluid,
@@ -103,7 +101,7 @@ export default (props) => {
         <PageWrapper>
           <Navbar>
             <ButtonBack href={`/${anchor}`} value="Main page" />
-            {isSmallScreen && activeAnchor === "#markdown" ? (
+            {activeAnchor === "#markdown" ? (
               <TinyProjectReferenceContainer
                 alignItems="center"
                 flexWrap="wrap"

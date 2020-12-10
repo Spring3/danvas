@@ -18,31 +18,29 @@ const CVWrapper = styled.div`
 
 const CVSectionBlock = styled.div`
   margin-top: 3rem;
-
-  &:first-child {
-    margin-top: 0rem;
-  }
 `
 
 const StickySubheading = styled(Subheading)`
-  position: sticky;
-  top: 100px;
-
   @media (max-width: 750px) {
     position: static;
     margin-top: 3rem;
   }
 `
 
-const DoubleColumnGrid = styled.div`
+const Grid = styled.div`
   display: grid;
-  grid-template-columns: 25% auto;
+  grid-template-columns: 50% auto;
+  grid-template-rows: repeat(auto-fill, minmax(2rem, 1fr));
   grid-gap: 3rem 4rem;
   padding-bottom: 6rem;
   margin-top: 2rem;
 
-  section {
-    margin-top: 4rem;
+  section#experience {
+    grid-row: span 2;
+  }
+
+  section ${CVSectionBlock}:first-of-type {
+    margin-top: 0;
   }
 
   @media (max-width: 750px) {
@@ -126,54 +124,9 @@ export default ({ data }) => {
             ecosystem.
           </p>
           <SocialButtons onlyImportant={true} />
-          <DoubleColumnGrid id="intro-section">
-            <div>
-              <StickySubheading marker="#F78888">Skills</StickySubheading>
-            </div>
-            <section id="skills">
-              <p>
-                <strong>Back-end</strong>
-                <span>: Node.js, Express, RabbitMQ</span>
-              </p>
-              <p>
-                <strong>Front-end</strong>
-                <span>: Javascript, HTML, CSS, React, Redux, Overmind</span>
-              </p>
-              <p>
-                <strong>Databases</strong>
-                <span>: Mongodb, Redis, MySQL</span>
-              </p>
-              <p>
-                <strong>Build tools</strong>
-                <span>: Webpack</span>
-              </p>
-              <p>
-                <strong>Testing</strong>: testing-library, Jest, Chai, Sinon,
-                Nyc, Karma, Enzyme
-              </p>
-              <p>
-                <strong>Devops</strong>
-                <span>: Docker</span>
-              </p>
-              <p>
-                <strong>CI/CD</strong>
-                <span>: CircleCI, Travis, SonarQube, Netlify, Heroku</span>
-              </p>
-              <p>
-                <strong>VCS</strong>
-                <span>: Git</span>
-              </p>
-              <p justifyContent="flex-start">
-                <strong>Misc</strong>
-                <span>
-                  : Electron, Lerna, Gatsby, Basics of Elm, Basics of UX Design
-                </span>
-              </p>
-            </section>
-            <div>
-              <StickySubheading marker="#BCE5FF">Experience</StickySubheading>
-            </div>
+          <Grid id="intro-section">
             <section id="experience">
+              <StickySubheading marker="#BCE5FF">Experience</StickySubheading>
               <CVSectionBlock>
                 <h3>Full Stack Software Engineer</h3>
                 <p>
@@ -255,10 +208,49 @@ export default ({ data }) => {
                 </Flex>
               </CVSectionBlock>
             </section>
-            <div>
-              <StickySubheading marker="#FCF6B1">Education</StickySubheading>
-            </div>
+            <section id="skills">
+              <StickySubheading marker="#F78888">Skills</StickySubheading>
+              <p>
+                <strong>Back-end</strong>
+                <span>: Node.js, Express, RabbitMQ</span>
+              </p>
+              <p>
+                <strong>Front-end</strong>
+                <span>: Javascript, HTML, CSS, React, Redux, Overmind</span>
+              </p>
+              <p>
+                <strong>Databases</strong>
+                <span>: Mongodb, Redis, MySQL</span>
+              </p>
+              <p>
+                <strong>Build tools</strong>
+                <span>: Webpack</span>
+              </p>
+              <p>
+                <strong>Testing</strong>: testing-library, Jest, Chai, Sinon,
+                Nyc, Karma, Enzyme
+              </p>
+              <p>
+                <strong>Devops</strong>
+                <span>: Docker</span>
+              </p>
+              <p>
+                <strong>CI/CD</strong>
+                <span>: CircleCI, Travis, SonarQube, Netlify, Heroku</span>
+              </p>
+              <p>
+                <strong>VCS</strong>
+                <span>: Git</span>
+              </p>
+              <p justifyContent="flex-start">
+                <strong>Misc</strong>
+                <span>
+                  : Electron, Lerna, Gatsby, Basics of Elm, Basics of UX Design
+                </span>
+              </p>
+            </section>
             <section id="education">
+              <StickySubheading marker="#FCF6B1">Education</StickySubheading>
               <CVSectionBlock>
                 <h3>Specialist Degree</h3>
                 <p>
@@ -307,10 +299,8 @@ export default ({ data }) => {
                 </Flex>
               </CVSectionBlock>
             </section>
-            <div>
-              <StickySubheading marker="#A9E5BB">Courses</StickySubheading>
-            </div>
             <section id="courses">
+              <StickySubheading marker="#A9E5BB">Courses</StickySubheading>
               <h3>Java Enterprise Edition</h3>
               <p>
                 <strong>Provider</strong>
@@ -327,18 +317,16 @@ export default ({ data }) => {
                 <li>JPA</li>
               </Flex>
             </section>
-            <div>
+            <section id="language skills">
               <StickySubheading marker="#C3A9FF">
                 Language Skills
               </StickySubheading>
-            </div>
-            <section id="language skills">
               <Flex direction="column" gap="0.5rem">
                 <li>English - C1 (7.5 - IELTS, Aug 2019)</li>
                 <li>German - B1</li>
               </Flex>
             </section>
-          </DoubleColumnGrid>
+          </Grid>
         </CVWrapper>
         <DownloadFooter>
           {activeAnchor === "#intro-section" ? (
