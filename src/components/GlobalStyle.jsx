@@ -1,8 +1,8 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { createGlobalStyle, css } from "styled-components"
-import "normalize.css"
-import "react-responsive-carousel/lib/styles/carousel.min.css"
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { createGlobalStyle, css } from 'styled-components';
+import 'normalize.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default createGlobalStyle`
   :root {
@@ -35,7 +35,7 @@ export default createGlobalStyle`
   main {
     padding: 0;
   }
-`
+`;
 
 export const fontScaling = css`
   font-weight: 1rem;
@@ -43,7 +43,7 @@ export const fontScaling = css`
   @media (max-width: 750px) {
     font-weight: 0.8rem;
   }
-`
+`;
 
 export const OGP = ({ title, description, image }) => (
   <Helmet>
@@ -53,4 +53,4 @@ export const OGP = ({ title, description, image }) => (
     <meta property="og:image" content={image} />
     <title>Daniyil Vasylenko</title>
   </Helmet>
-)
+);

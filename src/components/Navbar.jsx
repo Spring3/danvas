@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const Navbar = styled.nav`
   position: sticky;
@@ -61,6 +61,6 @@ const Navbar = styled.nav`
       text-align: right;
     }
   }
-`
+`;
 
-export default Navbar
+export default Navbar;

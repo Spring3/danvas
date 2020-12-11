@@ -8,6 +8,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "lint": "eslint . --fix --ext js,jsx,ts,tsx",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
@@ -36,10 +37,18 @@
     "react-helmet": "^6.1.0",
     "react-responsive-carousel": "^3.2.9",
     "react-spring": "^8.0.27",
+    "react-use-gesture": "^8.0.1",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.2.5",
+    "lint-staged": "^10.5.3",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"
   },
@@ -53,9 +62,18 @@
     "url": "https://github.com/Spring3/website/issues"
   },
   "homepage": "https://github.com/Spring3/website#readme",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "lint-staged"
     }
   }
 }

@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "styled-components"
-import { Flex } from "../Flex"
+import React from 'react';
+import styled from 'styled-components';
+import { Flex } from '../Flex';
 
 const Tags = styled(Flex)`
   margin-top: 1.5rem;
-`
+`;
 
 const TagItem = styled.li`
   display: inline-block;
@@ -14,8 +14,13 @@ const TagItem = styled.li`
   padding: 3px 5px;
   margin: 0.25rem;
   font-size: 0.8rem;
-`
+`;
 
-export const Tag = ({ children }) => <TagItem>{children}&nbsp;</TagItem>
+export const Tag = ({ children }) => (
+  <TagItem>
+    {children}
+&nbsp;
+  </TagItem>
+);
 
-export default Tags
+export default Tags;

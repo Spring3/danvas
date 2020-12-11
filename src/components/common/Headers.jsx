@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const Header = styled.h1`
   font-weight: 3rem;
@@ -10,7 +10,7 @@ const Header = styled.h1`
   @media (max-width: 750px) {
     font-weight: 1.5rem;
   }
-`
+`;
 
 const Subheader = styled.h2`
   font-weight: 2rem;
@@ -22,6 +22,6 @@ const Subheader = styled.h2`
   @media (max-width: 750px) {
     font-weight: 1rem;
   }
-`
+`;
 
-export { Header, Subheader }
+export { Header, Subheader };

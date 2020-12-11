@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const DownloadFooter = styled.footer`
   position: fixed;
@@ -19,6 +19,6 @@ const DownloadFooter = styled.footer`
   @media (max-width: 750px) {
     display: flex;
   }
-`
+`;
 
-export { DownloadFooter }
+export { DownloadFooter };

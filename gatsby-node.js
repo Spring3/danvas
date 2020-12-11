@@ -9,12 +9,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: slug
+      value: slug,
     });
   }
-}
+};
 
-exports.createPages = ({ graphql, actions}) => {
+exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return graphql(`
     {
@@ -35,18 +35,18 @@ exports.createPages = ({ graphql, actions}) => {
           path: node.fields.slug,
           component: path.resolve('./src/templates/cv.jsx'),
           context: {
-            slug: node.fields.slug
-          }
-        })
+            slug: node.fields.slug,
+          },
+        });
       } else if (node.fields.slug !== '/') {
         createPage({
           path: node.fields.slug,
           component: path.resolve('./src/templates/projects.jsx'),
           context: {
-            slug: node.fields.slug
-          }
+            slug: node.fields.slug,
+          },
         });
       }
     }
   });
-}
+};

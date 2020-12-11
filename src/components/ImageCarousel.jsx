@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import { Carousel } from "react-responsive-carousel"
-import { ImagePreview } from "./ImagePreview"
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Carousel } from 'react-responsive-carousel';
+import { ImagePreview } from './ImagePreview';
 
 const CarouselContainer = styled.div`
-  padding-top: ${(props) => (props.isPreview ? "0" : "1.5rem")};
-`
+  padding-top: ${(props) => (props.isPreview ? '0' : '1.5rem')};
+`;
 
 const StyledCarousel = styled(Carousel)`
   box-shadow: 0px 0px 10px 0px #f3f3f3;
@@ -27,9 +27,9 @@ const StyledCarousel = styled(Carousel)`
       max-height: 80vh;
     }
   }
-`
+`;
 const ImageCarousel = ({ images }) => {
-  const [isPreview, setPreview] = useState(false)
+  const [isPreview, setPreview] = useState(false);
 
   return (
     <>
@@ -41,9 +41,9 @@ const ImageCarousel = ({ images }) => {
           showStatus={false}
           showIndicators={false}
           showThumbs={false}
-          infiniteLoop={true}
-          autoPlay={true}
-          dynamicHeight={true}
+          infiniteLoop
+          autoPlay
+          dynamicHeight
           onClickItem={() => setPreview(true)}
         >
           {images.map((image, i) => (
@@ -59,7 +59,7 @@ const ImageCarousel = ({ images }) => {
         </StyledCarousel>
       </CarouselContainer>
     </>
-  )
-}
+  );
+};
 
-export { ImageCarousel }
+export { ImageCarousel };

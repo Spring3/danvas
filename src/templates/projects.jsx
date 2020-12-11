@@ -1,22 +1,22 @@
-import React, { useMemo } from "react"
-import { graphql } from "gatsby"
-import styled, { ThemeProvider } from "styled-components"
+import React, { useMemo } from 'react';
+import { graphql } from 'gatsby';
+import styled, { ThemeProvider } from 'styled-components';
 
-import GlobalStyles, { OGP } from "../components/GlobalStyle"
-import { ButtonBack } from "../components/Buttons"
-import { MarkdownContent } from "../components/MarkdownContent"
-import { Subheading } from "../components/project/Header"
-import Tags, { Tag } from "../components/project/Tags"
-import { ProjectReferences } from "../components/project/ProjectReferences"
-import { SlugListMenu } from "../components/PortfolioMenu"
-import { PageWrapper } from "../components/PageWrapper"
-import Navbar from "../components/Navbar"
-import { ImageCarousel } from "../components/ImageCarousel"
-import { useAnchorTracker } from "../hooks/useAnchorTracker"
-import { Flex } from "../components/Flex"
-import { slugToAnchor } from "../utils"
-import { useWindowResize } from "../hooks/useWindowResize"
-import { ImagePreviewContainer } from "../components/ImagePreview"
+import GlobalStyles, { OGP } from '../components/GlobalStyle';
+import { ButtonBack } from '../components/Buttons';
+import { MarkdownContent } from '../components/MarkdownContent';
+import { Subheading } from '../components/project/Header';
+import Tags, { Tag } from '../components/project/Tags';
+import { ProjectReferences } from '../components/project/ProjectReferences';
+import { SlugListMenu } from '../components/PortfolioMenu';
+import { PageWrapper } from '../components/PageWrapper';
+import Navbar from '../components/Navbar';
+import { ImageCarousel } from '../components/ImageCarousel';
+import { useAnchorTracker } from '../hooks/useAnchorTracker';
+import { Flex } from '../components/Flex';
+import { slugToAnchor } from '../utils';
+import { useWindowResize } from '../hooks/useWindowResize';
+import { ImagePreviewContainer } from '../components/ImagePreview';
 
 const PageLayout = styled.div`
   display: grid;
@@ -38,13 +38,13 @@ const PageLayout = styled.div`
       "info info info info"
       "content content content content";
   }
-`
+`;
 
 const ProjectReferenceContainer = styled(Flex)`
   @media (max-width: 750px) {
     justify-content: flex-start;
   }
-`
+`;
 
 const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
   @media (max-width: 750px) {
@@ -53,40 +53,40 @@ const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
       font-size: 1rem;
     }
   }
-`
+`;
 
 const PaddedMarkdownContent = styled(MarkdownContent)`
   grid-area: info;
   @media (max-width: 750px) {
     padding: 1.5rem 0rem;
   }
-`
+`;
 
 const ProjectContentNav = styled(Flex)`
   grid-area: nav;
-`
+`;
 
 const ProjectInfo = styled.div`
   grid-area: content;
-`
+`;
 
 export default (props) => {
-  const post = props.data.markdownRemark
-  const allPosts = props.data.allMarkdownRemark.nodes
-  const activeAnchor = useAnchorTracker(["#markdown"])
-  const anchor = slugToAnchor(post.fields.slug)
-  const { width } = useWindowResize()
+  const post = props.data.markdownRemark;
+  const allPosts = props.data.allMarkdownRemark.nodes;
+  const activeAnchor = useAnchorTracker(['#markdown']);
+  const anchor = slugToAnchor(post.fields.slug);
+  const { width } = useWindowResize();
 
-  const slugs = allPosts.map((node) => node.fields.slug)
+  const slugs = allPosts.map((node) => node.fields.slug);
 
   const theme = useMemo(() => ({ marker: `#${post.frontmatter.marker}` }), [
     post.frontmatter.marker,
-  ])
+  ]);
 
   const images = post.frontmatter.images.map((image) => ({
     name: image.name,
     ...image.childImageSharp.fluid,
-  }))
+  }));
 
   return (
     <>
@@ -101,7 +101,7 @@ export default (props) => {
         <PageWrapper>
           <Navbar>
             <ButtonBack href={`/${anchor}`} value="Main page" />
-            {activeAnchor === "#markdown" ? (
+            {activeAnchor === '#markdown' ? (
               <TinyProjectReferenceContainer
                 alignItems="center"
                 flexWrap="wrap"
@@ -146,8 +146,8 @@ export default (props) => {
         </PageWrapper>
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query($slug: String!) {
@@ -201,4 +201,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

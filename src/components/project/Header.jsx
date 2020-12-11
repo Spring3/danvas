@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components';
 
 const Header = styled.h1`
   @media (min-width: 750px) {
@@ -15,7 +15,7 @@ const Header = styled.h1`
       ${props.marker || props.theme.marker} 100%
     `}
   );
-`
+`;
 
 const Subheading = styled.h2`
   @media (min-width: 750px) {
@@ -32,6 +32,6 @@ const Subheading = styled.h2`
       ${props.marker || props.theme.marker} 100%
     `}
   );
-`
+`;
 
-export { Header, Subheading }
+export { Header, Subheading };

@@ -1,6 +1,6 @@
-import React, { Fragment } from "react"
-import styled from "styled-components"
-import { useWindowResize } from "../../hooks/useWindowResize"
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import { useWindowResize } from '../../hooks/useWindowResize';
 
 const FixedImage = styled.div`
   background-image: url("${(props) => props.src}");
@@ -12,7 +12,7 @@ const FixedImage = styled.div`
   position: sticky;
   background-color: white;
   top: 16%;
-`
+`;
 
 const Placeholder = styled.div`
   height: ${(props) => props.height}px;
@@ -22,7 +22,7 @@ const Placeholder = styled.div`
   background-size: 50% auto;
   position: sticky;
   top: 16%;
-`
+`;
 
 const NormalImage = styled.div`
   background-image: url("${(props) => props.src}");
@@ -30,36 +30,34 @@ const NormalImage = styled.div`
   background-position: 86% center;
   background-repeat: no-repeat;
   background-size: contain;
-`
+`;
 
 const FixedImageSet = ({ images }) => {
-  const { height } = useWindowResize()
+  const { height } = useWindowResize();
 
   if (!images || !images.length) {
-    return null
+    return null;
   }
 
   if (images.length === 1) {
-    return <NormalImage src={images[0].src} height={maxHeight} />
+    return <NormalImage src={images[0].src} height={maxHeight} />;
   }
 
-  const marginTop = height * 0.16
-  const maxHeight = height - marginTop
+  const marginTop = height * 0.16;
+  const maxHeight = height - marginTop;
 
-  return images.map((image) => {
-    return (
-      <Fragment key={image.name}>
-        <FixedImage
-          verticalPosition={marginTop}
-          height={maxHeight}
-          id={image.name}
-          key={image.name}
-          src={image.src}
-        />
-        <Placeholder verticalPosition={marginTop} height={maxHeight} />
-      </Fragment>
-    )
-  })
-}
+  return images.map((image) => (
+    <Fragment key={image.name}>
+      <FixedImage
+        verticalPosition={marginTop}
+        height={maxHeight}
+        id={image.name}
+        key={image.name}
+        src={image.src}
+      />
+      <Placeholder verticalPosition={marginTop} height={maxHeight} />
+    </Fragment>
+  ));
+};
 
-export { FixedImageSet }
+export { FixedImageSet };

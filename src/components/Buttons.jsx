@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
-import ArrowLeftIcon from "mdi-react/ArrowLeftIcon"
-import DownloadOutlineIcon from "mdi-react/DownloadOutlineIcon"
-import { Link } from "gatsby"
-import { styles, Reference } from "./Reference"
+import React from 'react';
+import styled from 'styled-components';
+import ArrowLeftIcon from 'mdi-react/ArrowLeftIcon';
+import DownloadOutlineIcon from 'mdi-react/DownloadOutlineIcon';
+import { Link } from 'gatsby';
+import { styles, Reference } from './Reference';
 
 const Button = styled(Link)`
   ${styles}
@@ -17,13 +17,15 @@ const Button = styled(Link)`
   &:visited {
     background: transparent;
   }
-`
+`;
 
 export const ButtonBack = ({ href, value }) => (
   <Button to={href}>
-    <ArrowLeftIcon /> {value}
+    <ArrowLeftIcon />
+    {' '}
+    {value}
   </Button>
-)
+);
 
 const StyledDownloadButton = styled(Reference)`
   vertical-align: top;
@@ -43,12 +45,12 @@ const StyledDownloadButton = styled(Reference)`
   @media (max-width: 750px) {
     text-align: center;
   }
-`
+`;
 
-export const DownloadButton = ({ href, value }) => {
-  return (
-    <StyledDownloadButton id="download-button" href={href}>
-      <DownloadOutlineIcon /> {value}
-    </StyledDownloadButton>
-  )
-}
+export const DownloadButton = ({ href, value }) => (
+  <StyledDownloadButton id="download-button" href={href}>
+    <DownloadOutlineIcon />
+    {' '}
+    {value}
+  </StyledDownloadButton>
+);

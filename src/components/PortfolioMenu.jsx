@@ -1,9 +1,9 @@
-import React, { useMemo } from "react"
-import styled, { css } from "styled-components"
+import React, { useMemo } from 'react';
+import styled, { css } from 'styled-components';
 
-import { useAnchorTracker } from "../hooks/useAnchorTracker"
-import { Link, Reference } from "./Reference"
-import { slugToTitle } from "../utils"
+import { useAnchorTracker } from '../hooks/useAnchorTracker';
+import { Link, Reference } from './Reference';
+import { slugToTitle } from '../utils';
 
 const MenuContainer = styled.ul`
   list-style-type: none;
@@ -28,7 +28,7 @@ const MenuContainer = styled.ul`
     align-items: center;
     margin-top: 2rem;
   }
-`
+`;
 
 const SlugMenuContainer = styled(MenuContainer)`
   position: fixed;
@@ -39,7 +39,7 @@ const SlugMenuContainer = styled(MenuContainer)`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const styles = css`
   background: transparent;
@@ -49,14 +49,13 @@ const styles = css`
   font-size: 0.8rem;
   text-decoration: none;
 
-  ${(props) =>
-    props.active &&
-    css`
+  ${(props) => props.active
+    && css`
       font-weight: bold;
       color: var(--text-color-primary) !important;
       background: ${props.theme.marker
-        ? props.theme.marker
-        : "var(--marker-blue)"};
+    ? props.theme.marker
+    : 'var(--marker-blue)'};
     `}
   &:visited {
     background: transparent;
@@ -66,14 +65,13 @@ const styles = css`
     font-size: 0.8rem;
     text-decoration: none;
 
-    ${(props) =>
-      props.active &&
-      css`
+    ${(props) => props.active
+      && css`
         font-weight: bold;
         color: var(--text-color-primary) !important;
         background: ${props.theme.marker
-          ? props.theme.marker
-          : "var(--marker-blue)"};
+    ? props.theme.marker
+    : 'var(--marker-blue)'};
       `}
   }
 
@@ -81,27 +79,27 @@ const styles = css`
   &:focus {
     ${(props) => css`
       border-bottom: 2px solid
-        ${props.theme.marker ? props.theme.marker : "var(--marker-blue)"};
+        ${props.theme.marker ? props.theme.marker : 'var(--marker-blue)'};
       background: ${props.active
-        ? props.theme.marker
-          ? props.theme.marker
-          : "var(--marker-blue)"
-        : "transparent"};
+    ? props.theme.marker
+      ? props.theme.marker
+      : 'var(--marker-blue)'
+    : 'transparent'};
     `}
   }
-`
+`;
 
 const AnchorMenuItem = styled(Reference)`
   ${styles}
-`
+`;
 
 const SlugMenuItem = styled(Link)`
   ${styles}
-`
+`;
 
 const AnchorListMenu = ({ nodes, onClick }) => {
-  const anchors = useMemo(() => nodes.map((node) => node.anchor), [nodes])
-  const activeAnchor = useAnchorTracker(anchors)
+  const anchors = useMemo(() => nodes.map((node) => node.anchor), [nodes]);
+  const activeAnchor = useAnchorTracker(anchors);
 
   return (
     <MenuContainer>
@@ -121,25 +119,23 @@ const AnchorListMenu = ({ nodes, onClick }) => {
         CV
       </AnchorMenuItem>
     </MenuContainer>
-  )
-}
+  );
+};
 
-const SlugListMenu = ({ slugs, active, onClick }) => {
-  return (
-    <SlugMenuContainer>
-      <small>Projects:&nbsp;</small>
-      {slugs.map((slug) => (
-        <li key={slug}>
-          <SlugMenuItem onClick={onClick} active={active === slug} to={slug}>
-            {slugToTitle(slug)}
-          </SlugMenuItem>
-        </li>
-      ))}
-      <SlugMenuItem onClick={onClick} active={false} to="/cv" key="cv">
-        CV
-      </SlugMenuItem>
-    </SlugMenuContainer>
-  )
-}
+const SlugListMenu = ({ slugs, active, onClick }) => (
+  <SlugMenuContainer>
+    <small>Projects:&nbsp;</small>
+    {slugs.map((slug) => (
+      <li key={slug}>
+        <SlugMenuItem onClick={onClick} active={active === slug} to={slug}>
+          {slugToTitle(slug)}
+        </SlugMenuItem>
+      </li>
+    ))}
+    <SlugMenuItem onClick={onClick} active={false} to="/cv" key="cv">
+      CV
+    </SlugMenuItem>
+  </SlugMenuContainer>
+);
 
-export { AnchorListMenu, SlugListMenu }
+export { AnchorListMenu, SlugListMenu };

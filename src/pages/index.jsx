@@ -1,15 +1,15 @@
-import React, { Fragment, useCallback } from "react"
-import { graphql } from "gatsby"
-import styled from "styled-components"
+import React, { Fragment, useCallback } from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import GlobalStyles, { OGP } from "../components/GlobalStyle"
-import { AboutSection } from "../components/AboutSection"
-import { ProjectsSection } from "../components/ProjectsSection"
-import { AnchorListMenu } from "../components/PortfolioMenu"
-import { slugToAnchor } from "../utils"
-import { styles } from "../components/Reference"
-import { Footer } from "../components/Footer"
-import { ImagePreviewContainer } from "../components/ImagePreview"
+import GlobalStyles, { OGP } from '../components/GlobalStyle';
+import { AboutSection } from '../components/AboutSection';
+import { ProjectsSection } from '../components/ProjectsSection';
+import { AnchorListMenu } from '../components/PortfolioMenu';
+import { slugToAnchor } from '../utils';
+import { styles } from '../components/Reference';
+import { Footer } from '../components/Footer';
+import { ImagePreviewContainer } from '../components/ImagePreview';
 
 const AboutSectionMarkdown = styled.div`
   a {
@@ -35,37 +35,37 @@ const AboutSectionMarkdown = styled.div`
   @media (min-width: 1000px) {
     font-size: 1.2rem;
   }
-`
+`;
 
 export default ({ data }) => {
-  const { siteMetadata } = data.site
-  const { nodes } = data.allMarkdownRemark
-  const aboutNode = nodes[0]
+  const { siteMetadata } = data.site;
+  const { nodes } = data.allMarkdownRemark;
+  const aboutNode = nodes[0];
 
-  const projectNodes = nodes.slice(1)
+  const projectNodes = nodes.slice(1);
   const menuNodes = projectNodes.map((node) => ({
     name: node.frontmatter.title,
     anchor: slugToAnchor(node.fields.slug),
-  }))
+  }));
 
   const onMenuClick = useCallback((e) => {
-    e.preventDefault()
-    const anchor = e.target.getAttribute("data-anchor")
-    const id = anchor.substring(1)
-    const element = document.getElementById(id)
-    const marginsAndPaddings = 155
+    e.preventDefault();
+    const anchor = e.target.getAttribute('data-anchor');
+    const id = anchor.substring(1);
+    const element = document.getElementById(id);
+    const marginsAndPaddings = 155;
     window.scrollTo({
-      behavior: "smooth",
+      behavior: 'smooth',
       top:
-        element.getBoundingClientRect().top +
-        window.pageYOffset -
-        marginsAndPaddings,
-    })
-    return false
-  }, [])
+        element.getBoundingClientRect().top
+        + window.pageYOffset
+        - marginsAndPaddings,
+    });
+    return false;
+  }, []);
 
   return (
-    <Fragment>
+    <>
       <GlobalStyles />
       <OGP
         title={siteMetadata.title}
@@ -83,9 +83,9 @@ export default ({ data }) => {
         <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
       </main>
       <Footer />
-    </Fragment>
-  )
-}
+    </>
+  );
+};
 
 export const query = graphql`
   query {
@@ -137,4 +137,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

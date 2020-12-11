@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import { Header } from "./common/Headers"
-import { SocialButtons } from "./SocialButtons"
-import { Flex } from "./Flex"
+import { Header } from './common/Headers';
+import { SocialButtons } from './SocialButtons';
+import { Flex } from './Flex';
 
 const ContentPanel = styled(Flex)`
   box-sizing: border-box;
@@ -17,7 +17,7 @@ const ContentPanel = styled(Flex)`
   @media (min-width: 750px) {
     width: 800px;
   }
-`
+`;
 
 const AboutSection = ({ children }) => (
   <ContentPanel direction="column" justifyContent="center">
@@ -25,6 +25,6 @@ const AboutSection = ({ children }) => (
     {children}
     <SocialButtons />
   </ContentPanel>
-)
+);
 
-export { AboutSection }
+export { AboutSection };

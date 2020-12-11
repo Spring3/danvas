@@ -1,46 +1,42 @@
-import React, { useEffect, useMemo, useState, useCallback } from "react"
-import { createPortal } from "react-dom"
-import styled, { css } from "styled-components"
-import ArrowLeftIcon from "mdi-react/ArrowLeftThickIcon"
-import ArrowRightIcon from "mdi-react/ArrowRightThickIcon"
-import CloseIcon from "mdi-react/CloseIcon"
-import { Helmet } from "react-helmet"
-import {
-  slideInNormalAnimation,
-  slideInReversedAnimation,
-  slideOutNormalAnimation,
-  slideOutReversedAnimation,
-} from "./animations"
+import React, { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
+import styled from 'styled-components';
+import ArrowLeftIcon from 'mdi-react/ArrowLeftThickIcon';
+import ArrowRightIcon from 'mdi-react/ArrowRightThickIcon';
+import CloseIcon from 'mdi-react/CloseIcon';
+import { Helmet } from 'react-helmet';
+import { useSprings, animated } from 'react-spring';
+import { useDrag } from 'react-use-gesture';
+import clamp from 'lodash/clamp';
+import { useWindowResize } from '../hooks/useWindowResize';
 
 const ImagePreviewPortal = ({ children }) => {
-  const container = useMemo(() => document.createElement("div"), [])
+  const container = useMemo(() => document.createElement('div'), []);
 
   useEffect(() => {
-    const root = document.getElementById("image-preview-portal")
+    const root = document.getElementById('image-preview-portal');
 
-    root.appendChild(container)
+    root.appendChild(container);
 
-    return () => root.removeChild(container)
-  }, [container])
+    return () => root.removeChild(container);
+  }, [container]);
 
-  return createPortal(children, container)
-}
+  return createPortal(children, container);
+};
 
-const ImagePreviewContainer = ({ children }) => {
-  return <div id="image-preview-portal">{children}</div>
-}
+const ImagePreviewContainer = ({ children }) => <div id="image-preview-portal">{children}</div>;
 
 const PreviewContainer = styled.div`
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
-`
+`;
 
 const PreviewImages = styled.div`
   flex-grow: 1;
@@ -54,7 +50,7 @@ const PreviewImages = styled.div`
   @media (max-width: 700px) {
     max-width: 95%;
   }
-`
+`;
 
 const PreviewButton = styled.button`
   z-index: 2;
@@ -85,54 +81,41 @@ const PreviewButton = styled.button`
   @media (max-width: 700px) {
     position: absolute;
   }
-`
+`;
 
 const ButtonPrevious = styled(PreviewButton)`
-  @media (min-width; 7001px) {
+  @media (min-width: 701px) {
     margin-left: 1rem;
   }
 
   @media (max-width: 700px) {
     left: 1rem;
   }
-`
+`;
 
 const ButtonNext = styled(PreviewButton)`
-  @media (min-width; 7001px) {
+  @media (min-width: 701px) {
     margin-right: 1rem;
   }
 
   @media (max-width: 700px) {
     right: 1rem;
   }
-`
+`;
 
-const SlidingImage = styled.img`
+const SlidingImage = styled(animated.img)`
   position: absolute;
   transition: opacity 0.3s ease-in-out;
-  animation-fill-mode: forwards;
-  animation-duration: 0.3s;
-  animation-timing-function: ease;
   max-width: 100%;
-  ${({ direction, active }) =>
-    active
-      ? css`
-          animation-name: ${direction === "normal"
-            ? slideInNormalAnimation
-            : slideInReversedAnimation};
-        `
-      : css`
-          animation-name: ${direction === "normal"
-            ? slideOutNormalAnimation
-            : slideOutReversedAnimation};
-        `}
-`
+  border-radius: 5px;
+`;
 
 const IconClose = styled(CloseIcon)`
   position: absolute;
   top: 1rem;
   right: 1rem;
   cursor: pointer;
+  z-index: 2;
 
   padding: 1rem;
   fill: rgba(255, 255, 255, 0.5);
@@ -141,82 +124,114 @@ const IconClose = styled(CloseIcon)`
   &:hover {
     fill: rgba(255, 255, 255, 1);
   }
-`
+`;
 
 const ImagePreview = ({ images, startIndex = 0, onClose }) => {
-  const [position, setPosition] = useState({
-    index: startIndex,
-    order: "normal",
-  })
+  const { width } = useWindowResize();
+  const [index, setIndex] = useState(startIndex);
 
-  const nextSlide = useCallback(
-    (e) => {
-      e.stopPropagation()
-      setPosition((position) => ({
-        index: (position.index + 1) % images.length,
-        order: "normal",
-      }))
-    },
-    [images, setPosition]
-  )
+  const [draggingAnimationSprings, set] = useSprings(images.length, (i) => ({
+    x: i * width,
+    transform: `translateX(${i * width}px)`,
+    scale: 1,
+    display: 'block',
+  }));
 
-  const previousSlide = useCallback(
-    (e) => {
-      e.stopPropagation()
-      setPosition((position) => ({
-        index: (position.index - 1 + images.length) % images.length,
-        order: "reversed",
-      }))
-    },
-    [images, setPosition]
-  )
+  useEffect(() => {
+    set((i) => {
+      if (i < index - 1 || i > index + 1) return { display: 'none' };
+      const x = (i - index) * width;
+      const scale = 1;
+      return {
+        x, scale, display: 'block', transform: `translateX(${x}px)`,
+      };
+    });
+  }, [index, width]);
+
+  const bind = useDrag(({
+    active, movement: [mx], direction: [xDir], distance, cancel,
+  }) => {
+    if (active && distance > width / 4) {
+      const newIndex = clamp(index + (xDir > 0 ? -1 : 1), 0, images.length - 1);
+      setIndex(newIndex);
+      cancel((newIndex));
+    }
+    set((i) => {
+      if (i < index - 1 || i > index + 1) return { display: 'none' };
+      const x = (i - index) * width + (active ? mx : 0);
+      const scale = active ? 1 - distance / width / 2 : 1;
+      return {
+        x, scale, display: 'block', transform: `translateX(${x}px)`,
+      };
+    });
+  }, { axis: 'x' });
+
+  const nextSlide = (e) => {
+    e.stopPropagation();
+    setIndex((index) => clamp(index + 1, 0, images.length - 1));
+  };
+
+  const previousSlide = (e) => {
+    e.stopPropagation();
+    setIndex((index) => clamp(index - 1, 0, images.length - 1));
+  };
 
   if (images.length === 1) {
     return (
       <>
         <Helmet>
-          <style type="text/css">{`
+          <style type="text/css">
+            {`
             body {
               overflow: hidden;
             }
-          `}</style>
+          `}
+          </style>
         </Helmet>
         <ImagePreviewPortal>
           <PreviewContainer onClick={onClose}>
             <IconClose color="white" />
             <PreviewImages>
-              <img src={images[0].src} />
+              <img src={images[0].src} onClick={(e) => { e.stopPropagation(); e.preventDefault(); }} />
             </PreviewImages>
           </PreviewContainer>
         </ImagePreviewPortal>
       </>
-    )
+    );
   }
 
   return (
     <>
       <Helmet>
-        <style type="text/css">{`
+        <style type="text/css">
+          {`
           body {
             overflow: hidden;
           }
-        `}</style>
+        `}
+        </style>
       </Helmet>
       <ImagePreviewPortal>
-        <PreviewContainer onClick={onClose}>
+        <PreviewContainer>
           <IconClose color="white" />
           <ButtonPrevious onClick={previousSlide}>
             <ArrowLeftIcon color="white" />
           </ButtonPrevious>
           <PreviewImages>
-            {images.map((image, i) => (
-              <SlidingImage
-                src={image.src}
-                key={i}
-                active={position.index === i}
-                direction={position.order}
-              />
-            ))}
+            {draggingAnimationSprings.map(({ transform, display, scale }, i) => {
+              const image = images[i];
+              return (
+                <SlidingImage
+                  src={image.src}
+                  onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}
+                  onDragStart={(e) => e.preventDefault()}
+                  key={image.name}
+                  alt={image.name}
+                  {...bind()}
+                  style={{ transform, scale, display }}
+                />
+              );
+            })}
           </PreviewImages>
           <ButtonNext onClick={nextSlide}>
             <ArrowRightIcon color="white" />
@@ -224,7 +239,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
         </PreviewContainer>
       </ImagePreviewPortal>
     </>
-  )
-}
+  );
+};
 
-export { ImagePreview, ImagePreviewContainer }
+export { ImagePreview, ImagePreviewContainer };

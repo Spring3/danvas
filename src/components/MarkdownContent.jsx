@@ -1,5 +1,6 @@
-import styled from "styled-components"
-import { styles } from "./Reference"
+import styled from 'styled-components';
+import { styles } from './Reference';
+
 const MarkdownContent = styled.div`
   a {
     ${styles}
@@ -17,6 +18,12 @@ const MarkdownContent = styled.div`
     p,
     ul {
       font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 750px) {
+    ul {
+      line-height: 2;
     }
   }
 
@@ -41,14 +48,14 @@ const MarkdownContent = styled.div`
       to bottom,
       transparent 0%,
       transparent 60%,
-      ${(props) => (props.marker ? `#${props.marker}` : "var(--marker-yellow)")}
+      ${(props) => (props.marker ? `#${props.marker}` : 'var(--marker-yellow)')}
         60%,
-      ${(props) => (props.marker ? `#${props.marker}` : "var(--marker-yellow)")}
+      ${(props) => (props.marker ? `#${props.marker}` : 'var(--marker-yellow)')}
         100%
     );
   }
 
   text-align: justify;
-`
+`;
 
-export { MarkdownContent }
+export { MarkdownContent };

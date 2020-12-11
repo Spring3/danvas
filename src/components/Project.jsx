@@ -1,14 +1,14 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import Tags, { Tag } from "./project/Tags"
-import { FixedImageSet } from "./project/FixedImageSet"
-import { slugToAnchor } from "../utils"
-import { Link } from "./Reference"
-import { MarkdownContent } from "./MarkdownContent"
-import { useWindowResize } from "../hooks/useWindowResize"
-import { ImageCarousel } from "./ImageCarousel"
-import { Flex } from "./Flex"
+import Tags, { Tag } from './project/Tags';
+import { FixedImageSet } from './project/FixedImageSet';
+import { slugToAnchor } from '../utils';
+import { Link } from './Reference';
+import { MarkdownContent } from './MarkdownContent';
+import { useWindowResize } from '../hooks/useWindowResize';
+import { ImageCarousel } from './ImageCarousel';
+import { Flex } from './Flex';
 
 const ProjectInfo = styled.div`
   @media (min-width: 1000px) {
@@ -16,7 +16,7 @@ const ProjectInfo = styled.div`
     top: 16%;
     z-index: ${(props) => props.index + 1};
   }
-`
+`;
 
 const InfoWrapper = styled.div`
   width: 100%;
@@ -26,7 +26,7 @@ const InfoWrapper = styled.div`
     position: sticky;
     top: 16%;
   }
-`
+`;
 
 const ImageWrapper = styled.div`
   width: 59%;
@@ -36,30 +36,30 @@ const ImageWrapper = styled.div`
     width: 58%;
     gap: 0px 1rem;
   }
-`
+`;
 
 const ProjectRow = styled(Flex)`
   width: 100%;
-`
+`;
 
 const ProjectTitle = styled.div`
   font-size: 1.7rem;
   margin-bottom: 1.5rem;
-`
+`;
 const ProjectContent = styled(MarkdownContent)`
   font-size: 1rem;
-`
+`;
 
 const Project = ({ node, index }) => {
-  const anchor = slugToAnchor(node.fields.slug)
-  const { width } = useWindowResize()
-  const id = anchor.substring(1)
-  const isSmallScreen = width <= 1000
+  const anchor = slugToAnchor(node.fields.slug);
+  const { width } = useWindowResize();
+  const id = anchor.substring(1);
+  const isSmallScreen = width <= 1000;
 
   const images = node.frontmatter.images.map((image) => ({
     name: image.name,
     ...image.childImageSharp.fluid,
-  }))
+  }));
 
   return (
     <ProjectRow id={id} justifyContent="space-between">
@@ -69,7 +69,7 @@ const Project = ({ node, index }) => {
             <Link
               to={node.fields.slug}
               marker={node.frontmatter.marker}
-              bold={true}
+              bold
             >
               {node.frontmatter.title}
             </Link>
@@ -94,7 +94,7 @@ const Project = ({ node, index }) => {
         </ImageWrapper>
       ) : null}
     </ProjectRow>
-  )
-}
+  );
+};
 
-export { Project }
+export { Project };

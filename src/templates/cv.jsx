@@ -1,31 +1,31 @@
-import React from "react"
-import { graphql } from "gatsby"
-import styled from "styled-components"
+import React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import GlobalStyles, { OGP } from "../components/GlobalStyle"
-import { ButtonBack, DownloadButton } from "../components/Buttons"
-import { Subheading } from "../components/project/Header"
-import Navbar from "../components/Navbar"
-import { PageWrapper } from "../components/PageWrapper"
-import { SocialButtons } from "../components/SocialButtons"
-import { useAnchorTracker } from "../hooks/useAnchorTracker"
-import { DownloadFooter } from "../components/cv/DownloadFooter"
-import { Flex } from "../components/Flex"
+import GlobalStyles, { OGP } from '../components/GlobalStyle';
+import { ButtonBack, DownloadButton } from '../components/Buttons';
+import { Subheading } from '../components/project/Header';
+import Navbar from '../components/Navbar';
+import { PageWrapper } from '../components/PageWrapper';
+import { SocialButtons } from '../components/SocialButtons';
+import { useAnchorTracker } from '../hooks/useAnchorTracker';
+import { DownloadFooter } from '../components/cv/DownloadFooter';
+import { Flex } from '../components/Flex';
 
 const CVWrapper = styled.div`
   padding: 0px 1rem;
-`
+`;
 
 const CVSectionBlock = styled.div`
   margin-top: 3rem;
-`
+`;
 
 const StickySubheading = styled(Subheading)`
   @media (max-width: 750px) {
     position: static;
     margin-top: 3rem;
   }
-`
+`;
 
 const Grid = styled.div`
   display: grid;
@@ -55,7 +55,7 @@ const Grid = styled.div`
       margin-top: 0;
     }
   }
-`
+`;
 
 const InlinedNavbarPart = styled.div`
   flex-grow: 1;
@@ -76,11 +76,11 @@ const InlinedNavbarPart = styled.div`
     justify-content: space-between;
     width: 90%;
   }
-`
+`;
 
 export default ({ data }) => {
-  const post = data.markdownRemark
-  const activeAnchor = useAnchorTracker(["#intro-section"])
+  const post = data.markdownRemark;
+  const activeAnchor = useAnchorTracker(['#intro-section']);
 
   return (
     <>
@@ -92,7 +92,7 @@ export default ({ data }) => {
       <PageWrapper>
         <Navbar>
           <ButtonBack href="/" value="Main page" />
-          {activeAnchor === "#intro-section" ? (
+          {activeAnchor === '#intro-section' ? (
             <Flex
               justifyContent="space-between"
               alignItems="center"
@@ -100,9 +100,13 @@ export default ({ data }) => {
             >
               <InlinedNavbarPart id="navbar-contents">
                 <Subheading>{post.frontmatter.title}</Subheading>
-                <SocialButtons onlyImportant={true} />
+                <SocialButtons onlyImportant />
               </InlinedNavbarPart>
-              <small>&nbsp;({post.frontmatter.updatedAt})</small>
+              <small>
+&nbsp;(
+                {post.frontmatter.updatedAt}
+                )
+              </small>
             </Flex>
           ) : null}
           <DownloadButton
@@ -113,7 +117,11 @@ export default ({ data }) => {
         <CVWrapper>
           <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
             <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
-            <small>&nbsp;({post.frontmatter.updatedAt})</small>
+            <small>
+&nbsp;(
+              {post.frontmatter.updatedAt}
+              )
+            </small>
           </Flex>
           <p>
             Curious and creative. I always try to come up with something special
@@ -123,17 +131,20 @@ export default ({ data }) => {
             Primarily I focus on Node.js, React, Graphql and modern Javascript
             ecosystem.
           </p>
-          <SocialButtons onlyImportant={true} />
+          <SocialButtons onlyImportant />
           <Grid id="intro-section">
             <section id="experience">
               <StickySubheading marker="#BCE5FF">Experience</StickySubheading>
               <CVSectionBlock>
                 <h3>Full Stack Software Engineer</h3>
                 <p>
-                  <strong>Company</strong>: Contentful
+                  <strong>Company</strong>
+                  : Contentful
                 </p>
                 <p>
-                  <strong>Duration:</strong> Dec 2018 - now
+                  <strong>Duration:</strong>
+                  {' '}
+                  Dec 2018 - now
                 </p>
                 <p>
                   Full stack development and support of the Headless CMS by
@@ -154,10 +165,13 @@ export default ({ data }) => {
               <CVSectionBlock>
                 <h3>Full Stack Developer</h3>
                 <p>
-                  <strong>Company</strong>: Dial-Once
+                  <strong>Company</strong>
+                  : Dial-Once
                 </p>
                 <p>
-                  <strong>Duration:</strong> Dec 2016 - Dec 2019
+                  <strong>Duration:</strong>
+                  {' '}
+                  Dec 2016 - Dec 2019
                 </p>
                 <p>
                   Full stack development and support of the omnichannel
@@ -189,10 +203,13 @@ export default ({ data }) => {
               <CVSectionBlock>
                 <h3>Node.js Developer</h3>
                 <p>
-                  <strong>Company</strong>: FASTEE Technologies
+                  <strong>Company</strong>
+                  : FASTEE Technologies
                 </p>
                 <p>
-                  <strong>Duration:</strong> Aug - Dec 2016
+                  <strong>Duration:</strong>
+                  {' '}
+                  Aug - Dec 2016
                 </p>
                 <p>Implemented bots for the generic chat bot platform.</p>
                 <h4>Summary:</h4>
@@ -227,7 +244,8 @@ export default ({ data }) => {
                 <span>: Webpack</span>
               </p>
               <p>
-                <strong>Testing</strong>: testing-library, Jest, Chai, Sinon,
+                <strong>Testing</strong>
+                : testing-library, Jest, Chai, Sinon,
                 Nyc, Karma, Enzyme
               </p>
               <p>
@@ -329,20 +347,20 @@ export default ({ data }) => {
           </Grid>
         </CVWrapper>
         <DownloadFooter>
-          {activeAnchor === "#intro-section" ? (
+          {activeAnchor === '#intro-section' ? (
             <InlinedNavbarPart>
               <DownloadButton
                 href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
                 value="Download CV"
               />
-              <SocialButtons size={30} onlyImportant={true} />
+              <SocialButtons size={30} onlyImportant />
             </InlinedNavbarPart>
           ) : null}
         </DownloadFooter>
       </PageWrapper>
     </>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query($slug: String!) {
@@ -354,4 +372,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

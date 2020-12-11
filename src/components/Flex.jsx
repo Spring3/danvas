@@ -1,6 +1,6 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled, { css } from "styled-components"
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 const FlexContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const FlexContainer = styled.div`
     flex-grow: ${props.flexGrow};
     flex-wrap: ${props.flexWrap};
   `}
-`
+`;
 
 const Flex = ({
   children,
@@ -24,59 +24,57 @@ const Flex = ({
   flexGrow,
   flexWrap,
   className,
-}) => {
-  return (
-    <FlexContainer
-      id={id}
-      direction={direction}
-      gap={gap}
-      justifyContent={justifyContent}
-      alignItems={alignItems}
-      flexGrow={flexGrow}
-      flexWrap={flexWrap}
-      className={className}
-    >
-      {children}
-    </FlexContainer>
-  )
-}
+}) => (
+  <FlexContainer
+    id={id}
+    direction={direction}
+    gap={gap}
+    justifyContent={justifyContent}
+    alignItems={alignItems}
+    flexGrow={flexGrow}
+    flexWrap={flexWrap}
+    className={className}
+  >
+    {children}
+  </FlexContainer>
+);
 
 Flex.propTypes = {
   id: PropTypes.string,
   flexGrow: PropTypes.string,
   direction: PropTypes.oneOf([
-    "row",
-    "column",
-    "row-reverse",
-    "column-reverse",
+    'row',
+    'column',
+    'row-reverse',
+    'column-reverse',
   ]),
   gap: PropTypes.string,
   justifyContent: PropTypes.oneOf([
-    "center",
-    "flex-start",
-    "flex-end",
-    "space-between",
-    "space-around",
-    "space-evenly",
+    'center',
+    'flex-start',
+    'flex-end',
+    'space-between',
+    'space-around',
+    'space-evenly',
   ]),
   alignItems: PropTypes.oneOf([
-    "center",
-    "flex-start",
-    "flex-end",
-    "space-between",
-    "space-around",
-    "space-evenly",
+    'center',
+    'flex-start',
+    'flex-end',
+    'space-between',
+    'space-around',
+    'space-evenly',
   ]),
-  flexWrap: PropTypes.oneOf(["wrap", "nowrap"]),
-}
+  flexWrap: PropTypes.oneOf(['wrap', 'nowrap']),
+};
 
 Flex.defaultProps = {
-  flexGrow: "0",
-  direction: "row",
-  gap: "0px",
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  flexWrap: "wrap",
-}
+  flexGrow: '0',
+  direction: 'row',
+  gap: '0px',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+  flexWrap: 'wrap',
+};
 
-export { Flex }
+export { Flex };
