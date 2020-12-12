@@ -5,7 +5,7 @@ import ArrowLeftIcon from 'mdi-react/ArrowLeftThickIcon';
 import ArrowRightIcon from 'mdi-react/ArrowRightThickIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
 import { Helmet } from 'react-helmet';
-import { useSprings, animated } from 'react-spring';
+import { useSprings, animated, config } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
 import { useWindowResize } from '../hooks/useWindowResize';
@@ -61,6 +61,7 @@ const PreviewButton = styled.button`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   border: none;
+  cursor: pointer;
 
   svg {
     fill: rgba(255, 255, 255, 0.5);
@@ -70,15 +71,21 @@ const PreviewButton = styled.button`
     outline: none;
   }
 
-  &:focus,
-  &:hover {
+  &:not(:disabled):focus,
+  &:not(:disabled):hover {
     background: rgba(255, 255, 255, 0.2);
     svg {
       fill: rgba(255, 255, 255, 1);
     }
   }
 
-  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.1);
+    svg {
+      fill: rgba(255, 255, 255, 0.15);
+    }
+  }
 
   @media (max-width: 700px) {
     position: absolute;
@@ -135,6 +142,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
   const [draggingAnimationSprings, set] = useSprings(images.length, (i) => ({
     x: i * width,
     scale: 1,
+    config: config.default,
     display: 'block',
     transform: `translateX(${i * width}px) scale(1)`,
   }));
@@ -148,6 +156,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
         x,
         scale,
         display: 'block',
+        config: config.default,
         transform: `translateX(${x}px) scale(${scale})`,
       };
     });
@@ -174,6 +183,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
           x,
           scale,
           display: 'block',
+          config: config.default,
           transform: `translateX(${x}px) scale(${scale})`,
         };
       });
@@ -236,7 +246,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
       <ImagePreviewPortal>
         <PreviewContainer>
           <IconClose color="white" />
-          <ButtonPrevious onClick={previousSlide}>
+          <ButtonPrevious onClick={previousSlide} disabled={index === 0}>
             <ArrowLeftIcon color="white" />
           </ButtonPrevious>
           <PreviewImages>
@@ -258,7 +268,10 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
               );
             })}
           </PreviewImages>
-          <ButtonNext onClick={nextSlide}>
+          <ButtonNext
+            onClick={nextSlide}
+            disabled={index === images.length - 1}
+          >
             <ArrowRightIcon color="white" />
           </ButtonNext>
         </PreviewContainer>
