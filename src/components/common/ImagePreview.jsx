@@ -146,17 +146,26 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
   const nextSlide = useCallback(
     (e) => {
       e.stopPropagation();
-      setIndex((i) => clamp(i + 1, 0, images.length - 1));
+      e.preventDefault();
+
+      const isDisabled = index === images.length - 1;
+      if (!isDisabled) {
+        setIndex(clamp(index + 1, 0, images.length - 1));
+      }
     },
-    [images.length]
+    [index, images.length]
   );
 
   const previousSlide = useCallback(
     (e) => {
       e.stopPropagation();
-      setIndex((i) => clamp(i - 1, 0, images.length - 1));
+      e.preventDefault();
+      const isDisabled = index === 0;
+      if (!isDisabled) {
+        setIndex(clamp(index - 1, 0, images.length - 1));
+      }
     },
-    [images.length]
+    [index, images.length]
   );
 
   const interceptEvent = useCallback((e) => {
@@ -183,6 +192,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
               <img
                 src={images[0].src}
                 alt={images[0].name}
+                onDragStart={interceptEvent}
                 onClick={interceptEvent}
               />
             </PreviewImages>
@@ -216,7 +226,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
           }}
         >
           <IconClose color="white" />
-          <PreviewButtonPrevious onClick={previousSlide} disabled={index === 0}>
+          <PreviewButtonPrevious onClick={previousSlide} isDisabled={index === 0}>
             <ArrowLeftIcon color="white" />
           </PreviewButtonPrevious>
           <PreviewImages>
@@ -237,7 +247,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
           </PreviewImages>
           <PreviewButtonNext
             onClick={nextSlide}
-            disabled={index === images.length - 1}
+            isDisabled={index === images.length - 1}
           >
             <ArrowRightIcon color="white" />
           </PreviewButtonNext>

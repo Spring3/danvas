@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ArrowLeftIcon from 'mdi-react/ArrowLeftIcon';
 import DownloadOutlineIcon from 'mdi-react/DownloadOutlineIcon';
 import { Link } from 'gatsby';
@@ -72,20 +72,24 @@ const PreviewButton = styled.button`
     outline: none;
   }
 
-  &:not(:disabled):focus,
-  &:not(:disabled):hover {
-    background: rgba(255, 255, 255, 0.2);
-    svg {
-      fill: rgba(255, 255, 255, 1);
-    }
-  }
 
-  &:disabled {
-    cursor: not-allowed;
-    background: rgba(255, 255, 255, 0.1);
-    svg {
-      fill: rgba(255, 255, 255, 0.15);
-    }
+  ${(props) => props.isDisabled
+    ? css`
+      cursor: not-allowed;
+      background: rgba(255, 255, 255, 0.1);
+      svg {
+        fill: rgba(255, 255, 255, 0.15);
+      }
+    `
+    : css`
+      &:focus,
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        svg {
+          fill: rgba(255, 255, 255, 1);
+        }
+      }
+    `
   }
 
   @media (max-width: 700px) {

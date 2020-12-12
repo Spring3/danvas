@@ -21,10 +21,9 @@ const MarkdownContent = styled.div`
     }
   }
 
-  @media (max-width: 750px) {
-    ul {
-      line-height: 2;
-    }
+  ul {
+    line-height: 2;
+    padding: 1rem;
   }
 
   @media (min-width: 1000px) {

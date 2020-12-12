@@ -15,7 +15,6 @@ import { ImageCarousel } from '../components/common/ImageCarousel';
 import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
-import { useWindowResize } from '../hooks/useWindowResize';
 import { ImagePreviewContainer } from '../components/common/ImagePreview';
 
 const PageLayout = styled.div`
@@ -24,14 +23,26 @@ const PageLayout = styled.div`
   margin: 0 auto;
   margin-bottom: 3rem;
 
-  grid-template-columns: 25%;
+  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
   grid-template-areas:
     "nav nav nav nav"
     "info info content content"
     "info info content content";
 
-  @media (max-width: 1000px) {
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(4, 25%);
     padding: 1rem;
+    grid-gap: 0rem;
+  
+    grid-template-areas:
+      "nav nav nav nav"
+      "info info info info"
+      "content content content content";
+    }
+
+  @media (max-width: 700px) {
+    padding: 1rem;
+    grid-gap: 0rem;
 
     grid-template-areas:
       "nav nav nav nav"
@@ -75,7 +86,6 @@ export default (props) => {
   const allPosts = props.data.allMarkdownRemark.nodes;
   const activeAnchor = useAnchorTracker(['#markdown']);
   const anchor = slugToAnchor(post.fields.slug);
-  const { width } = useWindowResize();
 
   const slugs = allPosts.map((node) => node.fields.slug);
 

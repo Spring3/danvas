@@ -18,6 +18,7 @@ Automates gathering of channel points on twitch.
 
 - Works in multiple tabs and windows at the same time.
 - Optimized for performance
-- Only works on twitch websites and gets automatically disabled on other websites
-- No data collection watsoever
+- Only works on twitch websites
+- Disables itself on other websites
+- No data collection whatsoever
 - Updated to work with the latest twitch UI
