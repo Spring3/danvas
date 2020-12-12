@@ -16,6 +16,7 @@ import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
 import { ImagePreviewContainer } from '../components/common/ImagePreview';
+import { useWindowResize } from '../hooks/useWindowResize';
 
 const PageLayout = styled.div`
   display: grid;
@@ -59,7 +60,7 @@ const ProjectReferenceContainer = styled(Flex)`
 
 const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
   @media (max-width: 750px) {
-    gap: 10px;
+    gap: 1.5rem;
     a {
       font-size: 1rem;
     }
@@ -86,6 +87,7 @@ export default (props) => {
   const allPosts = props.data.allMarkdownRemark.nodes;
   const activeAnchor = useAnchorTracker(['#markdown']);
   const anchor = slugToAnchor(post.fields.slug);
+  const { width } = useWindowResize();
 
   const slugs = allPosts.map((node) => node.fields.slug);
 
@@ -97,6 +99,8 @@ export default (props) => {
     name: image.name,
     ...image.childImageSharp.fluid,
   }));
+
+  const isSmallScreen = width < 850;
 
   return (
     <>
@@ -118,7 +122,7 @@ export default (props) => {
                 gap="1.5rem"
                 justifyContent="flex-end"
               >
-                <ProjectReferences size={25} frontmatter={post.frontmatter} />
+                <ProjectReferences size={25} frontmatter={post.frontmatter} onlyIcons={isSmallScreen} />
               </TinyProjectReferenceContainer>
             ) : null}
           </Navbar>

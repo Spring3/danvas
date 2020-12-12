@@ -15,8 +15,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'test',
-        short_name: 'test',
+        name: 'mafinest',
+        short_name: 'manifest',
         start_url: '/',
         background_color: '#fff',
         theme_color: '#fff',
@@ -61,9 +61,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-gdpr-cookies',
       options: {
-        trackingId: 'UA-141684888-1',
+        googleAnalytics: {
+          trackingId: 'UA-141684888-1', // leave empty if you want to disable the tracker
+        }
       },
     },
     'gatsby-plugin-netlify-cache',

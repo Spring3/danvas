@@ -66,6 +66,7 @@ const PreviewButton = styled.button`
 
   svg {
     fill: rgba(255, 255, 255, 0.5);
+    vertical-align: middle;
   }
 
   &:focus {

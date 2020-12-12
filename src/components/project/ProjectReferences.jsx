@@ -25,15 +25,14 @@ const ProjectReference = ({ href, children }) => (
   </StyledReference>
 );
 
-const ProjectReferences = ({ frontmatter, size = 30 }) => {
+const ProjectReferences = ({ frontmatter, size = 30, onlyIcons = false }) => {
   const components = [];
 
   if (frontmatter.chrome) {
     components.push(
       <ProjectReference href={frontmatter.chrome}>
         <ChromeIcon size={size} />
-        {' '}
-&nbsp;Chrome Store
+        {onlyIcons ? '' : ' Chrome Store'}
       </ProjectReference>
     );
   }
@@ -42,8 +41,7 @@ const ProjectReferences = ({ frontmatter, size = 30 }) => {
     components.push(
       <ProjectReference href={frontmatter.firefox}>
         <FirefoxIcon size={size} />
-        {' '}
-&nbsp;Firefox Store
+        {onlyIcons ? '' : ' Firefox Store'}
       </ProjectReference>
     );
   }
@@ -52,8 +50,7 @@ const ProjectReferences = ({ frontmatter, size = 30 }) => {
     components.push(
       <ProjectReference href={frontmatter.demo}>
         <CardSearchOutlineIcon size={size} />
-        {' '}
-&nbsp;Demo
+        {onlyIcons ? '' : ' Demo'}
       </ProjectReference>
     );
   }
@@ -62,8 +59,7 @@ const ProjectReferences = ({ frontmatter, size = 30 }) => {
     components.push(
       <ProjectReference href={frontmatter.repository}>
         <GithubIcon size={size} />
-        {' '}
-&nbsp;Source
+        {onlyIcons ? '' : ' Source'}
       </ProjectReference>
     );
   }
