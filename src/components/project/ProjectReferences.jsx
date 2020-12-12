@@ -9,6 +9,7 @@ import { Reference } from '../Reference';
 const StyledReference = styled(Reference)`
   background: none;
   font-size: 1.2rem;
+  border-radius: 5px;
   svg {
     vertical-align: top;
   }
@@ -33,7 +34,7 @@ const ProjectReferences = ({ frontmatter, size = 30 }) => {
         <ChromeIcon size={size} />
         {' '}
 &nbsp;Chrome Store
-      </ProjectReference>,
+      </ProjectReference>
     );
   }
 
@@ -43,7 +44,7 @@ const ProjectReferences = ({ frontmatter, size = 30 }) => {
         <FirefoxIcon size={size} />
         {' '}
 &nbsp;Firefox Store
-      </ProjectReference>,
+      </ProjectReference>
     );
   }
 
@@ -53,7 +54,7 @@ const ProjectReferences = ({ frontmatter, size = 30 }) => {
         <CardSearchOutlineIcon size={size} />
         {' '}
 &nbsp;Demo
-      </ProjectReference>,
+      </ProjectReference>
     );
   }
 
@@ -63,7 +64,7 @@ const ProjectReferences = ({ frontmatter, size = 30 }) => {
         <GithubIcon size={size} />
         {' '}
 &nbsp;Source
-      </ProjectReference>,
+      </ProjectReference>
     );
   }
 
