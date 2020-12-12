@@ -7,7 +7,7 @@ import CloseIcon from 'mdi-react/CloseIcon';
 import { Helmet } from 'react-helmet';
 import { useSprings, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
-import clamp from 'lodash/clamp';
+import clamp from 'lodash.clamp';
 import { useWindowResize } from '../hooks/useWindowResize';
 
 const ImagePreviewPortal = ({ children }) => {
@@ -24,7 +24,9 @@ const ImagePreviewPortal = ({ children }) => {
   return createPortal(children, container);
 };
 
-const ImagePreviewContainer = ({ children }) => <div id="image-preview-portal">{children}</div>;
+const ImagePreviewContainer = ({ children }) => (
+  <div id="image-preview-portal">{children}</div>
+);
 
 const PreviewContainer = styled.div`
   position: fixed;
@@ -132,9 +134,9 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
 
   const [draggingAnimationSprings, set] = useSprings(images.length, (i) => ({
     x: i * width,
-    transform: `translateX(${i * width}px)`,
     scale: 1,
     display: 'block',
+    transform: `translateX(${i * width}px) scale(1)`,
   }));
 
   useEffect(() => {
@@ -143,37 +145,50 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
       const x = (i - index) * width;
       const scale = 1;
       return {
-        x, scale, display: 'block', transform: `translateX(${x}px)`,
+        x,
+        scale,
+        display: 'block',
+        transform: `translateX(${x}px) scale(${scale})`,
       };
     });
   }, [index, width]);
 
-  const bind = useDrag(({
-    active, movement: [mx], direction: [xDir], distance, cancel,
-  }) => {
-    if (active && distance > width / 4) {
-      const newIndex = clamp(index + (xDir > 0 ? -1 : 1), 0, images.length - 1);
-      setIndex(newIndex);
-      cancel((newIndex));
-    }
-    set((i) => {
-      if (i < index - 1 || i > index + 1) return { display: 'none' };
-      const x = (i - index) * width + (active ? mx : 0);
-      const scale = active ? 1 - distance / width / 2 : 1;
-      return {
-        x, scale, display: 'block', transform: `translateX(${x}px)`,
-      };
-    });
-  }, { axis: 'x' });
+  const bind = useDrag(
+    ({
+      active, movement: [mx], direction: [xDir], distance, cancel
+    }) => {
+      if (active && distance > width / 4) {
+        const newIndex = clamp(
+          index + (xDir > 0 ? -1 : 1),
+          0,
+          images.length - 1
+        );
+        setIndex(newIndex);
+        cancel(newIndex);
+      }
+      set((i) => {
+        if (i < index - 1 || i > index + 1) return { display: 'none' };
+        const x = (i - index) * width + (active ? mx : 0);
+        const scale = active ? 1 - distance / width / 2 : 1;
+        return {
+          x,
+          scale,
+          display: 'block',
+          transform: `translateX(${x}px) scale(${scale})`,
+        };
+      });
+    },
+    { axis: 'x' }
+  );
 
   const nextSlide = (e) => {
     e.stopPropagation();
-    setIndex((index) => clamp(index + 1, 0, images.length - 1));
+    setIndex((i) => clamp(i + 1, 0, images.length - 1));
   };
 
   const previousSlide = (e) => {
     e.stopPropagation();
-    setIndex((index) => clamp(index - 1, 0, images.length - 1));
+    setIndex((i) => clamp(i - 1, 0, images.length - 1));
   };
 
   if (images.length === 1) {
@@ -192,7 +207,14 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
           <PreviewContainer onClick={onClose}>
             <IconClose color="white" />
             <PreviewImages>
-              <img src={images[0].src} onClick={(e) => { e.stopPropagation(); e.preventDefault(); }} />
+              <img
+                src={images[0].src}
+                alt={images[0].name}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                }}
+              />
             </PreviewImages>
           </PreviewContainer>
         </ImagePreviewPortal>
@@ -218,17 +240,20 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
             <ArrowLeftIcon color="white" />
           </ButtonPrevious>
           <PreviewImages>
-            {draggingAnimationSprings.map(({ transform, display, scale }, i) => {
+            {draggingAnimationSprings.map(({ display, transform }, i) => {
               const image = images[i];
               return (
                 <SlidingImage
                   src={image.src}
-                  onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                  }}
                   onDragStart={(e) => e.preventDefault()}
                   key={image.name}
                   alt={image.name}
                   {...bind()}
-                  style={{ transform, scale, display }}
+                  style={{ transform, display }}
                 />
               );
             })}
