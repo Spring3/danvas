@@ -1,15 +1,15 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import GlobalStyles, { OGP } from '../components/GlobalStyle';
-import { AboutSection } from '../components/AboutSection';
-import { ProjectsSection } from '../components/ProjectsSection';
-import { AnchorListMenu } from '../components/PortfolioMenu';
+import { AboutSection } from '../components/index/AboutSection';
+import { ProjectsSection } from '../components/index/ProjectsSection';
+import { AnchorListMenu } from '../components/common/PortfolioMenu';
 import { slugToAnchor } from '../utils';
-import { styles } from '../components/Reference';
-import { Footer } from '../components/Footer';
-import { ImagePreviewContainer } from '../components/ImagePreview';
+import { styles } from '../components/common/Reference';
+import { Footer } from '../components/index/Footer';
+import { ImagePreviewContainer } from '../components/common/ImagePreview';
 
 const AboutSectionMarkdown = styled.div`
   a {

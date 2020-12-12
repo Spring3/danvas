@@ -3,20 +3,20 @@ import { graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
 import GlobalStyles, { OGP } from '../components/GlobalStyle';
-import { ButtonBack } from '../components/Buttons';
-import { MarkdownContent } from '../components/MarkdownContent';
+import { ButtonBack } from '../components/common/Buttons';
+import { MarkdownContent } from '../components/common/MarkdownContent';
 import { Subheading } from '../components/project/Header';
-import Tags, { Tag } from '../components/project/Tags';
+import Tags, { Tag } from '../components/common/Tags';
 import { ProjectReferences } from '../components/project/ProjectReferences';
-import { SlugListMenu } from '../components/PortfolioMenu';
-import { PageWrapper } from '../components/PageWrapper';
-import Navbar from '../components/Navbar';
-import { ImageCarousel } from '../components/ImageCarousel';
+import { SlugListMenu } from '../components/common/PortfolioMenu';
+import { PageWrapper } from '../components/common/PageWrapper';
+import Navbar from '../components/common/Navbar';
+import { ImageCarousel } from '../components/common/ImageCarousel';
 import { useAnchorTracker } from '../hooks/useAnchorTracker';
-import { Flex } from '../components/Flex';
+import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
 import { useWindowResize } from '../hooks/useWindowResize';
-import { ImagePreviewContainer } from '../components/ImagePreview';
+import { ImagePreviewContainer } from '../components/common/ImagePreview';
 
 const PageLayout = styled.div`
   display: grid;

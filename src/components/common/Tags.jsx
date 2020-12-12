@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Flex } from '../Flex';
+import { Flex } from './Flex';
 
 const Tags = styled(Flex)`
   margin-top: 1.5rem;

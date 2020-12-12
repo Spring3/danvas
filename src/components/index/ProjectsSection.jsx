@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { Header } from './common/Headers';
+import { Header } from '../common/Headers';
 import { Project } from './Project';
-import { Flex } from './Flex';
+import { Flex } from '../common/Flex';
 
 const ProjectsWrapper = styled(Flex)`
   position: relative;

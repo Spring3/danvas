@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Tags, { Tag } from './project/Tags';
-import { FixedImageSet } from './project/FixedImageSet';
-import { slugToAnchor } from '../utils';
-import { Link } from './Reference';
-import { MarkdownContent } from './MarkdownContent';
-import { useWindowResize } from '../hooks/useWindowResize';
-import { ImageCarousel } from './ImageCarousel';
-import { Flex } from './Flex';
+import Tags, { Tag } from '../common/Tags';
+import { FixedImageSet } from '../project/FixedImageSet';
+import { slugToAnchor } from '../../utils';
+import { Link } from '../common/Reference';
+import { MarkdownContent } from '../common/MarkdownContent';
+import { useWindowResize } from '../../hooks/useWindowResize';
+import { ImageCarousel } from '../common/ImageCarousel';
+import { Flex } from '../common/Flex';
 
 const ProjectInfo = styled.div`
   @media (min-width: 1000px) {

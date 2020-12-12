@@ -3,14 +3,14 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import GlobalStyles, { OGP } from '../components/GlobalStyle';
-import { ButtonBack, DownloadButton } from '../components/Buttons';
+import { ButtonBack, DownloadButton } from '../components/common/Buttons';
 import { Subheading } from '../components/project/Header';
-import Navbar from '../components/Navbar';
-import { PageWrapper } from '../components/PageWrapper';
-import { SocialButtons } from '../components/SocialButtons';
+import Navbar from '../components/common/Navbar';
+import { PageWrapper } from '../components/common/PageWrapper';
+import { SocialButtons } from '../components/common/SocialButtons';
 import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { DownloadFooter } from '../components/cv/DownloadFooter';
-import { Flex } from '../components/Flex';
+import { Flex } from '../components/common/Flex';
 
 const CVWrapper = styled.div`
   padding: 0px 1rem;

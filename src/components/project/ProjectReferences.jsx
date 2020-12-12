@@ -4,7 +4,7 @@ import GithubIcon from 'mdi-react/GithubIcon';
 import CardSearchOutlineIcon from 'mdi-react/CardSearchOutlineIcon';
 import ChromeIcon from 'mdi-react/GoogleChromeIcon';
 import FirefoxIcon from 'mdi-react/FirefoxIcon';
-import { Reference } from '../Reference';
+import { Reference } from '../common/Reference';
 
 const StyledReference = styled(Reference)`
   background: none;

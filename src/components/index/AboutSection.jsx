@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Header } from './common/Headers';
-import { SocialButtons } from './SocialButtons';
-import { Flex } from './Flex';
+import { Header } from '../common/Headers';
+import { SocialButtons } from '../common/SocialButtons';
+import { Flex } from '../common/Flex';
 
 const ContentPanel = styled(Flex)`
   box-sizing: border-box;

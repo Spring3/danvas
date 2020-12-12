@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 
-import { useAnchorTracker } from '../hooks/useAnchorTracker';
+import { useAnchorTracker } from '../../hooks/useAnchorTracker';
 import { Link, Reference } from './Reference';
-import { slugToTitle } from '../utils';
+import { slugToTitle } from '../../utils';
 
 const MenuContainer = styled.ul`
   list-style-type: none;

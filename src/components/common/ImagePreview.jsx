@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet';
 import { useSprings, animated, config } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
-import { useWindowResize } from '../hooks/useWindowResize';
+import { useWindowResize } from '../../hooks/useWindowResize';
 import { PreviewButtonNext, PreviewButtonPrevious } from './Buttons';
 
 const ImagePreviewPortal = ({ children }) => {
