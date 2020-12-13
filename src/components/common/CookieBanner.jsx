@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import CookieOutlineIcon from 'mdi-react/CookieIcon';
 import CaretDownIcon from 'mdi-react/CaretDownOutlineIcon';
@@ -8,13 +8,14 @@ import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 import { Button } from './Buttons';
 import { Flex } from './Flex';
 import { MARKERS } from '../../theme';
+import { useWindowSize } from 'react-use';
 
-const storageKey = 'ga-cookie-conscent';
+const storageKey = 'danv-ga-cookie-conscent';
 
-const CookieBannerContainer = styled.div`
+const CookieBannerContainer = styled(animated.div)`
   position: fixed;
-  left: 2rem;
-  bottom: 2rem;
+  left: 1rem;
+  bottom: 1rem;
   background: white;
   box-shadow: 0px 0px 5px lightgrey;
   padding: 1.5rem;
@@ -35,18 +36,30 @@ const CookieBannerContainer = styled.div`
       vertical-align: bottom;
     }
   }
+
+  @media (min-width: 750px) {
+    left: 2rem;
+    bottom: 2rem;
+  }
 `;
 
 const Description = styled(animated.p)`
   max-width: 300px;
   overflow: hidden;
+  overflow-y: scroll;
   margin: 0;
   transition: height 0.4s;
 `;
 
 const CookieBanner = () => {
   const [isFullHeight, setFullHeight] = useState(false);
-  const decidedAlready = localStorage.getItem(storageKey);
+  const { width } = useWindowSize();
+
+  const [conscentRequired, setConscentRequired] = useState(sessionStorage.getItem(storageKey) === null);
+
+  const [introAnimation, setIntoAnimation] = useSpring(() => ({
+    left: '-50rem'
+  }));
 
   const descriptionAnimation = useSpring({
     maxHeight: isFullHeight ? '100%' : '0px',
@@ -54,11 +67,16 @@ const CookieBanner = () => {
   });
 
   const onAccept = () => {
-    localStorage.setItem(storageKey, true);
+    sessionStorage.setItem(storageKey, true);
+    initializeAndTrack();
+    setConscentRequired(false);
+    setIntoAnimation({ left: '-50rem' });
   };
 
   const onReject = () => {
-    localStorage.setItem(storageKey, false);
+    sessionStorage.setItem(storageKey, false);
+    setConscentRequired(false);
+    setIntoAnimation({ left: '-50rem' });
   };
 
   const onCaretClick = (e) => {
@@ -73,17 +91,19 @@ const CookieBanner = () => {
     []
   );
 
-  if (decidedAlready === 'true') {
-    initializeAndTrack();
-    return null;
-  }
+  useEffect(() => {
+    const decisionMade = sessionStorage.getItem(storageKey);
 
-  if (decidedAlready === 'false') {
-    return null;
-  }
+    if (conscentRequired) {
+      const distanceFromTheBorder = width >= 750 ? '2rem' : '1rem';
+      setIntoAnimation({ left: distanceFromTheBorder });
+    } else if (decisionMade === 'true') {
+      initializeAndTrack();
+    }
+  }, [conscentRequired, width]);
 
   return (
-    <CookieBannerContainer>
+    <CookieBannerContainer style={introAnimation}>
       <Flex alignItems="center" justifyContent="space-between">
         <h3>
           <CookieOutlineIcon size={40} /> Cookies!
