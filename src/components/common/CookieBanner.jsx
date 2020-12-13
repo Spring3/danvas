@@ -48,7 +48,7 @@ const CookieBanner = () => {
   const [isFullHeight, setFullHeight] = useState(false);
   const decidedAlready = localStorage.getItem(storageKey);
 
-  const descriptionAnimation = useSpring({ maxHeight: isFullHeight ? '70px' : '0px', margin: isFullHeight ? '0px 0px 20px 0px' : '0px 0px 0px 0px' });
+  const descriptionAnimation = useSpring({ maxHeight: isFullHeight ? '100%' : '0px', margin: isFullHeight ? '0px 0px 20px 0px' : '0px 0px 0px 0px' });
 
   const onAccept = () => {
     localStorage.setItem(storageKey, true);
@@ -96,8 +96,6 @@ const CookieBanner = () => {
     </CookieBannerContainer>
   );
 };
-
-// <a href="https://www.vecteezy.com/free-vector/food">Food Vectors by Vecteezy</a>
 
 export {
   CookieBanner

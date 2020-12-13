@@ -6,7 +6,7 @@ import { FixedImageSet } from '../project/FixedImageSet';
 import { slugToAnchor } from '../../utils';
 import { Link } from '../common/Reference';
 import { MarkdownContent } from '../common/MarkdownContent';
-import { useWindowResize } from '../../hooks/useWindowResize';
+import { useWindowSize } from 'react-use';
 import { ImageCarousel } from '../common/ImageCarousel';
 import { Flex } from '../common/Flex';
 
@@ -52,7 +52,7 @@ const ProjectContent = styled(MarkdownContent)`
 
 const Project = ({ node, index }) => {
   const anchor = slugToAnchor(node.fields.slug);
-  const { width } = useWindowResize();
+  const { width } = useWindowSize();
   const id = anchor.substring(1);
   const isSmallScreen = width <= 1000;
 

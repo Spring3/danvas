@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { useWindowResize } from '../../hooks/useWindowResize';
+import { useWindowSize } from 'react-use';
 
 const FixedImage = styled.div`
   background-image: url("${(props) => props.src}");
@@ -33,7 +33,7 @@ const NormalImage = styled.div`
 `;
 
 const FixedImageSet = ({ images }) => {
-  const { height } = useWindowResize();
+  const { height } = useWindowSize();
 
   if (!images || !images.length) {
     return null;

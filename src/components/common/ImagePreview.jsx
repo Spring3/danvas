@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet';
 import { useSprings, animated, config } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
-import { useWindowResize } from '../../hooks/useWindowResize';
+import { useWindowSize  } from 'react-use';
 import { PreviewButtonNext, PreviewButtonPrevious } from './Buttons';
 
 const ImagePreviewPortal = ({ children }) => {
@@ -83,7 +83,7 @@ const IconClose = styled(CloseIcon)`
 `;
 
 const ImagePreview = ({ images, startIndex = 0, onClose }) => {
-  const { width, height } = useWindowResize();
+  const { width, height } = useWindowSize();
   const [index, setIndex] = useState(startIndex);
   const [mousePressed, setMousePressed] = useState(false);
 

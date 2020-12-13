@@ -16,7 +16,7 @@ import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
 import { ImagePreviewContainer } from '../components/common/ImagePreview';
-import { useWindowResize } from '../hooks/useWindowResize';
+import { useWindowSize } from 'react-use';
 
 const PageLayout = styled.div`
   display: grid;
@@ -87,7 +87,7 @@ export default (props) => {
   const allPosts = props.data.allMarkdownRemark.nodes;
   const activeAnchor = useAnchorTracker(['#markdown']);
   const anchor = slugToAnchor(post.fields.slug);
-  const { width } = useWindowResize();
+  const { width } = useWindowSize();
 
   const slugs = allPosts.map((node) => node.fields.slug);
 
