@@ -7,7 +7,7 @@ import CaretDownIcon from 'mdi-react/CaretDownOutlineIcon';
 import CaretUpIcon from 'mdi-react/CaretUpOutlineIcon';
 import { useSpring, animated } from 'react-spring';
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
-import { useTimeout, useWindowSize } from 'react-use';
+import { useTimeout, useTimeoutFn, useWindowSize } from 'react-use';
 import { Button, FlatButton } from './Buttons';
 import { Flex } from './Flex';
 import { MARKERS } from '../../theme';
@@ -57,6 +57,8 @@ const CookieBanner = memo(() => {
   const [isFullHeight, setFullHeight] = useState(false);
   const { width } = useWindowSize();
   const [isReady] = useTimeout(3000);
+  useTimeoutFn(() => setFullHeight(true), 4500);
+  useTimeoutFn(() => setFullHeight(false), 9500);
 
   const [conscentRequired, setConscentRequired] = useState(
     sessionStorage.getItem(storageKey) === null
@@ -113,7 +115,7 @@ const CookieBanner = memo(() => {
     <CookieBannerContainer style={introAnimation}>
       <Flex alignItems="center" justifyContent="space-between">
         <h3>
-          <CookieOutlineIcon size={40} />
+          <CookieOutlineIcon size={40} color="#875A34" />
           {' '}
           Cookies!
         </h3>
