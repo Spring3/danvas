@@ -39,25 +39,29 @@ const FixedImageSet = ({ images }) => {
     return null;
   }
 
+  const marginTop = height * 0.16;
+  const maxHeight = height - marginTop;
+
   if (images.length === 1) {
     return <NormalImage src={images[0].src} height={maxHeight} />;
   }
 
-  const marginTop = height * 0.16;
-  const maxHeight = height - marginTop;
-
-  return images.map((image) => (
-    <Fragment key={image.name}>
-      <FixedImage
-        verticalPosition={marginTop}
-        height={maxHeight}
-        id={image.name}
-        key={image.name}
-        src={image.src}
-      />
-      <Placeholder verticalPosition={marginTop} height={maxHeight} />
-    </Fragment>
-  ));
+  return images.map((image) => {
+    const scaledWidth = image.presentationWidth / 2; // because background-size: 50%
+    const scaledHeight = scaledWidth / image.aspectRatio;
+    return (
+      <Fragment key={image.name}>
+        <FixedImage
+          verticalPosition={marginTop}
+          height={scaledHeight}
+          id={image.name}
+          key={image.name}
+          src={image.src}
+        />
+        <Placeholder verticalPosition={marginTop} height={scaledHeight} />
+      </Fragment>
+    )
+  });
 };
 
 export { FixedImageSet };

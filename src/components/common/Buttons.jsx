@@ -22,9 +22,7 @@ const LinkButton = styled(Link)`
 
 const ButtonBack = ({ href, value }) => (
   <LinkButton to={href}>
-    <ArrowLeftIcon />
-    {' '}
-    {value}
+    <ArrowLeftIcon /> {value}
   </LinkButton>
 );
 
@@ -50,9 +48,7 @@ const StyledDownloadButton = styled(Reference)`
 
 const DownloadButton = ({ href, value }) => (
   <StyledDownloadButton id="download-button" href={href}>
-    <DownloadOutlineIcon />
-    {' '}
-    {value}
+    <DownloadOutlineIcon /> {value}
   </StyledDownloadButton>
 );
 
@@ -74,15 +70,16 @@ const PreviewButton = styled.button`
     outline: none;
   }
 
-  ${(props) => (props.isDisabled
-    ? css`
+  ${(props) =>
+    props.isDisabled
+      ? css`
           cursor: not-allowed;
           background: rgba(255, 255, 255, 0.1);
           svg {
             fill: rgba(255, 255, 255, 0.15);
           }
         `
-    : css`
+      : css`
           &:focus,
           &:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -90,7 +87,7 @@ const PreviewButton = styled.button`
               fill: rgba(255, 255, 255, 1);
             }
           }
-        `)}
+        `}
 
   @media (max-width: 700px) {
     position: absolute;

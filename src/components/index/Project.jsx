@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useWindowSize } from 'react-use';
 import Tags, { Tag } from '../common/Tags';
 import { FixedImageSet } from '../project/FixedImageSet';
 import { slugToAnchor } from '../../utils';
 import { Link } from '../common/Reference';
 import { MarkdownContent } from '../common/MarkdownContent';
-import { useWindowSize } from 'react-use';
 import { ImageCarousel } from '../common/ImageCarousel';
 import { Flex } from '../common/Flex';
 
