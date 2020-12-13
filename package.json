@@ -66,11 +66,11 @@
   "homepage": "https://github.com/Spring3/website#readme",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
+      "prettier --write .",
       "eslint --fix"
     ],
     "*.md": [
-      "prettier --write"
+      "prettier --write ."
     ]
   },
   "husky": {

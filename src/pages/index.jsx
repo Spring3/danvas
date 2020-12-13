@@ -57,9 +57,9 @@ export default ({ data }) => {
     window.scrollTo({
       behavior: 'smooth',
       top:
-        element.getBoundingClientRect().top
-        + window.pageYOffset
-        - marginsAndPaddings,
+        element.getBoundingClientRect().top +
+        window.pageYOffset -
+        marginsAndPaddings,
     });
     return false;
   }, []);

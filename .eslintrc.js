@@ -22,6 +22,6 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'jsx-quotes': 'off',
-    'react/jsx-curly-newline': 'off'
+    'react/jsx-curly-newline': 'off',
   },
 };

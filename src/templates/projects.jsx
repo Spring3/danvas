@@ -26,29 +26,29 @@ const PageLayout = styled.div`
 
   grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
   grid-template-areas:
-    "nav nav nav nav"
-    "info info content content"
-    "info info content content";
+    'nav nav nav nav'
+    'info info content content'
+    'info info content content';
 
   @media (max-width: 850px) {
     grid-template-columns: repeat(4, 25%);
     padding: 1rem;
     grid-gap: 0rem;
-  
+
     grid-template-areas:
-      "nav nav nav nav"
-      "info info info info"
-      "content content content content";
-    }
+      'nav nav nav nav'
+      'info info info info'
+      'content content content content';
+  }
 
   @media (max-width: 700px) {
     padding: 1rem;
     grid-gap: 0rem;
 
     grid-template-areas:
-      "nav nav nav nav"
-      "info info info info"
-      "content content content content";
+      'nav nav nav nav'
+      'info info info info'
+      'content content content content';
   }
 `;
 
@@ -122,7 +122,11 @@ export default (props) => {
                 gap="1.5rem"
                 justifyContent="flex-end"
               >
-                <ProjectReferences size={25} frontmatter={post.frontmatter} onlyIcons={isSmallScreen} />
+                <ProjectReferences
+                  size={25}
+                  frontmatter={post.frontmatter}
+                  onlyIcons={isSmallScreen}
+                />
               </TinyProjectReferenceContainer>
             ) : null}
           </Navbar>
@@ -182,7 +186,7 @@ export const query = graphql`
         images {
           name
           childImageSharp {
-            fluid(maxHeight: 1080,) {
+            fluid(maxHeight: 1080) {
               src
               sizes
               srcSet
@@ -192,7 +196,7 @@ export const query = graphql`
         thumbnail {
           name
           childImageSharp {
-            fluid(maxHeight: 1080,) {
+            fluid(maxHeight: 1080) {
               src
               sizes
               srcSet

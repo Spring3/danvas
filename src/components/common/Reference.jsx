@@ -9,22 +9,25 @@ const styles = css`
   color: black;
   font-weight: ${(props) => (props.bold ? 'bold' : 500)};
   padding: 2px;
-  ${(props) => (props.theme.marker
-    ? `background: linear-gradient(to bottom, transparent 0%, transparent 60%, ${props.theme.marker} 60%, ${props.theme.marker} 100%);`
-    : 'background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-blue) 60%,  var(--marker-blue) 100%);')}
+  ${(props) =>
+    props.theme.marker
+      ? `background: linear-gradient(to bottom, transparent 0%, transparent 60%, ${props.theme.marker} 60%, ${props.theme.marker} 100%);`
+      : 'background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-blue) 60%,  var(--marker-blue) 100%);'}
 
   &:visited {
     color: black;
     font-weight: ${(props) => (props.bold ? 'bold' : 500)};
     padding: 2px;
-    ${(props) => (props.theme.marker
-    ? `background: linear-gradient(to bottom, transparent 0%, transparent 60%, ${props.theme.marker} 60%, ${props.theme.marker} 100%);`
-    : 'background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-blue) 60%,  var(--marker-blue) 100%);')}
+    ${(props) =>
+      props.theme.marker
+        ? `background: linear-gradient(to bottom, transparent 0%, transparent 60%, ${props.theme.marker} 60%, ${props.theme.marker} 100%);`
+        : 'background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-blue) 60%,  var(--marker-blue) 100%);'}
   }
 
   &:hover,
   &:focus {
-    background: ${(props) => (props.theme.marker ? `${props.theme.marker}` : 'var(--marker-blue)')};
+    background: ${(props) =>
+      props.theme.marker ? `${props.theme.marker}` : 'var(--marker-blue)'};
   }
 `;
 

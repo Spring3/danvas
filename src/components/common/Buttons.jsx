@@ -22,9 +22,7 @@ const LinkButton = styled(Link)`
 
 const ButtonBack = ({ href, value }) => (
   <LinkButton to={href}>
-    <ArrowLeftIcon />
-    {' '}
-    {value}
+    <ArrowLeftIcon /> {value}
   </LinkButton>
 );
 
@@ -50,9 +48,7 @@ const StyledDownloadButton = styled(Reference)`
 
 const DownloadButton = ({ href, value }) => (
   <StyledDownloadButton id="download-button" href={href}>
-    <DownloadOutlineIcon />
-    {' '}
-    {value}
+    <DownloadOutlineIcon /> {value}
   </StyledDownloadButton>
 );
 
@@ -74,25 +70,24 @@ const PreviewButton = styled.button`
     outline: none;
   }
 
-
-  ${(props) => props.isDisabled
-    ? css`
-      cursor: not-allowed;
-      background: rgba(255, 255, 255, 0.1);
-      svg {
-        fill: rgba(255, 255, 255, 0.15);
-      }
-    `
-    : css`
-      &:focus,
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
-        svg {
-          fill: rgba(255, 255, 255, 1);
-        }
-      }
-    `
-  }
+  ${(props) =>
+    props.isDisabled
+      ? css`
+          cursor: not-allowed;
+          background: rgba(255, 255, 255, 0.1);
+          svg {
+            fill: rgba(255, 255, 255, 0.15);
+          }
+        `
+      : css`
+          &:focus,
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            svg {
+              fill: rgba(255, 255, 255, 1);
+            }
+          }
+        `}
 
   @media (max-width: 700px) {
     position: absolute;
@@ -128,7 +123,7 @@ const Button = styled.button`
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: box-shadow .2s ease;
+  transition: box-shadow 0.2s ease;
 
   &:hover {
     box-shadow: 0px 0px 5px ${(props) => props.theme.marker || 'transparent'};
@@ -141,5 +136,10 @@ const Button = styled.button`
 `;
 
 export {
-  Button, LinkButton, ButtonBack, DownloadButton, PreviewButtonPrevious, PreviewButtonNext
+  Button,
+  LinkButton,
+  ButtonBack,
+  DownloadButton,
+  PreviewButtonPrevious,
+  PreviewButtonNext,
 };

@@ -6,6 +6,4 @@ const MARKERS = {
   blue: 'var(--marker-blue)',
 };
 
-export {
-  MARKERS
-};
+export { MARKERS };

@@ -19,7 +19,7 @@ const TagItem = styled.li`
 export const Tag = ({ children }) => (
   <TagItem>
     {children}
-&nbsp;
+    &nbsp;
   </TagItem>
 );
 

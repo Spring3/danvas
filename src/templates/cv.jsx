@@ -103,9 +103,8 @@ export default ({ data }) => {
                 <SocialButtons onlyImportant />
               </InlinedNavbarPart>
               <small>
-&nbsp;(
-                {post.frontmatter.updatedAt}
-                )
+                &nbsp;(
+                {post.frontmatter.updatedAt})
               </small>
             </Flex>
           ) : null}
@@ -118,9 +117,8 @@ export default ({ data }) => {
           <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
             <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
             <small>
-&nbsp;(
-              {post.frontmatter.updatedAt}
-              )
+              &nbsp;(
+              {post.frontmatter.updatedAt})
             </small>
           </Flex>
           <p>
@@ -138,13 +136,10 @@ export default ({ data }) => {
               <CVSectionBlock>
                 <h3>Full Stack Software Engineer</h3>
                 <p>
-                  <strong>Company</strong>
-                  : Contentful
+                  <strong>Company</strong>: Contentful
                 </p>
                 <p>
-                  <strong>Duration:</strong>
-                  {' '}
-                  Dec 2018 - now
+                  <strong>Duration:</strong> Dec 2018 - now
                 </p>
                 <p>
                   Full stack development and support of the Headless CMS by
@@ -165,13 +160,10 @@ export default ({ data }) => {
               <CVSectionBlock>
                 <h3>Full Stack Developer</h3>
                 <p>
-                  <strong>Company</strong>
-                  : Dial-Once
+                  <strong>Company</strong>: Dial-Once
                 </p>
                 <p>
-                  <strong>Duration:</strong>
-                  {' '}
-                  Dec 2016 - Dec 2019
+                  <strong>Duration:</strong> Dec 2016 - Dec 2019
                 </p>
                 <p>
                   Full stack development and support of the omnichannel
@@ -203,13 +195,10 @@ export default ({ data }) => {
               <CVSectionBlock>
                 <h3>Node.js Developer</h3>
                 <p>
-                  <strong>Company</strong>
-                  : FASTEE Technologies
+                  <strong>Company</strong>: FASTEE Technologies
                 </p>
                 <p>
-                  <strong>Duration:</strong>
-                  {' '}
-                  Aug - Dec 2016
+                  <strong>Duration:</strong> Aug - Dec 2016
                 </p>
                 <p>Implemented bots for the generic chat bot platform.</p>
                 <h4>Summary:</h4>
@@ -244,8 +233,7 @@ export default ({ data }) => {
                 <span>: Webpack</span>
               </p>
               <p>
-                <strong>Testing</strong>
-                : testing-library, Jest, Chai, Sinon,
+                <strong>Testing</strong>: testing-library, Jest, Chai, Sinon,
                 Nyc, Karma, Enzyme
               </p>
               <p>

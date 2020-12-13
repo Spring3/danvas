@@ -13,7 +13,7 @@ const useAnchorTracker = (anchors) => {
     const onScroll = () => {
       const marginsAndPaddings = 57;
       const scrolledPast = elements.filter(
-        (element) => element.getBoundingClientRect().y <= marginsAndPaddings,
+        (element) => element.getBoundingClientRect().y <= marginsAndPaddings
       );
       setActiveAnchor(anchors[scrolledPast.length - 1]);
     };

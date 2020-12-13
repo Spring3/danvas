@@ -66,11 +66,7 @@ const Project = ({ node, index }) => {
       <InfoWrapper>
         <ProjectInfo index={index}>
           <ProjectTitle>
-            <Link
-              to={node.fields.slug}
-              marker={node.frontmatter.marker}
-              bold
-            >
+            <Link to={node.fields.slug} marker={node.frontmatter.marker} bold>
               {node.frontmatter.title}
             </Link>
           </ProjectTitle>

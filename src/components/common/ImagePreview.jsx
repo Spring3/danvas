@@ -1,6 +1,4 @@
-import React, {
-  useCallback, useEffect, useMemo, useState
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import ArrowLeftIcon from 'mdi-react/ArrowLeftThickIcon';
@@ -10,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import { useSprings, animated, config } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
-import { useWindowSize  } from 'react-use';
+import { useWindowSize } from 'react-use';
 import { PreviewButtonNext, PreviewButtonPrevious } from './Buttons';
 
 const ImagePreviewPortal = ({ children }) => {
@@ -61,7 +59,10 @@ const SlidingImage = styled(animated.img)`
   position: absolute;
   transition: opacity 0.3s ease-in-out;
   max-width: 100%;
-  max-height: ${(props) => props.maxHeight ? `calc(${props.maxHeight}px - 1rem)` : 'calc(100vh - 1rem)'};
+  max-height: ${(props) =>
+    props.maxHeight
+      ? `calc(${props.maxHeight}px - 1rem)`
+      : 'calc(100vh - 1rem)'};
   border-radius: 5px;
   touch-action: pan-y;
 `;
@@ -111,9 +112,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
   }, [index, width]);
 
   const bind = useDrag(
-    ({
-      active, movement: [mx], direction: [xDir], distance, cancel
-    }) => {
+    ({ active, movement: [mx], direction: [xDir], distance, cancel }) => {
       if (active && distance > width / 4) {
         const newIndex = clamp(
           index + (xDir > 0 ? -1 : 1),
@@ -229,8 +228,11 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
             }
           }}
         >
-          <IconClose color="white" onClick={onClose}/>
-          <PreviewButtonPrevious onClick={previousSlide} isDisabled={index === 0}>
+          <IconClose color="white" onClick={onClose} />
+          <PreviewButtonPrevious
+            onClick={previousSlide}
+            isDisabled={index === 0}
+          >
             <ArrowLeftIcon color="white" />
           </PreviewButtonPrevious>
           <PreviewImages>

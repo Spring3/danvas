@@ -41,14 +41,17 @@ const Description = styled(animated.p)`
   max-width: 300px;
   overflow: hidden;
   margin: 0;
-  transition: height .4s;
+  transition: height 0.4s;
 `;
 
 const CookieBanner = () => {
   const [isFullHeight, setFullHeight] = useState(false);
   const decidedAlready = localStorage.getItem(storageKey);
 
-  const descriptionAnimation = useSpring({ maxHeight: isFullHeight ? '100%' : '0px', margin: isFullHeight ? '0px 0px 20px 0px' : '0px 0px 0px 0px' });
+  const descriptionAnimation = useSpring({
+    maxHeight: isFullHeight ? '100%' : '0px',
+    margin: isFullHeight ? '0px 0px 20px 0px' : '0px 0px 0px 0px',
+  });
 
   const onAccept = () => {
     localStorage.setItem(storageKey, true);
@@ -63,40 +66,44 @@ const CookieBanner = () => {
     setFullHeight(!isFullHeight);
   };
 
-  const theme = useMemo(() => ({
-    marker: MARKERS.red
-  }), []);
+  const theme = useMemo(
+    () => ({
+      marker: MARKERS.red,
+    }),
+    []
+  );
 
-  if (decidedAlready === true) {
+  if (decidedAlready === 'true') {
     initializeAndTrack();
     return null;
   }
 
-  if (decidedAlready === false) {
+  if (decidedAlready === 'false') {
     return null;
-  };
+  }
 
   return (
     <CookieBannerContainer>
-      <Flex alignItems='center' justifyContent='space-between'>
+      <Flex alignItems="center" justifyContent="space-between">
         <h3>
-          <CookieOutlineIcon size={40} />
-          {' '}
-          Cookies!
+          <CookieOutlineIcon size={40} /> Cookies!
         </h3>
         <a href="" onClick={onCaretClick}>
-          { isFullHeight ? <CaretDownIcon /> : <CaretUpIcon /> }
+          {isFullHeight ? <CaretDownIcon /> : <CaretUpIcon />}
         </a>
       </Flex>
-      <Description style={descriptionAnimation}>I use google analytics cookies on this website as a way of seeing if anyone visits it at all.</Description>
+      <Description style={descriptionAnimation}>
+        I use google analytics cookies on this website as a way of seeing if
+        anyone visits it at all.
+      </Description>
       <Flex>
         <Button onClick={onAccept}>Accept</Button>
-        <Button onClick={onReject} theme={theme}>Reject</Button>
+        <Button onClick={onReject} theme={theme}>
+          Reject
+        </Button>
       </Flex>
     </CookieBannerContainer>
   );
 };
 
-export {
-  CookieBanner
-};
+export { CookieBanner };

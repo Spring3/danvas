@@ -49,13 +49,14 @@ const styles = css`
   font-size: 0.8rem;
   text-decoration: none;
 
-  ${(props) => props.active
-    && css`
+  ${(props) =>
+    props.active &&
+    css`
       font-weight: bold;
       color: var(--text-color-primary) !important;
       background: ${props.theme.marker
-    ? props.theme.marker
-    : 'var(--marker-blue)'};
+        ? props.theme.marker
+        : 'var(--marker-blue)'};
     `}
   &:visited {
     background: transparent;
@@ -65,13 +66,14 @@ const styles = css`
     font-size: 0.8rem;
     text-decoration: none;
 
-    ${(props) => props.active
-      && css`
+    ${(props) =>
+      props.active &&
+      css`
         font-weight: bold;
         color: var(--text-color-primary) !important;
         background: ${props.theme.marker
-    ? props.theme.marker
-    : 'var(--marker-blue)'};
+          ? props.theme.marker
+          : 'var(--marker-blue)'};
       `}
   }
 
@@ -81,10 +83,10 @@ const styles = css`
       border-bottom: 2px solid
         ${props.theme.marker ? props.theme.marker : 'var(--marker-blue)'};
       background: ${props.active
-    ? props.theme.marker
-      ? props.theme.marker
-      : 'var(--marker-blue)'
-    : 'transparent'};
+        ? props.theme.marker
+          ? props.theme.marker
+          : 'var(--marker-blue)'
+        : 'transparent'};
     `}
   }
 `;

@@ -7,8 +7,9 @@
 module.exports = {
   siteMetadata: {
     title: 'Daniyil Vasylenko Portfolio Website',
-    description: 'Daniyil Vasylenko\'s personal portfolio website',
-    image: 'https://user-images.githubusercontent.com/4171202/59647385-aebee480-9183-11e9-88fe-4b27c41436b4.png',
+    description: "Daniyil Vasylenko's personal portfolio website",
+    image:
+      'https://user-images.githubusercontent.com/4171202/59647385-aebee480-9183-11e9-88fe-4b27c41436b4.png',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -65,7 +66,7 @@ module.exports = {
       options: {
         googleAnalytics: {
           trackingId: 'UA-141684888-1', // leave empty if you want to disable the tracker
-        }
+        },
       },
     },
     'gatsby-plugin-netlify-cache',
