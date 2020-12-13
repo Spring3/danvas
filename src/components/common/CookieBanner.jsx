@@ -1,14 +1,16 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {
+  useEffect, useMemo, useState, memo
+} from 'react';
 import styled from 'styled-components';
 import CookieOutlineIcon from 'mdi-react/CookieIcon';
 import CaretDownIcon from 'mdi-react/CaretDownOutlineIcon';
 import CaretUpIcon from 'mdi-react/CaretUpOutlineIcon';
 import { useSpring, animated } from 'react-spring';
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
-import { Button } from './Buttons';
+import { useTimeout, useWindowSize } from 'react-use';
+import { Button, FlatButton } from './Buttons';
 import { Flex } from './Flex';
 import { MARKERS } from '../../theme';
-import { useWindowSize } from 'react-use';
 
 const storageKey = 'danv-ga-cookie-conscent';
 
@@ -51,14 +53,17 @@ const Description = styled(animated.p)`
   transition: height 0.4s;
 `;
 
-const CookieBanner = () => {
+const CookieBanner = memo(() => {
   const [isFullHeight, setFullHeight] = useState(false);
   const { width } = useWindowSize();
+  const [isReady] = useTimeout(3000);
 
-  const [conscentRequired, setConscentRequired] = useState(sessionStorage.getItem(storageKey) === null);
+  const [conscentRequired, setConscentRequired] = useState(
+    sessionStorage.getItem(storageKey) === null
+  );
 
   const [introAnimation, setIntoAnimation] = useSpring(() => ({
-    left: '-50rem'
+    left: '-50rem',
   }));
 
   const descriptionAnimation = useSpring({
@@ -91,26 +96,30 @@ const CookieBanner = () => {
     []
   );
 
+  const canAnimate = isReady();
+
   useEffect(() => {
     const decisionMade = sessionStorage.getItem(storageKey);
 
-    if (conscentRequired) {
+    if (conscentRequired && canAnimate) {
       const distanceFromTheBorder = width >= 750 ? '2rem' : '1rem';
       setIntoAnimation({ left: distanceFromTheBorder });
     } else if (decisionMade === 'true') {
       initializeAndTrack();
     }
-  }, [conscentRequired, width]);
+  }, [conscentRequired, width, canAnimate]);
 
   return (
     <CookieBannerContainer style={introAnimation}>
       <Flex alignItems="center" justifyContent="space-between">
         <h3>
-          <CookieOutlineIcon size={40} /> Cookies!
+          <CookieOutlineIcon size={40} />
+          {' '}
+          Cookies!
         </h3>
-        <a href="" onClick={onCaretClick}>
+        <FlatButton href="" onClick={onCaretClick}>
           {isFullHeight ? <CaretDownIcon /> : <CaretUpIcon />}
-        </a>
+        </FlatButton>
       </Flex>
       <Description style={descriptionAnimation}>
         I use google analytics cookies on this website as a way of seeing if
@@ -124,6 +133,8 @@ const CookieBanner = () => {
       </Flex>
     </CookieBannerContainer>
   );
-};
+});
+
+CookieBanner.displayName = 'CookieBanner';
 
 export { CookieBanner };
