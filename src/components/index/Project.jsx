@@ -76,8 +76,8 @@ const Project = ({ node, index }) => {
             dangerouslySetInnerHTML={{ __html: node.html }}
           />
           <Tags flexWrap="wrap">
-            {node.frontmatter.technologies.map((tag, i) => (
-              <Tag key={i} marker={node.frontmatter.marker}>
+            {node.frontmatter.technologies.map((tag) => (
+              <Tag key={tag} marker={node.frontmatter.marker}>
                 {tag}
               </Tag>
             ))}

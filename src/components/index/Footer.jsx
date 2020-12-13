@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MARKERS } from '../../theme';
 import { Link } from '../common/Reference';
 
 const StyledFooter = styled.footer`
@@ -16,7 +17,7 @@ const StyledLink = styled(Link)`
   text-align: center;
   padding: 1rem;
   background: ${(props) =>
-    props.theme.marker || 'var(--marker-blue)'} !important;
+    props.theme.marker || MARKERS.blue} !important;
 `;
 
 const Footer = () => (

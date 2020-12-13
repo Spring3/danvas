@@ -55,14 +55,16 @@ const PreviewImages = styled.div`
   }
 `;
 
-const SlidingImage = styled(animated.img)`
+const SlidingImage = styled(animated.img).attrs((props) => ({
+  style: {
+    maxHeight: props.maxHeight
+      ? `calc(${props.maxHeight}px - 1rem)`
+      : 'calc(100vh - 1rem)'
+  }
+}))`
   position: absolute;
   transition: opacity 0.3s ease-in-out;
   max-width: 100%;
-  max-height: ${(props) =>
-    props.maxHeight
-      ? `calc(${props.maxHeight}px - 1rem)`
-      : 'calc(100vh - 1rem)'};
   border-radius: 5px;
   touch-action: pan-y;
 `;

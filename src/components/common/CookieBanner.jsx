@@ -54,11 +54,11 @@ const Description = styled(animated.p)`
 `;
 
 const CookieBanner = memo(() => {
-  const [isFullHeight, setFullHeight] = useState(false);
+  const [isExpanded, setExpanded] = useState(false);
   const { width } = useWindowSize();
   const [isReady] = useTimeout(3000);
-  useTimeoutFn(() => setFullHeight(true), 4500);
-  useTimeoutFn(() => setFullHeight(false), 9500);
+  const [, cancelExpand] = useTimeoutFn(() => setExpanded(true), 4500);
+  const [, cancelShrink] = useTimeoutFn(() => setExpanded(false), 9500);
 
   const [conscentRequired, setConscentRequired] = useState(
     sessionStorage.getItem(storageKey) === null
@@ -69,8 +69,8 @@ const CookieBanner = memo(() => {
   }));
 
   const descriptionAnimation = useSpring({
-    maxHeight: isFullHeight ? '100%' : '0px',
-    margin: isFullHeight ? '0px 0px 20px 0px' : '0px 0px 0px 0px',
+    maxHeight: isExpanded ? '100%' : '0px',
+    margin: isExpanded ? '0px 0px 20px 0px' : '0px 0px 0px 0px',
   });
 
   const onAccept = () => {
@@ -88,7 +88,7 @@ const CookieBanner = memo(() => {
 
   const onCaretClick = (e) => {
     e.preventDefault();
-    setFullHeight(!isFullHeight);
+    setExpanded(!isExpanded);
   };
 
   const theme = useMemo(
@@ -111,6 +111,13 @@ const CookieBanner = memo(() => {
     }
   }, [conscentRequired, width, canAnimate]);
 
+  useEffect(() => {
+    return () => {
+      cancelExpand();
+      cancelShrink();
+    }
+  }, []);
+
   return (
     <CookieBannerContainer style={introAnimation}>
       <Flex alignItems="center" justifyContent="space-between">
@@ -120,7 +127,7 @@ const CookieBanner = memo(() => {
           Cookies!
         </h3>
         <FlatButton href="" onClick={onCaretClick}>
-          {isFullHeight ? <CaretDownIcon /> : <CaretUpIcon />}
+          {isExpanded ? <CaretDownIcon /> : <CaretUpIcon />}
         </FlatButton>
       </Flex>
       <Description style={descriptionAnimation}>
