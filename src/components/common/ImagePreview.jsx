@@ -33,7 +33,7 @@ const ImagePreviewContainer = ({ children }) => (
 
 const PreviewContainer = styled.div`
   position: fixed;
-  z-index: 10;
+  z-index: 4;
   top: 0;
   left: 0;
   height: 100%;
@@ -61,6 +61,7 @@ const SlidingImage = styled(animated.img)`
   position: absolute;
   transition: opacity 0.3s ease-in-out;
   max-width: 100%;
+  max-height: ${(props) => props.maxHeight ? `calc(${props.maxHeight}px - 1rem)` : 'calc(100vh - 1rem)'};
   border-radius: 5px;
   touch-action: pan-y;
 `;
@@ -82,7 +83,7 @@ const IconClose = styled(CloseIcon)`
 `;
 
 const ImagePreview = ({ images, startIndex = 0, onClose }) => {
-  const { width } = useWindowResize();
+  const { width, height } = useWindowResize();
   const [index, setIndex] = useState(startIndex);
   const [mousePressed, setMousePressed] = useState(false);
 
@@ -187,11 +188,14 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
         </Helmet>
         <ImagePreviewPortal>
           <PreviewContainer onClick={onClose}>
-            <IconClose color="white" />
+            <IconClose color="white" onClick={onClose} />
             <PreviewImages>
-              <img
+              <SlidingImage
+                maxHeight={height}
                 src={images[0].src}
                 alt={images[0].name}
+                sizes={images[0].sizes}
+                srcSet={images[0].srcSet}
                 onDragStart={interceptEvent}
                 onClick={interceptEvent}
               />
@@ -225,7 +229,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
             }
           }}
         >
-          <IconClose color="white" />
+          <IconClose color="white" onClick={onClose}/>
           <PreviewButtonPrevious onClick={previousSlide} isDisabled={index === 0}>
             <ArrowLeftIcon color="white" />
           </PreviewButtonPrevious>
@@ -235,6 +239,9 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
               return (
                 <SlidingImage
                   src={image.src}
+                  srcSet={image.srcSet}
+                  sizes={image.sizes}
+                  maxHeight={height}
                   onClick={interceptEvent}
                   onDragStart={interceptEvent}
                   key={image.name}

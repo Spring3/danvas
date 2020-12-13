@@ -182,7 +182,7 @@ export const query = graphql`
         images {
           name
           childImageSharp {
-            fluid(maxWidth: 900) {
+            fluid(maxHeight: 1080,) {
               src
               sizes
               srcSet
@@ -192,7 +192,7 @@ export const query = graphql`
         thumbnail {
           name
           childImageSharp {
-            fluid(maxWidth: 900) {
+            fluid(maxHeight: 1080,) {
               src
               sizes
               srcSet

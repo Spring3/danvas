@@ -5,7 +5,7 @@ import DownloadOutlineIcon from 'mdi-react/DownloadOutlineIcon';
 import { Link } from 'gatsby';
 import { styles, Reference } from './Reference';
 
-const Button = styled(Link)`
+const LinkButton = styled(Link)`
   ${styles}
 
   display: flex;
@@ -13,6 +13,7 @@ const Button = styled(Link)`
   text-decoration: none;
   padding: 0.25rem 0.5rem;
   background: transparent;
+  cursor: pointer;
 
   &:visited {
     background: transparent;
@@ -20,11 +21,11 @@ const Button = styled(Link)`
 `;
 
 const ButtonBack = ({ href, value }) => (
-  <Button to={href}>
+  <LinkButton to={href}>
     <ArrowLeftIcon />
     {' '}
     {value}
-  </Button>
+  </LinkButton>
 );
 
 const StyledDownloadButton = styled(Reference)`
@@ -118,6 +119,27 @@ const PreviewButtonNext = styled(PreviewButton)`
   }
 `;
 
+const Button = styled.button`
+  ${styles}
+
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: box-shadow .2s ease;
+
+  &:hover {
+    box-shadow: 0px 0px 5px ${(props) => props.theme.marker || 'transparent'};
+  }
+
+  &:active {
+    filter: brightness(0.9);
+    box-shadow: none;
+  }
+`;
+
 export {
-  ButtonBack, DownloadButton, PreviewButtonPrevious, PreviewButtonNext
+  Button, LinkButton, ButtonBack, DownloadButton, PreviewButtonPrevious, PreviewButtonNext
 };

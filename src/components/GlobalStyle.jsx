@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle, css } from 'styled-components';
+import { CookieBanner } from './common/CookieBanner';
 import 'normalize.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -46,11 +47,14 @@ export const fontScaling = css`
 `;
 
 export const OGP = ({ title, description, image }) => (
-  <Helmet>
-    <meta property="og:site_name" content="www.dvasylenko.com" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <title>Daniyil Vasylenko</title>
-  </Helmet>
+  <>
+    <Helmet>
+      <meta property="og:site_name" content="www.dvasylenko.com" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <title>Daniyil Vasylenko</title>
+    </Helmet>
+    <CookieBanner />
+  </>
 );

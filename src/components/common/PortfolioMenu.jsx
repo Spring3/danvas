@@ -15,7 +15,7 @@ const MenuContainer = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 3;
 
   small {
     color: var(--text-color-secondary);

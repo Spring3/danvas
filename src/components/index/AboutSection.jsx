@@ -10,7 +10,7 @@ const ContentPanel = styled(Flex)`
   text-align: justify;
   color: var(--text-color-primary);
   border-radius: var(--border-radius);
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 1rem;
 
