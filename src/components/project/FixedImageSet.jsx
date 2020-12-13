@@ -6,9 +6,9 @@ const FixedImage = styled.div`
   background-image: url("${(props) => props.src}");
   height: ${(props) => props.height}px;
   background-attachment: fixed;
-  background-position: 86% ${(props) => props.verticalPosition}px;
+  background-position: ${(props) => `${props.horizontalPosition}px ${props.verticalPosition}px`};
   background-repeat: no-repeat;
-  background-size: 50% auto;
+  background-size: ${(props) => `${props.imageWidth}px auto`};
   position: sticky;
   background-color: white;
   top: 16%;
@@ -17,7 +17,7 @@ const FixedImage = styled.div`
 const Placeholder = styled.div`
   height: ${(props) => props.height}px;
   background-attachment: fixed;
-  background-position: 86% ${(props) => props.verticalPosition}px;
+  background-position: 86% center;
   background-repeat: no-repeat;
   background-size: 50% auto;
   position: sticky;
@@ -33,12 +33,16 @@ const NormalImage = styled.div`
 `;
 
 const FixedImageSet = ({ images }) => {
-  const { height } = useWindowSize();
+  const { height, width } = useWindowSize();
 
   if (!images || !images.length) {
     return null;
   }
 
+  // 6%
+  const padding = 0.06 * width;
+  const imageAreaWidth = (width - padding * 2) * 0.59;
+  console.log('imageAreaWidth', imageAreaWidth);
   const marginTop = height * 0.16;
   const maxHeight = height - marginTop;
 
@@ -47,12 +51,15 @@ const FixedImageSet = ({ images }) => {
   }
 
   return images.map((image) => {
-    const scaledWidth = image.presentationWidth / 2; // because background-size: 50%
-    const scaledHeight = scaledWidth / image.aspectRatio;
+    const scaledHeight = imageAreaWidth / image.aspectRatio;
+    const horizontalPosition = width - imageAreaWidth - padding;
+    const verticalPosition = height - (height - marginTop);
     return (
       <Fragment key={image.name}>
         <FixedImage
-          verticalPosition={marginTop}
+          horizontalPosition={horizontalPosition}
+          imageWidth={imageAreaWidth}
+          verticalPosition={verticalPosition}
           height={scaledHeight}
           id={image.name}
           key={image.name}
@@ -60,7 +67,7 @@ const FixedImageSet = ({ images }) => {
         />
         <Placeholder verticalPosition={marginTop} height={scaledHeight} />
       </Fragment>
-    )
+    );
   });
 };
 
