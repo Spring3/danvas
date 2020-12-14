@@ -83,7 +83,7 @@ const Project = ({ node, index }) => {
           />
           <Tags flexWrap="wrap">
             {node.frontmatter.technologies.map((tag) => (
-              <Tag key={tag} marker={node.frontmatter.marker}>
+              <Tag key={`${id}-${tag}`} marker={node.frontmatter.marker}>
                 {tag}
               </Tag>
             ))}

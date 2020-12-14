@@ -13,7 +13,6 @@ technologies:
   - Styled Components
   - Webpack
   - Slack API
-  - SSR
 images:
   - ./starbot1.png
 ---
