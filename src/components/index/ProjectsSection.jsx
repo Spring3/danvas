@@ -18,9 +18,7 @@ const StickyTitle = styled(Header)`
     position: sticky;
     top: 8%;
   }
-`;
 
-const Wrapper = styled.div`
   @media (min-width: 750px) {
     padding-left: 6%;
     padding-right: 6%;
@@ -37,7 +35,7 @@ const ProjectsContainer = styled.div`
 
 const ProjectsSection = ({ nodes }) => (
   <ProjectsContainer direction="column">
-    <Wrapper>
+    <div>
       <StickyTitle>Projects</StickyTitle>
       <ProjectsWrapper direction="column" gap="5rem 3rem">
         {nodes.map((node, i) => {
@@ -49,7 +47,7 @@ const ProjectsSection = ({ nodes }) => (
           );
         })}
       </ProjectsWrapper>
-    </Wrapper>
+    </div>
   </ProjectsContainer>
 );
 

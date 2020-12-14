@@ -40,6 +40,12 @@ const ImageWrapper = styled.div`
 
 const ProjectRow = styled(Flex)`
   width: 100%;
+
+  @media (min-width: 750px) {
+    width: 88%;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
 `;
 
 const ProjectTitle = styled.div`

@@ -33,10 +33,9 @@ const Placeholder = styled.div.attrs((props) => ({
 const NormalImage = styled.div.attrs((props) => ({
   style: {
     backgroundImage: `url("${props.src}")`,
+    height: `${props.scaledHeight}px`
   },
 }))`
-  height: 66vh;
-  background-position: 86% center;
   background-repeat: no-repeat;
   background-size: contain;
 `;
@@ -54,7 +53,14 @@ const FixedImageSet = ({ images }) => {
   const marginTop = height * 0.16;
 
   if (images.length === 1) {
-    return <NormalImage src={images[0].src} />;
+    const image = images[0];
+    const scaledHeight = Number(imageAreaWidth / image.aspectRatio).toFixed(2);
+    return (
+      <NormalImage
+        src={image.src}
+        scaledHeight={scaledHeight}
+      />
+    );
   }
 
   return images.map((image) => {
