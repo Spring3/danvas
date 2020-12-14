@@ -59,8 +59,8 @@ const SlidingImage = styled(animated.img).attrs((props) => ({
   style: {
     maxHeight: props.maxHeight
       ? `calc(${props.maxHeight}px - 1rem)`
-      : 'calc(100vh - 1rem)'
-  }
+      : 'calc(100vh - 1rem)',
+  },
 }))`
   position: absolute;
   transition: opacity 0.3s ease-in-out;

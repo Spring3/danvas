@@ -13,8 +13,8 @@ technologies:
   - Styled Components
   - Webpack
 images:
-  - ./redshape1.png
   - ./redshape2.png
+  - ./redshape1.png
   - ./redshape3.png
 ---
 

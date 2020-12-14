@@ -4,11 +4,11 @@ import { useWindowSize } from 'react-use';
 
 const FixedImage = styled.div.attrs((props) => ({
   style: {
-    backgroundImage: `url("${props.src}") no-repeat`,
+    backgroundImage: `url("${props.src}")`,
     height: `${props.scaledHeight}px`,
     backgroundPosition: `${props.horizontalPosition}px ${props.verticalPosition}px`,
-    backgroundSize: `${props.imageWidth}% auto`
-  }
+    backgroundSize: `${props.imageWidth}% auto`,
+  },
 }))`
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -21,8 +21,8 @@ const Placeholder = styled.div.attrs((props) => ({
     backgroundImage: `url("${props.src}")`,
     height: `${props.scaledHeight * 2}px`,
     backgroundPosition: `${props.horizontalPosition}px ${props.verticalPosition}px`,
-    backgroundSize: `${props.imageWidth}% auto`
-  }
+    backgroundSize: `${props.imageWidth}% auto`,
+  },
 }))`
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -32,8 +32,8 @@ const Placeholder = styled.div.attrs((props) => ({
 
 const NormalImage = styled.div.attrs((props) => ({
   style: {
-    backgroundImage: `url("${props.src}")`
-  }
+    backgroundImage: `url("${props.src}")`,
+  },
 }))`
   height: 66vh;
   background-position: 86% center;
@@ -59,7 +59,9 @@ const FixedImageSet = ({ images }) => {
 
   return images.map((image) => {
     const scaledHeight = Number(imageAreaWidth / image.aspectRatio).toFixed(2);
-    const horizontalPosition = Number(width - imageAreaWidth - padding).toFixed(2);
+    const horizontalPosition = Number(width - imageAreaWidth - padding).toFixed(
+      2
+    );
     const verticalPosition = Number(height - (height - marginTop)).toFixed(2);
     const imageWidthPercent = Number((imageAreaWidth / width) * 100).toFixed(2);
     return (

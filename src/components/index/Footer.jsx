@@ -16,8 +16,7 @@ const StyledLink = styled(Link)`
   width: 100%;
   text-align: center;
   padding: 1rem;
-  background: ${(props) =>
-    props.theme.marker || MARKERS.blue} !important;
+  background: ${(props) => props.theme.marker || MARKERS.blue} !important;
 `;
 
 const Footer = () => (
