@@ -1,4 +1,6 @@
-import React, { useEffect, useMemo, useState, memo } from 'react';
+import React, {
+  useEffect, useMemo, useState, memo
+} from 'react';
 import styled from 'styled-components';
 import CookieOutlineIcon from 'mdi-react/CookieIcon';
 import CaretDownIcon from 'mdi-react/CaretDownOutlineIcon';
@@ -9,6 +11,7 @@ import { useTimeout, useTimeoutFn, useWindowSize } from 'react-use';
 import { Button, FlatButton } from './Buttons';
 import { Flex } from './Flex';
 import { MARKERS } from '../../theme';
+import { Reference } from './Reference';
 
 const storageKey = 'danv-ga-cookie-conscent';
 
@@ -31,7 +34,7 @@ const CookieBannerContainer = styled(animated.div)`
     }
   }
 
-  a: {
+  a {
     svg: {
       vertical-align: bottom;
     }
@@ -43,12 +46,16 @@ const CookieBannerContainer = styled(animated.div)`
   }
 `;
 
-const Description = styled(animated.p)`
+const Description = styled(animated.div)`
   max-width: 300px;
   overflow: hidden;
   overflow-y: scroll;
   margin: 0;
   transition: height 0.4s;
+
+  a {
+    margin-bottom: 1rem;
+  }
 `;
 
 const CookieBanner = memo(() => {
@@ -67,7 +74,7 @@ const CookieBanner = memo(() => {
   }));
 
   const descriptionAnimation = useSpring({
-    maxHeight: isExpanded ? '100%' : '0px',
+    maxHeight: isExpanded ? '200%' : '0px',
     margin: isExpanded ? '0px 0px 20px 0px' : '0px 0px 0px 0px',
   });
 
@@ -109,26 +116,38 @@ const CookieBanner = memo(() => {
     }
   }, [conscentRequired, width, canAnimate]);
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       cancelExpand();
       cancelShrink();
-    };
-  }, []);
+    },
+    []
+  );
 
   return (
     <CookieBannerContainer style={introAnimation}>
       <Flex alignItems="center" justifyContent="space-between">
         <h3>
-          <CookieOutlineIcon size={40} color="#875A34" /> Cookies!
+          <CookieOutlineIcon size={40} color="#875A34" />
+          {' '}
+          Cookies!
         </h3>
         <FlatButton href="" onClick={onCaretClick}>
           {isExpanded ? <CaretDownIcon /> : <CaretUpIcon />}
         </FlatButton>
       </Flex>
       <Description style={descriptionAnimation}>
-        I use google analytics cookies on this website as a way of seeing if
-        anyone visits it at all.
+        <p>
+          I use anonymised google analytics cookies on this website as a way of
+          seeing if anyone visits it at all.
+        </p>
+        <Reference
+          href="https://policies.google.com/technologies/partner-sites"
+          target="_blank"
+          rel="noopener,noreferrer"
+        >
+          Google Privacy & Terms
+        </Reference>
       </Description>
       <Flex>
         <Button onClick={onAccept}>Accept</Button>
