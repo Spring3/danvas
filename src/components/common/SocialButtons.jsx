@@ -13,8 +13,11 @@ const SocialButtonsList = styled.ul`
   list-style-type: none;
   padding: 0px;
   display: flex;
-  gap: 1rem;
   align-items: center;
+
+  & > li:not(:last-child) {
+    padding-right: 1rem;
+  }
 `;
 
 const SocialButtonLink = styled.a`

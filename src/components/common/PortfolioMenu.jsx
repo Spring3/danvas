@@ -93,6 +93,7 @@ const styles = css`
 
 const AnchorMenuItem = styled(Reference)`
   ${styles}
+  display: inline-flex;
 `;
 
 const SlugMenuItem = styled(Link)`

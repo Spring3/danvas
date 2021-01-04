@@ -7,8 +7,10 @@ import { Flex } from '../common/Flex';
 const ProjectsWrapper = styled(Flex)`
   position: relative;
 
-  @media (min-width: 1000px) {
-    gap: 10rem 3rem;
+  @media (min-width: 1000px) {    
+    & > *:not(:last-child) {
+      padding-bottom: 10rem;
+    }
   }
 `;
 
@@ -37,12 +39,12 @@ const ProjectsSection = ({ nodes }) => (
   <ProjectsContainer direction="column">
     <div>
       <StickyTitle>Projects</StickyTitle>
-      <ProjectsWrapper direction="column" gap="5rem 3rem">
+      <ProjectsWrapper direction="column" gap="5rem">
         {nodes.map((node, i) => {
           const theme = { marker: `#${node.frontmatter.marker}` };
           return (
             <ThemeProvider key={node.fields.slug} theme={theme}>
-              <Project node={node} key={i} index={i} />
+              <Project node={node} index={i} />
             </ThemeProvider>
           );
         })}

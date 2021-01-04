@@ -8,9 +8,19 @@ const FlexContainer = styled.div`
     flex-direction: ${props.direction};
     justify-content: ${props.justifyContent};
     align-items: ${props.alignItems};
-    gap: ${props.gap};
     flex-grow: ${props.flexGrow};
     flex-wrap: ${props.flexWrap};
+
+    & > *:not(:last-child) {
+      ${props.direction === 'column'
+        ? css`
+          padding-bottom: ${props.gap};
+        `
+        : css`
+          padding-right: ${props.gap};
+        `
+      };
+    }
   `}
 `;
 
