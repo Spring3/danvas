@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import GlobalStyles, { OGP } from '../components/GlobalStyle';
+import { GlobalStyles, OGP } from '../components/GlobalStyle';
 import { AboutSection } from '../components/index/AboutSection';
 import { ProjectsSection } from '../components/index/ProjectsSection';
 import { AnchorListMenu } from '../components/common/PortfolioMenu';
@@ -53,7 +53,7 @@ export default ({ data }) => {
     const anchor = e.target.getAttribute('data-anchor');
     const id = anchor.substring(1);
     const element = document.getElementById(id);
-    const marginsAndPaddings = 155;
+    const marginsAndPaddings = 55;
     window.scrollTo({
       behavior: 'smooth',
       top:

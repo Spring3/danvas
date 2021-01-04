@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle, css } from 'styled-components';
 import { CookieBanner } from './common/CookieBanner';
 import 'normalize.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-export default createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   :root {
     --text-color-primary: #282C36;
     --text-color-secondary: #767B91;
@@ -38,7 +38,7 @@ export default createGlobalStyle`
   }
 `;
 
-export const fontScaling = css`
+const fontScaling = css`
   font-weight: 1rem;
 
   @media (max-width: 750px) {
@@ -46,15 +46,29 @@ export const fontScaling = css`
   }
 `;
 
-export const OGP = ({ title, description, image }) => (
-  <>
-    <Helmet>
-      <meta property="og:site_name" content="www.dvasylenko.com" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <title>Daniyil Vasylenko</title>
-    </Helmet>
-    <CookieBanner />
-  </>
-);
+const OGP = memo(({ title, description, image }) => {
+  if (window) {
+    // eslint-disable-next-line
+    window.__forceSmoothScrollPolyfill__ = true;
+  }
+  return (
+    <>
+      <Helmet>
+        <meta property="og:site_name" content="www.dvasylenko.com" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+        <title>Daniyil Vasylenko</title>
+      </Helmet>
+      <CookieBanner />
+    </>
+  );
+});
+
+OGP.displayName = 'OGP';
+
+export {
+  GlobalStyles,
+  fontScaling,
+  OGP,
+};

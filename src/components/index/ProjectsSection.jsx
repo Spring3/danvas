@@ -8,8 +8,9 @@ const ProjectsWrapper = styled(Flex)`
   position: relative;
 
   @media (min-width: 1000px) {    
-    & > *:not(:last-child) {
-      padding-bottom: 10rem;
+    & > *:not(:first-child) {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
     }
   }
 `;

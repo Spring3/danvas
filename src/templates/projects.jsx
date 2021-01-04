@@ -2,7 +2,8 @@ import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
-import GlobalStyles, { OGP } from '../components/GlobalStyle';
+import { useWindowSize } from 'react-use';
+import { GlobalStyles, OGP } from '../components/GlobalStyle';
 import { ButtonBack } from '../components/common/Buttons';
 import { MarkdownContent } from '../components/common/MarkdownContent';
 import { Subheading } from '../components/project/Header';
@@ -16,7 +17,6 @@ import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
 import { ImagePreviewContainer } from '../components/common/ImagePreview';
-import { useWindowSize } from 'react-use';
 
 const PageLayout = styled.div`
   display: grid;
