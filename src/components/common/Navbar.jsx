@@ -8,7 +8,10 @@ const Navbar = styled.nav`
   align-items: center;
   background: var(--background-color);
   z-index: 1;
-  gap: 2rem;
+
+  & > *:not(:last-child) {
+    margin-right: 2rem;
+  }
 
   @media (min-width: 750px) {
     top: 0;
@@ -31,7 +34,6 @@ const Navbar = styled.nav`
     a {
       display: block;
       margin: 0;
-      background: none !important;
       padding: 0;
       svg {
         vertical-align: bottom;
@@ -39,7 +41,6 @@ const Navbar = styled.nav`
 
       &:hover {
         box-shadow: none !important;
-        background: var(--shadow-color) !important;
       }
     }
   }
@@ -47,7 +48,6 @@ const Navbar = styled.nav`
   @media (max-width: 750px) {
     box-shadow: 0px 0px 10px var(--shadow-color);
 
-    #download-button,
     #navbar-contents {
       display: none;
     }
@@ -57,7 +57,7 @@ const Navbar = styled.nav`
     }
 
     div small {
-      flex-grow: 0.85;
+      flex-grow: 1;
       text-align: right;
     }
   }

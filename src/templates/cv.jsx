@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
+import { useWindowSize } from 'react-use';
 import { GlobalStyles, OGP } from '../components/GlobalStyle';
 import { ButtonBack, DownloadButton } from '../components/common/Buttons';
 import { Subheading } from '../components/project/Header';
@@ -57,11 +58,7 @@ const Grid = styled.div`
   }
 `;
 
-const InlinedNavbarPart = styled.div`
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+const InlinedNavbarPart = styled(Flex)`
   padding: 1rem;
   h2 {
     margin: 0;
@@ -81,6 +78,7 @@ const InlinedNavbarPart = styled.div`
 export default ({ data }) => {
   const post = data.markdownRemark;
   const activeAnchor = useAnchorTracker(['#intro-section']);
+  const { width } = useWindowSize();
 
   return (
     <>
@@ -96,9 +94,10 @@ export default ({ data }) => {
             <Flex
               justifyContent="space-between"
               alignItems="center"
+              gap="1rem"
               flexGrow="1"
             >
-              <InlinedNavbarPart id="navbar-contents">
+              <InlinedNavbarPart id="navbar-contents" alignItems="center" gap="2rem" flexGrow="1">
                 <Subheading>{post.frontmatter.title}</Subheading>
                 <SocialButtons onlyImportant />
               </InlinedNavbarPart>
@@ -108,10 +107,16 @@ export default ({ data }) => {
               </small>
             </Flex>
           ) : null}
-          <DownloadButton
-            href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
-            value="Download"
-          />
+          {
+            width > 750
+              ? (
+                <DownloadButton
+                  href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
+                  value="Download"
+                />
+              )
+              : null
+          }
         </Navbar>
         <CVWrapper>
           <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
