@@ -67,8 +67,4 @@ const OGP = memo(({ title, description, image }) => {
 
 OGP.displayName = 'OGP';
 
-export {
-  GlobalStyles,
-  fontScaling,
-  OGP,
-};
+export { GlobalStyles, fontScaling, OGP };

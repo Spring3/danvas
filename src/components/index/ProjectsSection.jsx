@@ -7,7 +7,7 @@ import { Flex } from '../common/Flex';
 const ProjectsWrapper = styled(Flex)`
   position: relative;
 
-  @media (min-width: 1000px) {    
+  @media (min-width: 1000px) {
     & > *:not(:first-child) {
       padding-top: 5rem;
       padding-bottom: 5rem;

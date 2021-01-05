@@ -97,7 +97,12 @@ export default ({ data }) => {
               gap="1rem"
               flexGrow="1"
             >
-              <InlinedNavbarPart id="navbar-contents" alignItems="center" gap="2rem" flexGrow="1">
+              <InlinedNavbarPart
+                id="navbar-contents"
+                alignItems="center"
+                gap="2rem"
+                flexGrow="1"
+              >
                 <Subheading>{post.frontmatter.title}</Subheading>
                 <SocialButtons onlyImportant />
               </InlinedNavbarPart>
@@ -107,16 +112,12 @@ export default ({ data }) => {
               </small>
             </Flex>
           ) : null}
-          {
-            width > 750
-              ? (
-                <DownloadButton
-                  href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
-                  value="Download"
-                />
-              )
-              : null
-          }
+          {width > 750 ? (
+            <DownloadButton
+              href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
+              value="Download"
+            />
+          ) : null}
         </Navbar>
         <CVWrapper>
           <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
