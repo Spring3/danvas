@@ -9,6 +9,7 @@ import { Link } from '../common/Reference';
 import { MarkdownContent } from '../common/MarkdownContent';
 import { ImageCarousel } from '../common/ImageCarousel';
 import { Flex } from '../common/Flex';
+import { Circle } from '../common/Geometry';
 
 const ProjectInfo = styled.div`
   @media (min-width: 1000px) {
@@ -95,6 +96,11 @@ const Project = ({ node, index }) => {
           <FixedImageSet images={images} />
         </ImageWrapper>
       ) : null}
+      <Circle />
+      <Circle />
+      <Circle />
+      <Circle />
+      <Circle />
     </ProjectRow>
   );
 };
