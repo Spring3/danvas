@@ -57,9 +57,9 @@ export default ({ data }) => {
     window.scrollTo({
       behavior: 'smooth',
       top:
-        element.getBoundingClientRect().top +
-        window.pageYOffset -
-        marginsAndPaddings,
+        element.getBoundingClientRect().top
+        + window.pageYOffset
+        - marginsAndPaddings,
     });
     return false;
   }, []);
@@ -109,6 +109,7 @@ export const query = graphql`
           title
           description
           marker
+          oval
           images {
             name
             childImageSharp {

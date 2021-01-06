@@ -30,6 +30,7 @@ const StickyTitle = styled(Header)`
 
 const ProjectsContainer = styled.div`
   padding-bottom: 25vh;
+  position: relative;
 
   @media (max-width: 750px) {
     padding: 1rem;

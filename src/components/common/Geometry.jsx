@@ -1,22 +1,42 @@
 import React, { useMemo } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const Circular = styled.div`
-  width: 260px;
-  height: 320px;
-  background: rgba(125, 196, 23, 0.2);
+const OvalMesh = styled.div`
   position: absolute;
+  z-index: -1;
+  opacity: 0.3;
+  ${(props) => css`
+    width: ${props.width};
+    height: ${props.height};
+    top: ${props.top};
+    left: ${props.left};
+    background: ${props.theme.marker};
+  `}
 `;
 
-const Circle = () => {
+const Oval = ({
+  width, height, top, left, background
+}) => {
   // from 30 to 50
-  const rnd = () => Math.random() * (50 - 35) + 35;
+  const rnd = (from = 30, to = 80) => Math.random() * (to - from) + from;
 
-  const initial = useMemo(() => ({
-    borderRadius: `${rnd()}% ${rnd()}% ${rnd()}% ${rnd()}% / ${rnd()}% ${rnd()}% ${rnd()}% ${rnd()}%`,
-  }), []);
+  const initial = useMemo(
+    () => ({
+      borderRadius: `${rnd()}% ${rnd()}% ${rnd()}% ${rnd()}% / ${rnd()}% ${rnd()}% ${rnd()}% ${rnd()}%`,
+    }),
+    []
+  );
 
-  return <Circular style={initial} />;
+  return (
+    <OvalMesh
+      style={initial}
+      width={width}
+      height={height}
+      top={top}
+      left={left}
+      background={background}
+    />
+  );
 };
 
-export { Circle };
+export { Oval };
