@@ -41,6 +41,7 @@ const ImageWrapper = styled.div`
 
 const ProjectRow = styled(Flex)`
   width: 100%;
+  position: relative;
 
   @media (min-width: 750px) {
     width: 88%;

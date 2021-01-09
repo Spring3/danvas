@@ -18,7 +18,7 @@ const Oval = ({
   width, height, top, left, background
 }) => {
   // from 30 to 50
-  const rnd = (from = 30, to = 80) => Math.random() * (to - from) + from;
+  const rnd = (from = 45, to = 95) => Math.random() * (to - from) + from;
 
   const initial = useMemo(
     () => ({
