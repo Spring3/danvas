@@ -2,29 +2,6 @@
 title: Aurelins Website
 thumbnail: ./aurelins5.png
 marker: C3A9FF
-oval:
-  - 500px,550px,calc(100% - 190px),2%
-  - 400px,350px,150px,10.5%
-  - 650px,450px,80%,16.5%
-  - 100px,100px,100px,19.5%
-  - 130px,130px,calc(100% - 140px),24.5%
-  - 150px,150px,50px,24.5%
-  - 420px,340px,350px,32.5%
-  - 120px,140px,calc(100% - 250px),30%
-  - 320px,340px,0px,38%
-  - 220px,200px,450px,44%
-  - 520px,400px,calc(100% - 200px),40%
-  - 190px,270px,260px,48%
-  - 520px,400px,0px,56%
-  - 320px,300px,calc(100% - 250px),59%
-  - 470px,380px,50%,65%
-  - 330px,340px,150px,69%
-  - 300px,380px,calc(100% - 220px),74%
-  - 345px,265px,340px,80%
-  - 395px,340px,calc(100% - 200px),87%
-  - 520px,400px,calc(100% - 200px),95%
-  - 120px,100px,150px,92%
-  - 130px,110px,270px,97%
 repository: https://github.com/Spring3/aurelins-website
 demo: https://deploy-preview-1--inspiring-hugle-4673c9.netlify.com/
 technologies:
@@ -37,6 +14,31 @@ technologies:
   - Netlify
   - Contentful
   - three.js
+
+decorations:
+  back:
+    props:
+      height: calc(100% - 150vh - 100vh)
+      top: 150vh
+    squares:
+      - radius=10px,top=80%,left=80%,size=45px,background=#FFAE5A,sticky=true
+      - radius=10px,top=11%,left=60%,size=75px,background=#EDE8E2,sticky=true
+      - radius=10px,top=52%,left=40%,size=85px,background=#F57B51,sticky=true
+      - radius=10px,top=50%,left=38%,size=55px,background=#F57B51,sticky=true
+      - radius=10px,top=65%,left=5%,size=55px,background=#BED5AE,sticky=true
+      - radius=10px,top=70%,left=50%,size=45px,background=#EDE8E2,sticky=true
+      - radius=10px,top=5%,left=15%,size=95px,background=#EDE8E2,sticky=true
+    circles:
+  base:
+    props:
+      height: calc(100% - 300vh - 300vh)
+      top: 300vh
+    squares:
+    circles:
+      - radius=90% 50% 50% 90% / 60% 60% 60% 60%,top=80%,left=20%,size=95px,background=#FFAE5A,sticky=true
+      - top=75%,left=93%,size=75px,background=#EDE8E2,sticky=true
+      - radius=50% 80% 90% 50% / 60% 60% 60% 60%,top=5%,left=95%,size=135px,background=#BED5AE,sticky=true
+
 images:
   - ./aurelins1.png
   - ./aurelins2.png

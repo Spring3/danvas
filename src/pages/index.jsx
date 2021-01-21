@@ -57,9 +57,9 @@ export default ({ data }) => {
     window.scrollTo({
       behavior: 'smooth',
       top:
-        element.getBoundingClientRect().top
-        + window.pageYOffset
-        - marginsAndPaddings,
+        element.getBoundingClientRect().top +
+        window.pageYOffset -
+        marginsAndPaddings,
     });
     return false;
   }, []);
@@ -74,11 +74,13 @@ export default ({ data }) => {
       />
       <ImagePreviewContainer />
       <main>
-        <AboutSection>
-          <AboutSectionMarkdown
-            dangerouslySetInnerHTML={{ __html: aboutNode.html }}
-          />
-        </AboutSection>
+        <div style={{ position: 'relative' }}>
+          <AboutSection>
+            <AboutSectionMarkdown
+              dangerouslySetInnerHTML={{ __html: aboutNode.html }}
+            />
+          </AboutSection>
+        </div>
         <ProjectsSection nodes={projectNodes} />
         <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
       </main>
@@ -109,7 +111,22 @@ export const query = graphql`
           title
           description
           marker
-          oval
+          decorations {
+            back {
+              props {
+                height
+                top
+              }
+              squares
+            }
+            base {
+              props {
+                height
+                top
+              }
+              circles
+            }
+          }
           images {
             name
             childImageSharp {

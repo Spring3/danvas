@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Header } from '../common/Headers';
 import { SocialButtons } from '../common/SocialButtons';
 import { Flex } from '../common/Flex';
+import { Square, Decorations } from '../common/Decorations';
 
 const ContentPanel = styled(Flex)`
   box-sizing: border-box;
@@ -25,6 +26,17 @@ const ContentPanel = styled(Flex)`
 
 const AboutSection = ({ children }) => (
   <ContentPanel direction="column" justifyContent="center">
+    <Decorations layer="back">
+      <Square top="1.7rem" left="6.5rem" background="#FBD3C4" size="53px" />
+      <Square top="1rem" left="1rem" background="#BED5AE" size="75px" />
+      <Square top="6.5rem" left="1.25rem" background="#FBBC58" size="65px" />
+    </Decorations>
+    <Decorations layer="front">
+      <Square bottom="1rem" right="1rem" background="#F57B51" size="65px" />
+      <Square bottom="calc(65px + 2rem)" right="1.4rem" background="#BED5AE" size="55px" />
+      <Square bottom="1rem" right="calc(65px + 2rem)" background="#FBD3C4" size="60px" />
+      <Square bottom="1rem" right="calc(65px + 60px + 3rem)" background="#FBBC58" size="50px" />
+    </Decorations>
     <Header>Hello and Welcome!</Header>
     {children}
     <SocialButtons />

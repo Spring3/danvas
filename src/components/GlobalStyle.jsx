@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
 
   main {
     padding: 0;
+    position: relative;
   }
 `;
 

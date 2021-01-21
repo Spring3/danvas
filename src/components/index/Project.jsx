@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useWindowSize } from 'react-use';
@@ -9,7 +9,7 @@ import { Link } from '../common/Reference';
 import { MarkdownContent } from '../common/MarkdownContent';
 import { ImageCarousel } from '../common/ImageCarousel';
 import { Flex } from '../common/Flex';
-import { Oval } from '../common/Geometry';
+import { Decorations, Square, Circle } from '../common/Decorations';
 
 const ProjectInfo = styled.div`
   @media (min-width: 1000px) {
@@ -54,6 +54,7 @@ const ProjectTitle = styled.div`
   font-size: 1.7rem;
   margin-bottom: 1.5rem;
 `;
+
 const ProjectContent = styled(MarkdownContent)`
   font-size: 1rem;
 `;
@@ -68,6 +69,42 @@ const Project = ({ node, index }) => {
     name: image.name,
     ...image.childImageSharp.fluid,
   }));
+
+  console.log('decorations', node.frontmatter.decorations);
+
+  const renderLayer = useCallback((key, layerData) => {
+    if (!layerData) {
+      return null;
+    }
+
+    const { props, squares, circles } = layerData;
+    const getProps = (string) => string.split(',').reduce((acc, curr) => {
+      const [prop, value] = curr.split('=');
+      return {
+        ...acc,
+        [prop]: value
+      };
+    }, {});
+
+    return (
+      <Decorations key={key} layer={key} {...props}>
+        {squares?.map((squareData, i) => {
+          const squareProps = getProps(squareData);
+          return (
+            <Square {...squareProps} key={`square-${i}`} />
+          );
+        })}
+        {circles?.map((circleData, i) => {
+          const cirlceProps = getProps(circleData);
+          return (
+            <Circle {...cirlceProps} key={`circle-${i}`} />
+          );
+        })}
+      </Decorations>
+    );
+  }, [id]);
+
+  const decorationLayers = useMemo(() => Object.entries(node.frontmatter.decorations || {}).map(([layerKey, layerData]) => renderLayer(layerKey, layerData), [renderLayer]));
 
   return (
     <ProjectRow id={id} justifyContent="space-between">
@@ -97,19 +134,8 @@ const Project = ({ node, index }) => {
           <FixedImageSet images={images} />
         </ImageWrapper>
       ) : null}
-      {(node.frontmatter.oval || []).map((props) => {
-        const [shapeWidth, shapeHeight, left, top] = props.split(',');
-        return (
-          <Oval
-            key={props}
-            width={shapeWidth}
-            height={shapeHeight}
-            left={left}
-            top={top}
-            background={`#${node.frontmatter.marker}`}
-          />
-        );
-      })}
+
+      {decorationLayers}
     </ProjectRow>
   );
 };
