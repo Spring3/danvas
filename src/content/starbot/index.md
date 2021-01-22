@@ -13,6 +13,31 @@ technologies:
   - Styled Components
   - Webpack
   - Slack API
+
+decorations:
+  back:
+    props:
+      height: 100%
+      top: 0px
+    circles:
+      - top=0      
+    squares:
+      - top=0
+  base:
+    props:
+      height: 100%
+      top: 0px
+    squares:
+      - radius=10px,top=60%,left=58%,size=15px,background=#FFAE5A
+      - radius=10px,top=15%,left=80%,size=20px,background=#EDE8E2
+      - radius=10px,top=43%,left=53%,size=25px,background=#F57B51
+      - radius=10px,top=17%,left=75%,size=20px,background=#BED5AE
+      - radius=10px,top=70%,left=50%,size=35px,background=#EDE8E2
+      - radius=10px,top=55%,left=85%,size=35px,background=#81A78C
+      - radius=10px,top=68%,left=69%,size=35px,background=#FFA9AA
+    circles:
+      - top=15%,left=45%,size=15px,background=#EDE8E2
+
 images:
   - ./starbot1.png
 ---

@@ -49,15 +49,37 @@ const styles = css`
   font-size: 0.8rem;
   text-decoration: none;
 
-  ${(props) =>
-    props.active &&
-    css`
-      font-weight: bold;
-      color: var(--text-color-primary) !important;
-      background: ${props.theme.marker
-        ? props.theme.marker
-        : 'var(--marker-blue)'};
+  &:visited {
+    background: transparent;
+    color: var(--text-color-secondary);
+    border-bottom: 2px solid transparent;
+    padding: 0px 0.5rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus {
+    ${(props) => css`
+      border-bottom: 2px solid
+        ${props.theme.marker || 'var(--marker-blue)'};
+      background: transparent;
     `}
+  }
+`;
+
+const activeStyles = css`
+  background: transparent;
+  color: var(--text-color-secondary);
+  border-bottom: 2px solid transparent;
+  padding: 0px 0.5rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+
+  font-weight: bold;
+  color: var(--text-color-primary) !important;
+  background: ${(props) => props.theme.marker || 'var(--marker-blue)'};
+
   &:visited {
     background: transparent;
     color: var(--text-color-secondary);
@@ -66,28 +88,19 @@ const styles = css`
     font-size: 0.8rem;
     text-decoration: none;
 
-    ${(props) =>
-      props.active &&
-      css`
-        font-weight: bold;
-        color: var(--text-color-primary) !important;
-        background: ${props.theme.marker
-          ? props.theme.marker
-          : 'var(--marker-blue)'};
-      `}
+    font-weight: bold;
+    color: var(--text-color-primary) !important;
+
+    background: ${(props) => props.theme.marker || 'var(--marker-blue)'};
   }
 
   &:hover,
   &:focus {
-    ${(props) => css`
-      border-bottom: 2px solid
-        ${props.theme.marker ? props.theme.marker : 'var(--marker-blue)'};
-      background: ${props.active
-        ? props.theme.marker
-          ? props.theme.marker
-          : 'var(--marker-blue)'
-        : 'transparent'};
-    `}
+    border-bottom: 2px solid ${(props) => props.theme.marker || 'var(--marker-blue)'};
+    background: ${(props) => props.active
+      ? props.theme.marker || 'var(--marker-blue)'
+      : 'transparent'
+    };
   }
 `;
 
@@ -100,25 +113,37 @@ const SlugMenuItem = styled(Link)`
   ${styles}
 `;
 
+const ActiveAnchorMenuItem = styled(Reference)`
+  ${activeStyles};
+  display: inline-flex;
+`;
+
+const ActiveSlugMenuItem = styled(Link)`
+  ${activeStyles}
+`;
+
 const AnchorListMenu = ({ nodes, onClick }) => {
-  const anchors = useMemo(() => nodes.map((node) => node.anchor), [nodes]);
+  const anchors = useMemo(() => nodes.map((node) => node.anchor), []);
   const activeAnchor = useAnchorTracker(anchors);
+  const menuItems = useMemo(() => nodes.map((node) => {
+    const MenuItem = activeAnchor === node.anchor ? ActiveAnchorMenuItem : AnchorMenuItem;
+    return (
+      <MenuItem
+        onClick={onClick}
+        href={node.anchor}
+        data-anchor={node.anchor}
+        key={node.anchor}
+      >
+        {node.name}
+      </MenuItem>
+    );
+  }), [activeAnchor]);
 
   return (
     <MenuContainer>
       <small>Projects:&nbsp;</small>
-      {nodes.map((node) => (
-        <AnchorMenuItem
-          onClick={onClick}
-          active={activeAnchor === node.anchor}
-          href={node.anchor}
-          data-anchor={node.anchor}
-          key={node.anchor}
-        >
-          {node.name}
-        </AnchorMenuItem>
-      ))}
-      <AnchorMenuItem active={false} href="/cv" key="cv">
+      {menuItems}
+      <AnchorMenuItem href="/cv" key="cv">
         CV
       </AnchorMenuItem>
     </MenuContainer>
@@ -128,14 +153,17 @@ const AnchorListMenu = ({ nodes, onClick }) => {
 const SlugListMenu = ({ slugs, active, onClick }) => (
   <SlugMenuContainer>
     <small>Projects:&nbsp;</small>
-    {slugs.map((slug) => (
-      <li key={slug}>
-        <SlugMenuItem onClick={onClick} active={active === slug} to={slug}>
-          {slugToTitle(slug)}
-        </SlugMenuItem>
-      </li>
-    ))}
-    <SlugMenuItem onClick={onClick} active={false} to="/cv" key="cv">
+    {slugs.map((slug) => {
+      const MenuItem = active === slug ? ActiveSlugMenuItem : SlugMenuItem;
+      return (
+        <li key={slug}>
+          <MenuItem onClick={onClick} to={slug}>
+            {slugToTitle(slug)}
+          </MenuItem>
+        </li>
+      );
+    })}
+    <SlugMenuItem onClick={onClick} to="/cv" key="cv">
       CV
     </SlugMenuItem>
   </SlugMenuContainer>

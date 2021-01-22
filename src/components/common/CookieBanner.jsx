@@ -17,7 +17,7 @@ const CookieBannerContainer = styled(animated.div)`
   position: fixed;
   left: 1rem;
   bottom: 1rem;
-  background: white;
+  background: rgba(255, 255, 255, .95);
   box-shadow: 0px 0px 5px lightgrey;
   padding: 1.5rem;
   border-radius: 5px;

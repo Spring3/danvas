@@ -5,6 +5,7 @@ const useAnchorTracker = (anchors) => {
   const [activeAnchor, setActiveAnchor] = useState();
 
   useEffect(() => {
+    let mounted = true;
     const validAnchors = Array.isArray(anchors) && anchors.length;
     const elements = validAnchors
       ? Array.from(document.querySelectorAll(anchors))
@@ -15,7 +16,9 @@ const useAnchorTracker = (anchors) => {
       const scrolledPast = elements.filter(
         (element) => element.getBoundingClientRect().y <= marginsAndPaddings
       );
-      setActiveAnchor(anchors[scrolledPast.length - 1]);
+      if (mounted) {
+        setActiveAnchor(anchors[scrolledPast.length - 1]);
+      }
     };
 
     const throttledFunction = throttle(onScroll, 300);
@@ -28,6 +31,7 @@ const useAnchorTracker = (anchors) => {
       if (validAnchors) {
         window.removeEventListener('scroll', throttledFunction);
       }
+      mounted = false;
     };
   }, [anchors]);
 

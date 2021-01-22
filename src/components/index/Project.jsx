@@ -70,8 +70,6 @@ const Project = ({ node, index }) => {
     ...image.childImageSharp.fluid,
   }));
 
-  console.log('decorations', node.frontmatter.decorations);
-
   const renderLayer = useCallback((key, layerData) => {
     if (!layerData) {
       return null;
@@ -130,12 +128,13 @@ const Project = ({ node, index }) => {
         </ProjectInfo>
       </InfoWrapper>
       {!isSmallScreen ? (
-        <ImageWrapper>
-          <FixedImageSet images={images} />
-        </ImageWrapper>
+        <>
+          <ImageWrapper>
+            <FixedImageSet images={images} />
+          </ImageWrapper>
+          {decorationLayers}
+        </>
       ) : null}
-
-      {decorationLayers}
     </ProjectRow>
   );
 };

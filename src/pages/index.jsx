@@ -118,19 +118,22 @@ export const query = graphql`
                 top
               }
               squares
+              circles
             }
             base {
               props {
                 height
                 top
               }
+              squares
               circles
             }
           }
           images {
             name
             childImageSharp {
-              fluid(maxHeight: 1080, quality: 90) {
+              fluid(maxHeight: 1080, quality: 90, toFormatBase64: WEBP) {
+                base64
                 src
                 sizes
                 srcSet

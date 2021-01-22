@@ -18,7 +18,6 @@ const FixedImage = styled.div.attrs((props) => ({
 
 const Placeholder = styled.div.attrs((props) => ({
   style: {
-    backgroundImage: `url("${props.src}")`,
     height: `${props.scaledHeight * 2}px`,
     backgroundPosition: `${props.horizontalPosition}px ${props.verticalPosition}px`,
     backgroundSize: `${props.imageWidth}% auto`,
@@ -81,7 +80,6 @@ const FixedImageSet = ({ images }) => {
           verticalPosition={verticalPosition}
           scaledHeight={scaledHeight}
           id={image.name}
-          src={image.src}
         />
       </Fragment>
     );
