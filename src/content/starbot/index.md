@@ -28,15 +28,15 @@ decorations:
       height: 100%
       top: 0px
     squares:
-      - radius=10px,top=60%,left=58%,size=15px,background=#FFAE5A
-      - radius=10px,top=15%,left=80%,size=20px,background=#EDE8E2
-      - radius=10px,top=43%,left=53%,size=25px,background=#F57B51
-      - radius=10px,top=17%,left=75%,size=20px,background=#BED5AE
-      - radius=10px,top=70%,left=50%,size=35px,background=#EDE8E2
-      - radius=10px,top=55%,left=85%,size=35px,background=#81A78C
-      - radius=10px,top=68%,left=69%,size=35px,background=#FFA9AA
+      - radius=10px,top=60%,left=58%,size=15px,background=#FFAE5A,sticky=true
+      - radius=10px,top=25%,left=80%,size=20px,background=#EDE8E2,sticky=true
+      - radius=10px,top=43%,left=53%,size=25px,background=#F57B51,sticky=true
+      - radius=10px,top=27%,left=75%,size=20px,background=#BED5AE,sticky=true
+      - radius=10px,top=70%,left=50%,size=35px,background=#EDE8E2,sticky=true
+      - radius=10px,top=55%,left=85%,size=35px,background=#81A78C,sticky=true
+      - radius=10px,top=68%,left=69%,size=35px,background=#FFA9AA,sticky=true
     circles:
-      - top=15%,left=45%,size=15px,background=#EDE8E2
+      - top=20%,left=45%,size=15px,background=#EDE8E2,sticky=true
 
 images:
   - ./starbot1.png

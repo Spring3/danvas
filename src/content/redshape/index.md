@@ -28,12 +28,12 @@ decorations:
     circles:
   base:
     props:
-      height: 200vh
+      height: calc(100% - 200vh - 50vh)
       top: 200vh
     squares:
     circles:
       - radius=90% 50% 50% 90% / 60% 60% 60% 60%,top=1%,left=30%,size=205px,background=#A2C5C6,sticky=true
-      - top=55%,left=93%,size=405px,background=#EDE8E2,sticky=true
+      - top=60%,left=95%,size=355px,background=#EDE8E2,sticky=true
       - radius=50% 80% 90% 50% / 60% 60% 60% 60%,top=75%,left=0%,size=235px,background=#BED5AE,sticky=true
 
 images:

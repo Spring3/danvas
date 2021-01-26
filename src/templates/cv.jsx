@@ -36,6 +36,12 @@ const Grid = styled.div`
   padding-bottom: 6rem;
   margin-top: 2rem;
 
+  section {
+    background: rgba(200, 200, 200, .1);
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
   section#experience {
     grid-row: span 2;
   }

@@ -14,11 +14,11 @@ const FlexContainer = styled.div`
     & > *:not(:last-child) {
       ${props.direction === 'column'
         ? css`
-            padding-bottom: ${props.gap};
-          `
+          padding-bottom: ${props.gap};
+        `
         : css`
-            padding-right: ${props.gap};
-          `};
+          padding-right: ${props.gap};
+        `};
     }
   `}
 `;
@@ -50,6 +50,8 @@ const Flex = ({
 
 Flex.propTypes = {
   id: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
   flexGrow: PropTypes.string,
   direction: PropTypes.oneOf([
     'row',
@@ -78,7 +80,10 @@ Flex.propTypes = {
 };
 
 Flex.defaultProps = {
+  children: null,
   flexGrow: '0',
+  className: undefined,
+  id: undefined,
   direction: 'row',
   gap: '0px',
   justifyContent: 'flex-start',
