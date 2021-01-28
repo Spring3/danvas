@@ -25,11 +25,11 @@ decorations:
       - top=0
   base:
     props:
-      height: 100%
-      top: 0px
+      height: 80%
+      top: 5%
     squares:
       - radius=10px,top=60%,left=58%,size=15px,background=#FFAE5A,sticky=true
-      - radius=10px,top=25%,left=80%,size=20px,background=#EDE8E2,sticky=true
+      - radius=10px,top=25%,left=80%,size=20px,background=#FFEC8B,sticky=true
       - radius=10px,top=43%,left=53%,size=25px,background=#F57B51,sticky=true
       - radius=10px,top=27%,left=75%,size=20px,background=#BED5AE,sticky=true
       - radius=10px,top=70%,left=50%,size=35px,background=#EDE8E2,sticky=true

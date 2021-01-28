@@ -36,7 +36,7 @@ decorations:
     squares:
     circles:
       - radius=90% 50% 50% 90% / 60% 60% 60% 60%,top=80%,left=20%,size=95px,background=#FFAE5A,sticky=true
-      - top=75%,left=93%,size=75px,background=#EDE8E2,sticky=true
+      - top=75%,left=93%,size=75px,background=#C3A9FF,sticky=true
       - radius=50% 80% 90% 50% / 60% 60% 60% 60%,top=5%,left=95%,size=135px,background=#BED5AE,sticky=true
 
 images:
