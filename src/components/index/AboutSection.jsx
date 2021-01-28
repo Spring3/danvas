@@ -33,9 +33,24 @@ const AboutSection = ({ children }) => (
     </Decorations>
     <Decorations layer="front">
       <Square bottom="1rem" right="1rem" background="#F57B51" size="65px" />
-      <Square bottom="calc(65px + 2rem)" right="1.4rem" background="#BED5AE" size="55px" />
-      <Square bottom="1rem" right="calc(65px + 2rem)" background="#FBD3C4" size="60px" />
-      <Square bottom="1rem" right="calc(65px + 60px + 3rem)" background="#FBBC58" size="50px" />
+      <Square
+        bottom="calc(65px + 2rem)"
+        right="1.4rem"
+        background="#BED5AE"
+        size="55px"
+      />
+      <Square
+        bottom="1rem"
+        right="calc(65px + 2rem)"
+        background="#FBD3C4"
+        size="60px"
+      />
+      <Square
+        bottom="1rem"
+        right="calc(65px + 60px + 3rem)"
+        background="#FBBC58"
+        size="50px"
+      />
     </Decorations>
     <Header>Hello and Welcome!</Header>
     {children}

@@ -70,39 +70,44 @@ const Project = ({ node, index }) => {
     ...image.childImageSharp.fluid,
   }));
 
-  const renderLayer = useCallback((key, layerData) => {
-    if (!layerData) {
-      return null;
-    }
+  const renderLayer = useCallback(
+    (key, layerData) => {
+      if (!layerData) {
+        return null;
+      }
 
-    const { props, squares, circles } = layerData;
-    const getProps = (string) => string.split(',').reduce((acc, curr) => {
-      const [prop, value] = curr.split('=');
-      return {
-        ...acc,
-        [prop]: value
-      };
-    }, {});
+      const { props, squares, circles } = layerData;
+      const getProps = (string) =>
+        string.split(',').reduce((acc, curr) => {
+          const [prop, value] = curr.split('=');
+          return {
+            ...acc,
+            [prop]: value,
+          };
+        }, {});
 
-    return (
-      <Decorations key={key} layer={key} {...props}>
-        {squares?.map((squareData, i) => {
-          const squareProps = getProps(squareData);
-          return (
-            <Square {...squareProps} key={`square-${i}`} />
-          );
-        })}
-        {circles?.map((circleData, i) => {
-          const cirlceProps = getProps(circleData);
-          return (
-            <Circle {...cirlceProps} key={`circle-${i}`} />
-          );
-        })}
-      </Decorations>
-    );
-  }, [id]);
+      return (
+        <Decorations key={key} layer={key} {...props}>
+          {squares?.map((squareData, i) => {
+            const squareProps = getProps(squareData);
+            return <Square {...squareProps} key={`square-${i}`} />;
+          })}
+          {circles?.map((circleData, i) => {
+            const cirlceProps = getProps(circleData);
+            return <Circle {...cirlceProps} key={`circle-${i}`} />;
+          })}
+        </Decorations>
+      );
+    },
+    [id]
+  );
 
-  const decorationLayers = useMemo(() => Object.entries(node.frontmatter.decorations || {}).map(([layerKey, layerData]) => renderLayer(layerKey, layerData), [renderLayer]));
+  const decorationLayers = useMemo(() =>
+    Object.entries(node.frontmatter.decorations || {}).map(
+      ([layerKey, layerData]) => renderLayer(layerKey, layerData),
+      [renderLayer]
+    )
+  );
 
   return (
     <ProjectRow id={id} justifyContent="space-between">

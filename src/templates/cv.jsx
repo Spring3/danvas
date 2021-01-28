@@ -37,7 +37,7 @@ const Grid = styled.div`
   margin-top: 2rem;
 
   section {
-    background: rgba(200, 200, 200, .1);
+    background: rgba(200, 200, 200, 0.1);
     padding: 1rem;
     border-radius: 5px;
   }

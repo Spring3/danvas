@@ -5,8 +5,8 @@ const Decorations = styled.div.attrs((props) => ({
     top: props.top || '0',
     height: props.height || '100%',
     zIndex: props.layer === 'back' ? '-1' : '1',
-    pointerEvents: props.layer === 'back' ? 'all' : 'none'
-  }
+    pointerEvents: props.layer === 'back' ? 'all' : 'none',
+  },
 }))`
   position: absolute;
   left: 0;
@@ -23,10 +23,10 @@ const GeometricObject = styled.div.attrs((props) => ({
     right: props.right,
     bottom: props.bottom,
     background: props.background,
-    boxShadow: `0px 0px 20px 0px ${props.background}`
-  }
+    boxShadow: `0px 0px 20px 0px ${props.background}`,
+  },
 }))`
-  opacity: .9;
+  opacity: 0.9;
 `;
 
 const Square = styled(GeometricObject)`
@@ -39,10 +39,6 @@ const Circle = styled(GeometricObject)`
   border-radius: ${(props) => props.radius || '50%'};
 `;
 
-export {
-  Decorations,
-  Square,
-  Circle
-};
+export { Decorations, Square, Circle };
 
 export default Decorations;

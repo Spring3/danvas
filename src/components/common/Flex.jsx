@@ -14,11 +14,11 @@ const FlexContainer = styled.div`
     & > *:not(:last-child) {
       ${props.direction === 'column'
         ? css`
-          padding-bottom: ${props.gap};
-        `
+            padding-bottom: ${props.gap};
+          `
         : css`
-          padding-right: ${props.gap};
-        `};
+            padding-right: ${props.gap};
+          `};
     }
   `}
 `;

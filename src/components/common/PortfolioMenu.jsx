@@ -61,8 +61,7 @@ const styles = css`
   &:hover,
   &:focus {
     ${(props) => css`
-      border-bottom: 2px solid
-        ${props.theme.marker || 'var(--marker-blue)'};
+      border-bottom: 2px solid ${props.theme.marker || 'var(--marker-blue)'};
       background: transparent;
     `}
   }
@@ -96,11 +95,12 @@ const activeStyles = css`
 
   &:hover,
   &:focus {
-    border-bottom: 2px solid ${(props) => props.theme.marker || 'var(--marker-blue)'};
-    background: ${(props) => props.active
-      ? props.theme.marker || 'var(--marker-blue)'
-      : 'transparent'
-    };
+    border-bottom: 2px solid
+      ${(props) => props.theme.marker || 'var(--marker-blue)'};
+    background: ${(props) =>
+      props.active
+        ? props.theme.marker || 'var(--marker-blue)'
+        : 'transparent'};
   }
 `;
 
@@ -125,19 +125,24 @@ const ActiveSlugMenuItem = styled(Link)`
 const AnchorListMenu = ({ nodes, onClick }) => {
   const anchors = useMemo(() => nodes.map((node) => node.anchor), []);
   const activeAnchor = useAnchorTracker(anchors);
-  const menuItems = useMemo(() => nodes.map((node) => {
-    const MenuItem = activeAnchor === node.anchor ? ActiveAnchorMenuItem : AnchorMenuItem;
-    return (
-      <MenuItem
-        onClick={onClick}
-        href={node.anchor}
-        data-anchor={node.anchor}
-        key={node.anchor}
-      >
-        {node.name}
-      </MenuItem>
-    );
-  }), [activeAnchor]);
+  const menuItems = useMemo(
+    () =>
+      nodes.map((node) => {
+        const MenuItem =
+          activeAnchor === node.anchor ? ActiveAnchorMenuItem : AnchorMenuItem;
+        return (
+          <MenuItem
+            onClick={onClick}
+            href={node.anchor}
+            data-anchor={node.anchor}
+            key={node.anchor}
+          >
+            {node.name}
+          </MenuItem>
+        );
+      }),
+    [activeAnchor]
+  );
 
   return (
     <MenuContainer>
