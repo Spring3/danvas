@@ -48,7 +48,7 @@ const fontScaling = css`
 `;
 
 const OGP = memo(({ title, description, image }) => {
-  if (window) {
+  if (typeof window !== 'undefined') {
     // eslint-disable-next-line
     window.__forceSmoothScrollPolyfill__ = true;
   }

@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { useWindowSize } from 'react-use';
+import { useGithubData } from '../hooks/useGithubData';
 import { GlobalStyles, OGP } from '../components/GlobalStyle';
 import { ButtonBack, DownloadButton } from '../components/common/Buttons';
 import { Subheading } from '../components/project/Header';
@@ -30,7 +31,7 @@ const StickySubheading = styled(Subheading)`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 50% auto;
+  grid-template-columns: calc(50% - 1.5rem) auto;
   grid-template-rows: repeat(auto-fill, minmax(2rem, 1fr));
   grid-gap: 3rem 4rem;
   padding-bottom: 6rem;
@@ -64,6 +65,19 @@ const Grid = styled.div`
   }
 `;
 
+const ProfileGrid = styled(Grid)`
+  grid-template-columns: 350px auto;
+  padding-bottom: 3rem;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 300px auto;
+  }
+
+  @media (max-width: 850px) {
+    grid-template-columns: 250px auto;
+  }
+`;
+
 const InlinedNavbarPart = styled(Flex)`
   padding: 1rem;
   h2 {
@@ -81,10 +95,28 @@ const InlinedNavbarPart = styled(Flex)`
   }
 `;
 
+const ProfilePicture = styled.img`
+  border-radius: 10px;
+  max-width: 350px;
+
+  @media (max-width: 1000px) {
+    width: 300px;
+  }
+
+  @media (max-width: 850px) {
+    width: 250px;
+  }
+`;
+
+const ProfileInfo = styled.div`
+  flex-grow: 1;
+`;
+
 export default ({ data }) => {
   const post = data.markdownRemark;
   const activeAnchor = useAnchorTracker(['#intro-section']);
   const { width } = useWindowSize();
+  const { isFetching, data: githubProfile } = useGithubData();
 
   return (
     <>
@@ -126,22 +158,27 @@ export default ({ data }) => {
           ) : null}
         </Navbar>
         <CVWrapper>
-          <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
-            <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
-            <small>
-              &nbsp;(
-              {post.frontmatter.updatedAt})
-            </small>
-          </Flex>
-          <p>
-            Curious and creative. I always try to come up with something special
-            and original.
-            <br />
-            <br />
-            Primarily I focus on Node.js, React, Graphql and modern Javascript
-            ecosystem.
-          </p>
-          <SocialButtons onlyImportant />
+          <ProfileGrid>
+            <ProfilePicture alt="avatar" src={githubProfile.avatar_url} loading={isFetching} />
+            <ProfileInfo>
+              <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
+                <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
+                <small>
+                  &nbsp;(
+                  {post.frontmatter.updatedAt})
+                </small>
+              </Flex>
+              <p>
+                Curious and creative. I always try to come up with something special
+                and original.
+                <br />
+                <br />
+                Primarily I focus on Node.js, React, Graphql and modern Javascript
+                ecosystem.
+              </p>
+              <SocialButtons onlyImportant />
+            </ProfileInfo>
+          </ProfileGrid>
           <Grid id="intro-section">
             <section id="experience">
               <StickySubheading marker="#BCE5FF">Experience</StickySubheading>

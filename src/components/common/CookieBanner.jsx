@@ -63,9 +63,11 @@ const CookieBanner = memo(() => {
   const [, cancelExpand] = useTimeoutFn(() => setExpanded(true), 4500);
   const [, cancelShrink] = useTimeoutFn(() => setExpanded(false), 9500);
 
-  const [conscentRequired, setConscentRequired] = useState(
-    sessionStorage.getItem(storageKey) === null
-  );
+  let haveSavedConsent = false;
+  if (typeof sessionStorage !== 'undefined') {
+    haveSavedConsent = sessionStorage.getItem(storageKey) === null;
+  }
+  const [conscentRequired, setConscentRequired] = useState(haveSavedConsent);
 
   const [introAnimation, setIntoAnimation] = useSpring(() => ({
     left: '-50rem',
@@ -77,16 +79,20 @@ const CookieBanner = memo(() => {
   });
 
   const onAccept = () => {
-    sessionStorage.setItem(storageKey, true);
-    initializeAndTrack();
-    setConscentRequired(false);
-    setIntoAnimation({ left: '-50rem' });
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem(storageKey, true);
+      initializeAndTrack();
+      setConscentRequired(false);
+      setIntoAnimation({ left: '-50rem' });
+    }
   };
 
   const onReject = () => {
-    sessionStorage.setItem(storageKey, false);
-    setConscentRequired(false);
-    setIntoAnimation({ left: '-50rem' });
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem(storageKey, false);
+      setConscentRequired(false);
+      setIntoAnimation({ left: '-50rem' });
+    }
   };
 
   const onCaretClick = (e) => {
@@ -104,6 +110,10 @@ const CookieBanner = memo(() => {
   const canAnimate = isReady();
 
   useEffect(() => {
+    if (typeof sessionStorage === 'undefined') {
+      return;
+    }
+
     const decisionMade = sessionStorage.getItem(storageKey);
 
     if (conscentRequired && canAnimate) {
@@ -134,8 +144,7 @@ const CookieBanner = memo(() => {
       </Flex>
       <Description style={descriptionAnimation}>
         <p>
-          I use anonymised google analytics cookies on this website as a way of
-          seeing if anyone visits it at all.
+          I use anonymised google analytics cookies to see if anyone visits this website at all. Neither do I export nor use this data in any way other than observative.
         </p>
         <Reference
           href="https://policies.google.com/technologies/partner-sites"
@@ -145,12 +154,12 @@ const CookieBanner = memo(() => {
           Google Privacy & Terms
         </Reference>
       </Description>
-      <Flex>
+      <div>
         <Button onClick={onAccept}>Accept</Button>
         <Button onClick={onReject} theme={theme}>
           Reject
         </Button>
-      </Flex>
+      </div>
     </CookieBannerContainer>
   );
 });
