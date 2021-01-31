@@ -3,6 +3,8 @@ title: Starbot
 thumbnail: ./starbot1.png
 marker: "#FFEC8B"
 repository: https://github.com/Spring3/starbot
+description:
+  - { dummy: true }
 technologies:
   - Javascript
   - Bot
@@ -42,8 +44,11 @@ images:
   - ./starbot1.png
 ---
 
-A link aggregator for Slack workspace.
+In one of the companies I worked at, we had a channel where people posted links to different interesting materials. It was really hard to keep up with them and manage, so I got an idea of making a link aggregator bot for slack.
 
-The screenshot, that you see, was the quick concept of how I imagined the landing for the dashboard.
+Unfortuantely, as it turned out that there have been several link agregators already, I decided not to put any more effort into my alternative of this project.
 
-This project was not finished due to many similar projects already available. It is now archived.
+Lessons learnt: market research is important. 
+
+The screenshot, that you see how the landing page looked like.
+

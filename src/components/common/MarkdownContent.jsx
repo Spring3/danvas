@@ -23,7 +23,7 @@ const MarkdownContent = styled.div`
 
   ul {
     line-height: 2;
-    padding: 1rem;
+    padding: 0rem 1rem;
   }
 
   @media (min-width: 1000px) {

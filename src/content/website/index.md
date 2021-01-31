@@ -3,6 +3,8 @@ title: Website
 thumbnail: ./website1.png
 marker: "#BCE5FF"
 repository: https://github.com/Spring3/website
+description:
+  - { dummy: true }
 technologies:
   - Javascript
   - Gatsby
@@ -40,6 +42,13 @@ images:
   - ./website2.png
 ---
 
-Every developer seems to have a website. So, now I have one as well.
+Just like most of other developers, I wanted to have my safe space on the internet.
 
-This website was built on top of gatsby and markdown and became the first project I created with gatsby.
+If you are reading this, then somehow you got into my safe space. ~~Please go away~~ (joking).
+Make yourself comfortable here and explore
+
+I plan to fill it with more information about myself with time, so perhaps you'd like to check for updates ;)
+
+This website is static and was implemented with Gatsby, Markdown and React.
+
+If you would like to make sure that THIS version looks beautiful despite it's imperfection, check the way the old design used to look like :p

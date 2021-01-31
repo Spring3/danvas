@@ -176,7 +176,10 @@ export const query = graphql`
       }
       frontmatter {
         title
-        description
+        description {
+          text
+          href
+        }
         demo
         repository
         chrome

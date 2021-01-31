@@ -33,7 +33,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <StyledLink href="#" onClick={onClick}>
-        Yaay, you've reached the bottom! Poke this compact elevator to go back up.
+        Yaay, you&apos;ve reached the bottom! Poke this compact elevator to go back up.
       </StyledLink>
     </StyledFooter>
   );

@@ -109,7 +109,6 @@ export const query = graphql`
         }
         frontmatter {
           title
-          description
           marker
           decorations {
             back {

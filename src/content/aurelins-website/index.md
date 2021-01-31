@@ -4,6 +4,10 @@ thumbnail: ./aurelins5.png
 marker: "#C3A9FF"
 repository: https://github.com/Spring3/aurelins-website
 demo: https://deploy-preview-1--inspiring-hugle-4673c9.netlify.com/
+description:
+  - { text: Thanks to the Three.js library and the .gltf format of a 3d asset, it is possible to render 3d models on the web page }
+  - { text: Unfortuantely, this website was never used as my sister lost interest in 3d modelling. Also, all the material presented was taken from the internet just for templating and visual testing. }
+
 technologies:
   - Javascript
   - Gatsby
@@ -54,7 +58,3 @@ images:
 A draft of a website, that I designed for my sister to showcase her 3d modelling portfolio.
 
 I also used Contentful for the first time in my project, when working on this website.
-
-You are able to render 3d models on the web page. This is able thanks to three js library that allows to render 3d models in .gltf format.
-
-Unfortuantely, this website was never used as my sister lost interest in 3d modelling. Also, all the material presented was taken from the internet just for templating and visual testing.

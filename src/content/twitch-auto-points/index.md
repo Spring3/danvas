@@ -1,7 +1,8 @@
 ---
 title: Twitch Auto Points
 thumbnail: ./extension1.png
-description: A cross browser extension for automatic collection of channel points
+description:
+  - { dummy: true }
 marker: "#A9E5BB"
 repository: https://github.com/Spring3/twitch-auto-points
 chrome: https://chrome.google.com/webstore/detail/twitch-auto-points/epdcapclkanflhcnialagecbkbpkbcbi
@@ -46,7 +47,5 @@ A cross browser extension, that automates gathering of channel points on twitch 
 
 - Works in multiple tabs and windows at the same time.
 - Optimized for performance
-- Only works on twitch websites
-- Disables itself on other websites
+- Only works on twitch websites (enables / disables itself)
 - No data collection whatsoever
-- Updated to work with the latest twitch UI
