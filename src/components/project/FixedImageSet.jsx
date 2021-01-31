@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { useWindowSize } from 'react-use';
+import { useImagePreview } from '../../context/ImagePreviewContext';
 
 const FixedImage = styled.div.attrs((props) => ({
   style: {
@@ -41,6 +42,7 @@ const NormalImage = styled.div.attrs((props) => ({
 
 const FixedImageSet = ({ images }) => {
   const { height, width } = useWindowSize();
+  const { showImagePreview } = useImagePreview();
 
   if (!images || !images.length) {
     return null;
@@ -73,12 +75,14 @@ const FixedImageSet = ({ images }) => {
           scaledHeight={scaledHeight}
           id={image.name}
           src={image.src}
+          onClick={() => showImagePreview(images)}
         />
         <Placeholder
           horizontalPosition={horizontalPosition}
           imageWidth={imageWidthPercent}
           verticalPosition={verticalPosition}
           scaledHeight={scaledHeight}
+          onClick={() => showImagePreview(images)}
           id={image.name}
         />
       </Fragment>

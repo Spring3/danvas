@@ -9,7 +9,7 @@ import { AnchorListMenu } from '../components/common/PortfolioMenu';
 import { slugToAnchor } from '../utils';
 import { styles } from '../components/common/Reference';
 import { Footer } from '../components/index/Footer';
-import { ImagePreviewContainer } from '../components/common/ImagePreview';
+import { ImagePreviewContextProvider } from '../context/ImagePreviewContext';
 
 const AboutSectionMarkdown = styled.div`
   a {
@@ -72,19 +72,20 @@ export default ({ data }) => {
         description={siteMetadata.description}
         image={siteMetadata.image}
       />
-      <ImagePreviewContainer />
-      <main>
-        <div style={{ position: 'relative' }}>
-          <AboutSection>
-            <AboutSectionMarkdown
-              dangerouslySetInnerHTML={{ __html: aboutNode.html }}
-            />
-          </AboutSection>
-        </div>
-        <ProjectsSection nodes={projectNodes} />
-        <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
-      </main>
-      <Footer />
+      <ImagePreviewContextProvider>
+        <main>
+          <div style={{ position: 'relative' }}>
+            <AboutSection>
+              <AboutSectionMarkdown
+                dangerouslySetInnerHTML={{ __html: aboutNode.html }}
+              />
+            </AboutSection>
+          </div>
+          <ProjectsSection nodes={projectNodes} />
+          <AnchorListMenu nodes={menuNodes} onClick={onMenuClick} />
+        </main>
+        <Footer />
+      </ImagePreviewContextProvider>
     </>
   );
 };

@@ -26,8 +26,7 @@ const styles = css`
 
   &:hover,
   &:focus {
-    background: ${(props) =>
-      props.theme.marker ? `${props.theme.marker}` : 'var(--marker-blue)'};
+    background: ${(props) => props.theme.marker || 'var(--marker-blue)'};
   }
 `;
 

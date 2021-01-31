@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 import { ImagePreview } from './ImagePreview';
+import { useImagePreview } from '../../context/ImagePreviewContext';
 
 const CarouselContainer = styled.div`
   padding-top: ${(props) => (props.isPreview ? '0' : '1.5rem')};
@@ -29,13 +30,10 @@ const StyledCarousel = styled(Carousel)`
   }
 `;
 const ImageCarousel = ({ images }) => {
-  const [isPreview, setPreview] = useState(false);
+  const { showImagePreview } = useImagePreview();
 
   return (
     <>
-      {isPreview ? (
-        <ImagePreview images={images} onClose={() => setPreview(false)} />
-      ) : null}
       <CarouselContainer>
         <StyledCarousel
           showStatus={false}
@@ -44,7 +42,7 @@ const ImageCarousel = ({ images }) => {
           infiniteLoop
           autoPlay
           dynamicHeight
-          onClickItem={() => setPreview(true)}
+          onClickItem={() => showImagePreview(images)}
         >
           {images.map((image, i) => (
             <div key={i}>

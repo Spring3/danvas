@@ -12,13 +12,23 @@ import { useWindowSize } from 'react-use';
 import { PreviewButtonNext, PreviewButtonPrevious } from './Buttons';
 
 const ImagePreviewPortal = ({ children }) => {
-  const container = useMemo(() => document.createElement('div'), []);
+  const container = useMemo(() => {
+    if (typeof document !== 'undefined') {
+      return document.createElement('div');
+    }
+
+    return undefined;
+  }, []);
 
   useEffect(() => {
-    const root = document.getElementById('image-preview-portal');
+    let root;
+    if (typeof document !== 'undefined') {
+      root = document.getElementById('image-preview-portal');
 
-    root.appendChild(container);
-
+      if (root) {
+        root.appendChild(container);
+      }
+    }
     return () => root.removeChild(container);
   }, [container]);
 
@@ -99,6 +109,12 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
   }));
 
   useEffect(() => {
+    if (!images.length) {
+      setIndex(0);
+    }
+  }, [images]);
+
+  useEffect(() => {
     set((i) => {
       if (i < index - 1 || i > index + 1) return { display: 'none' };
       const x = (i - index) * width;
@@ -174,6 +190,10 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
     e.stopPropagation();
     e.preventDefault();
   }, []);
+
+  if (!images.length) {
+    return <></>;
+  }
 
   if (images.length === 1) {
     return (

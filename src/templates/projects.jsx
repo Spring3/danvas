@@ -16,7 +16,7 @@ import { ImageCarousel } from '../components/common/ImageCarousel';
 import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
-import { ImagePreviewContainer } from '../components/common/ImagePreview';
+import { ImagePreviewContextProvider } from '../context/ImagePreviewContext';
 
 const PageLayout = styled.div`
   display: grid;
@@ -111,57 +111,58 @@ export default (props) => {
         image={post.frontmatter.thumbnail.childImageSharp.fluid.src}
       />
       <ThemeProvider theme={theme}>
-        <ImagePreviewContainer />
-        <PageWrapper>
-          <Navbar>
-            <ButtonBack href={`/${anchor}`} value="Main page" />
-            {activeAnchor === '#markdown' ? (
-              <TinyProjectReferenceContainer
+        <ImagePreviewContextProvider>
+          <PageWrapper>
+            <Navbar>
+              <ButtonBack href={`/${anchor}`} value="Main page" />
+              {activeAnchor === '#markdown' ? (
+                <TinyProjectReferenceContainer
+                  alignItems="center"
+                  flexWrap="wrap"
+                  gap="1.5rem"
+                  justifyContent="flex-end"
+                >
+                  <ProjectReferences
+                    size={25}
+                    frontmatter={post.frontmatter}
+                    onlyIcons={isSmallScreen}
+                  />
+                </TinyProjectReferenceContainer>
+              ) : null}
+            </Navbar>
+            <PageLayout>
+              <ProjectContentNav
                 alignItems="center"
-                flexWrap="wrap"
-                gap="1.5rem"
-                justifyContent="flex-end"
+                justifyContent="space-between"
               >
-                <ProjectReferences
-                  size={25}
-                  frontmatter={post.frontmatter}
-                  onlyIcons={isSmallScreen}
-                />
-              </TinyProjectReferenceContainer>
-            ) : null}
-          </Navbar>
-          <PageLayout>
-            <ProjectContentNav
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <div>
-                <Subheading>{post.frontmatter.title}</Subheading>
-              </div>
-              <ProjectReferenceContainer
-                alignItems="center"
-                flexWrap="wrap"
-                gap="1.5rem"
-                justifyContent="flex-end"
-              >
-                <ProjectReferences size={25} frontmatter={post.frontmatter} />
-              </ProjectReferenceContainer>
-            </ProjectContentNav>
-            <PaddedMarkdownContent
-              id="markdown"
-              dangerouslySetInnerHTML={{ __html: post.html }}
-            />
-            <ProjectInfo>
-              <ImageCarousel images={images} />
-              <Tags>
-                {post.frontmatter.technologies.map((tag, i) => (
-                  <Tag key={i}>{tag}</Tag>
-                ))}
-              </Tags>
-            </ProjectInfo>
-          </PageLayout>
-          <SlugListMenu active={post.fields.slug} slugs={slugs} />
-        </PageWrapper>
+                <div>
+                  <Subheading>{post.frontmatter.title}</Subheading>
+                </div>
+                <ProjectReferenceContainer
+                  alignItems="center"
+                  flexWrap="wrap"
+                  gap="1.5rem"
+                  justifyContent="flex-end"
+                >
+                  <ProjectReferences size={25} frontmatter={post.frontmatter} />
+                </ProjectReferenceContainer>
+              </ProjectContentNav>
+              <PaddedMarkdownContent
+                id="markdown"
+                dangerouslySetInnerHTML={{ __html: post.html }}
+              />
+              <ProjectInfo>
+                <ImageCarousel images={images} />
+                <Tags>
+                  {post.frontmatter.technologies.map((tag, i) => (
+                    <Tag key={i}>{tag}</Tag>
+                  ))}
+                </Tags>
+              </ProjectInfo>
+            </PageLayout>
+            <SlugListMenu active={post.fields.slug} slugs={slugs} />
+          </PageWrapper>
+        </ImagePreviewContextProvider>
       </ThemeProvider>
     </>
   );

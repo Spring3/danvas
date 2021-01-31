@@ -41,11 +41,9 @@ images:
   - ./website1.png
   - ./website2.png
 ---
-
 Just like most of other developers, I wanted to have my safe space on the internet.
 
-If you are reading this, then somehow you got into my safe space. ~~Please go away~~ (joking).
-Make yourself comfortable here and explore
+Wait, how did you manage to get in here? Anyway, it's too late, so make yourself comfortable here and explore.
 
 I plan to fill it with more information about myself with time, so perhaps you'd like to check for updates ;)
 
