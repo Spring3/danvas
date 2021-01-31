@@ -13,6 +13,7 @@ import { SocialButtons } from '../components/common/SocialButtons';
 import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { DownloadFooter } from '../components/cv/DownloadFooter';
 import { Flex } from '../components/common/Flex';
+import { MARKERS } from '../theme';
 
 const CVWrapper = styled.div`
   padding: 0px 1rem;
@@ -162,7 +163,7 @@ export default ({ data }) => {
             <ProfilePicture alt="avatar" src={githubProfile.avatar_url} loading={isFetching} />
             <ProfileInfo>
               <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
-                <Subheading marker="#A9E5BB">{post.frontmatter.title}</Subheading>
+                <Subheading marker={MARKERS.green}>{post.frontmatter.title}</Subheading>
                 <small>
                   &nbsp;(
                   {post.frontmatter.updatedAt})
@@ -181,7 +182,7 @@ export default ({ data }) => {
           </ProfileGrid>
           <Grid id="intro-section">
             <section id="experience">
-              <StickySubheading marker="#BCE5FF">Experience</StickySubheading>
+              <StickySubheading marker={MARKERS.blue}>Experience</StickySubheading>
               <CVSectionBlock>
                 <h3>Full Stack Software Engineer</h3>
                 <p>
@@ -264,7 +265,7 @@ export default ({ data }) => {
               </CVSectionBlock>
             </section>
             <section id="skills">
-              <StickySubheading marker="#F78888">Skills</StickySubheading>
+              <StickySubheading marker={MARKERS.red}>Skills</StickySubheading>
               <p>
                 <strong>Back-end</strong>
                 <span>: Node.js, Express, RabbitMQ</span>
@@ -305,7 +306,7 @@ export default ({ data }) => {
               </p>
             </section>
             <section id="education">
-              <StickySubheading marker="#FCF6B1">Education</StickySubheading>
+              <StickySubheading marker={MARKERS.yellow}>Education</StickySubheading>
               <CVSectionBlock>
                 <h3>Specialist Degree</h3>
                 <p>
@@ -355,7 +356,7 @@ export default ({ data }) => {
               </CVSectionBlock>
             </section>
             <section id="courses">
-              <StickySubheading marker="#A9E5BB">Courses</StickySubheading>
+              <StickySubheading marker={MARKERS.green}>Courses</StickySubheading>
               <h3>Java Enterprise Edition</h3>
               <p>
                 <strong>Provider</strong>
@@ -373,7 +374,7 @@ export default ({ data }) => {
               </Flex>
             </section>
             <section id="language skills">
-              <StickySubheading marker="#C3A9FF">
+              <StickySubheading marker={MARKERS.purple}>
                 Language Skills
               </StickySubheading>
               <Flex direction="column" gap="0.5rem">

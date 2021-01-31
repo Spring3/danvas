@@ -43,7 +43,7 @@ const ProjectsSection = ({ nodes }) => (
       <StickyTitle>Projects</StickyTitle>
       <ProjectsWrapper direction="column" gap="5rem">
         {nodes.map((node, i) => {
-          const theme = { marker: `#${node.frontmatter.marker}` };
+          const theme = { marker: node.frontmatter.marker };
           return (
             <ThemeProvider key={node.fields.slug} theme={theme}>
               <Project node={node} index={i} />

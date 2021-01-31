@@ -91,7 +91,7 @@ export default (props) => {
 
   const slugs = allPosts.map((node) => node.fields.slug);
 
-  const theme = useMemo(() => ({ marker: `#${post.frontmatter.marker}` }), [
+  const theme = useMemo(() => ({ marker: post.frontmatter.marker }), [
     post.frontmatter.marker,
   ]);
 

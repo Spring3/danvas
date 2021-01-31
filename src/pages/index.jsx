@@ -117,16 +117,42 @@ export const query = graphql`
                 height
                 top
               }
-              squares
-              circles
+              squares {
+                radius
+                top
+                left
+                size
+                background
+                sticky
+              }
+              circles {
+                top
+                left
+                size
+                background
+                sticky
+              }
             }
             base {
               props {
                 height
                 top
               }
-              squares
-              circles
+              squares {
+                radius
+                top
+                left
+                size
+                background
+                sticky
+              }
+              circles {
+                top
+                left
+                size
+                background
+                sticky
+              }
             }
           }
           images {

@@ -57,6 +57,7 @@ const ProjectTitle = styled.div`
 
 const ProjectContent = styled(MarkdownContent)`
   font-size: 1rem;
+  -webkit-line-clamp: 1;
 `;
 
 const Project = ({ node, index }) => {
@@ -77,25 +78,15 @@ const Project = ({ node, index }) => {
       }
 
       const { props, squares, circles } = layerData;
-      const getProps = (string) =>
-        string.split(',').reduce((acc, curr) => {
-          const [prop, value] = curr.split('=');
-          return {
-            ...acc,
-            [prop]: value,
-          };
-        }, {});
 
       return (
         <Decorations key={key} layer={key} {...props}>
-          {squares?.map((squareData, i) => {
-            const squareProps = getProps(squareData);
-            return <Square {...squareProps} key={`square-${i}`} />;
-          })}
-          {circles?.map((circleData, i) => {
-            const cirlceProps = getProps(circleData);
-            return <Circle {...cirlceProps} key={`circle-${i}`} />;
-          })}
+          {squares?.map((squareProps, i) => (
+            <Square {...squareProps} key={`square-${i}`} />
+          ))}
+          {circles?.map((cirlceProps, i) => (
+            <Circle {...cirlceProps} key={`circle-${i}`} />
+          ))}
         </Decorations>
       );
     },

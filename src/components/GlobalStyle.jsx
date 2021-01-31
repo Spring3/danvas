@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     --marker-yellow: #FCF6B1;
     --marker-red: #F78888;
     --marker-blue: #BCE5FF;
+    --marker-purple: #C3A9FF;
     --border-radius: 3px;
     --page-size: 45em;
     --color-red: #EF3934;

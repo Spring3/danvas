@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MARKERS } from '../../theme';
-import { Link } from '../common/Reference';
+import { Reference } from '../common/Reference';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -11,7 +11,7 @@ const StyledFooter = styled.footer`
   grid-column: 1 / -1;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Reference)`
   font-weight: bold !important;
   width: 100%;
   text-align: center;
@@ -19,12 +19,24 @@ const StyledLink = styled(Link)`
   background: ${(props) => props.theme.marker || MARKERS.blue} !important;
 `;
 
-const Footer = () => (
-  <StyledFooter>
-    <StyledLink to="/cv">
-      Yaay, you don't have to scroll up! My CV page is here.
-    </StyledLink>
-  </StyledFooter>
-);
+const Footer = () => {
+  const onClick = (e) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: 0
+      });
+    }
+  };
+
+  return (
+    <StyledFooter>
+      <StyledLink href="#" onClick={onClick}>
+        Yaay, you've reached the bottom! Poke this compact elevator to go back up.
+      </StyledLink>
+    </StyledFooter>
+  );
+};
 
 export { Footer };
