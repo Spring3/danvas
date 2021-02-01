@@ -5,8 +5,8 @@ marker: "#C3A9FF"
 repository: https://github.com/Spring3/aurelins-website
 demo: https://deploy-preview-1--inspiring-hugle-4673c9.netlify.com/
 description:
-  - { text: Thanks to the Three.js library and the .gltf format of a 3d asset, it is possible to render 3d models on the web page }
-  - { text: Unfortuantely, this website was never used as my sister lost interest in 3d modelling. Also, all the material presented was taken from the internet just for templating and visual testing. }
+  - { text: "Thanks to the Three.js library and the .gltf format of a 3d asset, it is possible to render 3d models on the web page." }
+  - { text: "Unfortuantely, this website was never used as my sister lost interest in 3d modelling. Also, all the material presented was taken from the internet just for templating and visual testing." }
 
 technologies:
   - Javascript

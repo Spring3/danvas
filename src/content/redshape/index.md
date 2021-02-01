@@ -4,8 +4,8 @@ thumbnail: ./redshape1.png
 marker: "#F78888"
 repository: https://github.com/Spring3/redshape
 description:
-  - { text: Although I stopped working on after we stopped using Redmine, it is being used by several people, who discovered it though internet. }
-  - { text: I might invest some time into improving it a bit and adding new changes. But no promises as I don't feel motivated to get back to it most of the time. }
+  - { text: "Although I stopped working on after we stopped using Redmine, it is being used by several people, who discovered it though internet." }
+  - { text: "I might invest some time into improving it a bit and adding new changes. But no promises as I don't feel motivated to get back to it most of the time." }
   - { href: https://github.com/Spring3/redshape/releases/, text: Download the latest release }
 technologies:
   - Javascript

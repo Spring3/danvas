@@ -9,7 +9,7 @@ import { MarkdownContent } from '../components/common/MarkdownContent';
 import { Subheading } from '../components/project/Header';
 import Tags, { Tag } from '../components/common/Tags';
 import { ProjectReferences } from '../components/project/ProjectReferences';
-import { SlugListMenu } from '../components/common/PortfolioMenu';
+import { SlugListMenu } from '../components/common/Menus';
 import { PageWrapper } from '../components/common/PageWrapper';
 import Navbar from '../components/common/Navbar';
 import { ImageCarousel } from '../components/common/ImageCarousel';
@@ -17,6 +17,7 @@ import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
 import { ImagePreviewContextProvider } from '../context/ImagePreviewContext';
+import { Reference } from '../components/common/Reference';
 
 const PageLayout = styled.div`
   display: grid;
@@ -67,8 +68,11 @@ const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
   }
 `;
 
-const PaddedMarkdownContent = styled(MarkdownContent)`
+const ProjectInfoWrapper = styled.div`
   grid-area: info;
+`;
+
+const PaddedMarkdownContent = styled(MarkdownContent)`
   @media (max-width: 750px) {
     padding: 1.5rem 0rem;
   }
@@ -147,10 +151,28 @@ export default (props) => {
                   <ProjectReferences size={25} frontmatter={post.frontmatter} />
                 </ProjectReferenceContainer>
               </ProjectContentNav>
-              <PaddedMarkdownContent
-                id="markdown"
-                dangerouslySetInnerHTML={{ __html: post.html }}
-              />
+              <ProjectInfoWrapper>
+                <PaddedMarkdownContent
+                  id="markdown"
+                  dangerouslySetInnerHTML={{ __html: post.html }}
+                />
+                {post.frontmatter.description.map((description) => {
+                  if (description.href) {
+                    return (
+                      <PaddedMarkdownContent>
+                        <p>
+                          <a href={description.href}>{description.text}</a>
+                        </p>
+                      </PaddedMarkdownContent>
+                    );
+                  }
+                  return (
+                    <PaddedMarkdownContent>
+                      <p>{description.text}</p>
+                    </PaddedMarkdownContent>
+                  );
+                })}
+              </ProjectInfoWrapper>
               <ProjectInfo>
                 <ImageCarousel images={images} />
                 <Tags>

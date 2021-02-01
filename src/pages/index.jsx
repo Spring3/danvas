@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { GlobalStyles, OGP } from '../components/GlobalStyle';
 import { AboutSection } from '../components/index/AboutSection';
 import { ProjectsSection } from '../components/index/ProjectsSection';
-import { AnchorListMenu } from '../components/common/PortfolioMenu';
+import { AnchorListMenu } from '../components/common/Menus';
 import { slugToAnchor } from '../utils';
 import { styles } from '../components/common/Reference';
 import { Footer } from '../components/index/Footer';
