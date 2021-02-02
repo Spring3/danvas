@@ -10,7 +10,6 @@ import { MarkdownContent } from '../common/MarkdownContent';
 import { ImageCarousel } from '../common/ImageCarousel';
 import { Flex } from '../common/Flex';
 import { Decorations, Square, Circle } from '../common/Decorations';
-import { useImagePreview } from '../../context/ImagePreviewContext';
 
 const ProjectInfo = styled.div`
   @media (min-width: 1000px) {
@@ -100,8 +99,6 @@ const Project = ({ node, index }) => {
       [renderLayer]
     )
   );
-
-  const { showImagePreview  } = useImagePreview();
 
   return (
     <ProjectRow id={id} justifyContent="space-between">

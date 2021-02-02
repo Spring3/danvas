@@ -107,6 +107,10 @@ const ProfilePicture = styled.img`
   @media (max-width: 850px) {
     width: 250px;
   }
+
+  @media (max-width: 750px) {
+    align-self: center;
+  }
 `;
 
 const ProfileInfo = styled.div`

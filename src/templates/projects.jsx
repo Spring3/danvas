@@ -17,7 +17,6 @@ import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { Flex } from '../components/common/Flex';
 import { slugToAnchor } from '../utils';
 import { ImagePreviewContextProvider } from '../context/ImagePreviewContext';
-import { Reference } from '../components/common/Reference';
 
 const PageLayout = styled.div`
   display: grid;
