@@ -1,7 +1,8 @@
-import React, { useCallback, useMemo } from 'react';
-import styled from 'styled-components';
+import React, { useCallback, useMemo, useRef, useState, useLayoutEffect, useEffect } from 'react';
+import styled, { keyframes, css } from 'styled-components';
 
-import { useWindowSize } from 'react-use';
+import { animated, useSpring } from 'react-spring';
+import { useWindowSize, useIntersection } from 'react-use';
 import Tags, { Tag } from '../common/Tags';
 import { FixedImageSet } from '../project/FixedImageSet';
 import { slugToAnchor } from '../../utils';
@@ -19,7 +20,7 @@ const ProjectInfo = styled.div`
   }
 `;
 
-const InfoWrapper = styled.div`
+const InfoWrapper = styled(animated.div)`
   width: 100%;
 
   @media (min-width: 1001px) {
@@ -29,7 +30,7 @@ const InfoWrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled(animated.div)`
   width: 59%;
   gap: 0px;
 
@@ -61,7 +62,10 @@ const ProjectContent = styled(MarkdownContent)`
 `;
 
 const Project = ({ node, index }) => {
+  const [wasRevealed, setRevealed] = useState(false);
   const anchor = slugToAnchor(node.fields.slug);
+
+  const infoRef = useRef();
   const { width } = useWindowSize();
   const id = anchor.substring(1);
   const isSmallScreen = width <= 1000;
@@ -70,6 +74,27 @@ const Project = ({ node, index }) => {
     name: image.name,
     ...image.childImageSharp.fluid,
   }));
+
+  const intersection = useIntersection(infoRef, {
+    threshold: 0.8
+  });
+
+  const isIntersecting = intersection?.isIntersecting;
+
+  const revealAnimation = useSpring({
+    opacity: (wasRevealed || isIntersecting) ? 1 : 0,
+    transform: (wasRevealed || isIntersecting) ? 'translateY(0%)' : 'translateY(100px)',
+    config: {
+      delay: 500,
+      reset: false
+    },
+    onRest: () => setRevealed((wasRevealedAlready) => {
+      if (!wasRevealedAlready && isIntersecting) {
+        return true;
+      }
+      return wasRevealedAlready;
+    })
+  });
 
   const renderLayer = useCallback(
     (key, layerData) => {
@@ -80,7 +105,7 @@ const Project = ({ node, index }) => {
       const { props, squares, circles } = layerData;
 
       return (
-        <Decorations key={key} layer={key} {...props}>
+        <Decorations key={key} layer={key} {...props} style={revealAnimation}>
           {squares?.map((squareProps, i) => (
             <Square {...squareProps} key={`square-${i}`} />
           ))}
@@ -102,7 +127,7 @@ const Project = ({ node, index }) => {
 
   return (
     <ProjectRow id={id} justifyContent="space-between">
-      <InfoWrapper>
+      <InfoWrapper ref={infoRef} style={revealAnimation}>
         <ProjectInfo index={index}>
           <ProjectTitle>
             <Link to={node.fields.slug} marker={node.frontmatter.marker} bold>
@@ -125,7 +150,7 @@ const Project = ({ node, index }) => {
       </InfoWrapper>
       {!isSmallScreen ? (
         <>
-          <ImageWrapper>
+          <ImageWrapper style={revealAnimation}>
             <FixedImageSet images={images} />
           </ImageWrapper>
           {decorationLayers}

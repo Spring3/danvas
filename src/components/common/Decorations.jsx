@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+import { animated } from 'react-spring';
 
-const Decorations = styled.div.attrs((props) => ({
+const Decorations = styled(animated.div).attrs((props) => ({
   style: {
     top: props.top || '0',
     height: props.height || '100%',
