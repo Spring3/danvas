@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
-import { ImagePreview } from './ImagePreview';
 import { useImagePreview } from '../../context/ImagePreviewContext';
 
 const CarouselContainer = styled.div`
@@ -42,7 +41,7 @@ const ImageCarousel = ({ images }) => {
           infiniteLoop
           autoPlay
           dynamicHeight
-          onClickItem={() => showImagePreview(images)}
+          onClickItem={(index) => showImagePreview(images, index)}
         >
           {images.map((image, i) => (
             <div key={i}>

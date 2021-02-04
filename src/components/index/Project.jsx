@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef, useState, useLayoutEffect, useEffect } from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import styled from 'styled-components';
 
 import { animated, useSpring } from 'react-spring';
 import { useWindowSize, useIntersection } from 'react-use';
@@ -85,7 +85,6 @@ const Project = ({ node, index }) => {
     opacity: (wasRevealed || isIntersecting) ? 1 : 0,
     transform: (wasRevealed || isIntersecting) ? 'translateY(0%)' : 'translateY(100px)',
     config: {
-      delay: 500,
       reset: false
     },
     onRest: () => setRevealed((wasRevealedAlready) => {

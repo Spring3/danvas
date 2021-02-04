@@ -15,6 +15,7 @@ const FixedImage = styled.div.attrs((props) => ({
   background-repeat: no-repeat;
   position: sticky;
   top: 16%;
+  cursor: initial;
 `;
 
 const Placeholder = styled.div.attrs((props) => ({
@@ -28,6 +29,8 @@ const Placeholder = styled.div.attrs((props) => ({
   background-repeat: no-repeat;
   position: sticky;
   top: 16%;
+  cursor: initial;
+  pointer-events: none;
 `;
 
 const NormalImage = styled.div.attrs((props) => ({
@@ -52,20 +55,21 @@ const FixedImageSet = ({ images }) => {
   const padding = 0.06 * width;
   const imageAreaWidth = (width - padding * 2) * 0.59;
   const marginTop = height * 0.16;
+  const imageWidthPercent = Number((imageAreaWidth / width) * 100).toFixed(2);
+  const verticalPosition = Number(height - (height - marginTop)).toFixed(2);
+  const horizontalPosition = Number(width - imageAreaWidth - padding).toFixed(
+    2
+  );
 
   if (images.length === 1) {
     const image = images[0];
-    const scaledHeight = Number(imageAreaWidth / image.aspectRatio).toFixed(2);
-    return <NormalImage src={image.src} scaledHeight={scaledHeight} />;
+    const scaledHeight = Number(imageAreaWidth / images[0]?.aspectRatio).toFixed(2);
+    return <NormalImage src={image.src} scaledHeight={scaledHeight} onClick={() => showImagePreview(images)} />;
   }
 
-  return images.map((image) => {
+  return images.map((image, i) => {
     const scaledHeight = Number(imageAreaWidth / image.aspectRatio).toFixed(2);
-    const horizontalPosition = Number(width - imageAreaWidth - padding).toFixed(
-      2
-    );
-    const verticalPosition = Number(height - (height - marginTop)).toFixed(2);
-    const imageWidthPercent = Number((imageAreaWidth / width) * 100).toFixed(2);
+
     return (
       <Fragment key={image.name}>
         <FixedImage
@@ -75,14 +79,13 @@ const FixedImageSet = ({ images }) => {
           scaledHeight={scaledHeight}
           id={image.name}
           src={image.src}
-          onClick={() => showImagePreview(images)}
+          onClick={() => showImagePreview(images, i)}
         />
         <Placeholder
           horizontalPosition={horizontalPosition}
           imageWidth={imageWidthPercent}
           verticalPosition={verticalPosition}
           scaledHeight={scaledHeight}
-          onClick={() => showImagePreview(images)}
           id={image.name}
         />
       </Fragment>

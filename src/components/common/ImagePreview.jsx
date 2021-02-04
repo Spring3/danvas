@@ -5,7 +5,7 @@ import ArrowLeftIcon from 'mdi-react/ArrowLeftThickIcon';
 import ArrowRightIcon from 'mdi-react/ArrowRightThickIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
 import { Helmet } from 'react-helmet';
-import { useSprings, animated, config } from 'react-spring';
+import { useSprings, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
 import { useWindowSize } from 'react-use';
@@ -97,22 +97,30 @@ const IconClose = styled(CloseIcon)`
 
 const ImagePreview = ({ images, startIndex = 0, onClose }) => {
   const { width, height } = useWindowSize();
-  const [index, setIndex] = useState(startIndex);
+  const [index, setIndex] = useState(0);
   const [mousePressed, setMousePressed] = useState(false);
 
-  const [draggingAnimationSprings, set] = useSprings(images.length, (i) => ({
-    x: i * width,
-    scale: 1,
-    config: config.default,
-    display: 'block',
-    transform: `translateX(${i * width}px) scale(1)`,
-  }));
+  const [draggingAnimationSprings, set] = useSprings(images.length, (i) => {
+    if (i !== index) return { display: 'none' };
+    const x = (i - index) * width;
+    const scale = 1;
+    return {
+      x,
+      scale,
+      display: 'block',
+      transform: `translateX(${x}px) scale(${scale})`,
+    };
+  });
 
   useEffect(() => {
     if (!images.length) {
       setIndex(0);
     }
   }, [images]);
+
+  useEffect(() => {
+    setIndex(images.length ? startIndex : 0);
+  }, [startIndex, images]);
 
   useEffect(() => {
     set((i) => {
@@ -123,7 +131,6 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
         x,
         scale,
         display: 'block',
-        config: config.default,
         transform: `translateX(${x}px) scale(${scale})`,
       };
     });
@@ -153,7 +160,6 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
           x,
           scale,
           display: 'block',
-          config: config.default,
           transform: `translateX(${x}px) scale(${scale})`,
         };
       });
@@ -271,7 +277,7 @@ const ImagePreview = ({ images, startIndex = 0, onClose }) => {
                   key={image.name}
                   alt={image.name}
                   {...bind()}
-                  style={{ transform, display }}
+                  style={{ transform, display, zIndex: i === index ? 1 : 0 }}
                 />
               );
             })}
