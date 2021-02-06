@@ -11,6 +11,7 @@ const MenuContainer = styled.ul`
   margin: 0;
   position: sticky;
   bottom: 3rem;
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -68,6 +69,7 @@ const styles = css`
 `;
 
 const activeStyles = css`
+  transition: all ease 0.2s;
   background: transparent;
   color: var(--text-color-secondary);
   border-bottom: 2px solid transparent;
@@ -109,17 +111,31 @@ const AnchorMenuItem = styled(Reference)`
   display: inline-flex;
 `;
 
-const SlugMenuItem = styled(Link)`
-  ${styles}
-`;
-
 const ActiveAnchorMenuItem = styled(Reference)`
   ${activeStyles};
   display: inline-flex;
 `;
 
+const SlugMenuItem = styled(Link)`
+  ${styles}
+
+  &:visited,
+  &:focus,
+  &:hover {
+    border-radius: 0px;
+  }
+`;
+
 const ActiveSlugMenuItem = styled(Link)`
   ${activeStyles}
+
+  border-radius: 3px;
+
+  &:visited,
+  &:focus,
+  &:hover {
+    border-radius: 0px;
+  }
 `;
 
 const AnchorListMenu = ({ nodes, onClick }) => {
@@ -168,9 +184,11 @@ const SlugListMenu = ({ slugs, active, onClick }) => (
         </li>
       );
     })}
-    <SlugMenuItem onClick={onClick} to="/cv" key="cv">
-      CV
-    </SlugMenuItem>
+    <li>
+      <SlugMenuItem onClick={onClick} to="/cv" key="cv">
+        CV
+      </SlugMenuItem>
+    </li>
   </SlugMenuContainer>
 );
 

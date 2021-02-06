@@ -9,9 +9,14 @@ import { Reference } from '../common/Reference';
 const StyledReference = styled(Reference)`
   background: none;
   font-size: 1.2rem;
-  border-radius: 5px;
   svg {
     vertical-align: top;
+  }
+
+  &:visited,
+  &:focus,
+  &:hover {
+    border-radius: 3px;
   }
 
   @media (max-width: 750px) {

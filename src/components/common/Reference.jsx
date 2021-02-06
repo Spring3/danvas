@@ -5,8 +5,9 @@ import { Link } from 'gatsby';
 
 const styles = css`
   transition: background ease 0.2s;
+  transition: border ease 0.2s;
   text-decoration: none;
-  color: black;
+  color: var(--text-color-primary);
   font-weight: ${(props) => (props.bold ? 'bold' : 500)};
   padding: 2px;
   ${(props) =>
@@ -15,7 +16,6 @@ const styles = css`
       : 'background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--marker-blue) 60%,  var(--marker-blue) 100%);'}
 
   &:visited {
-    color: black;
     font-weight: ${(props) => (props.bold ? 'bold' : 500)};
     padding: 2px;
     ${(props) =>
@@ -26,6 +26,7 @@ const styles = css`
 
   &:hover,
   &:focus {
+    color: black;
     background: ${(props) => props.theme.marker || 'var(--marker-blue)'};
     border-radius: 3px;
   }
@@ -33,6 +34,13 @@ const styles = css`
 
 const StyledReference = styled.a`
   ${styles};
+  
+  border-radius: 3px;
+
+  &:hover,
+  &:focus {
+    border-radius: 0px;
+  }
 `;
 
 const StyledLink = styled(Link)`
