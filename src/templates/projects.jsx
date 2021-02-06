@@ -122,7 +122,8 @@ export default (props) => {
                 <TinyProjectReferenceContainer
                   alignItems="center"
                   flexWrap="wrap"
-                  gap="1.5rem"
+                  gap=".5rem"
+                  margined
                   justifyContent="flex-end"
                 >
                   <ProjectReferences
@@ -145,6 +146,7 @@ export default (props) => {
                   alignItems="center"
                   flexWrap="wrap"
                   gap="1.5rem"
+                  margined
                   justifyContent="flex-end"
                 >
                   <ProjectReferences size={25} frontmatter={post.frontmatter} />

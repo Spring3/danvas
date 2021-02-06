@@ -391,11 +391,11 @@ export default ({ data }) => {
         <DownloadFooter>
           {activeAnchor === '#intro-section' ? (
             <InlinedNavbarPart>
+              <SocialButtons size={30} onlyImportant />
               <DownloadButton
                 href="https://drive.google.com/uc?export=download&id=1Uy-HSmkHS4XuLAE18oPqdKiVj9bELqtX"
                 value="Download CV"
               />
-              <SocialButtons size={30} onlyImportant />
             </InlinedNavbarPart>
           ) : null}
         </DownloadFooter>

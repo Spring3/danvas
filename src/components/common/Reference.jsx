@@ -27,15 +27,16 @@ const styles = css`
   &:hover,
   &:focus {
     background: ${(props) => props.theme.marker || 'var(--marker-blue)'};
+    border-radius: 3px;
   }
 `;
 
 const StyledReference = styled.a`
-  ${styles}
+  ${styles};
 `;
 
 const StyledLink = styled(Link)`
-  ${styles}
+  ${styles};
 `;
 
 const Reference = ({

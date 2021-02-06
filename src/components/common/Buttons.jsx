@@ -14,6 +14,7 @@ const LinkButton = styled(Link)`
   padding: 0.25rem 0.5rem;
   background: transparent;
   cursor: pointer;
+  border-radius: 3px;
 
   &:visited {
     background: transparent;

@@ -14,11 +14,13 @@ const FlexContainer = styled.div`
     & > *:not(:last-child) {
       ${props.direction === 'column'
         ? css`
-            padding-bottom: ${props.gap};
-          `
+          padding-bottom: ${!props.margined && props.gap};
+          margin-bottom: ${props.margined && props.gap};
+        `
         : css`
-            padding-right: ${props.gap};
-          `};
+          padding-right: ${!props.margined && props.gap};
+          margin-right: ${props.margined && props.gap};
+        `};
     }
   `}
 `;
@@ -27,6 +29,7 @@ const Flex = ({
   children,
   direction,
   gap,
+  margined,
   id,
   justifyContent,
   alignItems,
@@ -38,6 +41,7 @@ const Flex = ({
     id={id}
     direction={direction}
     gap={gap}
+    margined={margined}
     justifyContent={justifyContent}
     alignItems={alignItems}
     flexGrow={flexGrow}
@@ -53,6 +57,7 @@ Flex.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   flexGrow: PropTypes.string,
+  margined: PropTypes.bool,
   direction: PropTypes.oneOf([
     'row',
     'column',
@@ -83,6 +88,7 @@ Flex.defaultProps = {
   children: null,
   flexGrow: '0',
   className: undefined,
+  margined: false,
   id: undefined,
   direction: 'row',
   gap: '0px',
