@@ -40,6 +40,7 @@ decorations:
 images:
   - ./website1.png
   - ./website2.png
+  - ./website3.png
 ---
 Just like most of other developers, I wanted to have my safe space on the internet.
 
