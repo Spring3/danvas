@@ -84,6 +84,8 @@ const Project = ({ node, index }) => {
   const revealAnimation = useSpring({
     opacity: (wasRevealed || isIntersecting) ? 1 : 0,
     transform: (wasRevealed || isIntersecting) ? 'translateY(0%)' : 'translateY(100px)',
+    immediate: false,
+    delay: 250,
     config: {
       reset: false
     },
