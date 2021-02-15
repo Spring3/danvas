@@ -14,6 +14,7 @@ import { useAnchorTracker } from '../hooks/useAnchorTracker';
 import { DownloadFooter } from '../components/cv/DownloadFooter';
 import { Flex } from '../components/common/Flex';
 import { MARKERS } from '../theme';
+import { LazyImage } from '../components/common/LazyImage';
 
 const CVWrapper = styled.div`
   padding: 0px 1rem;
@@ -96,7 +97,7 @@ const InlinedNavbarPart = styled(Flex)`
   }
 `;
 
-const ProfilePicture = styled.img`
+const ProfilePicture = styled(LazyImage)`
   border-radius: 10px;
   max-width: 350px;
 
@@ -121,7 +122,7 @@ export default ({ data }) => {
   const post = data.markdownRemark;
   const activeAnchor = useAnchorTracker(['#intro-section']);
   const { width } = useWindowSize();
-  const { isFetching, data: githubProfile } = useGithubData();
+  const { data: githubProfile } = useGithubData();
 
   return (
     <>
@@ -164,7 +165,7 @@ export default ({ data }) => {
         </Navbar>
         <CVWrapper>
           <ProfileGrid>
-            <ProfilePicture alt="avatar" src={githubProfile.avatar_url} loading={isFetching} />
+            <ProfilePicture alt="avatar" loading="lazy" src={githubProfile.avatar_url} />
             <ProfileInfo>
               <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
                 <Subheading marker={MARKERS.green}>{post.frontmatter.title}</Subheading>

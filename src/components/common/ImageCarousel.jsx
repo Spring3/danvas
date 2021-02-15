@@ -43,13 +43,14 @@ const ImageCarousel = ({ images }) => {
           dynamicHeight
           onClickItem={(index) => showImagePreview(images, index)}
         >
-          {images.map((image, i) => (
-            <div key={i}>
+          {images.map((image) => (
+            <div key={image.name}>
               <img
                 alt={image.name}
                 src={image.src}
                 srcSet={image.srcSet}
                 sizes={image.sizes}
+                loading="lazy"
               />
             </div>
           ))}

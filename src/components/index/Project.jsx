@@ -1,4 +1,9 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import styled from 'styled-components';
 
 import { animated, useSpring } from 'react-spring';
@@ -122,9 +127,8 @@ const Project = ({ node, index }) => {
   const decorationLayers = useMemo(() =>
     Object.entries(node.frontmatter.decorations || {}).map(
       ([layerKey, layerData]) => renderLayer(layerKey, layerData),
-      [renderLayer]
-    )
-  );
+    ),
+  [renderLayer]);
 
   return (
     <ProjectRow id={id} justifyContent="space-between">
