@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useImagePreload } from './useImagePreload';
 
 const useGithubData = () => {
   const [isFetching, setIsFetching] = useState(false);
@@ -30,8 +29,6 @@ const useGithubData = () => {
       isMounted = false;
     };
   }, []);
-
-  useImagePreload(githubProfile?.avatar_url);
 
   return {
     isFetching,

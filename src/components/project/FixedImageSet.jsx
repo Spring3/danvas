@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { useWindowSize } from 'react-use';
 import { useImagePreview } from '../../context/ImagePreviewContext';
+import { LazyImage } from '../common/LazyImage';
 
 const FixedImage = styled.div.attrs((props) => ({
   style: {
@@ -43,7 +44,7 @@ const NormalImage = styled.div.attrs((props) => ({
   background-size: contain;
 `;
 
-const FixedImageSet = ({ images }) => {
+const FixedImageSet = ({ images, containerRef }) => {
   const { height, width } = useWindowSize();
   const { showImagePreview } = useImagePreview();
 
@@ -63,8 +64,17 @@ const FixedImageSet = ({ images }) => {
 
   if (images.length === 1) {
     const image = images[0];
-    const scaledHeight = Number(imageAreaWidth / images[0]?.aspectRatio).toFixed(2);
-    return <NormalImage src={image.src} scaledHeight={scaledHeight} onClick={() => showImagePreview(images)} />;
+    const scaledHeight = Number(imageAreaWidth / image.aspectRatio).toFixed(2);
+    return (
+      <LazyImage
+        intersectionTriggerRef={containerRef}
+        Component={NormalImage}
+        src={image.src}
+        placeholder={image.placeholder}
+        scaledHeight={scaledHeight}
+        onClick={() => showImagePreview(images)}
+      />
+    );
   }
 
   return images.map((image, i) => {
@@ -72,13 +82,16 @@ const FixedImageSet = ({ images }) => {
 
     return (
       <Fragment key={image.name}>
-        <FixedImage
+        <LazyImage
+          intersectionTriggerRef={containerRef}
+          Component={FixedImage}
           horizontalPosition={horizontalPosition}
           imageWidth={imageWidthPercent}
           verticalPosition={verticalPosition}
           scaledHeight={scaledHeight}
           id={image.name}
           src={image.src}
+          placeholder={image.placeholder}
           onClick={() => showImagePreview(images, i)}
         />
         <Placeholder

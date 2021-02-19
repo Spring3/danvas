@@ -100,7 +100,8 @@ export default (props) => {
 
   const images = post.frontmatter.images.map((image) => ({
     name: image.name,
-    ...image.childImageSharp.fluid,
+    ...image.childImageSharp.original,
+    placeholder: image.childImageSharp.placeholder.src
   }));
 
   const isSmallScreen = width < 850;
@@ -213,10 +214,14 @@ export const query = graphql`
         images {
           name
           childImageSharp {
-            fluid(maxHeight: 1080) {
+            original: fluid(maxHeight: 1080) {
               src
               sizes
               srcSet
+            }
+            placeholder: fluid(quality: 1, maxWidth: 10) {
+              base64
+              src
             }
           }
         }
@@ -225,8 +230,6 @@ export const query = graphql`
           childImageSharp {
             fluid(maxHeight: 1080) {
               src
-              sizes
-              srcSet
             }
           }
         }

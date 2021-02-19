@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     background-color: var(--background-color);
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--text-color-primary);
   }
 

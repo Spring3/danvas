@@ -1,64 +1,59 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
+import { useIntersection } from 'react-use';
 
-const LazyImagePlaceholder = styled.div`
-  background: var(--background-color-dark);
-`;
+const LazyImage = ({
+  Component = 'img',
+  src,
+  intersectionTriggerRef,
+  placeholder,
+  ...restProps
+}) => {
+  const [imageSrc, setImageSrc] = useState(placeholder);
+  const [isLoading, setIsLoading] = useState(false);
+  const imageRef = useRef();
 
-const LazyImage = ({ src, alt, className, placeholder, ...restProps }) => {
-  const [isLoaded, setLoaded] = useState(false);
-  const [isError, setError] = useState(false);
-
-  const onSuccess = useCallback(() => {
-    setLoaded(true);
-    setError(false);
-  }, []);
-
-  const onFailure = useCallback(() => {
-    setLoaded(false);
-    setError(true);
-  }, []);
+  const placeholderStyles = useMemo(() => ({ backgroundColor: 'var(--background-color-dark)' }), []);
+  const intersection = useIntersection(intersectionTriggerRef || imageRef, {
+    threshold: 0.001
+  });
 
   useEffect(() => {
-    if (!placeholder && src) {
+    if (intersection?.isIntersecting && !isLoading && imageSrc === placeholder) {
+      setIsLoading(true);
+    }
+  }, [intersection, isLoading, src, imageSrc]);
+
+
+  useEffect(() => {
+    let wasCancelled = false;
+    if (isLoading) {
+      const updateSrc = () => {
+        if (!wasCancelled) {
+          setImageSrc(src);
+        }
+      };
+
       const img = new Image();
-      img.onload = onSuccess;
-      img.onerror = onFailure;
+      img.onload = updateSrc;
       img.src = src;
     }
-  }, [src, placeholder]);
+
+    return () => {
+      wasCancelled = true;
+    };
+  }, [isLoading]);
 
   if (!src) {
     return null;
   }
 
-  if (isError) {
-    return (
-      <LazyImagePlaceholder className={className}>Failed to laod the image</LazyImagePlaceholder>
-    );
-  }
-
-  if (isLoaded) {
-    return (
-      <img src={src} className={className} alt={alt} {...restProps} />
-    );
-  }
-
-  if (!placeholder) {
-    return (
-      <LazyImagePlaceholder className={className} />
-    );
-  }
-
   return (
-    <img
-      className={className}
-      src={placeholder}
+    <Component
+      src={imageSrc}
+      ref={imageRef}
       loading="lazy"
-      alt={`Loading ${alt}`}
       {...restProps}
-      onLoad={onSuccess}
-      onError={onFailure}
+      style={imageSrc === placeholder && !placeholder ? placeholderStyles : undefined}
     />
   );
 };

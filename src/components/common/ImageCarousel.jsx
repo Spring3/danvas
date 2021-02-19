@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 import { useImagePreview } from '../../context/ImagePreviewContext';
+import { LazyImage } from './LazyImage';
 
 const CarouselContainer = styled.div`
   padding-top: ${(props) => (props.isPreview ? '0' : '1.5rem')};
@@ -30,6 +31,7 @@ const StyledCarousel = styled(Carousel)`
 `;
 const ImageCarousel = ({ images }) => {
   const { showImagePreview } = useImagePreview();
+  const containerRef = useRef();
 
   return (
     <>
@@ -39,18 +41,21 @@ const ImageCarousel = ({ images }) => {
           showIndicators={false}
           showThumbs={false}
           infiniteLoop
+          interval={5000}
+          swipeable
           autoPlay
           dynamicHeight
           onClickItem={(index) => showImagePreview(images, index)}
         >
           {images.map((image) => (
             <div key={image.name}>
-              <img
+              <LazyImage
+                intersectionTriggerRef={containerRef}
                 alt={image.name}
                 src={image.src}
+                placeholder={image.placeholder}
                 srcSet={image.srcSet}
                 sizes={image.sizes}
-                loading="lazy"
               />
             </div>
           ))}

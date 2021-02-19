@@ -70,6 +70,7 @@ const Project = ({ node, index }) => {
   const [wasRevealed, setRevealed] = useState(false);
   const anchor = slugToAnchor(node.fields.slug);
 
+  const fixedImageContainerRef = useRef();
   const infoRef = useRef();
   const { width } = useWindowSize();
   const id = anchor.substring(1);
@@ -77,7 +78,8 @@ const Project = ({ node, index }) => {
 
   const images = node.frontmatter.images.map((image) => ({
     name: image.name,
-    ...image.childImageSharp.fluid,
+    ...image.childImageSharp.original,
+    placeholder: image.childImageSharp.placeholder.base64
   }));
 
   const intersection = useIntersection(infoRef, {
@@ -90,7 +92,7 @@ const Project = ({ node, index }) => {
     opacity: (wasRevealed || isIntersecting) ? 1 : 0,
     transform: (wasRevealed || isIntersecting) ? 'translateY(0%)' : 'translateY(100px)',
     immediate: false,
-    delay: 250,
+    delay: 100,
     config: {
       reset: false
     },
@@ -155,8 +157,8 @@ const Project = ({ node, index }) => {
       </InfoWrapper>
       {!isSmallScreen ? (
         <>
-          <ImageWrapper style={revealAnimation}>
-            <FixedImageSet images={images} />
+          <ImageWrapper ref={fixedImageContainerRef} style={revealAnimation}>
+            <FixedImageSet containerRef={fixedImageContainerRef} images={images} />
           </ImageWrapper>
           {decorationLayers}
         </>

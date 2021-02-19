@@ -97,7 +97,7 @@ const InlinedNavbarPart = styled(Flex)`
   }
 `;
 
-const ProfilePicture = styled(LazyImage)`
+const ProfilePicture = styled.img`
   border-radius: 10px;
   max-width: 350px;
 
@@ -165,7 +165,7 @@ export default ({ data }) => {
         </Navbar>
         <CVWrapper>
           <ProfileGrid>
-            <ProfilePicture alt="avatar" loading="lazy" src={githubProfile.avatar_url} />
+            <LazyImage Component={ProfilePicture} alt="avatar" loading="lazy" src={githubProfile.avatar_url} />
             <ProfileInfo>
               <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
                 <Subheading marker={MARKERS.green}>{post.frontmatter.title}</Subheading>

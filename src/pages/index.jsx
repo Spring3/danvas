@@ -158,14 +158,16 @@ export const query = graphql`
           images {
             name
             childImageSharp {
-              fluid(maxHeight: 1080, quality: 90, toFormatBase64: WEBP) {
-                base64
+              original: fluid(maxHeight: 1080, quality: 90) {
                 src
                 sizes
                 srcSet
                 aspectRatio
                 presentationWidth
                 presentationHeight
+              }
+              placeholder: fluid(quality: 1, maxWidth: 10) {
+                base64
               }
             }
           }
