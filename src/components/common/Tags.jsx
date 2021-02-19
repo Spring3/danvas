@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Flex } from './Flex';
 
-const Tags = styled(Flex)`
+const TagsContainer = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 1.5rem;
 `;
 
@@ -16,11 +20,17 @@ const TagItem = styled.li`
   font-size: 0.8rem;
 `;
 
-export const Tag = ({ children }) => (
-  <TagItem>
-    {children}
-    &nbsp;
-  </TagItem>
+const Tags = ({ tags = [] }) => (
+  <TagsContainer>
+    {tags.map((tag) => (
+      <TagItem>
+        {tag}
+        &nbsp;
+      </TagItem>
+    ))}
+  </TagsContainer>
 );
 
-export default Tags;
+export {
+  Tags
+};

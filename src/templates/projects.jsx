@@ -7,7 +7,7 @@ import { GlobalStyles, OGP } from '../components/GlobalStyle';
 import { ButtonBack } from '../components/common/Buttons';
 import { MarkdownContent } from '../components/common/MarkdownContent';
 import { Subheading } from '../components/project/Header';
-import Tags, { Tag } from '../components/common/Tags';
+import { Tags } from '../components/common/Tags';
 import { ProjectReferences } from '../components/project/ProjectReferences';
 import { SlugListMenu } from '../components/common/Menus';
 import { PageWrapper } from '../components/common/PageWrapper';
@@ -168,20 +168,21 @@ export default (props) => {
                       </PaddedMarkdownContent>
                     );
                   }
-                  return (
-                    <PaddedMarkdownContent>
-                      <p>{description.text}</p>
-                    </PaddedMarkdownContent>
-                  );
+
+                  if (description.text) {
+                    return (
+                      <PaddedMarkdownContent>
+                        <p>{description.text}</p>
+                      </PaddedMarkdownContent>
+                    );
+                  }
+
+                  return null;
                 })}
               </ProjectInfoWrapper>
               <ProjectInfo>
                 <ImageCarousel images={images} />
-                <Tags>
-                  {post.frontmatter.technologies.map((tag, i) => (
-                    <Tag key={i}>{tag}</Tag>
-                  ))}
-                </Tags>
+                <Tags tags={post.frontmatter.technologies} />
               </ProjectInfo>
             </PageLayout>
             <SlugListMenu active={post.fields.slug} slugs={slugs} />

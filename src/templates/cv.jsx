@@ -177,8 +177,8 @@ export default ({ data }) => {
               <p>
                 Curious and creative. I always try to come up with something special
                 and original.
-                <br />
-                <br />
+              </p>
+              <p>
                 Primarily I focus on Node.js, React, Graphql and modern Javascript
                 ecosystem.
               </p>

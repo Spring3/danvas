@@ -158,7 +158,7 @@ export const query = graphql`
           images {
             name
             childImageSharp {
-              original: fluid(maxHeight: 1080, quality: 90) {
+              original: fluid(maxHeight: 1080) {
                 src
                 sizes
                 srcSet

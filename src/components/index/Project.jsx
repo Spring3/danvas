@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 import { animated, useSpring } from 'react-spring';
 import { useWindowSize, useIntersection } from 'react-use';
-import Tags, { Tag } from '../common/Tags';
+import { Tags } from '../common/Tags';
 import { FixedImageSet } from '../project/FixedImageSet';
 import { slugToAnchor } from '../../utils';
 import { Link } from '../common/Reference';
@@ -146,13 +146,7 @@ const Project = ({ node, index }) => {
             marker={node.frontmatter.marker}
             dangerouslySetInnerHTML={{ __html: node.html }}
           />
-          <Tags flexWrap="wrap">
-            {node.frontmatter.technologies.map((tag) => (
-              <Tag key={`${id}-${tag}`} marker={node.frontmatter.marker}>
-                {tag}
-              </Tag>
-            ))}
-          </Tags>
+          <Tags tags={node.frontmatter.technologies} />
         </ProjectInfo>
       </InfoWrapper>
       {!isSmallScreen ? (
