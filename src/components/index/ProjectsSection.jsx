@@ -19,7 +19,7 @@ const StickyTitle = styled(Header)`
   @media (min-width: 1000px) {
     z-index: 3;
     position: sticky;
-    top: 8%;
+    top: 5%;
   }
 
   @media (min-width: 750px) {

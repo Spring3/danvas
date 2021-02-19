@@ -71,12 +71,6 @@ const ProjectInfoWrapper = styled.div`
   grid-area: info;
 `;
 
-const PaddedMarkdownContent = styled(MarkdownContent)`
-  @media (max-width: 750px) {
-    padding: 1.5rem 0rem;
-  }
-`;
-
 const ProjectContentNav = styled(Flex)`
   grid-area: nav;
 `;
@@ -154,26 +148,26 @@ export default (props) => {
                 </ProjectReferenceContainer>
               </ProjectContentNav>
               <ProjectInfoWrapper>
-                <PaddedMarkdownContent
+                <MarkdownContent
                   id="markdown"
                   dangerouslySetInnerHTML={{ __html: post.html }}
                 />
                 {post.frontmatter.description.map((description) => {
                   if (description.href) {
                     return (
-                      <PaddedMarkdownContent>
+                      <MarkdownContent>
                         <p>
                           <a href={description.href}>{description.text}</a>
                         </p>
-                      </PaddedMarkdownContent>
+                      </MarkdownContent>
                     );
                   }
 
                   if (description.text) {
                     return (
-                      <PaddedMarkdownContent>
+                      <MarkdownContent>
                         <p>{description.text}</p>
-                      </PaddedMarkdownContent>
+                      </MarkdownContent>
                     );
                   }
 

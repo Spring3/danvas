@@ -23,7 +23,7 @@ const CookieBannerContainer = styled(animated.div)`
   border-radius: 5px;
   z-index: 4;
   width: 300px;
-  max-width: 50%;
+  max-width: 60%;
 
   h3 {
     margin-top: 0px;

@@ -27,7 +27,7 @@ const MenuContainer = styled.ul`
     position: static;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
 

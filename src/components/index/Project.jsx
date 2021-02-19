@@ -57,7 +57,7 @@ const ProjectRow = styled(Flex)`
 `;
 
 const ProjectTitle = styled.div`
-  font-size: 1.7rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
 `;
 
