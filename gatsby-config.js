@@ -7,9 +7,9 @@
 module.exports = {
   siteMetadata: {
     title: 'Danv',
-    description: "Daniyil Vasylenko's personal website",
+    description: "Danv's personal website",
     image:
-      'https://user-images.githubusercontent.com/4171202/59647385-aebee480-9183-11e9-88fe-4b27c41436b4.png',
+      'https://user-images.githubusercontent.com/4171202/108579794-e4d54400-7328-11eb-8bda-cfd9811ae3af.png',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

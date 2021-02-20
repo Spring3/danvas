@@ -160,9 +160,9 @@ export const query = graphql`
             name
             childImageSharp {
               original: fluid(maxHeight: 1080) {
-                src
+                src: srcWebp
                 sizes
-                srcSet
+                srcSet: srcSetWebp
                 aspectRatio
                 presentationWidth
                 presentationHeight
@@ -176,9 +176,9 @@ export const query = graphql`
             name
             childImageSharp {
               fluid(maxHeight: 1080) {
-                src
+                src: srcWebp
                 sizes
-                srcSet
+                srcSet: srcSetWebp
               }
             }
           }

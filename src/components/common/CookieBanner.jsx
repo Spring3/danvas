@@ -64,8 +64,8 @@ const CookieBanner = memo(() => {
   const [, cancelShrink] = useTimeoutFn(() => setExpanded(false), 9500);
 
   let haveSavedConsent = false;
-  if (typeof sessionStorage !== 'undefined') {
-    haveSavedConsent = sessionStorage.getItem(storageKey) === null;
+  if (typeof localStorage !== 'undefined') {
+    haveSavedConsent = localStorage.getItem(storageKey) === null;
   }
   const [conscentRequired, setConscentRequired] = useState(haveSavedConsent);
 
@@ -79,8 +79,8 @@ const CookieBanner = memo(() => {
   });
 
   const onAccept = () => {
-    if (typeof sessionStorage !== 'undefined') {
-      sessionStorage.setItem(storageKey, true);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storageKey, true);
       initializeAndTrack();
       setConscentRequired(false);
       setIntoAnimation({ left: '-50rem' });
@@ -88,8 +88,8 @@ const CookieBanner = memo(() => {
   };
 
   const onReject = () => {
-    if (typeof sessionStorage !== 'undefined') {
-      sessionStorage.setItem(storageKey, false);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storageKey, false);
       setConscentRequired(false);
       setIntoAnimation({ left: '-50rem' });
     }
@@ -110,11 +110,11 @@ const CookieBanner = memo(() => {
   const canAnimate = isReady();
 
   useEffect(() => {
-    if (typeof sessionStorage === 'undefined') {
+    if (typeof localStorage === 'undefined') {
       return;
     }
 
-    const decisionMade = sessionStorage.getItem(storageKey);
+    const decisionMade = localStorage.getItem(storageKey);
 
     if (conscentRequired && canAnimate) {
       const distanceFromTheBorder = width >= 750 ? '2rem' : '1rem';

@@ -219,9 +219,9 @@ export const query = graphql`
           name
           childImageSharp {
             original: fluid(maxHeight: 1080) {
-              src
+              src: srcWebp
               sizes
-              srcSet
+              srcSet: srcSetWebp
             }
             placeholder: fluid(quality: 1, maxWidth: 10) {
               base64
@@ -232,7 +232,7 @@ export const query = graphql`
           name
           childImageSharp {
             fluid(maxHeight: 1080) {
-              src
+              src: srcWebp
             }
           }
         }
