@@ -2,7 +2,8 @@ import React, {
   useCallback,
   useMemo,
   useRef,
-  useState
+  useState,
+  useEffect
 } from 'react';
 import styled from 'styled-components';
 
@@ -16,6 +17,7 @@ import { MarkdownContent } from '../common/MarkdownContent';
 import { ImageCarousel } from '../common/ImageCarousel';
 import { Flex } from '../common/Flex';
 import { Decorations, Square, Circle } from '../common/Decorations';
+import { Subheader } from '../common/Headers';
 
 const ProjectInfo = styled.div`
   @media (min-width: 1000px) {
@@ -56,14 +58,18 @@ const ProjectRow = styled(Flex)`
   }
 `;
 
-const ProjectTitle = styled.div`
-  font-size: 2rem;
+const ProjectTitle = styled(Subheader)`
   margin-bottom: 1.5rem;
+  margin-top: 0px;
 `;
 
 const ProjectContent = styled(MarkdownContent)`
   font-size: 1rem;
   -webkit-line-clamp: 1;
+
+  @media (max-width: 1000px) {
+    margin-top: 2.5rem;
+  }
 `;
 
 const Project = ({ node, index }) => {
@@ -83,7 +89,7 @@ const Project = ({ node, index }) => {
   }));
 
   const intersection = useIntersection(infoRef, {
-    threshold: 0.8
+    threshold: width > 1000 ? 0.8 : 0.001
   });
 
   const isIntersecting = intersection?.isIntersecting;
@@ -95,14 +101,14 @@ const Project = ({ node, index }) => {
     delay: 100,
     config: {
       reset: false
-    },
-    onRest: () => setRevealed((wasRevealedAlready) => {
-      if (!wasRevealedAlready && isIntersecting) {
-        return true;
-      }
-      return wasRevealedAlready;
-    })
+    }
   });
+
+  useEffect(() => {
+    if (!wasRevealed && isIntersecting) {
+      setRevealed(true);
+    }
+  }, [wasRevealed, isIntersecting]);
 
   const renderLayer = useCallback(
     (key, layerData) => {

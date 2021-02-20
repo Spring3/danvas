@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Helmet } from 'react-helmet';
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { CookieBanner } from './common/CookieBanner';
 import 'normalize.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -40,14 +40,6 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const fontScaling = css`
-  font-weight: 1rem;
-
-  @media (max-width: 750px) {
-    font-weight: 0.8rem;
-  }
-`;
-
 const OGP = memo(({ title, description, image }) => {
   if (typeof window !== 'undefined') {
     // eslint-disable-next-line
@@ -69,4 +61,4 @@ const OGP = memo(({ title, description, image }) => {
 
 OGP.displayName = 'OGP';
 
-export { GlobalStyles, fontScaling, OGP };
+export { GlobalStyles, OGP };

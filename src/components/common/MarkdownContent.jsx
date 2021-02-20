@@ -8,16 +8,16 @@ const MarkdownContent = styled.div`
 
   @media (min-width: 750px) {
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
 
     h3 {
-      font-size: 1rem;
+      font-size: 1.4rem;
     }
 
     p,
     ul {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   }
 
@@ -32,12 +32,19 @@ const MarkdownContent = styled.div`
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
 
     p,
     ul {
       font-size: 1.2rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    p,
+    ul {
+      font-size: 1.3rem;
     }
   }
 

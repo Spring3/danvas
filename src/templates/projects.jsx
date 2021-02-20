@@ -60,10 +60,19 @@ const ProjectReferenceContainer = styled(Flex)`
 
 const TinyProjectReferenceContainer = styled(ProjectReferenceContainer)`
   @media (max-width: 750px) {
-    gap: 1.5rem;
     a {
       font-size: 1rem;
     }
+  }
+
+  a > svg {
+    margin: 0;
+    height: 32px;
+    width: 32px;
+  }
+
+  a:not(:last-child) {
+    margin-right: 1.5rem;
   }
 `;
 
@@ -216,7 +225,6 @@ export const query = graphql`
             }
             placeholder: fluid(quality: 1, maxWidth: 10) {
               base64
-              src
             }
           }
         }

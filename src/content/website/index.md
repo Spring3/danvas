@@ -42,12 +42,10 @@ images:
   - ./website2.png
   - ./website3.png
 ---
-Just like most of other developers, I wanted to have my safe space on the internet.
-
-Wait, how did you manage to get in here? Anyway, it's too late, so make yourself comfortable here and explore.
-
-I plan to fill it with more information about myself with time, so perhaps you'd like to check for updates ;)
+Just like most of other developers, I wanted to have my safe space on the internet. I plan to fill it with more information about myself with time, so perhaps you'd like to check for updates.
 
 This website is static and was implemented with Gatsby, Markdown and React.
+
+Wait, how did you manage to get in here? Anyway, it's too late, so make yourself comfortable here and explore.
 
 If you would like to make sure that THIS version looks beautiful despite it's imperfection, check the way the old design used to look like :p

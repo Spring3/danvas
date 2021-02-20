@@ -6,6 +6,10 @@ import { LazyImage } from './LazyImage';
 
 const CarouselContainer = styled.div`
   padding-top: ${(props) => (props.isPreview ? '0' : '1.5rem')};
+  
+  @media (max-width: 750px) {
+    padding-top: 0;
+  }
 `;
 
 const StyledCarousel = styled(Carousel)`
@@ -29,9 +33,32 @@ const StyledCarousel = styled(Carousel)`
     }
   }
 `;
+
+const SingleImage = styled(LazyImage)`
+  max-width: 100%;
+`;
+
 const ImageCarousel = ({ images }) => {
   const { showImagePreview } = useImagePreview();
   const containerRef = useRef();
+
+  if (!images.length) {
+    return null;
+  }
+
+  if (images.length === 1) {
+    const image = images[0];
+    return (
+      <SingleImage
+        alt={image.name}
+        src={image.src}
+        placeholder={image.placeholder}
+        srcSet={image.srcSet}
+        sizes={image.sizes}
+        onClick={() => showImagePreview(images)}
+      />
+    );
+  }
 
   return (
     <>

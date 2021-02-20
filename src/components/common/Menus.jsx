@@ -23,11 +23,18 @@ const MenuContainer = styled.ul`
   }
 
   @media (max-width: 750px) {
-    gap: 0.5rem;
     position: static;
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
+
+    & > *:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  @media (min-width: 750px) and (orientation: landscape) {
+    bottom: 1.5rem;
   }
 `;
 
@@ -35,10 +42,13 @@ const SlugMenuContainer = styled(MenuContainer)`
   position: fixed;
 
   @media (max-width: 750px) {
-    gap: 0.5rem;
     position: static;
     flex-direction: column;
     align-items: center;
+
+    & > *:not(:last-child) {
+      margin-right: 0.5rem;
+    }
   }
 `;
 

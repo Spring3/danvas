@@ -10,8 +10,9 @@ import { slugToAnchor } from '../utils';
 import { styles } from '../components/common/Reference';
 import { Footer } from '../components/index/Footer';
 import { ImagePreviewContextProvider } from '../context/ImagePreviewContext';
+import { MarkdownContent } from '../components/common/MarkdownContent';
 
-const AboutSectionMarkdown = styled.div`
+const AboutSectionMarkdown = styled(MarkdownContent)`
   a {
     ${styles}
   }

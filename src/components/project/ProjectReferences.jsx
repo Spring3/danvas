@@ -7,9 +7,15 @@ import FirefoxIcon from 'mdi-react/FirefoxIcon';
 import { Reference } from '../common/Reference';
 
 const StyledReference = styled(Reference)`
+  display: flex;
+  flex-wrap: wrap;
   background: none;
+  height: 2rem;
+  justify-content: space-between;
+  align-items: center;
   font-size: 1.2rem;
   svg {
+    margin-right: .5rem;
     vertical-align: top;
   }
 
@@ -21,6 +27,7 @@ const StyledReference = styled(Reference)`
 
   @media (max-width: 750px) {
     font-size: 1rem;
+    margin-right: 1rem;
   }
 `;
 

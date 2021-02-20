@@ -1,18 +1,27 @@
-import React, { useMemo, useState, useRef, useEffect } from 'react';
+import React, {
+  useMemo,
+  useState,
+  useRef,
+  useEffect
+} from 'react';
 import { useIntersection } from 'react-use';
 
 const LazyImage = ({
   Component = 'img',
   src,
   intersectionTriggerRef,
-  placeholder,
+  placeholder = '#',
   ...restProps
 }) => {
   const [imageSrc, setImageSrc] = useState(placeholder);
   const [isLoading, setIsLoading] = useState(false);
   const imageRef = useRef();
 
-  const placeholderStyles = useMemo(() => ({ backgroundColor: 'var(--background-color-dark)' }), []);
+  const placeholderStyles = useMemo(() => ({
+    backgroundColor: 'var(--background-color-dark)',
+    minWidth: '350px',
+    minHeight: '350px'
+  }), []);
   const intersection = useIntersection(intersectionTriggerRef || imageRef, {
     threshold: 0.001
   });
@@ -22,7 +31,6 @@ const LazyImage = ({
       setIsLoading(true);
     }
   }, [intersection, isLoading, src, imageSrc]);
-
 
   useEffect(() => {
     let wasCancelled = false;

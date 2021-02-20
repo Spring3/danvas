@@ -21,7 +21,7 @@ const useAnchorTracker = (anchors) => {
       }
     };
 
-    const throttledFunction = throttle(onScroll, 300);
+    const throttledFunction = throttle(onScroll, 200);
 
     if (validAnchors) {
       window.addEventListener('scroll', throttledFunction);
