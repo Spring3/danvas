@@ -59,7 +59,7 @@
     "url": "git+https://github.com/Spring3/website.git"
   },
   "author": "Daniyil Vasylenko",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Spring3/website/issues"
   },

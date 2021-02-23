@@ -7,16 +7,16 @@ const Decorations = styled(animated.div).attrs((props) => ({
     height: props.height || '100%',
     zIndex: props.layer === 'back' ? '-1' : '1',
     pointerEvents: props.layer === 'back' ? 'all' : 'none',
+    position: props.position || 'absolute',
   },
 }))`
-  position: absolute;
   left: 0;
   width: 100%;
 `;
 
 const GeometricObject = styled.div.attrs((props) => ({
   style: {
-    position: props.sticky ? 'sticky' : 'absolute',
+    position: props.sticky ? 'sticky' : props.position || 'absolute',
     width: props.size,
     height: props.size,
     top: props.top,

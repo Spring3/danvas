@@ -1,5 +1,7 @@
 **Based on [Gastby Starter Boilderplate](https://github.com/gatsbyjs/gatsby-starter-hello-world)**
 
+You are welcome to use or reuse this project for your purposes, if you reference the original (this repo).
+
 ### Tech used
 
 - [Gatsby](https://github.com/gatsbyjs/gatsby)
