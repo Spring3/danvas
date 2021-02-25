@@ -23,7 +23,7 @@ const TagItem = styled.li`
 const Tags = ({ tags = [] }) => (
   <TagsContainer>
     {tags.map((tag) => (
-      <TagItem>
+      <TagItem key={tag}>
         {tag}
         &nbsp;
       </TagItem>
@@ -31,6 +31,4 @@ const Tags = ({ tags = [] }) => (
   </TagsContainer>
 );
 
-export {
-  Tags
-};
+export { Tags };

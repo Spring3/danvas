@@ -52,15 +52,26 @@ const FixedImageSet = ({ images, containerRef }) => {
     return null;
   }
 
+  // for gatsby ssr
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
   // 6%
-  const padding = 0.06 * width;
-  const imageAreaWidth = (width - padding * 2) * 0.59;
-  const marginTop = height * 0.16;
-  const imageWidthPercent = Number((imageAreaWidth / width) * 100).toFixed(2);
-  const verticalPosition = Number(height - (height - marginTop)).toFixed(2);
-  const horizontalPosition = Number(width - imageAreaWidth - padding).toFixed(
-    2
-  );
+  const windowWidth = width || window.innerWidth;
+  const windowHeight = height || window.innerHeight;
+  const padding = 0.06 * windowWidth;
+  const imageAreaWidth = (windowWidth - padding * 2) * 0.59;
+  const marginTop = windowHeight * 0.16;
+  const imageWidthPercent = Number(
+    (imageAreaWidth / windowWidth) * 100
+  ).toFixed(2);
+  const verticalPosition = Number(
+    windowHeight - (windowHeight - marginTop)
+  ).toFixed(2);
+  const horizontalPosition = Number(
+    windowWidth - imageAreaWidth - padding
+  ).toFixed(2);
 
   if (images.length === 1) {
     const image = images[0];
