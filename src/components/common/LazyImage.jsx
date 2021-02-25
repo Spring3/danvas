@@ -1,9 +1,4 @@
-import React, {
-  useMemo,
-  useState,
-  useRef,
-  useEffect
-} from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { useIntersection } from 'react-use';
 
 const LazyImage = ({
@@ -17,17 +12,24 @@ const LazyImage = ({
   const [isLoading, setIsLoading] = useState(false);
   const imageRef = useRef();
 
-  const placeholderStyles = useMemo(() => ({
-    backgroundColor: 'var(--background-color-dark)',
-    minWidth: '350px',
-    minHeight: '350px'
-  }), []);
+  const placeholderStyles = useMemo(
+    () => ({
+      backgroundColor: 'var(--background-color-dark)',
+      minWidth: '350px',
+      minHeight: '350px',
+    }),
+    []
+  );
   const intersection = useIntersection(intersectionTriggerRef || imageRef, {
-    threshold: 0.001
+    threshold: 0.001,
   });
 
   useEffect(() => {
-    if (intersection?.isIntersecting && !isLoading && imageSrc === placeholder) {
+    if (
+      intersection?.isIntersecting &&
+      !isLoading &&
+      imageSrc === placeholder
+    ) {
       setIsLoading(true);
     }
   }, [intersection, isLoading, src, imageSrc]);
@@ -61,11 +63,11 @@ const LazyImage = ({
       ref={imageRef}
       loading="lazy"
       {...restProps}
-      style={imageSrc === placeholder && !placeholder ? placeholderStyles : undefined}
+      style={
+        imageSrc === placeholder && !placeholder ? placeholderStyles : restProps.style
+      }
     />
   );
 };
 
-export {
-  LazyImage
-};
+export { LazyImage };

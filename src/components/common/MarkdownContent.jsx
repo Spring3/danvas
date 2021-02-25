@@ -54,10 +54,8 @@ const MarkdownContent = styled.div`
       to bottom,
       transparent 0%,
       transparent 60%,
-      ${(props) => (props.marker || 'var(--marker-yellow)')}
-        60%,
-      ${(props) => (props.marker || 'var(--marker-yellow)')}
-        100%
+      ${(props) => props.marker || 'var(--marker-yellow)'} 60%,
+      ${(props) => props.marker || 'var(--marker-yellow)'} 100%
     );
   }
 

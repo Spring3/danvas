@@ -6,7 +6,7 @@ import { LazyImage } from './LazyImage';
 
 const CarouselContainer = styled.div`
   padding-top: ${(props) => (props.isPreview ? '0' : '1.5rem')};
-  
+
   @media (max-width: 750px) {
     padding-top: 0;
   }
@@ -16,6 +16,11 @@ const StyledCarousel = styled(Carousel)`
   box-shadow: 0px 0px 10px 0px #f3f3f3;
   div:first-of-type {
     border-radius: 5px;
+  }
+
+  .slide {
+    background: transparent;
+    overflow: hidden;
   }
 
   .thumbs {
@@ -75,16 +80,15 @@ const ImageCarousel = ({ images }) => {
           onClickItem={(index) => showImagePreview(images, index)}
         >
           {images.map((image) => (
-            <div key={image.name}>
-              <LazyImage
-                intersectionTriggerRef={containerRef}
-                alt={image.name}
-                src={image.src}
-                placeholder={image.placeholder}
-                srcSet={image.srcSet}
-                sizes={image.sizes}
-              />
-            </div>
+            <LazyImage
+              key={image.name}
+              intersectionTriggerRef={containerRef}
+              alt={image.name}
+              src={image.src}
+              placeholder={image.placeholder}
+              srcSet={image.srcSet}
+              sizes={image.sizes}
+            />
           ))}
         </StyledCarousel>
       </CarouselContainer>

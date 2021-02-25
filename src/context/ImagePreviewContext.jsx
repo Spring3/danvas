@@ -1,5 +1,8 @@
 import React, { createContext, useState, useCallback, useContext } from 'react';
-import { ImagePreviewContainer, ImagePreview } from '../components/common/ImagePreview';
+import {
+  ImagePreviewContainer,
+  ImagePreview,
+} from '../components/common/ImagePreview';
 
 const ImagePreviewContext = createContext();
 
@@ -29,7 +32,7 @@ const usePreviewApi = () => {
     isPreviewShown,
     imagesToPreview,
     showImagePreview,
-    hideImagePreview
+    hideImagePreview,
   };
 };
 
@@ -38,8 +41,12 @@ const ImagePreviewContextProvider = ({ children }) => {
 
   return (
     <ImagePreviewContext.Provider value={api}>
-      { api.isPreviewShown ? <ImagePreviewContainer /> : null }
-      <ImagePreview images={imagesToPreview} startIndex={startIndex} onClose={api.hideImagePreview} />
+      {api.isPreviewShown ? <ImagePreviewContainer /> : null}
+      <ImagePreview
+        images={imagesToPreview}
+        startIndex={startIndex}
+        onClose={api.hideImagePreview}
+      />
       {children}
     </ImagePreviewContext.Provider>
   );
@@ -47,7 +54,4 @@ const ImagePreviewContextProvider = ({ children }) => {
 
 const useImagePreview = () => useContext(ImagePreviewContext);
 
-export {
-  ImagePreviewContextProvider,
-  useImagePreview
-};
+export { ImagePreviewContextProvider, useImagePreview };

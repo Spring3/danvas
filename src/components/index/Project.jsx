@@ -3,7 +3,7 @@ import React, {
   useMemo,
   useRef,
   useState,
-  useEffect
+  useEffect,
 } from 'react';
 import styled from 'styled-components';
 
@@ -85,23 +85,24 @@ const Project = ({ node, index }) => {
   const images = node.frontmatter.images.map((image) => ({
     name: image.name,
     ...image.childImageSharp.original,
-    placeholder: image.childImageSharp.placeholder.base64
+    placeholder: image.childImageSharp.placeholder.base64,
   }));
 
   const intersection = useIntersection(infoRef, {
-    threshold: width > 1000 ? 0.8 : 0.001
+    threshold: width > 1000 ? 0.8 : 0.001,
   });
 
   const isIntersecting = intersection?.isIntersecting;
 
   const revealAnimation = useSpring({
-    opacity: (wasRevealed || isIntersecting) ? 1 : 0,
-    transform: (wasRevealed || isIntersecting) ? 'translateY(0%)' : 'translateY(100px)',
+    opacity: wasRevealed || isIntersecting ? 1 : 0,
+    transform:
+      wasRevealed || isIntersecting ? 'translateY(0%)' : 'translateY(100px)',
     immediate: false,
     delay: 100,
     config: {
-      reset: false
-    }
+      reset: false,
+    },
   });
 
   useEffect(() => {
@@ -132,11 +133,13 @@ const Project = ({ node, index }) => {
     [id]
   );
 
-  const decorationLayers = useMemo(() =>
-    Object.entries(node.frontmatter.decorations || {}).map(
-      ([layerKey, layerData]) => renderLayer(layerKey, layerData),
-    ),
-  [renderLayer]);
+  const decorationLayers = useMemo(
+    () =>
+      Object.entries(
+        node.frontmatter.decorations || {}
+      ).map(([layerKey, layerData]) => renderLayer(layerKey, layerData)),
+    [renderLayer]
+  );
 
   return (
     <ProjectRow id={id} justifyContent="space-between">
@@ -158,7 +161,10 @@ const Project = ({ node, index }) => {
       {!isSmallScreen ? (
         <>
           <ImageWrapper ref={fixedImageContainerRef} style={revealAnimation}>
-            <FixedImageSet containerRef={fixedImageContainerRef} images={images} />
+            <FixedImageSet
+              containerRef={fixedImageContainerRef}
+              images={images}
+            />
           </ImageWrapper>
           {decorationLayers}
         </>

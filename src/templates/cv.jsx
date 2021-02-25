@@ -165,29 +165,42 @@ export default ({ data }) => {
         </Navbar>
         <CVWrapper>
           <ProfileGrid>
-            <LazyImage Component={ProfilePicture} alt="avatar" loading="lazy" src={githubProfile.avatar_url} />
+            <LazyImage
+              Component={ProfilePicture}
+              alt="avatar"
+              loading="lazy"
+              src={githubProfile.avatar_url}
+            />
             <ProfileInfo>
-              <Flex justifyContent="space-between" alignItems="center" flexGrow="1">
-                <Subheading marker={MARKERS.green}>{post.frontmatter.title}</Subheading>
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                flexGrow="1"
+              >
+                <Subheading marker={MARKERS.green}>
+                  {post.frontmatter.title}
+                </Subheading>
                 <small>
                   &nbsp;(
                   {post.frontmatter.updatedAt})
                 </small>
               </Flex>
               <p>
-                Curious and creative. I always try to come up with something special
-                and original.
+                Curious and creative. I always try to come up with something
+                special and original.
               </p>
               <p>
-                Primarily I focus on Node.js, React, Graphql and modern Javascript
-                ecosystem.
+                Primarily I focus on Node.js, React, Graphql and modern
+                Javascript ecosystem.
               </p>
               <SocialButtons onlyImportant />
             </ProfileInfo>
           </ProfileGrid>
           <Grid id="intro-section">
             <section id="experience">
-              <StickySubheading marker={MARKERS.blue}>Experience</StickySubheading>
+              <StickySubheading marker={MARKERS.blue}>
+                Experience
+              </StickySubheading>
               <CVSectionBlock>
                 <h3>Full Stack Software Engineer</h3>
                 <p>
@@ -311,7 +324,9 @@ export default ({ data }) => {
               </p>
             </section>
             <section id="education">
-              <StickySubheading marker={MARKERS.yellow}>Education</StickySubheading>
+              <StickySubheading marker={MARKERS.yellow}>
+                Education
+              </StickySubheading>
               <CVSectionBlock>
                 <h3>Specialist Degree</h3>
                 <p>
@@ -361,7 +376,9 @@ export default ({ data }) => {
               </CVSectionBlock>
             </section>
             <section id="courses">
-              <StickySubheading marker={MARKERS.green}>Courses</StickySubheading>
+              <StickySubheading marker={MARKERS.green}>
+                Courses
+              </StickySubheading>
               <h3>Java Enterprise Edition</h3>
               <p>
                 <strong>Provider</strong>

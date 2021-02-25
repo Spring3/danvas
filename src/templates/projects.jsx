@@ -104,7 +104,7 @@ export default (props) => {
   const images = post.frontmatter.images.map((image) => ({
     name: image.name,
     ...image.childImageSharp.original,
-    placeholder: image.childImageSharp.placeholder.src
+    placeholder: image.childImageSharp.placeholder.base64
   }));
 
   const isSmallScreen = width < 850;

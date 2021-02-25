@@ -144,7 +144,9 @@ const CookieBanner = memo(() => {
       </Flex>
       <Description style={descriptionAnimation}>
         <p>
-          I use anonymised google analytics cookies to see if anyone visits this website at all. Neither do I export nor use this data in any way other than observative.
+          I use anonymised google analytics cookies to see if anyone visits this
+          website at all. Neither do I export nor use this data in any way other
+          than observative.
         </p>
         <Reference
           href="https://policies.google.com/technologies/partner-sites"

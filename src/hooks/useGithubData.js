@@ -32,10 +32,8 @@ const useGithubData = () => {
 
   return {
     isFetching,
-    data: githubProfile
+    data: githubProfile,
   };
 };
 
-export {
-  useGithubData
-};
+export { useGithubData };

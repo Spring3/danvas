@@ -9,7 +9,7 @@ import { Square, Decorations } from '../common/Decorations';
 
 const HugeHeader = styled(Header)`
   font-size: 2.5rem;
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 `;
 
 const ContentPanel = styled(Flex)`
@@ -33,23 +33,23 @@ const ContentPanel = styled(Flex)`
 const animationRules = {
   immediate: false,
   from: {
-    opacity: 0
+    opacity: 0,
   },
   to: {
-    opacity: 1
+    opacity: 1,
   },
-  config: config.slow
+  config: config.slow,
 };
 
 const AboutSection = ({ children }) => {
   const springAnimation = useSpring({
     ...animationRules,
-    delay: 1000
+    delay: 1000,
   });
 
   const headerAnimation = useSpring({
     ...animationRules,
-    delay: 500
+    delay: 500,
   });
   return (
     <ContentPanel direction="column" justifyContent="center">

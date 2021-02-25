@@ -15,7 +15,7 @@ const StyledReference = styled(Reference)`
   align-items: center;
   font-size: 1.2rem;
   svg {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     vertical-align: top;
   }
 

@@ -34,7 +34,7 @@ const styles = css`
 
 const StyledReference = styled.a`
   ${styles};
-  
+
   border-radius: 3px;
 
   &:hover,
