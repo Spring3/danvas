@@ -24,7 +24,7 @@ const GeometricObject = styled.div.attrs((props) => ({
     right: props.right,
     bottom: props.bottom,
     background: props.background,
-    boxShadow: `0px 0px 20px 0px ${props.background}`,
+    boxShadow: props.flat ? 'none' : `0px 0px 20px 0px ${props.background}`,
   },
 }))`
   opacity: 0.9;

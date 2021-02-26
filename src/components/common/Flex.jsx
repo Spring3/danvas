@@ -36,9 +36,11 @@ const Flex = ({
   flexGrow,
   flexWrap,
   className,
+  style,
 }) => (
   <FlexContainer
     id={id}
+    style={style}
     direction={direction}
     gap={gap}
     margined={margined}
