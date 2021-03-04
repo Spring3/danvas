@@ -27,6 +27,7 @@ const GeometricObject = styled.div.attrs((props) => ({
     boxShadow: props.flat ? 'none' : `0px 0px 20px 0px ${props.background}`,
   },
 }))`
+  transition: background ease .3s;
   opacity: 0.9;
 `;
 
